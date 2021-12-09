@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import Slide from 'react-reveal/Slide';
+import useAuth from '../../hooks/useAuth';
 import NavButton from './NavButton';
+import ProfileInfo from './ProfileInfo';
 import SearchBar from './SearchBar';
 
 const Navbar = () => {
     const [mobileNav, setMobileNav] = useState(false)
+    const { user} = useAuth();
 
     //handle click 
     const handleClick = () => {
@@ -28,9 +31,18 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className="hidden md:flex lg:flex space-x-3">
+                {user.email ? (
+                    <>
+                    <ProfileInfo />
+                    </>
+                ) : (
+                    <>
+                    <div className = "hidden md:flex lg:flex space-x-3">
                     <NavButton />
-                </div>
+            </div>
+                    </>
+                )}
+                
 
                 {/* menu icon  */}
                 <div className="block md:hidden lg:hidden">
