@@ -18,7 +18,7 @@ const CartProvider = ({ children}) => {
             progress: undefined,
         });
     }
-    const value = { cart, handleClick };
+    const value = { cart, handleClick, setCart };
     return (
         <CartContext.Provider value={value}>
             {children}

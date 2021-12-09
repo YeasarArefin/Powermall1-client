@@ -1,10 +1,25 @@
-import React from 'react'
-import CartItemCard from './CartItemCard'
+import React from 'react';
+import CartItemCard from './CartItemCard';
+import CartSideBar from './CartSideBar';
 
 const ProductCart = () => {
+    const [show, setShow] = React.useState(false);
+
+    const handleShow = () => {
+        setShow(!show);
+    }
     return (
         <div>
-            <CartItemCard />
+            <CartItemCard handleShow={handleShow} />
+            {show && (
+                <>
+                    <CartSideBar setShow={setShow} />
+                    <div className='w-full fixed top-0 left-0 h-screen z-40 bg-gray-800 opacity-70'>
+                    </div>
+                </>
+            )}
+
+
         </div>
     )
 }
