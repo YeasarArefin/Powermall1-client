@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import BigBanner from '../components/Big Sale/BigBanner'
 import Features from '../components/Features/Features'
 import Navbar from '../components/Navbar/Navbar'
+import ProductCart from '../components/Product Cart/ProductCart'
 import AcCategory from '../components/Products/AcCategory'
 import MobileCategory from '../components/Products/MobileCategory'
 import Slider from '../components/Slider/Slider'
@@ -28,6 +29,7 @@ const Home = () => {
                 <SubNav />
             </div>
             <Slider />
+            <ProductCart />
             <main className="max-w-screen-xl mx-auto px-6">
                 <Features />
                 <MobileCategory />
@@ -35,7 +37,6 @@ const Home = () => {
                 <AcCategory />
                 <BigBanner />
                 <ToastContainer />
-
             </main>
         </>
     )
