@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaSignOutAlt, FaUserCircle } from 'react-icons/fa';
+import Avatar from 'react-avatar';
+import { FaSignOutAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
@@ -13,7 +14,7 @@ const ProfileInfo = () => {
     }
     return (
         <div className='flex items-center space-x-3'>
-            <FaUserCircle className='text-gray-600 text-2xl' />
+            {user.photoURL ? <img className='w-8 h-8 rounded-full object-contain' alt={user.displayName} src={user.photoURL} /> : <Avatar size='40' name={user.displayName} round={true} />} 
             <div className='flex flex-col'>
                 <span className='text-gray-700'>{user.displayName}</span>
                 <span className='text-gray-500 text-sm'>{user.email}</span>
