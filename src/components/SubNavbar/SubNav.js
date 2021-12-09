@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { BsCart } from 'react-icons/bs';
 import Zoom from 'react-reveal/Zoom';
+import useCart from '../../hooks/useCart';
 
 const SubNav = () => {
     const [show, setShow] = useState(false);
+    const { cart } = useCart();
 
     const menus = [
         {
@@ -62,7 +64,7 @@ const SubNav = () => {
                 {/* cart  */}
                 <div className="relative cursor-pointer flex justify-end">
                     <BsCart className="text-3xl text-white-600" />
-                    <span className="rounded-full w-5 h-5 absolute -top-1 -right-2 bg-gray-700 text-white flex justify-center items-center">1</span>
+                    <span className="rounded-full w-5 h-5 absolute -top-1 -right-2 bg-gray-700 text-white flex justify-center items-center">{cart.length}</span>
                 </div>
             </div>           
         </div>

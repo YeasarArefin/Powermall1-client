@@ -1,11 +1,12 @@
 import React from 'react'
+import CartProvider from './contexts/CartProvider'
 import Home from './pages/Home'
 
 const App = () => {
   return (
-    <div>
+    <CartProvider>
       <Home />
-    </div>
+    </CartProvider>
   )
 }
 

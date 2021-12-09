@@ -1,4 +1,6 @@
 import React from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import BigBanner from '../components/Big Sale/BigBanner'
 import Features from '../components/Features/Features'
 import Navbar from '../components/Navbar/Navbar'
@@ -19,6 +21,8 @@ const Home = () => {
                 <BigBanner />
                 <AcCategory />
                 <BigBanner />
+                <ToastContainer />
+
             </main>
         </>
     )
