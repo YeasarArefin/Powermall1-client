@@ -17,5 +17,38 @@ body::-webkit-scrollbar {
 }
 
 .cart-container::-webkit-scrollbar {
-  display:none;
+  display: none;
+}
+
+/* brand slider custom styling  */
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  left: 0px !important;
+  right: auto;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-family: swiper-icons;
+  font-size: 17px !important;
+  color: white !important;
+  width: 43px !important;
+  display: flex !important;
+  margin: auto !important;
+  border-radius: 100% !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 27px !important;
+  display: flex !important;
+  background: #11a0db !important;
+  text-transform: none !important;
+  letter-spacing: 0;
+  text-transform: none;
+  font-variant: initial;
+  line-height: 1;
+  -webkit-border-radius: 100% !important;
+  -moz-border-radius: 100% !important;
+  -ms-border-radius: 100% !important;
+  -o-border-radius: 100% !important;
 }

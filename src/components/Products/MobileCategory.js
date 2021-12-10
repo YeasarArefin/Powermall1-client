@@ -5,6 +5,7 @@ import SwiperCore, { Autoplay, EffectCoverflow, Pagination } from 'swiper/core';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import useFetch from '../../hooks/useFetch';
+import SectionTitle from '../Section Title/SectionTitle';
 import ProductCard from './ProductCard';
 SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
 
@@ -13,8 +14,8 @@ const MobileCategory = () => {
 
     return (
         <>
-            <section className="py-6"> 
-                <h1 className="text-primary text-left py-3 uppercase text-2xl font-bold border-b">Mobiles</h1>
+            <section className="py-6">
+                <SectionTitle title="Mobile Phones" />
                 <Swiper
                     slidesPerView={4}
                     centeredSlides={false}

@@ -2,6 +2,7 @@ import React from 'react';
 import { BsFillBagCheckFill } from 'react-icons/bs';
 import { RiCloseLine } from 'react-icons/ri';
 import Fade from 'react-reveal/Fade';
+import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 
 const CartSideBar = ({ setShow }) => {
@@ -79,10 +80,12 @@ const CartSideBar = ({ setShow }) => {
 
                 <div className='px-2'>
                     {/* checkout button  */}
-                    <div className='bg-primary rounded-lg px-2 py-2 hover:bg-blue-600 transition duration-300 w-full flex justify-between items-center cursor-pointer mt-8'>
-                        <span className='text-white text-sm pl-4'>Checkout</span>
-                        <div className='bg-white px-3 py-2 rounded-lg text-primary text-sm'>${price?.toFixed(2)}</div>
-                    </div>
+                    <Link to='/checkout'>
+                        <div className='bg-primary rounded-lg px-2 py-2 hover:bg-blue-600 transition duration-300 w-full flex justify-between items-center cursor-pointer mt-8'>
+                            <span className='text-white text-sm pl-4'>Checkout</span>
+                            <div className='bg-white px-3 py-2 rounded-lg text-primary text-sm'>${price?.toFixed(2)}</div>
+                        </div>
+                    </Link>
                 </div>
             </aside>
         </Fade>
