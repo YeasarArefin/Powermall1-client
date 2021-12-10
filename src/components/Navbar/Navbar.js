@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import Slide from 'react-reveal/Slide';
 import useAuth from '../../hooks/useAuth';
+import Brand from './Brand';
 import NavButton from './NavButton';
 import ProfileInfo from './ProfileInfo';
 import SearchBar from './SearchBar';
@@ -21,9 +22,7 @@ const Navbar = () => {
             <nav className="flex items-center max-w-screen-xl mx-auto px-6 py-3">
                 <div className="flex-grow flex items-center space-x-8">
                     {/* brand  */}
-                    <div className="flex items-center space-x-2">
-                        <img src="../../../assets/logo.png" alt="logo" className="object-contain w-36 cursor-pointer" />
-                    </div>
+                    <Brand />
 
                     {/* search bar  */}
                     <div className="hidden md:flex lg:flex space-x-3">

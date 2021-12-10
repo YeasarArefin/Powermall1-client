@@ -1,9 +1,13 @@
 import React from 'react'
 import LoginForm from '../components/Login/LoginForm'
+import Navbar from '../components/Navbar/Navbar'
+import SubNav from '../components/SubNavbar/SubNav'
 
 const Login = () => {
     return (
         <main className="bg-blue-50 h-screen w-full">
+            <Navbar />
+            <SubNav />
             <div className="max-w-screen-xl mx-auto px-6 flex flex-col h-screen lg:justify-center justify-start">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 place-content-center">
                     {/* vector image  */}
