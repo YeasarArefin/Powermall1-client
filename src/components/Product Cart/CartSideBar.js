@@ -20,7 +20,7 @@ const CartSideBar = ({ setShow }) => {
 
     return (
         <Fade right>
-            <aside className='w-96 bg-white fixed top-0 right-0 h-screen z-50 '>
+            <aside className='w-96 bg-secondary fixed top-0 right-0 h-screen z-50 ' style={{ height: '100%' }}>
                 {/* items  */}
                 <div className='flex items-center justify-between border-b border-gray-300 px-6 py-4'>
                     <div className='text-primary flex items-center space-x-2'>
@@ -29,7 +29,7 @@ const CartSideBar = ({ setShow }) => {
                     </div>
 
                     {/* close button  */}
-                    <button className='p-3 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition duration-500 hover:shadow-xl' onClick={() => setShow(false)}>
+                    <button className='p-3 rounded-full bg-white hover:bg-primary hover:text-white transition duration-500 hover:shadow-xl' onClick={() => setShow(false)}>
                         <RiCloseLine className="text-xl text-gray-700 hover:text-white" />
                     </button>
                 </div>

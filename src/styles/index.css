@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f4f4fa;
+  height: 100%;
 }
 
 code {
@@ -21,16 +23,43 @@ body::-webkit-scrollbar {
 }
 
 /* brand slider custom styling  */
-.swiper-button-prev,
-.swiper-container-rtl .swiper-button-next {
-  left: 0px !important;
-  right: auto;
-}
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
   font-family: swiper-icons;
-  font-size: 17px !important;
+  font-size: 13px !important;
+  color: #000 !important;
+  width: 43px !important;
+  display: flex !important;
+  margin: auto !important;
+  border-radius: 100% !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 27px !important;
+  display: flex !important;
+  background: white !important;
+  text-transform: none !important;
+  letter-spacing: 0;
+  text-transform: none;
+  font-variant: initial;
+  line-height: 1;
+  -webkit-border-radius: 100% !important;
+  -moz-border-radius: 100% !important;
+  -ms-border-radius: 100% !important;
+  -o-border-radius: 100% !important;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.39);
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.swiper-button-next:hover:after,
+.swiper-button-prev:hover:after {
+  font-family: swiper-icons;
+  font-size: 13px !important;
   color: white !important;
   width: 43px !important;
   display: flex !important;

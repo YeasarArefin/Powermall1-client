@@ -10,7 +10,7 @@ const ProductCard = (props) => {
     const {id,title,description,price,rating,image,discount} = props;
     const disCountedPrice = price - (price * discount / 100);
     return (
-        <div className="border rounded-lg p-4 box-border hover:translate-y-4 transform transition duration-500 h-full flex flex-col justify-between hover:shadow-xl">
+        <div className="rounded-lg p-4 box-border hover:translate-y-4 transform transition duration-500 h-full flex flex-col justify-between hover:shadow-xl bg-white">
             {/* discount badge  */}
             <div className="flex justify-end">
                 <span className="px-3 py-1 bg-yellow-500 text-center text-white rounded-lg"> -{discount}%</span>
