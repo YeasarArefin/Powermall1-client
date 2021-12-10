@@ -20,7 +20,7 @@ const PopularCategories = () => {
                 <SectionTitle title="POPULAR CATEGORIES" />
 
                 {/* categories  */}
-                <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-8 gap-10 py-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-10 py-8">
                     {categories?.map(item => (
                         <Slide bottom key={item.id}>
                             <div className='bg-white rounded-lg p-3 box-border shadow-xl flex flex-col items-center justify-center h-full space-y-2 hover:scale-105 transform transition duration-500 cursor-pointer'>

@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import BigBanner from '../components/Big Sale/BigBanner'
 import Brands from '../components/Brands/Brands'
 import Features from '../components/Features/Features'
+import Footer from '../components/Footer/Footer'
 import Navbar from '../components/Navbar/Navbar'
 import PopularCategories from '../components/Popular Categories/PopularCategories'
 import ProductCart from '../components/Product Cart/ProductCart'
@@ -44,6 +45,7 @@ const Home = () => {
                 <PopularCategories />
                 <ToastContainer />
             </main>
+            <Footer />
         </>
     )
 }
