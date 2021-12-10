@@ -1,4 +1,5 @@
 import React from 'react';
+import Slide from 'react-reveal/Slide';
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
@@ -68,9 +69,11 @@ const Brands = () => {
                     }}>
                     {brands?.map(item => (
                         <SwiperSlide key={item.id} className="h-full">
+                            <Slide bottom>
                             <div className='w-36 h-24 bg-white rounded-lg p-2 box-border'>
                                 <img className='w-24 h-full object-contain mx-auto' src={item?.image} alt={item.id} />
                             </div>
+                            </Slide>
                         </SwiperSlide>
                     ))}
                 </Swiper>
