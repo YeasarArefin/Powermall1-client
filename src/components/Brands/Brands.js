@@ -32,7 +32,7 @@ const Brands = () => {
                     navigation={true}
                     slidesPerView={6}
                     centeredSlides={false}
-                    spaceBetween={0}
+                    spaceBetween={10}
                     grabCursor={true}
                     pagination={{
                         "clickable": true
@@ -52,7 +52,7 @@ const Brands = () => {
                             slidesPerView: 2,
                         },
                         500: {
-                            slidesPerView: 4,
+                            slidesPerView: 3,
                         },
                         768: {
                             slidesPerView: 4,

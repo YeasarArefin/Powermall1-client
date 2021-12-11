@@ -7,7 +7,6 @@ import Features from '../components/Features/Features'
 import Footer from '../components/Footer/Footer'
 import Navbar from '../components/Navbar/Navbar'
 import PopularCategories from '../components/Popular Categories/PopularCategories'
-import ProductCart from '../components/Product Cart/ProductCart'
 import AcCategory from '../components/Products/AcCategory'
 import MobileCategory from '../components/Products/MobileCategory'
 import Recommended from '../components/Recommended/Recommended'
@@ -33,7 +32,6 @@ const Home = () => {
                 <SubNav />
             </div>
             <Slider />
-            <ProductCart />
             <main className="max-w-screen-xl mx-auto px-6" style={{ background:'#F4F4FA',height:'100%'}}>
                 <Features />
                 <MobileCategory />

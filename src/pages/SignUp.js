@@ -5,7 +5,7 @@ import SubNav from '../components/SubNavbar/SubNav'
 
 const SignUp = () => {
     return (
-        <main className="bg-blue-50 h-screen w-full">
+        <main className="bg-secondary h-screen w-full">
             <Navbar />
             <SubNav />
             <div className="max-w-screen-xl mx-auto px-6 flex flex-col h-screen lg:justify-center justify-start">
