@@ -13,7 +13,7 @@ const Slider = () => {
         { id: 1, image: 'https://links.papareact.com/7ma'},
     ]
     return (
-        <div>
+        <section id="hero">
             <Swiper pagination={true} autoplay={{
                 delay: 2000,
                 disableOnInteraction: false
@@ -24,7 +24,7 @@ const Slider = () => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </div>
+        </section>
     )
 }
 
