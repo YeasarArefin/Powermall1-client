@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import { BsCart } from 'react-icons/bs';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
-import useCart from '../../hooks/useCart';
 
 const SubNav = () => {
     const [show, setShow] = useState(false);
-    const { cart } = useCart();
 
     const menus = [
         {
@@ -61,11 +58,6 @@ const SubNav = () => {
                         )
                     })}
                 </ul>
-                {/* cart  */}
-                <div className="relative cursor-pointer flex justify-end">
-                    <BsCart className="text-3xl text-white-600" />
-                    <span className="rounded-full w-5 h-5 absolute -top-1 -right-2 bg-gray-700 text-white flex justify-center items-center">{cart.length}</span>
-                </div>
             </div>
         </div>
     )
