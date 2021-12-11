@@ -27,7 +27,7 @@ const Home = () => {
     window.addEventListener('scroll', changeHeader)
     return (
         <>
-            <div className={`${header && "fixed top-0 w-full z-40 transition duration-300"} `}>
+            <div className={`${header && "fixed top-0 w-full z-30 transition duration-300"} `}>
                 <Navbar />
                 <SubNav />
             </div>

@@ -14,12 +14,10 @@ const ProductCart = () => {
             {show && (
                 <>
                     <CartSideBar setShow={setShow} />
-                    <div className='w-full fixed top-0 left-0 h-screen z-40 bg-gray-800 opacity-70'>
+                    <div className='cursor-pointer w-full fixed top-0 left-0 h-screen z-40 bg-gray-800 opacity-70' onClick={() => setShow(false)}>
                     </div>
                 </>
             )}
-
-
         </div>
     )
 }
