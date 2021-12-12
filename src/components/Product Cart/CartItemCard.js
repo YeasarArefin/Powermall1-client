@@ -12,7 +12,7 @@ const CartItemCard = ({ handleShow}) => {
     }
     
     return (
-        <div className='bg-primary p-3 px-4  fixed z-40 top-2/4 right-0 rounded-tl-md rounded-bl-md shadow-xl flex flex-col space-y-2 cursor-pointer' onClick={handleShow}>
+        <div className='bg-primary p-2 px-2  fixed z-40 top-2/4 right-0 rounded-tl-md rounded-bl-md shadow-xl flex flex-col space-y-2 cursor-pointer' onClick={handleShow}>
             {/* items  */}
             <div className='text-white flex items-center space-x-2 justify-center'>
                 <BsFillBagCheckFill />

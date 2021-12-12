@@ -3,13 +3,15 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { BsBagCheckFill } from 'react-icons/bs';
 import Rating from 'react-rating';
 import Slide from 'react-reveal/Slide';
+import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 
 
 const ProductCard = (props) => {
     const { handleClick } = useCart();
     const { id, title, description, price, rating, image, discount } = props;
-    const disCountedPrice = price - (price * discount / 100);
+    const disCountedPrice = price - (discount /100) * price;
+    
     return (
         <Slide bottom>
             <div className="rounded-lg p-4 box-border hover:translate-y-4 transform transition duration-500 h-full flex flex-col justify-between hover:shadow-xl bg-white">
@@ -23,7 +25,7 @@ const ProductCard = (props) => {
                 </div>
 
                 <div className="flex flex-col items-center space-y-2">
-                    <h1 className="text-base text-gray-700 font-semibold">{title}</h1>
+                    <Link to={`/products/${id}`}><h1 className="text-base text-gray-700 font-semibold hover:underline cursor-pointer">{title}</h1></Link>
                     <p className="text-sm text-gray-500 text-center">{description?.slice(0, 80)} </p>
 
                     {/* price  */}
@@ -40,7 +42,6 @@ const ProductCard = (props) => {
                             readonly
                         />
                         <span className="text-gray-600">({rating})</span>
-
                     </div>
                 </div>
 
