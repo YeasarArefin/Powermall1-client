@@ -1,8 +1,12 @@
 import React from 'react';
+import AllProductsCart from '../components/Checkout/AllProductsCart';
 import ShippingForm from '../components/Checkout/ShippingForm';
 import Footer from '../components/Footer/Footer';
+import useCart from '../hooks/useCart';
 
 const Checkout = () => {
+    const { cart } = useCart();
+
     return (
         <>
             <main className="max-w-screen-xl mx-auto">
@@ -20,7 +24,16 @@ const Checkout = () => {
                 </section>
 
                 {/* products cart  */}
-                <section className='mx-6  bg-white rounded-lg my-12'>
+                <section className='mx-6  grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 my-12'>
+                    <div className='col-span-2  rounded-lg bg-white  p-6 box-border'>
+                        {cart.length > 0 ? <AllProductsCart /> : (
+                            <>
+                                <div className=' flex flex-col justify-center items-center'>
+                                    <img src="../../assets/emptycart.png" alt="empty cart" className='w-40' />
+                                </div>
+                            </>
+                        )}
+                    </div>
                 </section>
             </main>
             <Footer />
