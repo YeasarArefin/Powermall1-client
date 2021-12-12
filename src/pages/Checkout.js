@@ -1,5 +1,6 @@
 import React from 'react';
 import AllProductsCart from '../components/Checkout/AllProductsCart';
+import OrderSummary from '../components/Checkout/OrderSummary';
 import ShippingForm from '../components/Checkout/ShippingForm';
 import Footer from '../components/Footer/Footer';
 import useCart from '../hooks/useCart';
@@ -18,8 +19,9 @@ const Checkout = () => {
                     </div>
 
                     {/* order summary  */}
-                    <div className="bg-white p-4 rounded-lg box-border">
+                    <div className="bg-white p-4  h-96 rounded-lg box-border">
                         <h1 className='text-gray-600 text-lg font-semibold'>Order Summary</h1>
+                        <OrderSummary />
                     </div>
                 </section>
 
