@@ -2,6 +2,7 @@ import React from 'react';
 import { AiFillStar, AiOutlineHeart, AiOutlineMinus, AiOutlinePlus, AiOutlineShareAlt, AiOutlineStar } from 'react-icons/ai';
 import { BsBagCheckFill, BsCartCheckFill } from 'react-icons/bs';
 import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 
 const ProductDescription = (props) => {
@@ -84,10 +85,12 @@ const ProductDescription = (props) => {
                     <BsCartCheckFill className="text-lg" />
                     <span className="text-sm select-none">Add To Cart</span>
                 </button>
+                <Link to="/checkout">
                 <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1">
                     <BsBagCheckFill className="text-sm" />
                     <span className="text-sm select-none">Buy Now</span>
                 </button>
+                </Link>
             </div>
         </div>
     )
