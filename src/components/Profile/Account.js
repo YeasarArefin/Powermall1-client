@@ -1,10 +1,9 @@
 import React from 'react';
-import Avatar from 'react-avatar';
 import { Link } from "react-router-dom";
 import useAuth from '../../hooks/useAuth';
 
 const Account = () => {
-    const { user } = useAuth();
+    const { newUser } = useAuth();
 
     return (
         <div>
@@ -18,37 +17,41 @@ const Account = () => {
 
                 {/* image  */}
                 <div className="my-4 px-4">
-                    {user.photoURL ? <img className='w-28 h-28 rounded-full object-contain' alt={user.displayName} src={user.photoURL} /> : <Avatar size='100' name={user.displayName} round={true} />}
+                    <img className='w-28 h-28 rounded-full object-cover' alt={newUser?.name} src={newUser?.image} />
                 </div>
 
                 <div className="border-t border-gray-200">
                     <dl>
                         <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Full name</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{user.displayName}</dd>
+                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{newUser?.name}</dd>
                         </div>
                         <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Email</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{user.email}</dd>
+                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{newUser?.email}</dd>
                         </div>
                         <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Mobile</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">014087196282</dd>
+                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                <span>{!newUser?.mobile ? "Not Add yet!" : `${newUser?.mobile}`}</span>
+                            </dd>
                         </div>
                         <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Age</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">18 years</dd>
+                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                <span>{!newUser?.age ? "Not Add yet!" : `${newUser?.age} years`}</span>
+                            </dd>
                         </div>
                         <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Gender</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Male</dd>
+                            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                <span>{!newUser?.gender ? "Not Add yet!" : `${newUser?.gender}`}</span>
+                            </dd>
                         </div>
                         <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Address</dt>
                             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                15c/7c,Block-F,flat-5B,Hazi Chinu Mia Road,Tikka para(near panir pamp),Mohammadpur,Dhaka-1207
-                                Dhaka, BD,
-                                Bangladesh
+                                <span>{!newUser?.address ? "Not Add yet!" : `${newUser?.address}`}</span>
                             </dd>
                         </div>
 

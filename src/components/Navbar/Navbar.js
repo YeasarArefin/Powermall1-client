@@ -9,7 +9,7 @@ import SearchBar from './SearchBar';
 
 const Navbar = () => {
     const [mobileNav, setMobileNav] = useState(false)
-    const { user} = useAuth();
+    const { newUser } = useAuth();
 
     //handle click 
     const handleClick = () => {
@@ -30,7 +30,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                {user.email ? (
+                {newUser.email ? (
                     <>
                     <ProfileInfo />
                     </>
