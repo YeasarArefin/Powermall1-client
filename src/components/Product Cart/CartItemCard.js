@@ -8,6 +8,7 @@ const CartItemCard = ({ handleShow}) => {
 
     // price 
     for (var i = 0; i < cart.length; i++) {
+        // price += cart[i].price - (cart[i].price * cart[i].discount / 100);
         price += cart[i].price - (cart[i].price * cart[i].discount / 100);
     }
     
@@ -21,7 +22,7 @@ const CartItemCard = ({ handleShow}) => {
 
             {/* price  */}
             <div className='bg-white rounded-md px-2 py-2 text-primary flex justify-center text-sm'>
-                <span>$ {price?.toFixed(2)}</span>
+                <span>&#2547; {price?.toFixed(2)}</span>
             </div>
         </div>
     )

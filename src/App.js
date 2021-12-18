@@ -7,6 +7,7 @@ import EditProfile from './components/Profile/EditProfile';
 import SubNav from './components/SubNavbar/SubNav';
 import AuthProvider from './contexts/AuthProvider';
 import CartProvider from './contexts/CartProvider';
+import QuantityProvider from './contexts/QuantityProvider';
 import Checkout from './pages/Checkout';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
@@ -32,6 +33,7 @@ const App = () => {
   return (
     <AuthProvider>
       <CartProvider>
+      <QuantityProvider>
         <ProductCart />
         <div className={`${header && "fixed top-0 w-full z-30 transition duration-300"} `}>
           <Navbar />
@@ -56,6 +58,7 @@ const App = () => {
 
 
         </Routes>
+      </QuantityProvider>
       </CartProvider>
     </AuthProvider>
   )

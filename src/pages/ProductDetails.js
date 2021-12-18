@@ -11,36 +11,34 @@ const ProductDetails = () => {
     const [products, setProducts] = React.useState([])
 
     React.useEffect(() => {
-        fetch('/products.json')
+        fetch(`https://electro-comers-server.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [])
-    const product = products.find(product => product?.id === parseInt(id));
-
+    }, [id])
+    
     return (
         <>
             <main className="max-w-screen-xl mx-auto">
-                <section className='mx-6  bg-white rounded-lg mt-12 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4'>
+                <section className='mx-6  bg-white rounded-lg mt-12 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-5'>
                     {/* image  */}
-                    <div className='col-span-1  p-6 box-border'>
-                        <ProductImage {...product} />
-                        {/* <img src={product?.image} alt={product?.name} className="w-full " /> */}
+                    <div className='col-span-2  p-6 box-border'>
+                        <ProductImage {...products} />
                     </div>
 
                     {/* product description  */}
                     <div className="col-span-2  p-6 box-border">
-                        <ProductDescription {...product} />
+                        <ProductDescription {...products} />
                     </div>
 
                     {/* order description  */}
                     <div className="col-span-1">
-                        <DeliveryDescription {...product} />
+                        <DeliveryDescription {...products} />
                     </div>
                 </section>
 
                 {/* product information  */}
                 <section className='mx-6  bg-white rounded-lg my-12'>
-                    <ProductInformations {...product} />
+                    <ProductInformations {...products} />
                 </section>
             </main>
             <Footer />

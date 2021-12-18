@@ -1,10 +1,24 @@
-import { Dialog, Transition } from '@headlessui/react'
-import React, { Fragment, useRef } from 'react'
-import { MdOutlineLocationOn } from 'react-icons/md'
+import { Dialog, Transition } from '@headlessui/react';
+import axios from 'axios';
+import React, { Fragment, useRef } from 'react';
+import { useForm } from 'react-hook-form';
+import { MdOutlineLocationOn } from 'react-icons/md';
+import swal from 'sweetalert';
+import useAuth from '../../hooks/useAuth';
 
 const AddressModal = ({open, setOpen}) => {
+    const cancelButtonRef = useRef(null);
+    const {newUser} = useAuth();
+    const { register, handleSubmit } = useForm();
 
-    const cancelButtonRef = useRef(null)
+    const onSubmit = data => {
+        axios.put(`https://electro-shop-server.herokuapp.com/users/${newUser._id}`, data)
+            .then(res => {
+                swal("Yo!!!", "Address successfully updated!!!", "success");
+            }).catch((err) => {
+                swal("Something went wrong!", `${err.message}`, "error")
+            })
+    }
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -45,29 +59,32 @@ const AddressModal = ({open, setOpen}) => {
                                         <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-600">
                                             Change Delivery Address
                                         </Dialog.Title>
-                                        <div className="mt-4 w-full">
-                                            <input type="text" className="border border-gray-400 rounded-lg focus:outline-none ring-blue-200 focus:ring-2 px-4 py-3 w-96 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="Address" />
-                                        </div>
+                                        <form onSubmit={handleSubmit(onSubmit)}>
+                                            <div className="mt-4 w-full">
+                                                <input type="text" className="border border-gray-400 rounded-lg focus:outline-none ring-blue-200 focus:ring-2 px-4 py-3 w-96 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="Address" defaultValue={newUser?.address} {...register("address")} />
+                                            </div>
+                                            <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                                <button
+                                                    type="button"
+                                                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-blue-5000 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                                                    onClick={() => setOpen(false)}
+                                                >
+                                                    Save
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                                                    onClick={() => setOpen(false)}
+                                                    ref={cancelButtonRef}
+                                                >
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                            <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                <button
-                                    type="button"
-                                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-blue-5000 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
-                                    onClick={() => setOpen(false)}
-                                >
-                                    Save
-                                </button>
-                                <button
-                                    type="button"
-                                    className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                                    onClick={() => setOpen(false)}
-                                    ref={cancelButtonRef}
-                                >
-                                    Cancel
-                                </button>
-                            </div>
+                            
                         </div>
                     </Transition.Child>
                 </div>

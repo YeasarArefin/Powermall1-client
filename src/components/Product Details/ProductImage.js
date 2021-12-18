@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import ReactImageMagnify from 'react-image-magnify';
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/thumbs/thumbs.min.css";
 import SwiperCore, { Navigation, Thumbs } from 'swiper/core';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
-SwiperCore.use([ Navigation, Thumbs]);
+SwiperCore.use([Navigation, Thumbs]);
 
 
 const ProductImage = (props) => {
-    const { image } = props;
+    const { img, ytLink } = props;
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const image = img?.split(',');
 
     return (
         <div>
@@ -24,35 +24,21 @@ const ProductImage = (props) => {
                 thumbs={{ swiper: thumbsSwiper }}
                 className="mySwiper2">
                 <SwiperSlide>
-                    <ReactImageMagnify {...{
-                        smallImage: {
-                            alt: 'Wristwatch by Ted Baker London',
-                            isFluidWidth: true,
-                            src: `${image}`
-                        },
-                        largeImage: {
-                            src: `${image}`,
-                            width: 1200,
-                            height: 1800,
-                            isFluidWidth: true,
-                        }
-                    }} />
+                    <img src={image?.[0]} className='w-full mx-auto   object-contain' alt="nature" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <ReactImageMagnify {...{
-                        smallImage: {
-                            alt: 'Wristwatch by Ted Baker London',
-                            isFluidWidth: true,
-                            src: "https://swiperjs.com/demos/images/nature-2.jpg"
-                        },
-                        largeImage: {
-                            src: "https://swiperjs.com/demos/images/nature-2.jpg",
-                            width: 1200,
-                            height: 1800,
-                            isFluidWidth: true,
-                        }
-                    }} />
+                    <img src={image?.[1]} className='w-full mx-auto   object-contain' alt="nature" />
                 </SwiperSlide>
+                <SwiperSlide>
+                    <img src={image?.[2]} className='w-full mx-auto   object-contain' alt="nature" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={image?.[3]} className='w-full mx-auto   object-contain' alt="nature" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <iframe width="450" height="450" src={ytLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </SwiperSlide>
+
             </Swiper>
             <Swiper
                 onSwiper={setThumbsSwiper}
@@ -61,11 +47,21 @@ const ProductImage = (props) => {
                 watchSlidesProgress={true}
                 className="mySwiper">
                 <SwiperSlide>
-                    <img src={`${image}`} alt="phone" />
+                    <img src={image?.[0]} className='w-full mx-auto   object-contain' alt="nature" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-2.jpg" alt="nature" />
+                    <img src={image?.[1]} className='w-full mx-auto   object-contain' alt="nature" />
                 </SwiperSlide>
+                <SwiperSlide>
+                    <img src={image?.[2]} className='w-full mx-auto   object-contain' alt="nature" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={image?.[3]} className='w-full mx-auto   object-contain' alt="nature" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <iframe width="100" height="100" src={ytLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </SwiperSlide>
+
             </Swiper>
         </div>
     )

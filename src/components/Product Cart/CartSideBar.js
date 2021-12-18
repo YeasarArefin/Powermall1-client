@@ -4,19 +4,26 @@ import { RiCloseLine } from 'react-icons/ri';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
+import CartPdCard from './CartPdCard';
 
 const CartSideBar = ({ setShow }) => {
-    const { cart, setCart } = useCart()
+    const { cart } = useCart()
     let price = 0;
+    let quantity = 0;
+
 
     // price 
     for (var i = 0; i < cart.length; i++) {
-        price += cart[i].price - (cart[i].price * cart[i].discount / 100);
+        price += (cart[i].price - (cart[i].price * 20 / 100)) * (cart[i].pdQuantity);
     }
+
+    //product quantity 
+    for (var ii = 0; ii < cart.length; ii++) {
+        quantity += cart[ii].pdQuantity;
+    }
+
     //delete 
-    const handleDelete = (id) => {
-        setCart(cart.filter(item => item.id !== id))
-    }
+
 
     return (
         <Fade right>
@@ -39,34 +46,11 @@ const CartSideBar = ({ setShow }) => {
                 {cart?.length > 0 ? (
                     <>
                         <div className=" h-3/4 overflow-y-scroll cart-container py-6 ">
-                            {cart.map(item => (
-                                <>
-                                    <div className='my-3 mx-1 rounded-md border border-gray-200'>
-                                        <div className="px-3 py-4 flex justify-between space-x-1 bg-white shadow-lg">
-                                            {/* image  */}
-                                            <div>
-                                                <img src={item.image} alt={item.title} className='object-contain w-16' />
-                                            </div>
-
-                                            {/* infos  */}
-                                            <div className="flex flex-col space-y-2">
-                                                <h1 className='break-all text-sm'>{item.title}</h1>
-                                                <p className='text-primary'>${item.price - item.price * item.discount / 100}</p>
-                                            </div>
-
-                                            {/* price  */}
-                                            <div className='flex flex-col justify-center'>
-                                                <h2 className='text-gray-700'>${item.price - item.price * item.discount / 100}</h2>
-                                            </div>
-
-                                            {/* action  */}
-                                            <div className='flex flex-col justify-center cursor-pointer'>
-                                                <RiCloseLine onClick={() => handleDelete(item.id)} className="text-lg text-gray-700 " />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </>
-                            ))}
+                            {cart.map(item => {
+                                return (
+                                    <CartPdCard {...item} />
+                                )
+                            })}
                         </div>
                     </>
                 ) : (
@@ -82,8 +66,8 @@ const CartSideBar = ({ setShow }) => {
                     {/* checkout button  */}
                     <Link to='/checkout'>
                         <div className='bg-primary rounded-lg px-2 py-2 hover:bg-blue-600 transition duration-300 w-full flex justify-between items-center cursor-pointer mt-8'>
-                            <span className='text-white text-sm pl-4'>Checkout</span>
-                            <div className='bg-white px-3 py-2 rounded-lg text-primary text-sm'>${price?.toFixed(2)}</div>
+                            <span className='text-white text-sm pl-4'>Checkout ({quantity} pcs)</span>
+                            <div className='bg-white px-3 py-2 rounded-lg text-primary text-sm'>&#2547; {price?.toFixed(2)}</div>
                         </div>
                     </Link>
                 </div>

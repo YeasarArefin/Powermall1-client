@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { BsCash } from 'react-icons/bs'
 import { MdDeliveryDining, MdOutlineClosedCaptionDisabled, MdOutlineLocationOn, MdOutlineModelTraining } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
 import AddressModal from './AddressModal'
 
 const DeliveryDescription = () => {
     const [open, setOpen] = useState(false)
+    const {newUser} = useAuth()
 
     const handleModal = () => {
         setOpen(true)
@@ -17,10 +19,15 @@ const DeliveryDescription = () => {
             <div>
                 <p className='text-gray-600 font-semibold'>Delivery Options</p>
                 {/* address  */}
-                <div className='flex items-center space-x-2 justify-between py-2 border-t border-gray-300 my-3'>
-                    <MdOutlineLocationOn className='text-3xl text-gray-600 w-8' />
-                    <span className='text-sm text-gray-600'>Dhaka,Dhaka North, Road No. 12-19</span>
-                    <span className='text-sm text-primary cursor-pointer' onClick={handleModal}>CHANGE</span>
+                <div className='flex flex-col space-y-2  py-2 border-t border-gray-300 my-3'>
+                    <div className='flex items-center'>
+                        <MdOutlineLocationOn className='text-3xl text-gray-600 w-8' />
+                        <span className='text-sm text-gray-600 break-all'>{newUser?.address}</span>
+                    </div>
+                    
+                    <div className='flex justify-end'>
+                        <span className='text-sm text-primary cursor-pointer' onClick={handleModal}>CHANGE</span>
+                    </div>
                 </div>
                 <AddressModal open={open} setOpen={setOpen} />
 

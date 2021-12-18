@@ -43,11 +43,11 @@ const EditProfile = () => {
         if (files?.length > 0){
             axios.post('https://api.imgbb.com/1/upload?&key=8a4c4a09bb137c748d82629992ac8c88', formdata)
                 .then((response) => {
-                    if (response.status === 200) {
+                    if (response) {
                         data.['image'] = `${response.data.data.image.url}`;
                         axios.put(`https://electro-shop-server.herokuapp.com/users/${newUser._id}`, data)
                             .then(res => {
-                                swal("Yo!!!", "Profiled successfully updated!!!", "success");
+                                swal("Yo!!!", "Profile successfully updated!!!", "success");
                                 navigate('/profile')
                             }).catch((err) => {
                                 swal("Something went wrong!", `${err.message}`, "error")
@@ -62,7 +62,7 @@ const EditProfile = () => {
         }else{
             axios.put(`https://electro-shop-server.herokuapp.com/users/${newUser._id}`, data)
                 .then(res => {
-                    swal("Yo!!!", "Profiled successfully updated!!!", "success");
+                    swal("Yo!!!", "Profile successfully updated!!!", "success");
                     navigate('/profile')
                 }).catch((err) => {
                     swal("Something went wrong!", `${err.message}`, "error")

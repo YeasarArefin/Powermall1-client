@@ -4,7 +4,7 @@ const useFetch = () => {
     const [products,setProducts] = React.useState([])
 
     useEffect(() => {
-        fetch('/products.json')
+        fetch('https://electro-comers-server.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

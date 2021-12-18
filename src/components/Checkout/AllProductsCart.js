@@ -64,7 +64,7 @@ const AllProductsCart = () => {
                                             </div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className="text-base font-semibold text-gray-900 flex justify-center">${price}</span>
+                                            <span className="text-base font-semibold text-gray-900 flex justify-center">&#2547; {price}</span>
                                             <del className="text-sm text-gray-500 flex justify-center">${item.price}</del>
                                             <span className="text-sm text-gray-600 flex justify-center"> -{item.discount}%</span>
                                         </td>
