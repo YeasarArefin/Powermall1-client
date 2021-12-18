@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { BsCash } from 'react-icons/bs'
 import { MdDeliveryDining, MdOutlineClosedCaptionDisabled, MdOutlineLocationOn, MdOutlineModelTraining } from 'react-icons/md'
 import { Link } from 'react-router-dom'
@@ -8,10 +9,16 @@ import AddressModal from './AddressModal'
 const DeliveryDescription = () => {
     const [open, setOpen] = useState(false)
     const {newUser} = useAuth()
+    const [info, setInfo] = useState();
 
     const handleModal = () => {
         setOpen(true)
     }
+    useEffect(() => {
+        axios.get('https://electro-comers-server.herokuapp.com/information')
+            .then(res => setInfo(res.data[0]))
+    }, []);
+
 
     return (
         <div className='bg-gray-50 h-full py-6 px-3'>
@@ -36,9 +43,9 @@ const DeliveryDescription = () => {
                     <MdDeliveryDining className='text-3xl text-gray-600 w-8' />
                     <div className='text-sm text-gray-600 flex flex-col flex-grow'>
                         <p>Home Delivery</p>
-                        <span>8-9 days</span>
+                        <span>{info?.duration}</span>
                     </div>
-                    <span className='text-sm text-gray-600' >$30</span>
+                    <span className='text-sm text-gray-600'>&#2547; {info?.cost}</span>
                 </div>
 
                 {/* payment method  */}
@@ -55,7 +62,7 @@ const DeliveryDescription = () => {
                 <div className='flex items-center space-x-2 py-2 border-t border-gray-300 my-3'>
                     <MdOutlineModelTraining className='text-3xl text-gray-600 w-8' />
                     <div className='text-sm text-gray-600 flex flex-col'>
-                        <p>7 Day Return</p>
+                        <p>{info?.policy} Return</p>
                         <span>Change of mind available</span>
                     </div>
                 </div>

@@ -1,11 +1,18 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Brand = () => {
+    const [logo,setLogo] = useState();
+    useEffect(() => {
+        axios.get('https://electro-comers-server.herokuapp.com/logo')
+            .then(res => setLogo(res.data[0]))
+    },[]);
+
     return (
         <div className="flex items-center space-x-2">
             <Link to="/">
-                <img src="../../../assets/logo.png" alt="logo" className="object-contain w-36 cursor-pointer" />
+                <img src={logo?.logo} alt={logo?._id} className="object-contain w-36 cursor-pointer" />
             </Link>
         </div>
     )

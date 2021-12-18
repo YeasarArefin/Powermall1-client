@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import useCart from '../../hooks/useCart';
@@ -7,6 +7,7 @@ import Input from '../Contact/Input';
 
 const OrderSummary = ({ setPrice, btnCick, order}) => {
     const {cart,setCart} = useCart();
+    const [info, setInfo] = useState();
     let price = 0;
     const navigate = useNavigate()
 
@@ -15,11 +16,16 @@ const OrderSummary = ({ setPrice, btnCick, order}) => {
         price += (cart[i].price - (cart[i].price * cart[i].discount / 100)) * (cart[i].pdQuantity);
     }
 
-    const totalPrice = price + 30;
+    const totalPrice = price + parseFloat(info?.cost);
 
     useEffect(() => {
-        setPrice(price + 30)
-    }, [price, setPrice])
+        setPrice(price + parseFloat(info?.cost))
+    }, [price, setPrice, info?.cost])
+
+        useEffect(() => {
+        axios.get('https://electro-comers-server.herokuapp.com/information')
+            .then(res => setInfo(res.data[0]))
+    }, []);
 
     const handleSubmit = () => {
         axios.post('https://electro-shop-server.herokuapp.com/orders', order)
@@ -42,7 +48,7 @@ const OrderSummary = ({ setPrice, btnCick, order}) => {
             {/* Shipping free  */}
             <div className='flex justify-between text-gray-500 text-base py-3 border-b border-gray-200'>
                 <span>Shipping Fee</span>
-                <span>&#2547; 30</span>
+                <span>&#2547; {parseFloat(info?.cost)}</span>
             </div>
 
             {/* coupon  */}

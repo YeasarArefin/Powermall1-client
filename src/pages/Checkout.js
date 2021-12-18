@@ -12,8 +12,9 @@ const Checkout = () => {
     const [btnCick, setBtnClick] = useState(false)
     const status = 'Pending'
     const date = new Date().toLocaleDateString();
-    const finalOrder = { ...order, cart, price, status, date}
+    const finalOrder = { cart, data: { ...order, price, status, date}}
 
+    console.log(finalOrder)
     return (
         <>
             <main className="max-w-screen-xl mx-auto">

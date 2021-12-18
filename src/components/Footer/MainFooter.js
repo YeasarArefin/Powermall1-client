@@ -1,9 +1,15 @@
-import React from 'react';
-import { MdCall, MdLocationOn } from 'react-icons/md';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { MdCall, MdLocationOn, MdOutlineEmail } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import Brand from '../Navbar/Brand';
 
 const MainFooter = () => {
+    const [info, setInfo] = useState();
+    useEffect(() => {
+        axios.get('https://electro-comers-server.herokuapp.com/information')
+            .then(res => setInfo(res.data[0]))
+    }, []);
 
     const about = [
         { id: 1, name: 'About Us', link: '/' },
@@ -62,18 +68,23 @@ const MainFooter = () => {
                     <div className='flex flex-col space-y-3'>
                         {/* locaiton  */}
                         <div className='flex items-center space-x-2'>
-                            <MdLocationOn className='text-gray-500 text-sm' />
+                            <MdLocationOn className='text-gray-500 text-sm w-8' />
                             <span className='text-gray-500 text-sm'>
-                                House 10, Road 12 <br />
-                                Block F, Niketan, Gulshan 1, <br />
-                                Dhaka - 1212, Bangladesh <br />
+                                {info?.address}
                             </span>
                         </div>
                         {/* mobile  */}
                         <div className='flex items-center space-x-2'>
-                            <MdCall className='text-gray-500 text-sm' />
+                            <MdCall className='text-gray-500 text-sm w-8' />
                             <span className='text-gray-500 text-sm'>
-                                +8809666745745
+                                {info?.phone}
+                            </span>
+                        </div>
+                        {/* Email  */}
+                        <div className='flex items-center space-x-2'>
+                            <MdOutlineEmail className='text-gray-500 text-sm w-8'  />
+                            <span className='text-gray-500 text-sm'>
+                                {info?.email}
                             </span>
                         </div>
                     </div>
