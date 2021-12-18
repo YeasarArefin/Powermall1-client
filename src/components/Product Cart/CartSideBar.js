@@ -14,7 +14,7 @@ const CartSideBar = ({ setShow }) => {
 
     // price 
     for (var i = 0; i < cart.length; i++) {
-        price += (cart[i].price - (cart[i].price * 20 / 100)) * (cart[i].pdQuantity);
+        price += (cart[i].price - (cart[i].price * cart[i].discount / 100)) * (cart[i].pdQuantity);
     }
 
     //product quantity 

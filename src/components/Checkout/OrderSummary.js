@@ -1,22 +1,48 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import useCart from '../../hooks/useCart';
 import Input from '../Contact/Input';
 
-const OrderSummary = () => {
-    const {cart} = useCart();
+const OrderSummary = ({ setPrice, btnCick, order}) => {
+    const {cart,setCart} = useCart();
+    let price = 0;
+    const navigate = useNavigate()
 
+    // price 
+    for (var i = 0; i < cart.length; i++) {
+        price += (cart[i].price - (cart[i].price * cart[i].discount / 100)) * (cart[i].pdQuantity);
+    }
+
+    const totalPrice = price + 30;
+
+    useEffect(() => {
+        setPrice(price + 30)
+    }, [price, setPrice])
+
+    const handleSubmit = () => {
+        axios.post('https://electro-shop-server.herokuapp.com/orders', order)
+            .then(res => {
+                swal("Yo!!!", "Successfully order done!!!", "success");
+                setCart([])
+                navigate('/profile/myOrders')
+            }).catch((err) => {
+                swal("Something went wrong!", `${err.message}`, "error")
+            })
+    }
 
     return (
         <div className='flex flex-col py-6'>
             {/* subtotal  */}
             <div className='flex justify-between text-gray-500 text-base py-3 border-b border-gray-200'>
                 <span>Subtotal({cart.length} items)</span>
-                <span>$48,900</span>
+                <span>&#2547; {price}</span>
             </div>
             {/* Shipping free  */}
             <div className='flex justify-between text-gray-500 text-base py-3 border-b border-gray-200'>
                 <span>Shipping Fee</span>
-                <span>$510</span>
+                <span>&#2547; 30</span>
             </div>
 
             {/* coupon  */}
@@ -28,10 +54,10 @@ const OrderSummary = () => {
             {/* total  */}
             <div className='flex justify-between text-gray-500 text-base py-3 border-b border-gray-200'>
                 <span>Total</span>
-                <span className='text-xl font-semibold text-primary'>$49,900</span>
+                <span className='text-xl font-semibold text-primary'>&#2547; {totalPrice}</span>
             </div>
 
-            <button disabled className='mt-6 text-white w-full py-3 rounded-md bg-gray-500 hover:bg-primary' >Proceed to pay</button>
+            <button disabled={!btnCick} className={`${!btnCick ? " bg-gray-500 text-gray-100 opacity-20" : " bg-primary text-white hover:bg-blue-500 "}mt-6  w-full py-3 rounded-md  `}  onClick={handleSubmit}>Proceed to pay</button>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AllProductsCart from '../components/Checkout/AllProductsCart';
 import OrderSummary from '../components/Checkout/OrderSummary';
 import ShippingForm from '../components/Checkout/ShippingForm';
@@ -7,6 +7,12 @@ import useCart from '../hooks/useCart';
 
 const Checkout = () => {
     const { cart } = useCart();
+    const [price,setPrice] = useState()
+    const [order, setOrder] = useState({})
+    const [btnCick, setBtnClick] = useState(false)
+    const status = 'Pending'
+    const date = new Date().toLocaleDateString();
+    const finalOrder = { ...order, cart, price, status, date}
 
     return (
         <>
@@ -15,13 +21,13 @@ const Checkout = () => {
                     {/* shipping address  */}
                     <div className='col-span-2  rounded-lg bg-white  p-6 box-border'>
                         <h1 className='text-gray-600 text-lg font-semibold'>Delivery Information</h1>
-                        <ShippingForm />
+                        <ShippingForm setOrder={setOrder} setBtnClick={setBtnClick} btnCick={btnCick} />
                     </div>
 
                     {/* order summary  */}
                     <div className="bg-white p-4  h-96 rounded-lg box-border">
                         <h1 className='text-gray-600 text-lg font-semibold'>Order Summary</h1>
-                        <OrderSummary />
+                        <OrderSummary setPrice={setPrice} btnCick={btnCick} order={finalOrder} />
                     </div>
                 </section>
 

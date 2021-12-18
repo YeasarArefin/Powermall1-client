@@ -5,13 +5,6 @@ import useCart from '../../hooks/useCart';
 const AllProductsCart = () => {
     const { cart, setCart} = useCart();
 
-    let price = 0;
-
-    // price 
-    for (var i = 0; i < cart.length; i++) {
-        price += cart[i].price - (cart[i].price * cart[i].discount / 100);
-    }
-
     const handleDelete = (id) => {
         setCart(cart.filter(item => item.id !== id))
     }
@@ -51,34 +44,40 @@ const AllProductsCart = () => {
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
-                                {cart.map((item) => (
-                                    <tr key={item.id}>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="flex items-center">
-                                                <div className="flex-shrink-0 h-10 w-10">
-                                                    <img className="h-10 w-10 object-contain" src={item.image} alt={item.title} />
+                                {cart.map((item) => {
+                                    const image = item?.img?.split(',');
+                                    // const price = (parseFloat(item.price) - parseFloat(item.discount) * parseFloat(item.discount)/100) * item.pdQuantity;
+                                    const newPrice = parseFloat(item.price);
+                                    const discountPrice = parseFloat(item.discount);
+                                    return (
+                                        <tr key={item.id}>
+                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                <div className="flex items-center">
+                                                    <div className="flex-shrink-0 h-10 w-10">
+                                                        <img className="h-10 w-10 object-contain" src={image[0]} alt={item.name} />
+                                                    </div>
+                                                    <div className="ml-4">
+                                                        <div className="text-sm font-medium text-gray-900">{item.name}</div>
+                                                    </div>
                                                 </div>
-                                                <div className="ml-4">
-                                                    <div className="text-sm font-medium text-gray-900">{item.title}</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className="text-base font-semibold text-gray-900 flex justify-center">&#2547; {price}</span>
-                                            <del className="text-sm text-gray-500 flex justify-center">${item.price}</del>
-                                            <span className="text-sm text-gray-600 flex justify-center"> -{item.discount}%</span>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className="px-2 text-xs leading-5 font-semibold text-gray-600 flex justify-center">
-                                                1
-                                            </span>
-                                        </td>
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                <span className="text-base font-semibold text-gray-900 flex justify-center">
+                                                    &#2547; {(newPrice - newPrice * discountPrice / 100) * item.pdQuantity}
+                                                </span>
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                <span className="px-2 text-xs leading-5 font-semibold text-gray-600 flex justify-center">
+                                                    {item?.pdQuantity}
+                                                </span>
+                                            </td>
 
-                                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex justify-center">
-                                            <MdDeleteOutline className='text-red-500 font-semibold cursor-pointer text-2xl' onClick={() => handleDelete(item.id)} />
-                                        </td>
-                                    </tr>
-                                ))}
+                                            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex justify-center">
+                                                <MdDeleteOutline className='text-red-500 font-semibold cursor-pointer text-2xl' onClick={() => handleDelete(item.id)} />
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
                             </tbody>
                         </table>
                     </div>

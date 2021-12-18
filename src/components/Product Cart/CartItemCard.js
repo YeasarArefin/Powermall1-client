@@ -8,8 +8,7 @@ const CartItemCard = ({ handleShow}) => {
 
     // price 
     for (var i = 0; i < cart.length; i++) {
-        // price += cart[i].price - (cart[i].price * cart[i].discount / 100);
-        price += cart[i].price - (cart[i].price * cart[i].discount / 100);
+        price += (cart[i].price - (cart[i].price * cart[i].discount / 100)) * (cart[i].pdQuantity);
     }
     
     return (
