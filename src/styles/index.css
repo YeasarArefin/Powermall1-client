@@ -25,6 +25,18 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+.order_table::-webkit-scrollbar {
+  height: 10px;
+}
+.order_table::-webkit-scrollbar-thumb {
+  background-color: #f4f4fa;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
 /* brand slider custom styling  */
 
 .swiper-button-next:after,

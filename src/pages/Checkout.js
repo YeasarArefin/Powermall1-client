@@ -12,7 +12,8 @@ const Checkout = () => {
     const [btnCick, setBtnClick] = useState(false)
     const status = 'Pending'
     const date = new Date().toLocaleDateString();
-    const finalOrder = { cart, data: { ...order, price, status, date}}
+    const otherInfo = { ...order, price, status, date }
+    const finalOrder = {cart,...otherInfo}
 
     console.log(finalOrder)
     return (

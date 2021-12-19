@@ -32,7 +32,7 @@ const OrderSummary = ({ setPrice, btnCick, order}) => {
             .then(res => {
                 swal("Yo!!!", "Successfully order done!!!", "success");
                 setCart([])
-                navigate('/profile/myOrders')
+                navigate('/order-successful')
             }).catch((err) => {
                 swal("Something went wrong!", `${err.message}`, "error")
             })

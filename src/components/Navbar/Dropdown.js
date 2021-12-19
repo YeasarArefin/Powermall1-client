@@ -11,8 +11,8 @@ function classNames(...classes) {
 const Dropdown = ({ handleLogout}) => {
 
     const menus = [
-        {id:1, name: 'Profile', link: '/profile',icon: <FaUserCircle className='text-xl text-gray-500'/>},
-        { id: 2, name: 'My Order', link: '/myorder', icon: <MdShoppingBag className='text-xl text-gray-500'/>},
+        { id: 1, name: 'Profile', link: '/profile/account',icon: <FaUserCircle className='text-xl text-gray-500'/>},
+        { id: 2, name: 'My Order', link: '/profile/orders', icon: <MdShoppingBag className='text-xl text-gray-500'/>},
         { id: 3, name: 'Checkout', link: '/checkout', icon: <BsCreditCardFill className='text-xl text-gray-500'/>},
     ]
 
