@@ -104,7 +104,7 @@ const Orders = () => {
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <span className="px-2 text-xs leading-5 font-semibold text-gray-600 flex justify-center">
-                                                {item?.price}
+                                                &#2547; {item?.price}
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
