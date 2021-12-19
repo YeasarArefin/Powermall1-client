@@ -20,7 +20,7 @@ const useFirebase = () => {
             .then(response => {
                 setNewUser(response.data)
             })
-    }, [user?.email, newUser, user])
+    }, [user?.email, newUser?.email, newUser , user])
 
     //on State Change 
     useEffect(() => {
@@ -43,20 +43,21 @@ const useFirebase = () => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((res) => {
-                setUser(res.user)
                 updateProfile(auth.currentUser, {
                     displayName: name,
                 }).then(() => {
+                    setUser(res?.user);
+                    navigate('/')
                     axios.post('https://electro-shop-server.herokuapp.com/users', {
                         name: res?.user?.displayName,
                         email: res?.user?.email,
                         image: "https://i.ibb.co/tpy9mwM/user.png",
                         role: 'Customer'
                     }).then((res) => {
+                        window.location.reload()
                         swal("Good job!", "Account has been created!", "success");
                     })  
                         
-                    navigate('/')
                 })
 
             }).catch(err => swal("Something went wrong!", `${err.message}`, "error")).finally(() => {
@@ -69,13 +70,29 @@ const useFirebase = () => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then(res => {
-                setUser(res.user);
-                swal("Sign in Successful!", "Welcome back !", "info");
-                navigate('/')
+                setUser(res?.user);
+                navigate('/')                
+                axios.get(`https://electro-shop-server.herokuapp.com/users?email=${res?.user?.email}`)
+                    .then(response => {
+                        if (response?.data?.email === res?.user?.email) {
+                            swal("Good job!", "Logged In!", "success");
+                        } else {
+                            axios.post('https://electro-shop-server.herokuapp.com/users', {
+                                name: res?.user?.displayName,
+                                email: res.user.email,
+                                image: "https://i.ibb.co/tpy9mwM/user.png",
+                                role: 'Customer'
+                            }).then((res) => {
+                                window.location.reload()
+                                swal("Good job!", "Account has been created!", "success");
+                            })
+                        }
+                    })
             })
             .catch(err => swal("Something went wrong!", `${err.message}`, "error")).finally(() => {
                 setIsLoading(false);
             })
+
     }
 
 
