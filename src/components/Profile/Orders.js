@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import ProductModal from './ProductModal';
+import swal from 'sweetalert';
 
 const Orders = () => {
     const [pd, setPd] = useState([]);
@@ -15,13 +16,22 @@ const Orders = () => {
         setProduct(productFind)
     }
 
+    const handleDelete = (id) => {
+        axios.delete(`https://electro-shop-server.herokuapp.com/orders/${id}`)
+        .then(res => {
+             swal("Cancel", "Order cancel done!!!", "success");
+        }).catch((err) => {
+                swal("Something went wrong!", `${err.message}`, "error")
+            })
+    }
+
     useEffect(() => {
         axios.get(`https://electro-shop-server.herokuapp.com/orders?email=${newUser?.email}`)
             .then(res => {
                 setPd(res.data?.map(item => item))
                 // console.log(res?.data)
             })
-    }, [newUser?.email])
+    }, [newUser?.email,pd])
 
     return (
         <div>
@@ -74,6 +84,12 @@ const Orders = () => {
                             >
                                 Products
                             </th>
+                            <th
+                                scope="col"
+                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                                Action
+                            </th>
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
@@ -115,6 +131,11 @@ const Orders = () => {
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <span className="px-3 bg-primary rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center hover:bg-blue-500 cursor-pointer" onClick={() => handleModal(item?._id)}>
                                                 View
+                                            </span>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <span className="px-3 bg-red-600 rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center hover:bg-red-500 cursor-pointer" onClick={() => handleDelete(item?._id)}>
+                                                Cancel
                                             </span>
                                         </td>
                                         <ProductModal open={open} setOpen={setOpen} product={product} id={item?._id} />

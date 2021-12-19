@@ -7,13 +7,13 @@ import useCart from '../hooks/useCart';
 
 const Checkout = () => {
     const { cart } = useCart();
-    const [price,setPrice] = useState()
+    const [price, setPrice] = useState()
     const [order, setOrder] = useState({})
     const [btnCick, setBtnClick] = useState(false)
     const status = 'Pending'
     const date = new Date().toLocaleDateString();
     const otherInfo = { ...order, price, status, date }
-    const finalOrder = {cart,...otherInfo}
+    const finalOrder = { cart, ...otherInfo }
 
     console.log(finalOrder)
     return (
@@ -36,7 +36,11 @@ const Checkout = () => {
                 {/* products cart  */}
                 <section className='mx-6  grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 my-12'>
                     <div className='col-span-2  rounded-lg bg-white  p-6 box-border'>
-                        {cart.length > 0 ? <AllProductsCart /> : (
+                        {cart.length > 0 ? (
+                            <>
+                                <AllProductsCart />
+                            </>
+                        ) : (
                             <>
                                 <div className=' flex flex-col justify-center items-center'>
                                     <img src="../../assets/emptycart.png" alt="empty cart" className='w-40' />

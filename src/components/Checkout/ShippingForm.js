@@ -20,7 +20,7 @@ const ShippingForm = ({ setOrder, btnCick, setBtnClick}) => {
                 {/* name      */}
                 <div className='flex flex-col space-y-2'>
                     <label htmlFor="name" className='text-gray-500 text-sm'>Full Name</label>
-                    <input type="text" id="name" className="input2" placeholder="Enter your first and last name" defaultValue={newUser?.name} {...register("name")} />
+                    <input type="text" id="name" className="input2" placeholder="Enter your first and last name" defaultValue={newUser?.name} {...register("name",{ required: true })} />
                 </div>
 
                 {/* email  */}
@@ -32,14 +32,14 @@ const ShippingForm = ({ setOrder, btnCick, setBtnClick}) => {
                 {/* Email   */}
                 <div className='flex flex-col space-y-2'>
                     <label htmlFor="number" className='text-gray-500 text-sm'>Phone Number</label>
-                    <input type="number" className="input2" id="number" placeholder="Enter your phone number" defaultValue={newUser?.mobile} {...register("mobile")} />
+                    <input type="number" className="input2" id="number" placeholder="Enter your phone number" defaultValue={newUser?.mobile} {...register("mobile",{ required: true })} />
                 </div>
 
                 <div className="flex flex-col space-y-2">
                     <label htmlFor="address" className="block text-sm font-medium text-gray-700">
                         Address
                     </label>
-                    <textarea name="address" id="address" className="mt-1 ring-blue-200 focus:outline-none focus:ring-2 transition duration-500 block w-full shadow-sm sm:text-sm border-gray-300 border rounded-md py-3 h-32 resize-x-none px-4" {...register("address")}
+                    <textarea name="address" id="address" className="mt-1 ring-blue-200 focus:outline-none focus:ring-2 transition duration-500 block w-full shadow-sm sm:text-sm border-gray-300 border rounded-md py-3 h-32 resize-x-none px-4" {...register("address",{ required: true })}
                         defaultValue={newUser?.address}
                     ></textarea>
                 </div>
