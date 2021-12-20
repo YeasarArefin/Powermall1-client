@@ -1,7 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const OrderSuccessful = () => {
+
     return (
         <div className='flex flex-col items-center justify-center my-24 w-full '>
             <h1 className='text-3xl text-center text-primary font-bold'>Congrats!!! Order Successful!!!</h1>

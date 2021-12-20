@@ -3,8 +3,8 @@ import SignUpForm from '../components/Sign Up/SignUpForm'
 
 const SignUp = () => {
     return (
-        <main className="bg-secondary h-screen w-full">
-            <div className="max-w-screen-xl mx-auto px-6 flex flex-col h-screen lg:justify-center justify-start">
+        <main className="bg-secondary h-screen  w-full">
+            <div className="max-w-screen-xl mx-auto px-6 flex flex-col my-24 lg:justify-center justify-start">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 place-content-center">
                     {/* vector image  */}
                     <div className="hidden lg:block order-2">
