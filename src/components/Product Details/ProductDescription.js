@@ -7,7 +7,7 @@ import useCart from '../../hooks/useCart';
 const ProductDescription = (props) => {
     const [quantity, setQuantity] = React.useState(1);
     const { handleClick } = useCart();
-    const { _id, name, description, color, price, img, discount } = props;
+    const { _id, name, color, price, img, discount } = props;
     const priceInNum = parseFloat(price)
     const disCountedPrice = priceInNum - (discount / 100) * priceInNum;
     const image = img?.split(',');
@@ -37,7 +37,6 @@ const ProductDescription = (props) => {
             {/* title and description  */}
             <div className='pb-4 flex flex-col space-y-2'>
                 <h1 className='text-2xl text-gray-800 font-semibold'>{name}</h1>
-                <p className='text-sm text-gray-500'>{description}</p>
             </div>
 
             {/* price  */}

@@ -1,62 +1,56 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 
 const SubNav = () => {
     const [show, setShow] = useState(false);
+    const [categories, setCategories] = useState([])
 
-    const menus = [
-        {
-            id: 1, name: 'Categories', submenu: [
-                { id: 1, name: 'Samsung' },
-                { id: 2, name: 'Sony' },
-                { id: 3, name: 'Nokia' },
-                { id: 4, name: 'Infinix' },
-                { id: 5, name: 'Vivo' },
-                { id: 6, name: 'Iphone' },
-                { id: 7, name: 'realme' },
-                { id: 8, name: 'OnePlus' },
-                { id: 9, name: 'OPPO' },
-                { id: 10, name: 'Motorola' },
-                { id: 11, name: 'Tecno' },
-                { id: 12, name: 'Nokia' },
-                { id: 13, name: 'Huawei' },
-            ], link: '/'
-        },
-        {
-            id: 2, name: 'Shops', link: '/shops'
-        },
-        {
-            id: 3, name: 'Offers', link: '/offers'
-        },
-        {
-            id: 4, name: 'Contact', link: '/contact'
-        },
-    ]
+    useEffect(() => {
+        axios.get('https://electro-comers-server.herokuapp.com/category')
+            .then(res => setCategories(res.data))
+    }, [])
+
+    // console.log()
     return (
         <div className="bg-primary text-white">
             <div className="max-w-screen-xl mx-auto px-6 flex items-center flex-grow">
                 {/* menus  */}
                 <ul className="flex items-center space-x-6 uppercase relative font-semibold w-full">
-                    {menus?.map(item => {
-                        return (
+                    <li onMouseEnter={categories && (() => setShow(true))} onMouseLeave={categories && (() => setShow(false))} className="py-3 px-4 hover:bg-white hover:text-primary transition duration-300  cursor-pointer">
+                        <span>Categories</span>
+                        {show && categories && (
+                            <Fade>
+                                <ul className="absolute top-12 bg-white w-48 rounded-bl-md rounded-br-md p-3 shadow-lg z-50 -left-0">
+                                    {categories?.map(subitem => {
+                                        return (
+                                            <Link key={subitem?._id} to={`/products?categories=${subitem?.slug}`}>
+                                                <li  className=" transition duration-300  cursor-pointer text-sm text-gray-600 py-2 hover:bg-gray-100 rounded-md px-6 transform hover:translate-x-1">
+                                                    {subitem?.category}
+                                                </li>
+                                            </Link>
+                                        )
+                                    })}
+                                </ul>
+                            </Fade>
+                        )}
+                    </li>
 
-                            <li key={item.id} onMouseEnter={item?.submenu && (() => setShow(true))} onMouseLeave={item?.submenu && (() => setShow(false))} className="py-3 px-4 hover:bg-white hover:text-primary transition duration-300  cursor-pointer">
-                                <Link to={`${item?.link}`}>{item.name}</Link>
-                                {show && item.submenu && (
-                                    <Fade bottom>
-                                        <ul className="absolute top-12 bg-white w-48 rounded-md p-3 shadow-lg z-50">
-                                            {item.submenu.map(subitem => {
-                                                return (
-                                                    <li key={subitem.id} className=" transition duration-300  cursor-pointer text-sm text-gray-600 py-2 hover:bg-gray-100 rounded-md px-6 transform hover:translate-x-1">{subitem.name}</li>
-                                                )
-                                            })}
-                                        </ul>
-                                    </Fade>
-                                )}
-                            </li>
-                        )
-                    })}
+                    {/* shops  */}
+                    <li className="py-3 px-4 hover:bg-white hover:text-primary transition duration-300  cursor-pointer">
+                        <Link to="/shops">Shops</Link>
+                    </li>
+
+                    {/* Offers  */}
+                    <li className="py-3 px-4 hover:bg-white hover:text-primary transition duration-300  cursor-pointer">
+                        <Link to="/offers">Offers</Link>
+                    </li>
+
+                    {/* contact  */}
+                    <li className="py-3 px-4 hover:bg-white hover:text-primary transition duration-300  cursor-pointer">
+                        <Link to="/contact">Contact</Link>
+                    </li>
                 </ul>
             </div>
         </div>

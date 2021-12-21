@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import swal from 'sweetalert';
 import useAuth from '../../hooks/useAuth';
 import ProductModal from './ProductModal';
-import swal from 'sweetalert';
 
 const Orders = () => {
     const [pd, setPd] = useState([]);
@@ -29,7 +29,6 @@ const Orders = () => {
         axios.get(`https://electro-shop-server.herokuapp.com/orders?email=${newUser?.email}`)
             .then(res => {
                 setPd(res.data?.map(item => item))
-                // console.log(res?.data)
             })
     }, [newUser?.email,pd])
 
@@ -124,7 +123,7 @@ const Orders = () => {
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className={`px-3 py-1 font-semibold mx-auto rounded-full text-xs ${!item?.status === "Pending" ? " bg-green-200 text-green-900" : "bg-red-200 text-red-900"}`}>
+                                            <span className={`p-1 px-3 w-20 text-center mx-auto rounded-full text-xs font-bold ${item?.status === "Pending" ? " bg-red-200 text-red-900" : item?.status === "Delivered" ? "bg-green-200 text-green-900" : "bg-yellow-200 text-yellow-900"}`}>
                                                 {item?.status}
                                             </span>
                                         </td>

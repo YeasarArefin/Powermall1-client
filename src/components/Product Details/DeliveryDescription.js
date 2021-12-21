@@ -75,7 +75,7 @@ const DeliveryDescription = () => {
             </div>
 
             {/* go to store  */}
-            <Link to="/checkout">
+            <Link to="/products">
             <div className='flex justify-center rounded-lg py-3 mt-8 hover:bg-primary transition duration-500 text-primary hover:text-white bg-white cursor-pointer border border-gray-300'>
                 <p>GO TO STORE</p>
             </div>

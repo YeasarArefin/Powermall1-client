@@ -21,7 +21,6 @@ import PrivateRoute from './routes/PrivateRoute';
 
 const App = () => {
   const [header, setHeader] = useState(false)
-
   const changeHeader = () => {
     if (window.scrollY >= 80) {
       setHeader(true)
@@ -48,6 +47,8 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            {/* <Route path="/products?categories=mobile" element={               */}
+            {/* // } /> */}
             <Route path="/order-successful" element={<OrderSuccessful />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/profile/*" element={<Profile />}>
