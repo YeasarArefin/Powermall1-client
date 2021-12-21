@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Slide from 'react-reveal/Slide';
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/navigation/navigation.min.css";
@@ -9,20 +10,13 @@ import "swiper/swiper.min.css";
 import SectionTitle from '../Section Title/SectionTitle';
 SwiperCore.use([EffectCoverflow, Pagination, Autoplay, Navigation]);
 
-
 const Brands = () => {
-    const brands = [
-        { id: 1, image: '../../../assets/alio-reklama-63950.svg' },
-        { id: 2, image: '../../../assets/cat.svg' },
-        { id: 3, image: '../../../assets/chicago-enforcers-1.svg' },
-        { id: 4, image: '../../../assets/dhl-1.svg' },
-        { id: 5, image: '../../../assets/fedex-express-6.svg' },
-        { id: 6, image: '../../../assets/pentium-mmx-processor.svg' },
-        { id: 7, image: '../../../assets/alio-reklama-63950.svg' },
-        { id: 8, image: '../../../assets/cat.svg' },
-        { id: 9, image: '../../../assets/chicago-enforcers-1.svg' },
-        { id: 10, image: '../../../assets/dhl-1.svg' },
-    ]
+    const [brands,setBrands] = useState([]);
+
+    useEffect(() => {
+        axios.get('https://electro-comers-server.herokuapp.com/brands')
+        .then(res => setBrands(res?.data))
+    },[])
 
     return (
         <>
@@ -68,10 +62,10 @@ const Brands = () => {
                         }
                     }}>
                     {brands?.map(item => (
-                        <SwiperSlide key={item.id} className="h-full">
+                        <SwiperSlide key={item._id} className="h-full">
                             <Slide bottom>
                             <div className='w-36 h-24 bg-white rounded-lg p-2 box-border'>
-                                <img className='w-24 h-full object-contain mx-auto' src={item?.image} alt={item.id} />
+                                <img className='w-24 h-full object-contain mx-auto' src={item?.img} alt={item.brand} />
                             </div>
                             </Slide>
                         </SwiperSlide>
