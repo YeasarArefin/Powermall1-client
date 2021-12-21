@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { BsCartCheckFill, BsEyeFill } from 'react-icons/bs';
+import { BsCartCheckFill } from 'react-icons/bs';
 import Slide from 'react-reveal/Slide';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 
 

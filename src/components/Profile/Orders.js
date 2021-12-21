@@ -7,8 +7,8 @@ import ProductModal from './ProductModal';
 const Orders = () => {
     const [pd, setPd] = useState([]);
     const [open, setOpen] = useState(false)
-    const [product,setProduct] = useState({})
-    const {newUser} = useAuth()
+    const [product, setProduct] = useState({})
+    const { newUser } = useAuth()
 
     const handleModal = (id) => {
         const productFind = pd?.find(item => item._id === id)
@@ -18,9 +18,9 @@ const Orders = () => {
 
     const handleDelete = (id) => {
         axios.delete(`https://electro-shop-server.herokuapp.com/orders/${id}`)
-        .then(res => {
-             swal("Cancel", "Order cancel done!!!", "success");
-        }).catch((err) => {
+            .then(res => {
+                swal("Cancel", "Order cancel done!!!", "success");
+            }).catch((err) => {
                 swal("Something went wrong!", `${err.message}`, "error")
             })
     }
@@ -30,7 +30,7 @@ const Orders = () => {
             .then(res => {
                 setPd(res.data?.map(item => item))
             })
-    }, [newUser?.email,pd])
+    }, [newUser?.email, pd])
 
     return (
         <div>
@@ -133,9 +133,21 @@ const Orders = () => {
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className="px-3 bg-red-600 rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center hover:bg-red-500 cursor-pointer" onClick={() => handleDelete(item?._id)}>
-                                                Cancel
-                                            </span>
+
+                                            {item?.status === "Pending" ? (
+                                                <>
+                                                    <span className="px-3 bg-red-600 rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center hover:bg-red-500 cursor-pointer" onClick={() => handleDelete(item?._id)}>
+                                                        Cancel
+                                                    </span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <span disabled className="px-3 bg-red-600 opacity-20 rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center hover:bg-red-500 cursor-pointer">
+                                                        Cancel
+                                                    </span>
+                                                </>
+                                            )}
+
                                         </td>
                                         <ProductModal open={open} setOpen={setOpen} product={product} id={item?._id} />
                                     </tr>

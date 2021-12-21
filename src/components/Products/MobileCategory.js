@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { Autoplay, EffectCoverflow, Pagination } from 'swiper/core';
@@ -60,6 +61,12 @@ const MobileCategory = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
+                <div className='my-6 flex justify-center items-center'>
+                    <Link to="/shops">
+                        <button className=' bg-primary hover:bg-blue-600 ring-blue-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md   uppercase text-sm flex items-center space-x-1'>Explore More</button>
+                    </Link>
+                </div>
             </section>
         </>
     )

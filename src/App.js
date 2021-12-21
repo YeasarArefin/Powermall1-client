@@ -16,6 +16,7 @@ import Login from './pages/Login';
 import OrderSuccessful from './pages/OrderSuccessful';
 import ProductDetails from './pages/ProductDetails';
 import Profile from './pages/Profile';
+import Shops from './pages/Shops';
 import SignUp from './pages/SignUp';
 import PrivateRoute from './routes/PrivateRoute';
 
@@ -47,8 +48,7 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            {/* <Route path="/products?categories=mobile" element={               */}
-            {/* // } /> */}
+            <Route path="/shops" element={<Shops />} />
             <Route path="/order-successful" element={<OrderSuccessful />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/profile/*" element={<Profile />}>
