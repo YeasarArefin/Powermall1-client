@@ -96,3 +96,8 @@ body::-webkit-scrollbar {
   -ms-border-radius: 100% !important;
   -o-border-radius: 100% !important;
 }
+
+#hero {
+  height: 400px;
+  overflow: hidden;
+}

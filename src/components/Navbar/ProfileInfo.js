@@ -14,11 +14,10 @@ const ProfileInfo = () => {
 
     return (
         <div className='flex items-center space-x-3'>
-            <img className='w-8 h-8 rounded-full object-cover' alt={newUser.name} src={newUser.image} />
-            <div className='flex flex-col'>
+            <img className='w-10 h-10 rounded-full object-cover' alt={newUser.name} src={newUser.image} />
+            {/* <div className='flex-col hidden lg:hidden xl:flex'>
                 <span className='text-gray-700'>{newUser.name}</span>
-                <span className='text-gray-500 text-sm'>{newUser.email}</span>
-            </div>
+            </div> */}
             {/* menus  */}
             <Dropdown handleLogout={handleLogout} />
         </div>
