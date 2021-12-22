@@ -2,6 +2,7 @@ import React from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import BigBanner from '../components/Big Sale/BigBanner'
+import BigBanner2 from '../components/Big Sale/BigBanner2'
 import Brands from '../components/Brands/Brands'
 import Features from '../components/Features/Features'
 import Footer from '../components/Footer/Footer'
@@ -20,7 +21,7 @@ const Home = () => {
                 <MobileCategory />
                 <BigBanner />
                 <AcCategory />
-                <BigBanner />
+                <BigBanner2 />
                 <Recommended />
                 <Brands />
                 <PopularCategories />
