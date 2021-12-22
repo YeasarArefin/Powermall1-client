@@ -11,18 +11,19 @@ import SectionTitle from '../Section Title/SectionTitle';
 SwiperCore.use([EffectCoverflow, Pagination, Autoplay, Navigation]);
 
 const Brands = () => {
-    const [brands,setBrands] = useState([]);
+    const [brands, setBrands] = useState([]);
 
     useEffect(() => {
         axios.get('https://electro-comers-server.herokuapp.com/brands')
-        .then(res => setBrands(res?.data))
-    },[])
+            .then(res => setBrands(res?.data))
+    }, [])
 
     return (
         <>
             <section className="py-6">
                 <SectionTitle title="Brands" />
                 <Swiper
+                    loop={true}
                     navigation={true}
                     slidesPerView={6}
                     centeredSlides={false}
@@ -64,9 +65,9 @@ const Brands = () => {
                     {brands?.map(item => (
                         <SwiperSlide key={item._id} className="h-full">
                             <Slide bottom>
-                            <div className='w-36 h-24 bg-white rounded-lg p-2 box-border'>
-                                <img className='w-24 h-full object-contain mx-auto' src={item?.img} alt={item.brand} />
-                            </div>
+                                <div className='w-36 h-24 bg-white rounded-lg p-2 box-border'>
+                                    <img className='w-24 h-full object-contain mx-auto' src={item?.img} alt={item.brand} />
+                                </div>
                             </Slide>
                         </SwiperSlide>
                     ))}

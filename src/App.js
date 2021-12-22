@@ -5,12 +5,12 @@ import ProductCart from './components/Product Cart/ProductCart';
 import Account from './components/Profile/Account';
 import EditProfile from './components/Profile/EditProfile';
 import Orders from './components/Profile/Orders';
-import SubNav from './components/SubNavbar/SubNav';
 import AuthProvider from './contexts/AuthProvider';
 import CartProvider from './contexts/CartProvider';
 import QuantityProvider from './contexts/QuantityProvider';
 import Checkout from './pages/Checkout';
 import Contact from './pages/Contact';
+import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import OrderSuccessful from './pages/OrderSuccessful';
@@ -39,24 +39,24 @@ const App = () => {
           <ProductCart />
           <div className={`${header && "fixed top-0 w-full z-30 transition duration-300"} `}>
             <Navbar />
-            <SubNav />
+            {/* <SubNav /> */}
           </div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/shops" element={<Shops />} />
-            <Route path="/order-successful" element={<OrderSuccessful />} />
+            <Route path="/order-successful" element={<PrivateRoute><OrderSuccessful /></PrivateRoute>} />
             <Route path="/products/:id" element={<ProductDetails />} />
-            <Route path="/profile/*" element={<Profile />}>
-              <Route path="*" element={<Account />} />
-              <Route path="account" element={<Account />} />
-              <Route path="edit" element={<EditProfile />} />
-              <Route path="orders" element={<Orders />} />
+            <Route path="/profile/*" element={<PrivateRoute><Profile /></PrivateRoute>}>
+              <Route path="*" element={<PrivateRoute><Account /></PrivateRoute>} />
+              <Route path="account" element={<PrivateRoute><Account /></PrivateRoute>} />
+              <Route path="edit" element={<PrivateRoute><EditProfile /></PrivateRoute>} />
+              <Route path="orders" element={<PrivateRoute><Orders /></PrivateRoute>} />
             </Route>
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </QuantityProvider>
       </CartProvider>

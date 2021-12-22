@@ -10,9 +10,9 @@ const Brand = () => {
     },[]);
 
     return (
-        <div className="flex items-center space-x-2">
+        <div className=" w-36">
             <Link to="/">
-                <img src={logo?.logo} alt={logo?._id} className="object-contain w-36 cursor-pointer" />
+                <img src={logo?.logo} alt={logo?._id} className="object-contain w-full cursor-pointer" />
             </Link>
         </div>
     )

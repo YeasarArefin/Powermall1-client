@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import Slide from 'react-reveal/Slide';
+import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Brand from './Brand';
+import CategorySelect from './CategorySelect';
 import NavButton from './NavButton';
 import ProfileInfo from './ProfileInfo';
 import SearchBar from './SearchBar';
@@ -16,32 +18,54 @@ const Navbar = () => {
         setMobileNav(!mobileNav)
     }
 
+    //menus 
+    const menus = [
+        { id: 1, name: 'Free Shipping', link: '/shops' },
+        { id: 2, name: 'Drone Service', link: '/' },
+        { id: 3, name: 'Global Purchase', link: '/' },
+        { id: 4, name: 'Contact', link: '/contact' },
+    ]
+
     return (
         <header className="bg-white">
             {/* desktop nav  */}
-            <nav className="flex items-center max-w-screen-xl mx-auto px-6 py-3">
-                <div className="flex-grow flex items-center space-x-8">
+            <nav className="flex items-center max-w-screen-2xl mx-auto px-6 py-3">
+                <div className="flex flex-grow items-center space-x-6">
                     {/* brand  */}
                     <Brand />
+
+                    {/* category  */}
+                    <CategorySelect />
 
                     {/* search bar  */}
                     <div className="hidden md:flex lg:flex space-x-3">
                         <SearchBar />
                     </div>
+
+                    {/* some links  */}
+                    <ul className='flex items-center space-x-4'>
+                        {menus?.map(item => {
+                            return (
+                                <Link to={item?.link} key={item?.id}>
+                                    <li className='text-gray-600 font-semibold'>{item?.name}</li>
+                                </Link>
+                            )
+                        })}
+                    </ul>
                 </div>
 
                 {newUser.email ? (
                     <>
-                    <ProfileInfo />
+                        <ProfileInfo />
                     </>
                 ) : (
                     <>
-                    <div className = "hidden md:flex lg:flex space-x-3">
-                    <NavButton />
-            </div>
+                        <div className="hidden md:flex lg:flex space-x-3">
+                            <NavButton />
+                        </div>
                     </>
                 )}
-                
+
 
                 {/* menu icon  */}
                 <div className="block md:hidden lg:hidden">

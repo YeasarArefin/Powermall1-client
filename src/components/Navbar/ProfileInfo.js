@@ -19,7 +19,6 @@ const ProfileInfo = () => {
                 <span className='text-gray-700'>{newUser.name}</span>
                 <span className='text-gray-500 text-sm'>{newUser.email}</span>
             </div>
-
             {/* menus  */}
             <Dropdown handleLogout={handleLogout} />
         </div>
