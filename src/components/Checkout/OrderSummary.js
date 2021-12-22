@@ -1,13 +1,21 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import useAuth from '../../hooks/useAuth';
 import useCart from '../../hooks/useCart';
-import Input from '../Contact/Input';
 
 const OrderSummary = ({ setPrice, btnCick, order }) => {
     const { cart, setCart } = useCart();
+    const { newUser } = useAuth();
     const [info, setInfo] = useState();
+    const [disabled, setDisabled] = useState(false)
+    const [coupon, setCoupon] = useState([]);
+    const [usedCoupon, setUsedCoupon] = useState({})
+    const [findedCoupon, setFindedCoupon] = useState({})
+    const { register, handleSubmit } = useForm();
+    const [totalPrice, setTotalPrice] = useState();
     let price = 0;
     const navigate = useNavigate()
 
@@ -16,23 +24,67 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
         price += (cart[i].price - (cart[i].price * cart[i].discount / 100)) * (cart[i].pdQuantity);
     }
 
-    const totalPrice = price + parseFloat(info?.cost);
+    useEffect(() => {
+        setTotalPrice(price + parseFloat(info?.cost));
+    }, [price, info?.cost])
 
     useEffect(() => {
-        setPrice(price + parseFloat(info?.cost))
-    }, [price, setPrice, info?.cost])
+        if (disabled) {
+            setPrice(totalPrice)
+        } else {
+            setPrice(price + parseFloat(info?.cost))
 
+        }
+    }, [price, setPrice, info?.cost, disabled, totalPrice])
+
+    //information api
     useEffect(() => {
         axios.get('https://electro-comers-server.herokuapp.com/information')
             .then(res => setInfo(res.data[0]))
     }, []);
 
-    const handleSubmit = () => {
+ 
+
+    //coupons api
+    useEffect(() => {
+        axios.get('https://electro-comers-server.herokuapp.com/coupons')
+            .then(res => setCoupon(res.data))
+    }, []);
+
+
+    const onSubmit = data => {
+        if (data) {
+            //find coupon
+            const couponFind = coupon.find(item => item?.code === data.coupon);
+            setFindedCoupon(couponFind)
+            if (newUser?.usedCoupon) {
+                if (newUser?.usedCoupon?.find(item => item?._id === couponFind?._id)) {
+                    swal("Something went wrong!", "You have already used this coupon", "error")
+                    return;
+                }
+            }
+
+            const addCouponPrice = totalPrice - parseFloat(couponFind?.ammount)
+            setTotalPrice(addCouponPrice)
+            newUser?.usedCoupon?.push(couponFind)
+            setUsedCoupon(newUser)
+            setDisabled(true)
+            swal("Yo!!!", "Successfully coupon applied!!!", "success");
+        }
+    }
+    const handleSubmitForm = () => {
+        axios.put(`https://electro-shop-server.herokuapp.com/users/${newUser._id}`, {
+            usedCoupon: usedCoupon?.usedCoupon
+        })
+            .then(res => {
+                setDisabled(true)
+            })
         axios.post('https://electro-shop-server.herokuapp.com/orders', {
             ...order, time: new Date().toLocaleTimeString()
         })
             .then(res => {
                 swal("Yo!!!", "Successfully order done!!!", "success");
+                //add used coupon to user object 
                 setCart([])
                 navigate('/order-successful')
             }).catch((err) => {
@@ -41,7 +93,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
     }
 
     return (
-        <div className='flex flex-col py-6'>
+        <div className='flex flex-col py-6' >
             {/* subtotal  */}
             <div className='flex justify-between text-gray-500 text-base py-3 border-b border-gray-200'>
                 <span>Subtotal({cart.length} items)</span>
@@ -54,18 +106,20 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             </div>
 
             {/* coupon  */}
-            <div className='flex items-center space-x-2 py-3 border-b border-gray-200'>
-                <Input type="text" placeholder="Enter Coupon Code" />
-                <button className='px-4 py-3 bg-primary text-white rounded-md focus:outline-none'>Apply</button>
-            </div>
+            <form className='flex items-center space-x-2 py-3 border-b border-gray-200' onSubmit={handleSubmit(onSubmit)}>
+                <input type="text" className="input2" placeholder="Enter your coupon" {...register("coupon", { required: true })} />
+                <button disabled={disabled} className={`${disabled ? "opacity-40 px-4 py-3  text-white rounded-md focus:outline-none bg-primary" : "bg-primary px-4 py-3  text-white rounded-md focus:outline-none"}`}>Apply</button>
+            </form>
 
             {/* total  */}
             <div className='flex justify-between text-gray-500 text-base py-3 border-b border-gray-200'>
                 <span>Total</span>
-                <span className='text-xl font-semibold text-primary'>&#2547; {totalPrice}</span>
+                <span className='text-xl font-semibold text-primary'>
+                    &#2547; {totalPrice} {usedCoupon?.usedCoupon?.length > 0 && <del className="text-gray-600 text-base italic">&#2547;  {totalPrice + parseFloat(findedCoupon?.ammount)} </del> }
+                </span>
             </div>
 
-            <button disabled={!btnCick} className={`${!btnCick ? " bg-gray-500 text-gray-100 opacity-20" : " bg-primary text-white hover:bg-blue-500 "}mt-6  w-full py-3 rounded-md  `} onClick={handleSubmit}>Proceed to pay</button>
+            <button disabled={!btnCick} className={`${!btnCick ? " bg-gray-500 text-gray-100 opacity-20" : " bg-primary text-white hover:bg-blue-500 "}mt-6  w-full py-3 rounded-md  `} onClick={handleSubmitForm}>Proceed to pay</button>
         </div>
     )
 }

@@ -52,7 +52,8 @@ const useFirebase = () => {
                         name: res?.user?.displayName,
                         email: res?.user?.email,
                         image: "https://i.ibb.co/tpy9mwM/user.png",
-                        role: 'Customer'
+                        role: 'Customer',
+                        usedCoupon:[]
                     }).then((res) => {
                         window.location.reload()
                         swal("Good job!", "Account has been created!", "success");
@@ -81,7 +82,8 @@ const useFirebase = () => {
                                 name: res?.user?.displayName,
                                 email: res.user.email,
                                 image: "https://i.ibb.co/tpy9mwM/user.png",
-                                role: 'Customer'
+                                role: 'Customer',
+                                usedCoupon: []
                             }).then((res) => {
                                 window.location.reload()
                                 swal("Good job!", "Account has been created!", "success");
@@ -113,8 +115,11 @@ const useFirebase = () => {
                                 name: res?.user?.displayName,
                                 email: res.user.email,
                                 image: res.user.photoURL,
-                                role: 'Customer'
+                                role: 'Customer',
+                                usedCoupon: []
+
                             }).then((res) => {
+                                window.location.reload()
                                 swal("Good job!", "Account has been created!", "success");
                             })
                         }

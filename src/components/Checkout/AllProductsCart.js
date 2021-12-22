@@ -6,7 +6,7 @@ const AllProductsCart = () => {
     const { cart, setCart} = useCart();
 
     const handleDelete = (id) => {
-        setCart(cart.filter(item => item.id !== id))
+        setCart(cart.filter(item => item._id !== id))
     }
 
     return (
@@ -50,7 +50,7 @@ const AllProductsCart = () => {
                                     const newPrice = parseFloat(item.price);
                                     const discountPrice = parseFloat(item.discount);
                                     return (
-                                        <tr key={item.id}>
+                                        <tr key={item._id}>
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="flex items-center">
                                                     <div className="flex-shrink-0 h-10 w-10">
@@ -73,7 +73,7 @@ const AllProductsCart = () => {
                                             </td>
 
                                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex justify-center">
-                                                <MdDeleteOutline className='text-red-500 font-semibold cursor-pointer text-2xl' onClick={() => handleDelete(item.id)} />
+                                                <MdDeleteOutline className='text-red-500 font-semibold cursor-pointer text-2xl' onClick={() => handleDelete(item._id)} />
                                             </td>
                                         </tr>
                                     )

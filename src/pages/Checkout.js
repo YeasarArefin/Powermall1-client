@@ -15,7 +15,6 @@ const Checkout = () => {
     const otherInfo = { ...order, price, status, date }
     const finalOrder = { cart, ...otherInfo }
 
-    console.log(finalOrder)
     return (
         <>
             <main className="max-w-screen-xl mx-auto">
