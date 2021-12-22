@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { HiMenuAlt3 } from 'react-icons/hi';
-import Slide from 'react-reveal/Slide';
+import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Brand from './Brand';
@@ -35,7 +35,9 @@ const Navbar = () => {
                     <Brand />
 
                     {/* category  */}
-                    <CategorySelect />
+                    <div className="hidden md:flex lg:flex">
+                        <CategorySelect />
+                    </div>
 
                     {/* search bar  */}
                     <div className="hidden md:flex lg:flex space-x-3">
@@ -43,7 +45,7 @@ const Navbar = () => {
                     </div>
 
                     {/* some links  */}
-                    <ul className='flex items-center space-x-4'>
+                    <ul className='hidden items-center space-x-4  lg:flex'>
                         {menus?.map(item => {
                             return (
                                 <Link to={item?.link} key={item?.id}>
@@ -75,18 +77,39 @@ const Navbar = () => {
 
             {/* mobile nav  */}
             {mobileNav && (
-                <Slide bottom>
-                    <nav className="bg-white shadow-lg mx-6 mt-2 rounded-lg border border-gray-300 py-6 block md:hidden lg:hidden">
+                <Fade>
+                    <nav className="bg-white shadow-lg mx-6 mt-2 rounded-br-lg rounded-bl-lg  py-6 block md:hidden lg:hidden">
+                        
+                        {/* category  */}
+                        <div className='flex justify-center pb-2'>
+                            <CategorySelect />
+                        </div>
+
                         {/* search bar  */}
                         <div className=" flex justify-center">
                             <SearchBar />
                         </div>
-                        {/* button  */}
-                        <div className="px-3 py-2 flex justify-center">
-                            <NavButton />
-                        </div>
+                        {!newUser.email && (
+                            <>
+                                {/* button  */}
+                                <div className="px-3 py-2 flex justify-center">
+                                    <NavButton />
+                                </div>
+                            </>
+                        )}
+
+                        {/* menus  */}
+                        <ul className='flex flex-col space-y-2 px-6 py-2 box-border'>
+                            {menus?.map(item => {
+                                return (
+                                    <Link to={item?.link} key={item?.id}>
+                                        <li className='text-gray-600 md:text-sm lg:text-sm xl:text-base font-semibold hover:bg-gray-100 w-full py-2 px-3 rounded-lg'>{item?.name}</li>
+                                    </Link>
+                                )
+                            })}
+                        </ul>
                     </nav>
-                </Slide>
+                </Fade>
             )}
         </header>
     )

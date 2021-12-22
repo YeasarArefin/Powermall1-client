@@ -62,12 +62,12 @@ const MainFooter = () => {
                 </div>
 
                 {/* address  */}
-                <div className='flex flex-col space-y-4'>
+                <div className='flex flex-col lg:items-start items-center space-y-4'>
                     <Brand />
 
-                    <div className='flex flex-col space-y-3'>
+                    <div className='flex flex-col lg:items-start items-center space-y-3'>
                         {/* locaiton  */}
-                        <div className='flex items-center space-x-2'>
+                        <div className='flex justify-center lg:justify-start w-48  items-center space-x-2'>
                             <MdLocationOn className='text-gray-500 text-sm w-8' />
                             <span className='text-gray-500 text-sm'>
                                 {info?.address}

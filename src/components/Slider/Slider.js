@@ -16,7 +16,7 @@ const Slider = () => {
     }, [image])
 
     return (
-        <section id="hero">
+        <section id="hero" className='lg:h-96 overflow-hidden'>
             <Swiper pagination={true} autoplay={{
                 delay: 2000,
                 disableOnInteraction: false
