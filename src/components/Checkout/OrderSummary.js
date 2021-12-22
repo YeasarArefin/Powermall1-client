@@ -115,7 +115,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             <div className='flex justify-between text-gray-500 text-base py-3 border-b border-gray-200'>
                 <span>Total</span>
                 <span className='text-xl font-semibold text-primary'>
-                    &#2547; {totalPrice} {usedCoupon?.usedCoupon?.length > 0 && <del className="text-gray-600 text-base italic">&#2547;  {totalPrice + parseFloat(findedCoupon?.ammount)} </del> }
+                    &#2547; {totalPrice?.toFixed(2)} {usedCoupon?.usedCoupon?.length > 0 && <del className="text-gray-600 text-base italic">&#2547;  {totalPrice + parseFloat(findedCoupon?.ammount)} </del> }
                 </span>
             </div>
 
