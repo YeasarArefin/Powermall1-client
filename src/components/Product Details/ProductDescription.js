@@ -6,7 +6,7 @@ import useCart from '../../hooks/useCart';
 
 const ProductDescription = (props) => {
     const [quantity, setQuantity] = React.useState(1);
-    const { handleClick } = useCart();
+    const { cart, handleClick } = useCart();
     const { _id, name, color, price, img, discount } = props;
     const priceInNum = parseFloat(price)
     const disCountedPrice = priceInNum - (discount / 100) * priceInNum;
@@ -31,6 +31,9 @@ const ProductDescription = (props) => {
     }
 
     newProduct['pdQuantity'] = quantity
+
+    // find pd 
+    const findPd = cart?.find(item => item._id === _id)
 
     return (
         <div>
@@ -85,20 +88,48 @@ const ProductDescription = (props) => {
 
             {/* button  */}
             <div className="flex items-center space-x-3 border-t border-gray-300 py-4" >
-                <button className="bg-primary ring-blue-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-blue-500  uppercase text-sm flex items-center space-x-1" onClick={() => {
-                    handleClick(newProduct);
-                }}>
-                    <BsCartCheckFill className="text-lg" />
-                    <span className="text-sm select-none">Add To Cart</span>
-                </button>
-                <Link to="/checkout">
-                    <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1" onClick={() => {
-                        handleClick(newProduct);
-                    }}>
-                        <BsBagCheckFill className="text-sm" />
-                        <span className="text-sm select-none">Buy Now</span>
-                    </button>
-                </Link>
+                {
+                    findPd ? (
+                        <>
+                            <button className="bg-primary ring-blue-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-blue-500  uppercase text-sm flex items-center space-x-1 opacity-40" >
+                                <BsCartCheckFill className="text-lg" />
+                                <span className="text-sm select-none">Added</span>
+                            </button>
+                        </>
+
+                    ) : (
+                        <>
+                            <button className="bg-primary ring-blue-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-blue-500  uppercase text-sm flex items-center space-x-1" onClick={
+                                () => {
+                                    handleClick(newProduct);
+                                }
+                            }>
+                                <BsCartCheckFill className="text-lg" />
+                                <span className="text-sm select-none">Add To Cart</span>
+                            </button>
+                        </>
+                    )
+                }
+
+                {
+                    findPd ? (
+                        <Link to="/checkout">
+                            <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1">
+                                <BsBagCheckFill className="text-sm" />
+                                <span className="text-sm select-none">Buy Now</span>
+                            </button>
+                        </Link>
+                    ) : (
+                        <Link to="/checkout">
+                            <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1" onClick={() => {
+                                handleClick(newProduct);
+                            }}>
+                                <BsBagCheckFill className="text-sm" />
+                                <span className="text-sm select-none">Buy Now</span>
+                            </button>
+                        </Link>
+                    )
+                }
             </div>
         </div>
     )
