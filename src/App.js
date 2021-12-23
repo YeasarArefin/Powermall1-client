@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
+import OfferNav from './components/Offer Nav/OfferNav';
 import ProductCart from './components/Product Cart/ProductCart';
 import Account from './components/Profile/Account';
 import EditProfile from './components/Profile/EditProfile';
@@ -22,6 +23,7 @@ import PrivateRoute from './routes/PrivateRoute';
 
 const App = () => {
   const [header, setHeader] = useState(false)
+  const [showOffer,setShowOffer] = useState(true)
   const changeHeader = () => {
     if (window.scrollY >= 80) {
       setHeader(true)
@@ -37,9 +39,11 @@ const App = () => {
       <CartProvider>
         <QuantityProvider>
           <ProductCart />
-          <div className={`${header && "fixed top-0 w-full z-30 transition duration-300"} `}>
-            <Navbar />
-            {/* <SubNav /> */}
+          <div>
+            {showOffer && <OfferNav setShowOffer={setShowOffer} />}
+            <div className={`${header && "fixed top-0 w-full z-30 transition duration-300"} `}>
+              <Navbar />
+            </div>
           </div>
           <Routes>
             <Route path="/" element={<Home />} />
