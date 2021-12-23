@@ -10,7 +10,6 @@ const SearchBar = () => {
     // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams();
     const [products, setProducts] = useState([]);
-    // const [data, setData] = useState();
 
     useEffect(() => {
         axios.get('https://electro-comers-server.herokuapp.com/products')
@@ -19,7 +18,6 @@ const SearchBar = () => {
 
     const onSubmit = data => {
         setSearchParams({ search: data?.search })
-        // setData(searchParams.get("search"))
         navigate(`/shops?search=${data?.search}`)
         reset()
     }
@@ -28,7 +26,7 @@ const SearchBar = () => {
     return (
         <form className="flex items-center space-x-3 p-2 w-96" onSubmit={handleSubmit(onSubmit)}>
             <input
-                type="text" placeholder="Search by brand, like : samsung,realme etc." className="w-full border border-gray-300 bg-gray-100 transition duration-500 focus:outline-none rounded-md py-2.5 px-4"
+                type="text" placeholder="Search products" className="w-full border border-gray-300 bg-gray-100 transition duration-500 focus:outline-none rounded-md py-2.5 px-4"
                 {...register("search", { required: true })}
                 list="title"  id="brand"
             />

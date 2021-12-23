@@ -19,8 +19,7 @@ const Shops = () => {
     const pds = products?.filter(item => item?.category?.toLowerCase() === categoryFilter)
     // eslint-disable-next-line array-callback-return
     const searchPd = products?.filter(item => {
-        if (item?.name?.toLowerCase()?.includes(searchFilter?.toLowerCase())) {
-            console.log(item?.name)
+        if (item?.name?.toLowerCase()?.includes(searchFilter?.toLowerCase()) || item?.brand?.toLowerCase()?.includes(searchFilter?.toLowerCase()) || item?.category?.toLowerCase()?.includes(searchFilter?.toLowerCase()) ) {
             return item
         }
     })
