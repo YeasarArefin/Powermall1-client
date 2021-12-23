@@ -33,11 +33,11 @@ const Orders = () => {
     }, [newUser?.email, pd])
 
     return (
-        <div>
+        <div className='mb-12'>
             <div className="px-4 py-5 sm:px-6 bg-gray-100 flex justify-between mb-4">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">Order History</h3>
             </div>
-            <div className=" overflow-x-scroll border-b border-gray-200 sm:rounded-lg order_table">
+            <div className=" overflow-scroll border-b border-gray-200 sm:rounded-lg order_table">
                 <table className="min-w-full divide-y divide-gray-200 order_table">
                     <thead className="bg-gray-50">
                         <tr>

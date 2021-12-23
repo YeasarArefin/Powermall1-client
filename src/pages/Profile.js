@@ -23,7 +23,7 @@ const Profile = () => {
                     </div>
 
                     {/* infos  */}
-                    <div className="col-span-3 bg-white rounded-lg p-4 box-border">
+                    <div className="col-span-3 bg-white rounded-lg p-4 box-border mb-12">
                         <Outlet />
                     </div>
                 </section>
