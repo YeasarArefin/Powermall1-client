@@ -24,7 +24,12 @@ const CategorySelect = () => {
             <Listbox value={selected} onChange={setSelected}>
                 <div className="relative mt-1">
                     <Listbox.Button className=" transition duration-500 relative w-52 py-3 px-4 text-left bg-white rounded-md  cursor-default focus:outline-none border border-primary sm:text-sm">
-                        <span className="block truncate text-primary font-semibold">{selected?.category}</span>
+                        {searchParams ? (
+                            <span className="block truncate text-primary font-semibold">{selected?.category}</span>
+                        ) : (
+                            <span className="block truncate text-primary font-semibold">All</span>
+                        )}
+
                         <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                             <HiSelector
                                 className="w-5 h-5 text-primary font-bold"
@@ -70,7 +75,7 @@ const CategorySelect = () => {
                                             </>
                                         )}
                                     </Listbox.Option>
-                                 </Link>
+                                </Link>
                             ))}
                         </Listbox.Options>
                     </Transition>
