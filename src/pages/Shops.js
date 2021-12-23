@@ -17,7 +17,13 @@ const Shops = () => {
 
     //find products
     const pds = products?.filter(item => item?.category?.toLowerCase() === categoryFilter)
-    const searchPd = products?.filter(item => item?.brand?.toLowerCase() === searchFilter?.toLowerCase())
+    // eslint-disable-next-line array-callback-return
+    const searchPd = products?.filter(item => {
+        if (item?.name?.toLowerCase()?.includes(searchFilter?.toLowerCase())) {
+            console.log(item?.name)
+            return item
+        }
+    })
 
     return (
         <>
@@ -26,7 +32,7 @@ const Shops = () => {
                 {searchFilter ? (
                     searchPd?.length > 0 ? (
                         <>
-                            <h1 className='mb-4 text-2xl font-semibold text-gray-700'>{searchFilter?.toUpperCase()}</h1>
+                            <h1 className='mb-4 text-xl italic font-semibold text-gray-700'>Searched for : {searchFilter?.toUpperCase()}</h1>
 
                             <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
                                 {searchPd?.map(item => <ProductCard key={item._id} {...item} />)}
@@ -38,7 +44,7 @@ const Shops = () => {
                                 <img className='animate-pulse w-96 object-contain' src="../../assets/notfound.jpg" alt="error page" />
                                 <h1 className='text-3xl text-center text-gray-600'> <span className='text-primary italic'>{searchFilter}</span> Not found!!</h1>
                             </div>
-                            <Link to="/">
+                            <Link to="/shops">
                                 <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none hover:bg-blue-500 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
                             </Link>
                         </div>
@@ -58,7 +64,7 @@ const Shops = () => {
                                     <img className='animate-pulse w-96 object-contain' src="../../assets/notfound.jpg" alt="error page" />
                                     <h1 className='text-3xl text-center text-gray-600'> <span className='text-primary italic'>{categoryFilter}</span> Not found!!</h1>
                                 </div>
-                                <Link to="/">
+                                <Link to="/shops">
                                     <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none hover:bg-blue-500 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
                                 </Link>
                             </div>

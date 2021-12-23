@@ -9,12 +9,12 @@ const SearchBar = () => {
     const { register, handleSubmit ,reset} = useForm();
     // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams();
-    const [brands, setBrands] = useState([]);
+    const [products, setProducts] = useState([]);
     // const [data, setData] = useState();
 
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/brands')
-            .then(res => setBrands(res?.data))
+        axios.get('https://electro-comers-server.herokuapp.com/products')
+            .then(res => setProducts(res?.data))
     }, [])
 
     const onSubmit = data => {
@@ -30,11 +30,11 @@ const SearchBar = () => {
             <input
                 type="text" placeholder="Search by brand, like : samsung,realme etc." className="w-full border border-gray-300 bg-gray-100 transition duration-500 focus:outline-none rounded-md py-2.5 px-4"
                 {...register("search", { required: true })}
-                list="brands"  id="brand"
+                list="title"  id="brand"
             />
-            <datalist id="brands">
-                {brands?.map(item => (
-                    <option value={item?.brand?.toLowerCase()} />
+            <datalist id="title">
+                {products?.map(item => (
+                    <option value={item?.name?.toLowerCase()} />
                 ))}
             </datalist>
             {/* <Link to={`/shops?search=${data}`} onClick={() => { */}
