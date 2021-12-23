@@ -26,6 +26,8 @@ const Shops = () => {
                 {searchFilter ? (
                     searchPd?.length > 0 ? (
                         <>
+                            <h1 className='mb-4 text-2xl font-semibold text-gray-700'>{searchFilter?.toUpperCase()}</h1>
+
                             <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
                                 {searchPd?.map(item => <ProductCard key={item._id} {...item} />)}
                             </div>
@@ -45,6 +47,7 @@ const Shops = () => {
                     categoryFilter ? (
                         pds?.length > 0 ? (
                             <>
+                                    <h1 className='mb-4 text-2xl font-semibold text-gray-700'>{categoryFilter?.toUpperCase()}</h1>
                                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
                                     {pds?.map(item => <ProductCard key={item._id} {...item} />)}
                                 </div>

@@ -6,7 +6,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const SearchBar = () => {
     const navigate = useNavigate()
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit ,reset} = useForm();
     // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams();
     const [brands, setBrands] = useState([]);
@@ -21,6 +21,7 @@ const SearchBar = () => {
         setSearchParams({ search: data?.search })
         // setData(searchParams.get("search"))
         navigate(`/shops?search=${data?.search}`)
+        reset()
     }
 
 
