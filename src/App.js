@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from "react-router-dom";
+import BarLoader from "react-spinners/BarLoader";
+import Brand from './components/Navbar/Brand';
 import Navbar from './components/Navbar/Navbar';
 import OfferNav from './components/Offer Nav/OfferNav';
 import ProductCart from './components/Product Cart/ProductCart';
@@ -23,6 +25,7 @@ import PrivateRoute from './routes/PrivateRoute';
 
 const App = () => {
   const [header, setHeader] = useState(false)
+  const [loading,setLoading] = useState(true)
   const [showOffer,setShowOffer] = useState(true)
   const changeHeader = () => {
     if (window.scrollY >= 80) {
@@ -34,37 +37,57 @@ const App = () => {
 
   window.addEventListener('scroll', changeHeader)
 
+
+  //loading 
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    },3000)
+  },[])
+
   return (
-    <AuthProvider>
-      <CartProvider>
-        <QuantityProvider>
-          <ProductCart />
-          <div>
-            {showOffer && <OfferNav setShowOffer={setShowOffer} />}
-            <div className={`${header && "fixed top-0 w-full z-30 transition duration-300"} `}>
-              <Navbar />
-            </div>
-          </div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/shops" element={<Shops />} />
-            <Route path="/order-successful" element={<PrivateRoute><OrderSuccessful /></PrivateRoute>} />
-            <Route path="/products/:id" element={<ProductDetails />} />
-            <Route path="/profile/*" element={<PrivateRoute><Profile /></PrivateRoute>}>
-              <Route path="*" element={<PrivateRoute><Account /></PrivateRoute>} />
-              <Route path="account" element={<PrivateRoute><Account /></PrivateRoute>} />
-              <Route path="edit" element={<PrivateRoute><EditProfile /></PrivateRoute>} />
-              <Route path="orders" element={<PrivateRoute><Orders /></PrivateRoute>} />
-            </Route>
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </QuantityProvider>
-      </CartProvider>
-    </AuthProvider>
+
+    loading ? (
+      <div className='flex flex-col h-screen w-full justify-center items-center space-y-6'>
+        <Brand />
+        <BarLoader color="#11A0DB" loading={loading} size={150} width={300} />
+      </div>
+    ) : (
+      <>
+          <AuthProvider>
+            <CartProvider>
+              <QuantityProvider>
+                <ProductCart />
+                <div>
+                  {showOffer && <OfferNav setShowOffer={setShowOffer} />}
+                  <div className={`${header && "fixed top-0 w-full z-30 transition duration-300"} `}>
+                    <Navbar />
+                  </div>
+                </div>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<SignUp />} />
+                  <Route path="/shops" element={<Shops />} />
+                  <Route path="/order-successful" element={<PrivateRoute><OrderSuccessful /></PrivateRoute>} />
+                  <Route path="/products/:id" element={<ProductDetails />} />
+                  <Route path="/profile/*" element={<PrivateRoute><Profile /></PrivateRoute>}>
+                    <Route path="*" element={<PrivateRoute><Account /></PrivateRoute>} />
+                    <Route path="account" element={<PrivateRoute><Account /></PrivateRoute>} />
+                    <Route path="edit" element={<PrivateRoute><EditProfile /></PrivateRoute>} />
+                    <Route path="orders" element={<PrivateRoute><Orders /></PrivateRoute>} />
+                  </Route>
+                  <Route path="*" element={<ErrorPage />} />
+                </Routes>
+              </QuantityProvider>
+            </CartProvider>
+          </AuthProvider>
+      </>
+    )
+    
   )
 }
 
