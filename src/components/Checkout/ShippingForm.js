@@ -1,17 +1,29 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import swal from 'sweetalert';
 import useAuth from '../../hooks/useAuth';
+import useCart from '../../hooks/useCart';
 
 
 
 const ShippingForm = ({ setOrder, btnCick, setBtnClick}) => {
     const { newUser } = useAuth();
+    const { cart } = useCart();
     const { register, handleSubmit } = useForm();
 
     const onSubmit = data => {
-        data['email'] = newUser?.email
-        setOrder(data)
-        setBtnClick(true)
+        data['email'] = newUser?.email;
+        if (data?.mobile?.length > 11 || data?.mobile?.length < 11 || !data?.mobile?.startsWith("01")) {
+            swal("Opps!!", "Mobile Number Must be 11 number or please start with 01 !!!", "info");
+        } else {
+            setOrder(data)
+            if (cart?.length > 0){
+                setBtnClick(true)
+            }else{
+                swal("Opps!!", "Please add product in your cart", "info");
+            }
+        }
+       
     }
 
     return (

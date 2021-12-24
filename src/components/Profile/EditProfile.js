@@ -38,20 +38,25 @@ const EditProfile = () => {
     formdata.append('image', files?.[0])
 
     const onSubmit = data => {
-        
 
-        if (files?.length > 0){
+
+        if (files?.length > 0) {
             axios.post('https://api.imgbb.com/1/upload?&key=8a4c4a09bb137c748d82629992ac8c88', formdata)
                 .then((response) => {
                     if (response) {
-                        data.['image'] = `${response.data.data.image.url}`;
-                        axios.put(`https://electro-shop-server.herokuapp.com/users/${newUser._id}`, data)
-                            .then(res => {
-                                swal("Yo!!!", "Profile successfully updated!!!", "success");
-                                navigate('/profile')
-                            }).catch((err) => {
-                                swal("Something went wrong!", `${err.message}`, "error")
-                            })
+                        if (data?.mobile?.length > 11 || data?.mobile?.length < 11 || !data?.mobile?.startsWith("01")) {
+                            swal("Opps!!", "Mobile Number Must be 11 number or please start with 01 !!!", "info");
+                        } else {
+                            data.['image'] = `${response.data.data.image.url}`;
+                            axios.put(`https://electro-shop-server.herokuapp.com/users/${newUser._id}`, data)
+                                .then(res => {
+                                    swal("Yo!!!", "Profile successfully updated!!!", "success");
+                                    navigate('/profile/account')
+                                }).catch((err) => {
+                                    swal("Something went wrong!", `${err.message}`, "error")
+                                })
+                        }
+
                     }
 
                 })
@@ -59,14 +64,21 @@ const EditProfile = () => {
                     console.log('error', error)
                     alert('try agian')
                 })
-        }else{
-            axios.put(`https://electro-shop-server.herokuapp.com/users/${newUser._id}`, data)
-                .then(res => {
-                    swal("Yo!!!", "Profile successfully updated!!!", "success");
-                    navigate('/profile')
-                }).catch((err) => {
-                    swal("Something went wrong!", `${err.message}`, "error")
-                })
+        } else {
+
+            if (data?.mobile?.length > 11 || data?.mobile?.length < 11 || !data?.mobile?.startsWith("01")) {
+                swal("Opps!!", "Mobile Number Must be 11 number or please start with 01 !!!", "info");
+            } else {
+                axios.put(`https://electro-shop-server.herokuapp.com/users/${newUser._id}`, data)
+                    .then(res => {
+                        swal("Yo!!!", "Profile successfully updated!!!", "success");
+                        navigate('/profile/account')
+                    }).catch((err) => {
+                        swal("Something went wrong!", `${err.message}`, "error")
+                    })
+            }
+
+
         }
     };
 
