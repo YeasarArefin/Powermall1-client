@@ -64,6 +64,12 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
                 }
             }
 
+            //validate when user gibe wrong coupon
+            if(!couponFind){
+                swal("Something went wrong!", "Coupon isn't exited", "error")
+                return;
+            }
+
             const addCouponPrice = totalPrice - parseFloat(couponFind?.ammount)
             setTotalPrice(addCouponPrice)
             newUser?.usedCoupon?.push(couponFind)
