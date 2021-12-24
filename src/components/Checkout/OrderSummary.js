@@ -52,6 +52,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
     }, []);
 
 
+    //coupon function
     const onSubmit = data => {
         if (data) {
             //find coupon
@@ -70,6 +71,12 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
                 return;
             }
 
+            //expired checking
+            if (couponFind?.end === new Date().toLocaleDateString()){
+                swal("Something went wrong!", "Coupon has expired!!", "error")
+                return;
+            }
+
             const addCouponPrice = totalPrice - parseFloat(couponFind?.ammount)
             setTotalPrice(addCouponPrice)
             newUser?.usedCoupon?.push(couponFind)
@@ -78,6 +85,8 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             swal("Yo!!!", "Successfully coupon applied!!!", "success");
         }
     }
+
+    //post order function
     const handleSubmitForm = () => {
         axios.put(`https://electro-shop-server.herokuapp.com/users/${newUser._id}`, {
             usedCoupon: usedCoupon?.usedCoupon
