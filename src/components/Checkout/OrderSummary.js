@@ -66,7 +66,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
 
             //validate when user gibe wrong coupon
             if(!couponFind){
-                swal("Something went wrong!", "Coupon isn't exited", "error")
+                swal("Something went wrong!", "Coupon isn't existed", "error")
                 return;
             }
 
