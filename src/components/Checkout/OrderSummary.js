@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import useAuth from '../../hooks/useAuth';
 import useCart from '../../hooks/useCart';
@@ -17,7 +17,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
     const { register, handleSubmit } = useForm();
     const [totalPrice, setTotalPrice] = useState();
     let price = 0;
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     // price 
     for (var i = 0; i < cart.length; i++) {
@@ -85,14 +85,14 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             .then(res => {
                 setDisabled(true)
             })
-        axios.post('https://electro-shop-server.herokuapp.com/orders', {
+        axios.post('http://localhost:5000/init', {
             ...order, time: new Date().toLocaleTimeString()
         })
             .then(res => {
-                swal("Yo!!!", "Successfully order done!!!", "success");
+                window.location.replace(res.data)
                 //add used coupon to user object 
                 setCart([])
-                navigate('/order-successful')
+                // navigate('/order-successful')
             }).catch((err) => {
                 swal("Something went wrong!", `${err.message}`, "error")
             })
