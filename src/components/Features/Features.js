@@ -25,7 +25,9 @@ const Features = () => {
 
                             {/* button  */}
                             <div>
+                                <a href={`${feature?.link}`} target="_blank" rel="noopener noreferrer">
                                 <button className={`bg-white w-28 px-3 py-2 mt-2 rounded-full text-gray-600 hover:scale-110 transform transition duration-300 text-sm`}  >{feature?.name}</button>
+                                </a>
                             </div>
                         </div>
                     </div>
