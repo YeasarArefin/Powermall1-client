@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import useAuth from '../../hooks/useAuth';
 import useCart from '../../hooks/useCart';
@@ -17,7 +17,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
     const { register, handleSubmit } = useForm();
     const [totalPrice, setTotalPrice] = useState();
     let price = 0;
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     // price 
     for (var i = 0; i < cart.length; i++) {
@@ -43,7 +43,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             .then(res => setInfo(res.data[0]))
     }, []);
 
- 
+
 
     //coupons api
     useEffect(() => {
@@ -65,7 +65,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             }
 
             //validate when user gibe wrong coupon
-            if(!couponFind){
+            if (!couponFind) {
                 swal("Something went wrong!", "Coupon isn't existed", "error")
                 return;
             }
@@ -85,14 +85,25 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             .then(res => {
                 setDisabled(true)
             })
-        axios.post('http://localhost:5000/init', {
+        // axios.post('http://localhost:5000/init', {
+        //     ...order, time: new Date().toLocaleTimeString()
+        // })
+        //     .then(res => {
+        //         window.location.replace(res.data)
+        //         //add used coupon to user object 
+        //         setCart([])
+        //         // navigate('/order-successful')
+        //     }).catch((err) => {
+        //         swal("Something went wrong!", `${err.message}`, "error")
+        //     })
+        axios.post('https://electro-shop-server.herokuapp.com/orders', {
             ...order, time: new Date().toLocaleTimeString()
         })
             .then(res => {
-                window.location.replace(res.data)
+                swal("Yo!!!", "Successfully order done!!!", "success");
                 //add used coupon to user object 
                 setCart([])
-                // navigate('/order-successful')
+                navigate('/order-successful')
             }).catch((err) => {
                 swal("Something went wrong!", `${err.message}`, "error")
             })
@@ -121,7 +132,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             <div className='flex justify-between text-gray-500 text-base py-3 border-b border-gray-200'>
                 <span>Total</span>
                 <span className='text-xl font-semibold text-primary'>
-                    &#2547; {totalPrice?.toFixed(2)} {usedCoupon?.usedCoupon?.length > 0 && <del className="text-gray-600 text-base italic">&#2547;  {totalPrice + parseFloat(findedCoupon?.ammount)} </del> }
+                    &#2547; {totalPrice?.toFixed(2)} {usedCoupon?.usedCoupon?.length > 0 && <del className="text-gray-600 text-base italic">&#2547;  {totalPrice + parseFloat(findedCoupon?.ammount)} </del>}
                 </span>
             </div>
 
