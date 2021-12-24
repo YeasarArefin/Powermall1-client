@@ -6,6 +6,14 @@ import swal from 'sweetalert';
 import useAuth from '../../hooks/useAuth';
 import useCart from '../../hooks/useCart';
 
+function getSessionStorageOrDefault(key, defaultValue) {
+    const stored = sessionStorage.getItem(key);
+    if (!stored) {
+        return defaultValue;
+    }
+    return JSON.parse(stored);
+}
+
 const OrderSummary = ({ setPrice, btnCick, order }) => {
     const { cart, setCart } = useCart();
     const { newUser } = useAuth();
@@ -18,7 +26,14 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
     const [totalPrice, setTotalPrice] = useState();
     let price = 0;
     const navigate = useNavigate()
+    const [couponCheck, setCouponCheck] = useState(
+        getSessionStorageOrDefault('coupons', [])
+    );
 
+    useEffect(() => {
+        sessionStorage.setItem('coupons', JSON.stringify(couponCheck));
+    }, [couponCheck]);
+  
     // price 
     for (var i = 0; i < cart.length; i++) {
         price += (cart[i].price - (cart[i].price * cart[i].discount / 100)) * (cart[i].pdQuantity);
@@ -77,11 +92,24 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
                 return;
             }
 
+            //coupon check from session storage
+            const couponFindSS = couponCheck.find(item => item?.code === data.coupon)
+
+            if (couponFindSS){
+                setDisabled(true)
+            }
+
+            if(!couponFindSS){
+                setCouponCheck([...couponCheck, couponFind])
+
+            }
+
+
             const addCouponPrice = totalPrice - parseFloat(couponFind?.ammount)
             setTotalPrice(addCouponPrice)
             newUser?.usedCoupon?.push(couponFind)
-            setUsedCoupon(newUser)
             setDisabled(true)
+            setUsedCoupon(newUser)
             swal("Yo!!!", "Successfully coupon applied!!!", "success");
         }
     }
