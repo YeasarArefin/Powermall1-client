@@ -1,60 +1,81 @@
 import React from 'react'
-import Input from './Input'
+import { useForm } from "react-hook-form";
+import useAuth from '../../hooks/useAuth';
+import swal from 'sweetalert';
+import axios from 'axios';
 
 const ContactForm = () => {
+    const { register, handleSubmit,reset } = useForm();
+    const { newUser } = useAuth();
+
+    const onSubmit = data => {
+        data['email'] = newUser?.email
+        axios.post('https://electro-shop-server.herokuapp.com/messages', data)
+        .then((res) => {
+            swal("Good job!", "Message Send!!", "success");
+            reset()
+        }).catch(err => {
+            swal("Something went wrong!!", "Message couldn't send!!", "error")
+        })  
+    }
+
+
     return (
         <div>
             <div className="my-24 lg:my-0">
                 <div className="md:grid md:grid-cols-2 md:gap-6">
                     <div className="mt-5 md:mt-0 md:col-span-2">
-                        <form action="#" method="POST">
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="shadow overflow-hidden sm:rounded-md">
-                                <div className="px-4 py-5 bg-white sm:p-6">
+                                <form className="px-4 py-5 bg-white sm:p-6">
                                     <div className="grid grid-cols-6 gap-6">
                                         <div className="col-span-6 sm:col-span-3">
                                             <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
-                                                First name
+                                                Name
                                             </label>
 
-                                            <Input
+                                            <input
                                                 type="text"
-                                                name="first-name"
                                                 id="first-name"
+                                                className="input2"
+                                                defaultValue={newUser?.name} {...register("name", { required: true })}
                                             />
                                         </div>
 
                                         <div className="col-span-6 sm:col-span-3">
-                                            <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
-                                                Last name
+                                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                                Email
                                             </label>
-                                            <Input
+                                            <input
                                                 type="text"
-                                                name="last-name"
-                                                id="last-name"
+                                                id="email"
+                                                className="input2"
+                                                value={newUser?.email}
                                             />
                                         </div>
 
                                         <div className="col-span-6">
-                                            <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
-                                                Email address
+                                            <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
+                                                Subject
                                             </label>
-                                            <Input
-                                                type="email"
-                                                name="email-address"
-                                                id="email-address"
+                                            <input
+                                                type="text"
+                                                id="subject"
+                                                className="input2"
+                                                {...register("subject", { required: true })}
                                             />
                                         </div>
 
-                                        {/* // messege box  */}
+                                        {/* // message box  */}
                                         <div className="col-span-6">
                                             <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
                                                 Write your message
                                             </label>
-                                            <textarea name="message" id="message" className="mt-1 ring-blue-200 focus:outline-none focus:ring-2 transition duration-500 block w-full shadow-sm sm:text-sm border-gray-300 border rounded-md py-3 h-32 resize-x-none px-4"></textarea>
+                                            <textarea name="message" id="message" className="mt-1 ring-blue-200 focus:outline-none focus:ring-2 transition duration-500 block w-full shadow-sm sm:text-sm border-gray-300 border rounded-md py-3 h-32 resize-x-none px-4" {...register("message", { required: true })}></textarea>
                                         </div>
 
                                     </div>
-                                </div>
+                                </form>
                                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                                     <button
                                         type="submit"
