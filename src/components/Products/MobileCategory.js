@@ -58,7 +58,7 @@ const MobileCategory = () => {
                         }
                     }}>
                     {products?.slice(0, 6)?.map(product => (
-                        <SwiperSlide key={product.id} className="h-full">
+                        <SwiperSlide key={product._id} className="h-full">
                             <ProductCard {...product} />
                         </SwiperSlide>
                     ))}

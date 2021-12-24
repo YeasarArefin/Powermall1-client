@@ -6,20 +6,23 @@ function classNames(...classes) {
 }
 
 const ProductInformations = (props) => {
-    const { description } = props;
+    const { description, moreInformation } = props;
 
+    const desc = `${description}`
+    const info = `${moreInformation}`
 
+    console.log(description)
     let [categories] = useState({
-        Details: [
+        "Details": [
             {
                 id: 1,
-                data: "Hifasfasfasfsafafasfsaf"
+                data: desc
             }
         ],
         "More Information": [
             {
                 id: 1,
-                data: `${description}`
+                data: info
             }
         ],
     })
@@ -47,28 +50,40 @@ const ProductInformations = (props) => {
 
                 </Tab.List>
                 <Tab.Panels className="mt-2">
-                    {Object.values(categories).map((posts, idx) => (
-                        <Tab.Panel
-                            key={idx}
-                            className={classNames(
-                                'bg-white rounded-xl p-6',
-                                'focus:outline-none'
-                            )}
+                    {/* {Object.values(categories).map((posts, idx) => ( */}
+                    <Tab.Panel
+                        // key={idx}
+                        className={classNames(
+                            'bg-white rounded-xl p-6',
+                            'focus:outline-none'
+                        )}
+                    >
+                        <div
+
+                            className="relative p-3 rounded-md hover:bg-coolGray-100"
                         >
-                            <div>
-                                {posts.map((post) => (
-                                    <div
-                                        key={post.id}
-                                        className="relative p-3 rounded-md hover:bg-coolGray-100"
-                                    >
-                                        <div className="flex flex-col space-y-2 mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
-                                            <p>{post?.data}</p>
-                                        </div>
-                                    </div>
-                                ))}
+                            <div className="flex flex-col space-y-2 mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
+                                <p>{description}</p>
                             </div>
-                        </Tab.Panel>
-                    ))}
+                        </div>
+                    </Tab.Panel>
+                    <Tab.Panel
+                        // key={idx}
+                        className={classNames(
+                            'bg-white rounded-xl p-6',
+                            'focus:outline-none'
+                        )}
+                    >
+                        <div
+
+                            className="relative p-3 rounded-md hover:bg-coolGray-100"
+                        >
+                            <div className="flex flex-col space-y-2 mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
+                                <p>{moreInformation}</p>
+                            </div>
+                        </div>
+                    </Tab.Panel>
+                    {/* ))} */}
                 </Tab.Panels>
             </Tab.Group>
         </div>

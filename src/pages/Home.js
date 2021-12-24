@@ -7,9 +7,9 @@ import Brands from '../components/Brands/Brands'
 import Features from '../components/Features/Features'
 import Footer from '../components/Footer/Footer'
 import PopularCategories from '../components/Popular Categories/PopularCategories'
-import AcCategory from '../components/Products/AcCategory'
-import MobileCategory from '../components/Products/MobileCategory'
-// import ProductsCategory from '../components/Products/ProductsCategory'
+// import AcCategory from '../components/Products/AcCategory'
+// import MobileCategory from '../components/Products/MobileCategory'
+import ProductsCategory from '../components/Products/ProductsCategory'
 import Recommended from '../components/Recommended/Recommended'
 import Slider from '../components/Slider/Slider'
 
@@ -19,10 +19,10 @@ const Home = () => {
             <Slider />
             <main className="max-w-screen-xl mx-auto px-6" style={{ background:'#F4F4FA',height:'100%'}}>
                 <Features />
-                <MobileCategory />
-                {/* <ProductsCategory /> */}
+                {/* <MobileCategory /> */}
                 <BigBanner />
-                <AcCategory />
+                <ProductsCategory />
+                {/* <AcCategory /> */}
                 <BigBanner2 />
                 <Recommended />
                 <Brands />
