@@ -11,11 +11,13 @@ import SearchBar from './SearchBar';
 
 const Navbar = () => {
     const [mobileNav, setMobileNav] = useState(false)
+    const [hideNav, setHideNav] = useState(false)
     const { newUser } = useAuth();
 
     //handle click 
     const handleClick = () => {
         setMobileNav(!mobileNav)
+        // setTabletNav(!tabletNav)
     }
 
     //menus 
@@ -26,6 +28,20 @@ const Navbar = () => {
         { id: 4, name: 'Contact', link: '/contact' },
     ]
 
+    //tablet mode 
+    const changeNav = () => {
+        if (window.innerWidth === 768) {
+            setMobileNav(true)
+            setHideNav(true)
+        } else {
+            setMobileNav(false)
+            setHideNav(false)
+
+        }
+    }
+
+    window.addEventListener('resize', changeNav)
+
     return (
         <header className="bg-white">
             {/* desktop nav  */}
@@ -35,14 +51,20 @@ const Navbar = () => {
                     <Brand />
 
                     {/* category  */}
-                    <div className="hidden md:flex lg:flex">
-                        <CategorySelect />
-                    </div>
+                    {!hideNav && (
+                        <div className="hidden md:flex lg:flex">
+                            <CategorySelect />
+                        </div>
+                    )}
+
 
                     {/* search bar  */}
-                    <div className="hidden md:flex lg:flex space-x-3">
-                        <SearchBar />
-                    </div>
+                    {!hideNav && (
+                        <div className="hidden md:flex lg:flex space-x-3">
+                            <SearchBar />
+                        </div>
+                    )}
+
 
                     {/* some links  */}
                     <ul className='hidden items-center space-x-4  lg:flex'>
@@ -69,17 +91,29 @@ const Navbar = () => {
                 )}
 
 
-                {/* menu icon  */}
-                <div className="block md:hidden lg:hidden">
-                    <HiMenuAlt3 className="w-10 h-10 ring-blue-300 text-gray-700 border border-gray-400 focus:ring-4 cursor-pointer rounded-lg p-2 transform transition duration-200 hover:scale-110 hover:bg-primary hover:text-white" onClick={handleClick} />
-                </div>
+                {hideNav ? (
+                    <>
+                        {/* menu icon  */}
+                        <div className="block  lg:hidden">
+                            <HiMenuAlt3 className="w-10 h-10 ring-blue-300 text-gray-700 border border-gray-400 focus:ring-4 cursor-pointer rounded-lg p-2 transform transition duration-200 hover:scale-110 hover:bg-primary hover:text-white" onClick={handleClick} />
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        {/* menu icon  */}
+                        <div className="block md:hidden lg:hidden">
+                            <HiMenuAlt3 className="w-10 h-10 ring-blue-300 text-gray-700 border border-gray-400 focus:ring-4 cursor-pointer rounded-lg p-2 transform transition duration-200 hover:scale-110 hover:bg-primary hover:text-white" onClick={handleClick} />
+                        </div>
+                    </>
+                )}
+
             </nav>
 
             {/* mobile nav  */}
             {mobileNav && (
                 <Fade>
                     <nav className="bg-white shadow-lg mx-6 mt-2 rounded-br-lg rounded-bl-lg  py-6 block md:hidden lg:hidden">
-                        
+
                         {/* category  */}
                         <div className='flex justify-center pb-2'>
                             <CategorySelect />
@@ -111,6 +145,8 @@ const Navbar = () => {
                     </nav>
                 </Fade>
             )}
+
+
         </header>
     )
 }
