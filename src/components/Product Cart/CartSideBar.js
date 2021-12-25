@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsFillBagCheckFill } from 'react-icons/bs';
+import { BsCartCheckFill, BsFillBagCheckFill } from 'react-icons/bs';
 import { RiCloseLine } from 'react-icons/ri';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
@@ -64,12 +64,21 @@ const CartSideBar = ({ setShow }) => {
 
                 <div className='px-2'>
                     {/* checkout button  */}
-                    <Link to='/checkout'>
-                        <div className='bg-primary rounded-lg px-2 py-2 hover:bg-blue-600 transition duration-300 w-full flex justify-between items-center cursor-pointer mt-8'>
-                            <span className='text-white text-sm pl-4'>Checkout ({quantity} pcs)</span>
-                            <div className='bg-white px-3 py-2 rounded-lg text-primary text-sm'>&#2547; {price?.toFixed(2)}</div>
-                        </div>
-                    </Link>
+                    {cart?.length > 0 ? (
+                        <Link to='/checkout'>
+                            <div className='bg-primary rounded-lg px-2 py-2 hover:bg-blue-600 transition duration-300 w-full flex justify-between items-center cursor-pointer mt-8' onClick={ () => setShow(false)}>
+                                <span className='text-white text-sm pl-4'>Checkout ({quantity} pcs)</span>
+                                <div className='bg-white px-3 py-2 rounded-lg text-primary text-sm'>&#2547; {price?.toFixed(2)}</div>
+                            </div>
+                        </Link>
+                    ) : (
+                        <Link to='/shops'>
+                            <div className='bg-primary rounded-lg px-2 py-3  transition duration-300 w-full flex justify-between items-center cursor-pointer mt-8' onClick={ () => setShow(false)}>
+                                    <p className='text-white text-base pl-4 flex items-center space-x-3'><BsCartCheckFill className="text-lg" /> <span>Continue Shopping </span></p>
+                            </div>
+                        </Link>
+                    )}
+
                 </div>
             </aside>
         </Fade>

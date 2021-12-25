@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import AllProductsCart from '../components/Checkout/AllProductsCart';
 import OrderSummary from '../components/Checkout/OrderSummary';
 import ShippingForm from '../components/Checkout/ShippingForm';
@@ -17,8 +18,13 @@ const Checkout = () => {
 
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Checkout</title>
+                <link rel="canonical" href="https://electro-shop-client.vercel.app/" />
+            </Helmet>
             <main className="max-w-screen-xl mx-auto">
-                <section className='mx-6 mt-12 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8'>
+                <section className='mx-6 mt-12 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-y-8 lg:gap-8'>
                     {/* shipping address  */}
                     <div className='col-span-2  rounded-lg bg-white  p-6 box-border'>
                         <h1 className='text-gray-600 text-lg font-semibold'>Delivery Information</h1>
@@ -26,7 +32,7 @@ const Checkout = () => {
                     </div>
 
                     {/* order summary  */}
-                    <div className="bg-white p-4  h-96 rounded-lg box-border">
+                    <div className="col-span-1 bg-white p-4  h-96 rounded-lg box-border">
                         <h1 className='text-gray-600 text-lg font-semibold'>Order Summary</h1>
                         <OrderSummary setPrice={setPrice} btnCick={btnCick} order={finalOrder} />
                     </div>

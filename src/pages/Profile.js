@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { NavLink, Outlet } from "react-router-dom";
 
 const Profile = () => {
@@ -9,6 +10,11 @@ const Profile = () => {
     ]
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>My Profile</title>
+                <link rel="canonical" href="https://electro-shop-client.vercel.app/" />
+            </Helmet>
             <main className="max-w-screen-xl mx-auto">
                 <section className='mx-6 mt-12 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-y-8 lg:gap-x-10'>
                     {/* sidebar */}

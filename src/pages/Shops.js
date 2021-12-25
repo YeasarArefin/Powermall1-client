@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link, useSearchParams } from 'react-router-dom';
 import FadeLoader from "react-spinners/FadeLoader";
 import Footer from '../components/Footer/Footer';
@@ -47,6 +48,11 @@ const Shops = () => {
             <Spinner />
         ) : (
             <>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Shop </title>
+                    <link rel="canonical" href="https://electro-shop-client.vercel.app/" />
+                </Helmet>
                 <main className="max-w-screen-xl mx-auto px-6 py-12" style={{ background: '#F4F4FA', height: '100%' }}>
 
                     {

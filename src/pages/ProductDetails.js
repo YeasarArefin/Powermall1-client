@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import FadeLoader from "react-spinners/FadeLoader";
 import Footer from '../components/Footer/Footer';
@@ -33,6 +34,11 @@ const ProductDetails = () => {
             </div>
         ) : (
             <>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>{products?.name}</title>
+                    <link rel="canonical" href="https://electro-shop-client.vercel.app/" />
+                </Helmet>
                 <main className="max-w-screen-xl mx-auto">
                     <section className='mx-6  bg-white rounded-lg mt-12 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-5'>
                         {/* image  */}
@@ -47,7 +53,7 @@ const ProductDetails = () => {
 
                         {/* order description  */}
                         <div className="col-span-1">
-                                <DeliveryDescription {...products} />
+                            <DeliveryDescription {...products} />
                         </div>
                     </section>
 

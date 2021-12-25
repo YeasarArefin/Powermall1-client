@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from "react-helmet"
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import BigBanner from '../components/Big Sale/BigBanner'
@@ -15,7 +16,12 @@ import Slider from '../components/Slider/Slider'
 
 const Home = () => {
     return (
-        <>
+        <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home : Electro Shop</title>
+                <link rel="canonical" href="https://electro-shop-client.vercel.app/" />
+            </Helmet>
             <Slider />
             <main className="max-w-screen-xl mx-auto px-6" style={{ background:'#F4F4FA',height:'100%'}}>
                 <Features />
@@ -30,7 +36,7 @@ const Home = () => {
                 <ToastContainer />
             </main>
             <Footer />
-        </>
+        </div>
     )
 }
 
