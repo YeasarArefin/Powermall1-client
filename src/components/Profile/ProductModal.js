@@ -62,7 +62,13 @@ const ProductModal = ({ open, setOpen, product, id }) => {
                                                             <div className="flex flex-col space-y-2">
                                                                 <h1 className='break-all text-sm'>{item?.name}</h1>
                                                                 <p className='text-primary'>&#2547; {newPrice - newPrice * discountPrice / 100} <span className='text-gray-600'>({item?.pdQuantity} pcs)</span></p>
+                                                                {/* color  */}
+                                                                {item?.pdColor && (
+                                                                    <div>
 
+                                                                        <span>Color : {item?.pdColor}</span>
+                                                                    </div>
+                                                                )} 
                                                             </div>
 
                                                             {/* price  */}
@@ -70,7 +76,7 @@ const ProductModal = ({ open, setOpen, product, id }) => {
                                                                 <h2 className='text-gray-700'>&#2547; {(newPrice - newPrice * discountPrice / 100) * item?.pdQuantity}</h2>
                                                             </div>
 
-                                                            
+                                                           
                                                         </div>
                                                     </div>
                                                 )

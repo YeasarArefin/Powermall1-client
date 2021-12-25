@@ -6,6 +6,7 @@ import useCart from '../../hooks/useCart';
 
 const ProductDescription = (props) => {
     const [quantity, setQuantity] = React.useState(1);
+    const [colorVal,setColorVal] = React.useState();
     const { cart, handleClick } = useCart();
     const { _id, name, color, price, img, discount } = props;
     const priceInNum = parseFloat(price)
@@ -30,7 +31,21 @@ const ProductDescription = (props) => {
         }
     }
 
+    //track color value 
+    const handleColorChange = (e) => {
+        setColorVal(e.target.value)
+    }
+    // console.log(colorVal)
+
     newProduct['pdQuantity'] = quantity
+
+    if (colorVal){
+        newProduct['pdColor'] = colorVal
+    }else{
+        newProduct['pdColor'] = pdColor?.[0]
+    }
+
+    console.log(newProduct)
 
     // find pd 
     const findPd = cart?.find(item => item._id === _id)
@@ -45,10 +60,16 @@ const ProductDescription = (props) => {
             {/* price  */}
             <div className='py-4'>
                 <h1 className='text-3xl font-semibold text-primary'>&#2547; {disCountedPrice?.toFixed(2)} </h1>
-                <div className='flex items-center space-x-2'>
-                    <del className='text-gray-500 text-sm'>&#2547; {priceInNum}</del>
-                    <span className="text-lg font-semibold"> -{discount}%</span>
-                </div>
+
+                {discount > 0 && (
+                    <>
+                        <div className='flex items-center space-x-2'>
+                            <del className='text-gray-500 text-sm'>&#2547; {priceInNum}</del>
+                            <span className="text-lg font-semibold"> -{discount}%</span>
+                        </div>
+                    </>
+                )}
+               
             </div>
 
             {/* {color } */}
@@ -60,7 +81,7 @@ const ProductDescription = (props) => {
                         {pdColor?.map(item => {
                             return (
                                 <div className='flex items-center space-x-2'>
-                                    <input type="radio" id={item} name="color" value={item} />
+                                    <input type="radio" id={item} name="color" value={item} onChange={handleColorChange} />
                                     <label htmlFor={item}>{item}</label><br />
                                 </div>
                             )
@@ -80,9 +101,29 @@ const ProductDescription = (props) => {
                 <p className='text-gray-600'>Quantity : </p>
 
                 <div className='flex items-center space-x-3'>
-                    <AiOutlineMinus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' onClick={handleDecrease} />
-                    <span className='text-gray-700 font-semibold select-none'>{newProduct.pdQuantity}</span>
-                    <AiOutlinePlus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' onClick={handleIncrease} />
+
+                    {findPd ? (
+                        <>
+                            <button onClick={() => alert('First Remove this product from cart to decrease quantity.')}>
+                                <AiOutlineMinus className='opacity-40 text-xl text-gray-600 bg-secondary w-6  transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                            </button>
+                            <span className='opacity-40 text-gray-700 font-semibold select-none'>{newProduct.pdQuantity}</span>
+                            <button onClick={() => alert('First Remove this product from cart to increase quantity')}>
+                                <AiOutlinePlus className='opacity-40 text-xl text-gray-600 bg-secondary w-6  transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                                <button onClick={handleDecrease}>
+                                    <AiOutlineMinus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                                </button>
+                                <span className='text-gray-700 font-semibold select-none'>{newProduct.pdQuantity}</span>
+                                <button onClick={handleIncrease}>
+                                    <AiOutlinePlus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                                </button>
+                        </>
+                    )}
+                  
                 </div>
             </div>
 

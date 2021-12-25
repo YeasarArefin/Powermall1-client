@@ -47,7 +47,7 @@ const ProductDetails = () => {
 
                         {/* order description  */}
                         <div className="col-span-1">
-                            <DeliveryDescription {...products} />
+                                <DeliveryDescription {...products} />
                         </div>
                     </section>
 

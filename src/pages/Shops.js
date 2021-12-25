@@ -59,7 +59,7 @@ const Shops = () => {
                                     </div>
                                 ) : (
                                     <>
-                                        <h1 className='mb-4 text-xl italic font-semibold text-gray-700'>Searched for : {searchFilter?.toUpperCase()}</h1>
+                                        <h1 className='mb-4 text-xl italic font-semibold text-gray-700'>Searched keyword : {searchFilter?.toUpperCase()}</h1>
 
                                         <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
                                             {searchPd?.map(item => <ProductCard key={item._id} {...item} />)}

@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import AddressModal from './AddressModal'
 
-const DeliveryDescription = () => {
+const DeliveryDescription = (props) => {
+    const { warenty} = props
     const [open, setOpen] = useState(false)
     const {newUser} = useAuth()
     const [info, setInfo] = useState();
@@ -29,7 +30,7 @@ const DeliveryDescription = () => {
                 <div className='flex flex-col space-y-2  py-2 border-t border-gray-300 my-3'>
                     <div className='flex items-center'>
                         <MdOutlineLocationOn className='text-3xl text-gray-600 w-8' />
-                        <span className='text-sm text-gray-600 break-all'>{newUser?.address}</span>
+                        <span className='text-sm text-gray-600 break-all'>{newUser?.address && (newUser?.address)}</span>
                     </div>
                     
                     <div className='flex justify-end'>
@@ -70,7 +71,10 @@ const DeliveryDescription = () => {
                 {/* warranty  */}
                 <div className='flex items-center space-x-2 py-2 border-t border-gray-300 my-3'>
                     <MdOutlineClosedCaptionDisabled className='text-3xl text-gray-600 w-8' />
-                    <span className='text-sm text-gray-600'>Warranty not available</span>
+                    <span className='text-sm text-gray-600'>
+                        {warenty === "Available" ? "Warranty available" : " Warranty not available"}
+                        
+                    </span>
                 </div>
             </div>
 
