@@ -25,7 +25,7 @@ const Navbar = () => {
         { id: 1, name: 'Free Shipping', link: '/shops' },
         { id: 2, name: 'Drone Service', link: '/' },
         { id: 3, name: 'Global Purchase', link: '/' },
-        { id: 4, name: 'Contact', link: '/contact' },
+        { id: 4, name: 'Automative', link: '/automative' },
     ]
 
     //tablet mode 
@@ -67,7 +67,7 @@ const Navbar = () => {
 
 
                     {/* some links  */}
-                    <ul className='hidden items-center space-x-4  lg:flex'>
+                    <ul className='hidden items-center space-x-4  xl:flex'>
                         {menus?.map(item => {
                             return (
                                 <Link to={item?.link} key={item?.id}>

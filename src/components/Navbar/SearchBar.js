@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { AiOutlineSearch } from 'react-icons/ai';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const SearchBar = () => {
@@ -24,9 +23,9 @@ const SearchBar = () => {
 
 
     return (
-        <form className="flex items-center space-x-3 p-2 w-96" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex items-center space-x-3 p-2" onSubmit={handleSubmit(onSubmit)} style={{width:'500px'}}>
             <input
-                type="text" placeholder="Search products" className="w-full border border-gray-300 bg-gray-100 transition duration-500 focus:outline-none rounded-md py-2.5 px-4"
+                type="text" placeholder="🔍 Search products" className="w-full border border-gray-300 bg-gray-100 transition duration-500 focus:outline-none rounded-md py-2.5 px-4"
                 {...register("search", { required: true })}
                 list="title"  id="brand"
             />
@@ -38,9 +37,9 @@ const SearchBar = () => {
             {/* <Link to={`/shops?search=${data}`} onClick={() => { */}
                 {/* // setSearchParams({ search: data }) */}
             {/* // }}> */}
-            <button type="submit">
+            {/* <button type="submit">
                 <AiOutlineSearch className="cursor-pointer text-xl text-gray-400 w-9 h-9 p-2 rounded-full border border-gray-300 hover:bg-primary hover:text-white transition duration-500 focus:shadow-xl" />
-            </button>
+            </button> */}
             {/* </Link> */}
         </form>
     )

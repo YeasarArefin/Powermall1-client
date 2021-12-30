@@ -21,7 +21,7 @@ const MainFooter = () => {
     ]
 
     const contact = [
-        { id: 1, name: 'Contact Us', link: '/' },
+        { id: 1, name: 'Contact Us', link: '/contact' },
         { id: 2, name: 'FAQ', link: '/' },
         { id: 3, name: 'Shipping & Delivery', link: '/' },
         { id: 4, name: 'Return & Refund', link: '/' },
