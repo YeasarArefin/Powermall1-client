@@ -8,19 +8,19 @@ import useCart from '../../hooks/useCart';
 const ProductCard = (props) => {
     const { handleClick, cart } = useCart();
     const { _id, name, price, img, discount, quantity, color } = props;
-    const priceInNum = parseFloat(price)
+    const priceInNum = parseFloat(price);
     const disCountedPrice = priceInNum - (discount / 100) * priceInNum;
     const image = img.split(',');
     const pdColor = color?.split(',');
-    const newProduct = { ...props }
-    newProduct['pdQuantity'] = 1
-    newProduct['pdColor'] = pdColor?.[0]
+    const newProduct = { ...props };
+    newProduct['pdQuantity'] = 1;
+    newProduct['pdColor'] = pdColor?.[0];
 
     const navigate = useNavigate();
 
-    const findPd = cart?.find(item => item._id === _id)
+    const findPd = cart?.find(item => item._id === _id);
 
-    
+
     return (
         <Slide bottom>
             <div className="rounded-lg p-4 box-border hover:translate-y-4 transform transition duration-500 h-full flex flex-col justify-between hover:shadow-xl bg-white">
@@ -67,8 +67,8 @@ const ProductCard = (props) => {
                             ) : (
                                 <>
                                     <div>
-                                        <button  className= " bg-white hover:bg-gray-100  ring-blue-200 ring-offset-2 px-3 py-2 rounded-full border border-gray-300 text-primary focus:ring-4 transition duration-300   uppercase text-sm flex items-center space-x-1" onClick={() => {
-                                            handleClick(newProduct)
+                                        <button className=" bg-white hover:bg-gray-100  ring-blue-200 ring-offset-2 px-3 py-2 rounded-full border border-gray-300 text-primary focus:ring-4 transition duration-300   uppercase text-sm flex items-center space-x-1" onClick={() => {
+                                            handleClick(newProduct);
                                         }}>
                                             <BsCartCheckFill className="text-lg" />
                                             <span className="text-sm">Cart</span>
@@ -84,7 +84,7 @@ const ProductCard = (props) => {
 
             </div>
         </Slide>
-    )
-}
+    );
+};
 
-export default ProductCard
+export default ProductCard;

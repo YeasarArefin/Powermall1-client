@@ -70,7 +70,7 @@ const AcCategory = () => {
                 </div>
             </section>
         </>
-    )
-}
+    );
+};
 
-export default AcCategory
+export default AcCategory;

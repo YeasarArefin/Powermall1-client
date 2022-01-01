@@ -1,15 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { MdClose } from 'react-icons/md';
-import { Link } from 'react-router-dom';
 
 const OfferNav = ({ setShowOffer }) => {
-    const [notification, setNotification] = useState({})
+    const [notification, setNotification] = useState({});
 
     useEffect(() => {
         axios.get("https://electro-comers-server.herokuapp.com/notification/61c4ec647808158ad961db48")
-            .then(res => setNotification(res?.data))
-    }, [notification?.status])
+            .then(res => setNotification(res?.data));
+    }, [notification]);
 
     return (
         notification?.status?.toLowerCase() === "on" && (
@@ -19,7 +18,7 @@ const OfferNav = ({ setShowOffer }) => {
                         {/* text  */}
                         <div className='flex items-center space-x-2 flex-grow justify-center'>
                             <p>{notification?.message}</p>
-                            <Link to="/shops"> <ins>Shop Now</ins></Link>
+                            <a href={notification?.link} target='_blank'> <ins>{notification?.name}</ins></a>
                         </div>
 
                         {/* close  */}
@@ -30,7 +29,7 @@ const OfferNav = ({ setShowOffer }) => {
                 </div>
             </>
         )
-    )
-}
+    );
+};
 
-export default OfferNav
+export default OfferNav;

@@ -18,14 +18,14 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
     const { cart, setCart } = useCart();
     const { newUser } = useAuth();
     const [info, setInfo] = useState();
-    const [disabled, setDisabled] = useState(false)
+    const [disabled, setDisabled] = useState(false);
     const [coupon, setCoupon] = useState([]);
-    const [usedCoupon, setUsedCoupon] = useState({})
-    const [findedCoupon, setFindedCoupon] = useState({})
+    const [usedCoupon, setUsedCoupon] = useState({});
+    const [findedCoupon, setFindedCoupon] = useState({});
     const { register, handleSubmit } = useForm();
     const [totalPrice, setTotalPrice] = useState();
     let price = 0;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [couponCheck, setCouponCheck] = useState(
         getSessionStorageOrDefault('coupons', [])
     );
@@ -33,29 +33,29 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
     useEffect(() => {
         sessionStorage.setItem('coupons', JSON.stringify(couponCheck));
     }, [couponCheck]);
-  
+
     // price 
     for (var i = 0; i < cart.length; i++) {
         price += (cart[i].price - (cart[i].price * cart[i].discount / 100)) * (cart[i].pdQuantity);
     }
 
     useEffect(() => {
-        setTotalPrice(price + parseFloat(info?.cost));
-    }, [price, info?.cost])
+        setTotalPrice(price + parseFloat(info?.insidecost));
+    }, [price, info?.insidecost]);
 
     useEffect(() => {
         if (disabled) {
-            setPrice(totalPrice)
+            setPrice(totalPrice);
         } else {
-            setPrice(price + parseFloat(info?.cost))
+            setPrice(price + parseFloat(info?.insidecost));
 
         }
-    }, [price, setPrice, info?.cost, disabled, totalPrice])
+    }, [price, setPrice, info?.insidecost, disabled, totalPrice]);
 
     //information api
     useEffect(() => {
         axios.get('https://electro-comers-server.herokuapp.com/information')
-            .then(res => setInfo(res.data[0]))
+            .then(res => setInfo(res.data[0]));
     }, []);
 
 
@@ -63,7 +63,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
     //coupons api
     useEffect(() => {
         axios.get('https://electro-comers-server.herokuapp.com/coupons')
-            .then(res => setCoupon(res.data))
+            .then(res => setCoupon(res.data));
     }, []);
 
 
@@ -72,47 +72,47 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
         if (data) {
             //find coupon
             const couponFind = coupon.find(item => item?.code === data.coupon);
-            setFindedCoupon(couponFind)
+            setFindedCoupon(couponFind);
             if (newUser?.usedCoupon) {
                 if (newUser?.usedCoupon?.find(item => item?._id === couponFind?._id)) {
-                    swal("Something went wrong!", "You have already used this coupon", "error")
+                    swal("Something went wrong!", "You have already used this coupon", "error");
                     return;
                 }
             }
 
             //validate when user gibe wrong coupon
             if (!couponFind) {
-                swal("Something went wrong!", "Coupon isn't existed", "error")
+                swal("Something went wrong!", "Coupon isn't existed", "error");
                 return;
             }
 
             //expired checking
-            if (couponFind?.end === new Date().toLocaleDateString()){
-                swal("Something went wrong!", "Coupon has expired!!", "error")
+            if (couponFind?.end === new Date().toLocaleDateString()) {
+                swal("Something went wrong!", "Coupon has expired!!", "error");
                 return;
             }
 
             //coupon check from session storage
-            const couponFindSS = couponCheck.find(item => item?.code === data.coupon)
+            const couponFindSS = couponCheck.find(item => item?.code === data.coupon);
 
-            if (couponFindSS){
-                setDisabled(true)
+            if (couponFindSS) {
+                setDisabled(true);
             }
 
-            if(!couponFindSS){
-                setCouponCheck([...couponCheck, couponFind])
+            if (!couponFindSS) {
+                setCouponCheck([...couponCheck, couponFind]);
 
             }
 
 
-            const addCouponPrice = totalPrice - parseFloat(couponFind?.ammount)
-            setTotalPrice(addCouponPrice)
-            newUser?.usedCoupon?.push(couponFind)
-            setDisabled(true)
-            setUsedCoupon(newUser)
+            const addCouponPrice = totalPrice - parseFloat(couponFind?.ammount);
+            setTotalPrice(addCouponPrice);
+            newUser?.usedCoupon?.push(couponFind);
+            setDisabled(true);
+            setUsedCoupon(newUser);
             swal("Yo!!!", "Successfully coupon applied!!!", "success");
         }
-    }
+    };
 
     //post order function
     const handleSubmitForm = () => {
@@ -120,8 +120,8 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             usedCoupon: usedCoupon?.usedCoupon
         })
             .then(res => {
-                setDisabled(true)
-            })
+                setDisabled(true);
+            });
         // axios.post('http://localhost:5000/init', {
         //     ...order, time: new Date().toLocaleTimeString()
         // })
@@ -139,12 +139,12 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             .then(res => {
                 swal("Yo!!!", "Successfully order done!!!", "success");
                 //add used coupon to user object 
-                setCart([])
-                navigate('/order-successful')
+                setCart([]);
+                navigate('/order-successful');
             }).catch((err) => {
-                swal("Something went wrong!", `${err.message}`, "error")
-            })
-    }
+                swal("Something went wrong!", `${err.message}`, "error");
+            });
+    };
 
     return (
         <div className='flex flex-col py-6' >
@@ -156,7 +156,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             {/* Shipping free  */}
             <div className='flex justify-between text-gray-500 text-base py-3 border-b border-gray-200'>
                 <span>Shipping Fee</span>
-                <span>&#2547; {parseFloat(info?.cost)}</span>
+                <span>&#2547; {parseFloat(info?.insidecost)}</span>
             </div>
 
             {/* coupon  */}
@@ -175,7 +175,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
 
             <button disabled={!btnCick} className={`${!btnCick ? " bg-gray-500 text-gray-100 opacity-20" : " bg-primary text-white hover:bg-blue-500 "}mt-6  w-full py-3 rounded-md  `} onClick={handleSubmitForm}>Proceed to pay</button>
         </div>
-    )
-}
+    );
+};
 
-export default OrderSummary
+export default OrderSummary;

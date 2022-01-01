@@ -8,12 +8,14 @@ import "swiper/swiper.min.css";
 SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
 
 const Slider = () => {
-    const [image,setImage] = useState([]);
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         axios.get('https://electro-comers-server.herokuapp.com/headerbanner')
-        .then(res => setImage(res?.data?.[0]?.img?.split(',')))
-    }, [image])
+            .then(res => setImages(res.data));
+    }, [images]);
+
+    console.log(images);
 
     return (
         <section id="hero" className='lg:h-96 overflow-hidden'>
@@ -21,14 +23,16 @@ const Slider = () => {
                 delay: 2000,
                 disableOnInteraction: false
             }} speed={150} className="mySwiper">
-                {image?.map((item,index) => (
-                    <SwiperSlide key={index}>
-                        <img className="object-cover w-full" src={item} alt="slider" />
+                {images?.map((image) => (
+                    <SwiperSlide key={image?._id}>
+                        <a href={image?.link} target="_blank">
+                            <img className="object-cover w-full h-96 rounded-xl" src={image?.img} alt="slider" />
+                        </a>
                     </SwiperSlide>
                 ))}
             </Swiper>
         </section>
-    )
-}
+    );
+};
 
-export default Slider
+export default Slider;
