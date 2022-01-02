@@ -36,13 +36,13 @@ const Orders = () => {
                     axios.get(`https://electro-shop-server.herokuapp.com/orders/${id}`)
                         .then(res => {
 
-                            if (res.status == 200) {
+                            if (res.status === 200) {
 
                                 const product = res.data;
 
                                 axios.post('https://electro-comers-server.herokuapp.com/refunds', product)
                                     .then(res => {
-                                        if (res.status == 200) {
+                                        if (res.status === 200) {
 
                                             console.log(res);
 

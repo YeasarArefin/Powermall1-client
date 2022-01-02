@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { BsBagCheckFill, BsCartCheckFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
-import Swal from 'sweetalert';
 
 const ProductDescription = (props) => {
     const [quantity, setQuantity] = React.useState(1);

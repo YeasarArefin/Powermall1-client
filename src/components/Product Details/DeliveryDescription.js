@@ -75,7 +75,7 @@ const DeliveryDescription = (props) => {
                                 </div>
                             </div>
 
-                        ) : pdInfo?.delivery == "Global Purchase" ? (
+                        ) : pdInfo?.delivery === "Global Purchase" ? (
 
                             <div className='flex items-center gap-x-3 text-gray-600'>
                                 <MdOutlineLocalShipping className='text-2xl -ml-1' />
@@ -83,19 +83,19 @@ const DeliveryDescription = (props) => {
                                 <span className='text-sm text-gray-600 font-medium'>&#2547; {info?.globalcost}</span>
                             </div>
 
-                        ) : pdInfo?.delivery == "Automotive" ? (
+                        ) : pdInfo?.delivery === "Automotive" ? (
                             <div className='flex items-center gap-x-3 text-gray-600'>
                                 <MdOutlineLocalShipping className='text-2xl -ml-1' />
                                 <h1 className='font-medium'>{pdInfo?.delivery}</h1>
                                 <span className='text-sm text-gray-600 font-medium'>&#2547; {info?.automotivecost}</span>
                             </div>
-                        ) : pdInfo?.delivery == "Drone Service" ? (
+                        ) : pdInfo?.delivery === "Drone Service" ? (
                             <div className='flex items-center gap-x-3 text-gray-600'>
                                 <MdOutlineLocalShipping className='text-2xl -ml-1' />
                                 <h1 className='font-medium'>{pdInfo?.delivery}</h1>
                                 <span className='text-sm text-gray-600 font-medium'>&#2547; {info?.dronecost}</span>
                             </div>
-                        ) : pdInfo?.delivery == "Free Shipping" && (
+                        ) : pdInfo?.delivery === "Free Shipping" && (
                             <div className='flex items-center gap-x-3 text-gray-600'>
                                 <MdOutlineLocalShipping className='text-2xl -ml-1' />
                                 <h1 className='font-medium'>{pdInfo?.delivery}</h1>
