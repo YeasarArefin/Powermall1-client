@@ -40,7 +40,7 @@ const Orders = () => {
 
                                 const product = res.data;
 
-                                axios.post('http://localhost:5000/refunds', product)
+                                axios.post('https://electro-comers-server.herokuapp.com/refunds', product)
                                     .then(res => {
                                         if (res.status == 200) {
 

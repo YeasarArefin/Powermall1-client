@@ -122,7 +122,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             .then(res => {
                 setDisabled(true);
             });
-        // axios.post('http://localhost:5000/init', {
+        // axios.post('https://electro-comers-server.herokuapp.com/init', {
         //     ...order, time: new Date().toLocaleTimeString()
         // })
         //     .then(res => {
