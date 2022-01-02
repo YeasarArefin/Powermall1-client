@@ -8,7 +8,7 @@ import useAuth from '../../hooks/useAuth';
 import AddressModal from './AddressModal';
 
 const DeliveryDescription = (props) => {
-    const { warenty, delivery } = props;
+    const { warenty } = props;
     const [open, setOpen] = useState(false);
     const { newUser } = useAuth();
     const [info, setInfo] = useState();
@@ -24,7 +24,7 @@ const DeliveryDescription = (props) => {
 
         axios.get(`https://electro-comers-server.herokuapp.com/products/${id}`)
             .then(res => setPdInfo(res.data));
-    }, []);
+    }, [id]);
 
     return (
         <div className='bg-gray-50 h-full py-6 px-3'>
@@ -55,7 +55,7 @@ const DeliveryDescription = (props) => {
                     </div>
 
                     {
-                        pdInfo?.delivery == "Paid Shipping" ? (
+                        pdInfo?.delivery === "Paid Shipping" ? (
 
                             <div className='flex flex-col gap-y-3'>
                                 <div className='flex gap-x-5'>
@@ -75,10 +75,31 @@ const DeliveryDescription = (props) => {
                                 </div>
                             </div>
 
-                        ) : (
+                        ) : pdInfo?.delivery == "Global Purchase" ? (
+
                             <div className='flex items-center gap-x-3 text-gray-600'>
                                 <MdOutlineLocalShipping className='text-2xl -ml-1' />
                                 <h1 className='font-medium'>{pdInfo?.delivery}</h1>
+                                <span className='text-sm text-gray-600 font-medium'>&#2547; {info?.globalcost}</span>
+                            </div>
+
+                        ) : pdInfo?.delivery == "Automotive" ? (
+                            <div className='flex items-center gap-x-3 text-gray-600'>
+                                <MdOutlineLocalShipping className='text-2xl -ml-1' />
+                                <h1 className='font-medium'>{pdInfo?.delivery}</h1>
+                                <span className='text-sm text-gray-600 font-medium'>&#2547; {info?.automotivecost}</span>
+                            </div>
+                        ) : pdInfo?.delivery == "Drone Service" ? (
+                            <div className='flex items-center gap-x-3 text-gray-600'>
+                                <MdOutlineLocalShipping className='text-2xl -ml-1' />
+                                <h1 className='font-medium'>{pdInfo?.delivery}</h1>
+                                <span className='text-sm text-gray-600 font-medium'>&#2547; {info?.dronecost}</span>
+                            </div>
+                        ) : pdInfo?.delivery == "Free Shipping" && (
+                            <div className='flex items-center gap-x-3 text-gray-600'>
+                                <MdOutlineLocalShipping className='text-2xl -ml-1' />
+                                <h1 className='font-medium'>{pdInfo?.delivery}</h1>
+                                <span className='text-sm text-gray-600 font-medium'>&#2547; 0</span>
                             </div>
                         )
                     }

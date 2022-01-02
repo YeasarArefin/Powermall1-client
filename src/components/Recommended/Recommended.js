@@ -23,7 +23,7 @@ const Recommended = () => {
                         <Slide bottom key={image?._id}>
                             <div className="col-span-1">
                                 <div className="flex flex-col items-center overflow-hidden rounded-lg">
-                                    <a href={image?.link} target='_blank'>
+                                    <a href={image?.link} target='_blank' rel='noreferrer'>
                                         <img src={image?.img} alt="recommended" className="w-full h-56 object-cover rounded-lg shadow-lg hover:scale-125 transform transition duration-500" />
                                     </a>
                                 </div>

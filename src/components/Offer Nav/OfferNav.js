@@ -18,7 +18,7 @@ const OfferNav = ({ setShowOffer }) => {
                         {/* text  */}
                         <div className='flex items-center space-x-2 flex-grow justify-center'>
                             <p>{notification?.message}</p>
-                            <a href={notification?.link} target='_blank'> <ins>{notification?.name}</ins></a>
+                            <a href={notification?.link} target='_blank' rel='noreferrer'> <ins>{notification?.name}</ins></a>
                         </div>
 
                         {/* close  */}

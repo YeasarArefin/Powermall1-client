@@ -13,7 +13,7 @@ const BigBanner = () => {
     return (
         <Slide bottom>
             <section className="h-72 mb-8 rounded-lg overflow-hidden">
-                <a href={images[0]?.link} target="_blank">
+                <a href={images[0]?.link} target="_blank" rel='noreferrer'>
                     <img className='w-full h-full object-cover' src={images[0]?.img} alt="banner" />
                 </a>
             </section>

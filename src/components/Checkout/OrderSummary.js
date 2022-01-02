@@ -134,7 +134,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
         //         swal("Something went wrong!", `${err.message}`, "error")
         //     })
         axios.post('https://electro-shop-server.herokuapp.com/orders', {
-            ...order, time: new Date().toLocaleTimeString()
+            ...order, time: new Date().toLocaleTimeString(), refund: 'Refund'
         })
             .then(res => {
                 swal("Yo!!!", "Successfully order done!!!", "success");
