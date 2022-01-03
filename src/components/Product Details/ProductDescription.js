@@ -16,6 +16,7 @@ const ProductDescription = (props) => {
     const newProduct = { ...props };
     newProduct['pdQuantity'] = quantity;
 
+    console.log(newProduct, "descriptioin")
     const handleIncrease = () => {
         newProduct['pdQuantity'] = quantity + 1;
         setQuantity(newProduct.pdQuantity);

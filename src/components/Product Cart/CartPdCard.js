@@ -1,20 +1,55 @@
 import React from 'react';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { RiCloseLine } from 'react-icons/ri';
 import useCart from '../../hooks/useCart';
 
 const CartPdCard = (props) => {
+    const [quantity, setQuantity] = React.useState(1);
     const { cart, setCart } = useCart()
     const { _id, name, price, img, pdQuantity, discount } = props;
     const image = img.split(',');
     const newPrice = parseFloat(price);
     const discountPrice = parseFloat(discount);
+    const newProduct = { ...props };
+    // newProduct['pdQuantity'] = quantity;
+
+    newProduct.pdQuantity = quantity
+    console.log(newProduct,'kabid')
 
     const handleDelete = (id) => {
         setCart(cart.filter(item => item._id !== id))
     }
+
+    const handleIncrease = () => {
+        newProduct.pdQuantity = quantity + 1;
+        setQuantity(pdQuantity);
+    };
+
+    const handleDecrease = () => {
+        if (quantity > 1) {
+            newProduct.pdQuantity = quantity - 1;
+            setQuantity(pdQuantity);
+        } else {
+            newProduct.pdQuantity = 1;
+            setQuantity(1);
+        }
+    };
+
     return (
         <div className='my-3 mx-1 rounded-md border border-gray-200'>
             <div className="px-3 py-4 flex justify-between space-x-1 bg-white shadow-lg">
+
+                {/* quanityty  */}
+                <div className='flex flex-col items-center space-y-1'>
+                    <button onClick={handleDecrease}>
+                        <AiOutlineMinus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                    </button>
+                    <span className='text-gray-700 font-semibold select-none'>{newProduct?.pdQuantity}</span>
+                    <button onClick={handleIncrease}>
+                        <AiOutlinePlus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                    </button>
+                </div>
+
                 {/* image  */}
                 <div>
                     <img src={image?.[0]} alt={_id} className='object-contain w-16' />

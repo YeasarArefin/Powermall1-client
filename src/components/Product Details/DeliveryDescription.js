@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { BsCash } from 'react-icons/bs';
-import { MdDeliveryDining, MdOutlineClose, MdOutlineCheck, MdOutlineLocalShipping, MdOutlineLocationOn, MdOutlineModelTraining } from 'react-icons/md';
-import { TiLocationOutline } from 'react-icons/ti';
+import { BsBoxArrowInDownLeft, BsBoxArrowInUpRight, BsCash } from 'react-icons/bs';
+import { MdDeliveryDining, MdOutlineCheck, MdOutlineClose, MdOutlineLocalShipping, MdOutlineLocationOn, MdOutlineModelTraining } from 'react-icons/md';
 import { Link, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import AddressModal from './AddressModal';
@@ -60,15 +59,15 @@ const DeliveryDescription = (props) => {
                             <div className='flex flex-col gap-y-3'>
                                 <div className='flex gap-x-5'>
 
-                                    <TiLocationOutline className='text-xl' />
-                                    <h1 className='text-sm text-gra'>Inside Dhaka</h1>
+                                    <BsBoxArrowInDownLeft className='text-3xl text-gray-600 w-8' />
+                                    <h1 className='text-sm text-gray-600'>Inside Dhaka</h1>
                                     <span className='text-sm text-gray-600 ml-3 font-medium'>&#2547; {info?.insidecost}</span>
 
                                 </div>
 
                                 <div className='flex gap-x-5'>
 
-                                    <TiLocationOutline className='text-xl' />
+                                    <BsBoxArrowInUpRight className='text-3xl text-gray-600 w-8' />
                                     <h1 className='text-sm text-gra'>Outside Dhaka</h1>
                                     <span className='text-sm text-gray-600 font-medium'>&#2547; {info?.outsidecost}</span>
 

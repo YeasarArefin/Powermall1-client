@@ -32,7 +32,7 @@ const ProductsCategory = () => {
                     return (
                         pdFound?.length !== 0 && (
                             <>
-                                <SectionTitle title={item?.category} />
+                                <SectionTitle title={item?.category} slug={item?.slug} />
                                 <Swiper
                                     slidesPerView={4}
                                     centeredSlides={false}

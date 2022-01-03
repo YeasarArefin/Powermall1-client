@@ -4,33 +4,29 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
-const SignUpForm = () => {
+const SignUpPhoneForm = () => {
     const { register, handleSubmit } = useForm();
-    const { signUpUser, signInWithGoogle } = useAuth()
+    const { signInWithGoogle, signInWithPhone} = useAuth()
 
     const onSubmit = async (data) => {
-        await signUpUser(data.email, data.password, data.name)
+        await signInWithPhone(data.phone)
     }
 
 
     return (
         <div className='my-6 bg-white p-4 py-8 box-border rounded-lg'>
+            {/* <button onClick={signInWithPhone}>Get OTP</button> */}
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex flex-col space-y-4">
                     <div className="flex flex-col space-y-2">
                         <label htmlFor="name" className='text-gray-600 text-base'>Name</label>
-                        <input className="input" type="text" name="input" id="name" placeholder='John Doe' {...register("name", { required: true })} />
+                        <input className="input" type="text" name="input" id="name" placeholder='John Doe' {...register("name", { required: false })} />
                     </div>
                     <div className="flex flex-col space-y-2">
-                        <label htmlFor="email" className='text-gray-600 text-base'>Email</label>
-                        <input className="input" type="email" name="input" id="email" placeholder='example@gmail.com'  {...register("email", { required: true })}/>
+                        <label htmlFor="phone" className='text-gray-600 text-base'>Phone Number</label>
+                        <input className="input" type="number" name="input" id="phone" placeholder='+8801408732342'  {...register("phone", { required: true })} />
                     </div>
-                    <div className="flex flex-col space-y-2">
-                        <label htmlFor="password" className='text-gray-600 text-base flex justify-between items-center'>
-                            <span>Password (At least 6 characters)</span>
-                        </label>
-                        <input type="password" name="input" id="password" className="input" placeholder='********' {...register("password", { required: true })}/>
-                    </div>
+                    
 
                     {/* Sign button  */}
                     <div className='py-4'>
@@ -57,4 +53,4 @@ const SignUpForm = () => {
     )
 }
 
-export default SignUpForm
+export default SignUpPhoneForm

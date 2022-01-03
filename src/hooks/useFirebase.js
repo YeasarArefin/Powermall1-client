@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, RecaptchaVerifier, signInWithEmailAndPassword, signInWithPhoneNumber, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -37,6 +37,8 @@ const useFirebase = () => {
             unsubscribed();
         }
     }, [auth])
+
+    
 
     //sign up functionality
     const signUpUser = (email, password, name) => {
@@ -128,6 +130,33 @@ const useFirebase = () => {
             }).catch(err => console.log(err.message)).finally(() => setIsLoading(false));
     }
 
+    //phone number sign in 
+    const signInWithPhone = (phone) => {
+        // window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
+
+        // const appVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
+        const appVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
+        console.log(appVerifier)
+
+        signInWithPhoneNumber(auth, phone, appVerifier)
+            .then((confirmationResult) => {
+                alert('f')
+                // SMS sent. Prompt user to type the code from the message, then sign the
+                // user in with confirmationResult.confirm(code).
+                let code = prompt('Enter the otp','');
+                confirmationResult.confirm(code).then(e => {
+                    console.log(e?.user)
+                })
+                window.confirmationResult = confirmationResult;
+                // console.log
+                // ...
+            }).catch((error) => {
+                // Error; SMS not sent
+                // ...
+            });
+
+    }
+
     // sign out 
     const signOutUser = () => {
         setIsLoading(true);
@@ -140,6 +169,7 @@ const useFirebase = () => {
         }).finally(() => setIsLoading(false));
     }
 
+
     return {
         newUser,
         user,
@@ -147,6 +177,7 @@ const useFirebase = () => {
         signInUser,
         signOutUser,
         signInWithGoogle,
+        signInWithPhone,
         isLoading
     }
 }

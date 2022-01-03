@@ -15,7 +15,6 @@ const Slider = () => {
             .then(res => setImages(res.data));
     }, [images]);
 
-    console.log(images);
 
     return (
         <section id="hero" className='lg:h-96 overflow-hidden'>
