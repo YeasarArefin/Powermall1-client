@@ -8,7 +8,7 @@ import useCart from '../../hooks/useCart';
 
 const ProductCard = (props) => {
     const { handleClick, cart } = useCart();
-    const { newUser } = useAuth();
+    // const { newUser } = useAuth();
     const { _id, name, price, img, discount, quantity, color } = props;
     const priceInNum = parseFloat(price);
     const disCountedPrice = priceInNum - (discount / 100) * priceInNum;
