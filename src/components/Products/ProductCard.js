@@ -2,7 +2,6 @@ import React from 'react';
 import { BsCartCheckFill } from 'react-icons/bs';
 import Slide from 'react-reveal/Slide';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
 import useCart from '../../hooks/useCart';
 
 
