@@ -11,16 +11,27 @@ import Orders from './components/Profile/Orders';
 import AuthProvider from './contexts/AuthProvider';
 import CartProvider from './contexts/CartProvider';
 import QuantityProvider from './contexts/QuantityProvider';
+import AboutUsScreen from './pages/AboutUsScreen';
 import Checkout from './pages/Checkout';
 import Contact from './pages/Contact';
+import CookiePolicyScreen from './pages/CookiePolicyScreen';
 import ErrorPage from './pages/ErrorPage';
+import FaqScreen from './pages/FaqScreen';
+import HelpScreen from './pages/HelpScreen';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import OrderSuccessful from './pages/OrderSuccessful';
+import PaymentMethodScreen from './pages/PaymentMethodScreen';
+import PrivacyScreen from './pages/PrivacyScreen';
 import ProductDetails from './pages/ProductDetails';
 import Profile from './pages/Profile';
+import ReturnRefundScreen from './pages/ReturnRefundScreen';
+import ShippingDeliveryScreen from './pages/ShippingDeliveryScreen';
 import Shops from './pages/Shops';
+import ShopWithUsScreen from './pages/ShopWithUsScreen';
 import SignUp from './pages/SignUp';
+import SitemapScreen from './pages/SitemapScreen';
+import TermsScreen from './pages/TermsScreen';
 import PrivateRoute from './routes/PrivateRoute';
 
 const App = () => {
@@ -72,6 +83,17 @@ const App = () => {
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<SignUp />} />
                   <Route path="/shops" element={<Shops />} />
+                  <Route path="/about" element={<AboutUsScreen />} />
+                  <Route path="/privacy" element={<PrivacyScreen />} />
+                  <Route path="/cookiePolicy" element={<CookiePolicyScreen />} />
+                  <Route path="/shopwithus" element={<ShopWithUsScreen />} />
+                  <Route path="/terms" element={<TermsScreen />} />
+                  <Route path="/help" element={<HelpScreen />} />
+                  <Route path="/faq" element={<FaqScreen />} />
+                  <Route path="/shippingdelivery" element={<ShippingDeliveryScreen />} />
+                  <Route path="/returnrefund" element={<ReturnRefundScreen />} />
+                  <Route path="/paymentmethod" element={<PaymentMethodScreen />} />
+                  <Route path="/sitemap" element={<SitemapScreen />} />
                   <Route path="/order-successful" element={<PrivateRoute><OrderSuccessful /></PrivateRoute>} />
                   <Route path="/shops/:id" element={<ProductDetails />} />
                   <Route path="/profile/*" element={<PrivateRoute><Profile /></PrivateRoute>}>

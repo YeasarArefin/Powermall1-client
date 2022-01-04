@@ -71,7 +71,7 @@ const Navbar = () => {
                         {menus?.map(item => {
                             return (
                                 <Link to={item?.link} key={item?.id}>
-                                    <li className='text-gray-600 md:text-sm lg:text-sm xl:text-sm font-semibold'>{item?.name}</li>
+                                    <li className='text-gray-600 md:text-sm lg:text-xs xl:text-sm font-semibold'>{item?.name}</li>
                                 </Link>
                             );
                         })}

@@ -12,21 +12,21 @@ const MainFooter = () => {
     }, []);
 
     const about = [
-        { id: 1, name: 'About Us', link: '/' },
-        { id: 2, name: 'Privacy Policy ', link: '/' },
-        { id: 3, name: 'Cookie Policy', link: '/' },
-        { id: 4, name: 'Why Shop with Us', link: '/' },
-        { id: 5, name: 'Terms & Conditions', link: '/' },
-        { id: 6, name: 'Help', link: '/' },
+        { id: 1, name: 'About Us', link: '/about' },
+        { id: 2, name: 'Privacy Policy ', link: '/privacy' },
+        { id: 3, name: 'Cookie Policy', link: '/cookiePolicy' },
+        { id: 4, name: 'Why Shop with Us', link: '/shopwithus' },
+        { id: 5, name: 'Terms & Conditions', link: '/terms' },
+        { id: 6, name: 'Help', link: '/help' },
     ]
 
     const contact = [
         { id: 1, name: 'Contact Us', link: '/contact' },
-        { id: 2, name: 'FAQ', link: '/' },
-        { id: 3, name: 'Shipping & Delivery', link: '/' },
-        { id: 4, name: 'Return & Refund', link: '/' },
-        { id: 5, name: 'Payment Methods', link: '/' },
-        { id: 6, name: 'Sitemap', link: '/' },
+        { id: 2, name: 'FAQ', link: '/faq' },
+        { id: 3, name: 'Shipping & Delivery', link: '/shippingdelivery' },
+        { id: 4, name: 'Return & Refund', link: '/returnrefund' },
+        { id: 5, name: 'Payment Methods', link: '/paymentmethod' },
+        { id: 6, name: 'Sitemap', link: '/sitemap' },
     ]
 
     const app = [
