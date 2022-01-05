@@ -11,7 +11,6 @@ const CartSideBar = ({ setShow }) => {
     let price = 0;
     let quantity = 0;
 
-
     // price 
     for (var i = 0; i < cart.length; i++) {
         price += (cart[i].price - (cart[i].price * cart[i].discount / 100)) * (cart[i].pdQuantity);
@@ -23,6 +22,7 @@ const CartSideBar = ({ setShow }) => {
     }
 
     //delete 
+    localStorage.setItem('cart',JSON.stringify(cart))
 
 
     return (

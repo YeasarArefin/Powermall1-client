@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsCartCheckFill } from 'react-icons/bs';
 import Slide from 'react-reveal/Slide';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import useCart from '../../hooks/useCart';
 
 
 const ProductCard = (props) => {
+    const [tempPd,setTempPd] = useState([])
     const { handleClick, cart } = useCart();
     // const { newUser } = useAuth();
     const { _id, name, price, img, discount, quantity, color } = props;
@@ -16,7 +17,6 @@ const ProductCard = (props) => {
     const newProduct = { ...props };
     newProduct['pdQuantity'] = 1;
     newProduct['pdColor'] = pdColor?.[0];
-
     const navigate = useNavigate();
 
     const findPd = cart?.find(item => item._id === _id);
@@ -24,12 +24,8 @@ const ProductCard = (props) => {
     //handle add to cart 
     const handleCart = () => {
         handleClick(newProduct)
-        // axios.put(`https://electro-shop-server.herokuapp.com/users/${newUser._id}`, {
-        //     cart: cart
-        // })
-        //     .then(res => {
-
-        //     });
+        setTempPd([...tempPd,newProduct])
+        localStorage.setItem('cart', JSON.stringify(tempPd));
         
     }
 

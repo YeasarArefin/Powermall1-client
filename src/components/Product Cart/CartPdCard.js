@@ -4,33 +4,40 @@ import { RiCloseLine } from 'react-icons/ri';
 import useCart from '../../hooks/useCart';
 
 const CartPdCard = (props) => {
-    const [quantity, setQuantity] = React.useState(1);
+    const [quantity, setQuantity] = React.useState(props.pdQuantity);
     const { cart, setCart } = useCart()
-    const { _id, name, price, img, pdQuantity, discount } = props;
+    const { _id, name, price, img, discount } = props;
     const image = img.split(',');
     const newPrice = parseFloat(price);
     const discountPrice = parseFloat(discount);
     const newProduct = { ...props };
     // newProduct['pdQuantity'] = quantity;
-
+    const getALlPD = localStorage.getItem('cart');
+    const parsedPd = JSON.parse(getALlPD)
+    const getThisPD = parsedPd?.find(item => item?._id === _id)
+    console.log(getThisPD)
     newProduct.pdQuantity = quantity
-    console.log(newProduct,'kabid')
+    // getThisPD?.pdQuantity = quantity
 
     const handleDelete = (id) => {
         setCart(cart.filter(item => item._id !== id))
+        localStorage.removeItem(getThisPD);
     }
 
     const handleIncrease = () => {
         newProduct.pdQuantity = quantity + 1;
-        setQuantity(pdQuantity);
+        localStorage.setItem('cart', JSON.stringify([newProduct]));
+        setQuantity(quantity + 1);
     };
 
     const handleDecrease = () => {
         if (quantity > 1) {
             newProduct.pdQuantity = quantity - 1;
-            setQuantity(pdQuantity);
+            localStorage.setItem('cart', JSON.stringify([newProduct]));
+            setQuantity(quantity - 1);
         } else {
             newProduct.pdQuantity = 1;
+            localStorage.setItem('cart', JSON.stringify([newProduct]));
             setQuantity(1);
         }
     };
@@ -44,7 +51,7 @@ const CartPdCard = (props) => {
                     <button onClick={handleDecrease}>
                         <AiOutlineMinus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
                     </button>
-                    <span className='text-gray-700 font-semibold select-none'>{newProduct?.pdQuantity}</span>
+                    <span className='text-gray-700 font-semibold select-none'>{getThisPD?.pdQuantity}</span>
                     <button onClick={handleIncrease}>
                         <AiOutlinePlus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
                     </button>
@@ -58,13 +65,13 @@ const CartPdCard = (props) => {
                 {/* infos  */}
                 <div className="flex flex-col space-y-2">
                     <h1 className='break-all text-sm'>{name}</h1>
-                    <p className='text-primary'>&#2547; {newPrice - newPrice * discountPrice / 100} <span className='text-gray-600'>({pdQuantity} pcs)</span></p>
+                    <p className='text-primary'>&#2547; {newPrice - newPrice * discountPrice / 100} <span className='text-gray-600'>({getThisPD?.pdQuantity} pcs)</span></p>
 
                 </div>
 
                 {/* price  */}
                 <div className='flex flex-col justify-center'>
-                    <h2 className='text-gray-700'>&#2547; {(newPrice - newPrice * discountPrice / 100) * pdQuantity}</h2>
+                    <h2 className='text-gray-700'>&#2547; {(newPrice - newPrice * discountPrice / 100) * getThisPD?.pdQuantity}</h2>
                 </div>
 
                 {/* action  */}

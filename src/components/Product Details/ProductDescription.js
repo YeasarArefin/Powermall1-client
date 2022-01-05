@@ -14,6 +14,8 @@ const ProductDescription = (props) => {
     const image = img?.split(',');
     const pdColor = color?.split(',');
     const newProduct = { ...props };
+    const localQuantity = localStorage.getItem('quantity')
+
     newProduct['pdQuantity'] = quantity;
 
     console.log(newProduct, "descriptioin")
