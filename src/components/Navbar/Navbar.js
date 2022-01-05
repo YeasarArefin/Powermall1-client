@@ -43,7 +43,7 @@ const Navbar = () => {
     window.addEventListener('resize', changeNav);
 
     return (
-        <header className="bg-white">
+        <header className="bg-white border-b border-gray-200">
             {/* desktop nav  */}
             <nav className="flex items-center max-w-screen-2xl mx-auto px-6 py-3">
                 <div className="flex flex-grow justify-around items-center space-x-6">

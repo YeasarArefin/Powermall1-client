@@ -6,32 +6,35 @@ import Brand from '../Navbar/Brand';
 
 const MainFooter = () => {
     const [info, setInfo] = useState();
+    const [applink,setAppLink] = useState([]);
+
     useEffect(() => {
         axios.get('https://electro-comers-server.herokuapp.com/information')
             .then(res => setInfo(res.data[0]))
     }, []);
 
+    useEffect(() => {
+        axios.get('https://electro-comers-server.herokuapp.com/applink')
+            .then(res => setAppLink(res.data[0]))
+    }, []);
+
     const about = [
         { id: 1, name: 'About Us', link: '/about' },
         { id: 2, name: 'Privacy Policy ', link: '/privacy' },
-        { id: 3, name: 'Cookie Policy', link: '/cookiePolicy' },
-        { id: 4, name: 'Why Shop with Us', link: '/shopwithus' },
+        { id: 3, name: 'Why Shop with Us', link: '/shopwithus' },
         { id: 5, name: 'Terms & Conditions', link: '/terms' },
-        { id: 6, name: 'Help', link: '/help' },
     ]
 
     const contact = [
         { id: 1, name: 'Contact Us', link: '/contact' },
-        { id: 2, name: 'FAQ', link: '/faq' },
         { id: 3, name: 'Shipping & Delivery', link: '/shippingdelivery' },
         { id: 4, name: 'Return & Refund', link: '/returnrefund' },
         { id: 5, name: 'Payment Methods', link: '/paymentmethod' },
-        { id: 6, name: 'Sitemap', link: '/sitemap' },
     ]
 
     const app = [
-        { id: 1, name: 'Download App', link: '/', image:"../../../assets/google.png"},
-        { id: 2, name: 'Download Appstore', link: '/', image:"../../../assets/apple.png"},
+        { id: 1, name: 'Download App', link: `${applink.playStore}`, image:"../../../assets/google.png"},
+        { id: 2, name: 'Download Appstore', link: `${applink.appStore}`, image:"../../../assets/apple.png"},
     ]
 
     return (
@@ -95,9 +98,9 @@ const MainFooter = () => {
                     <h1 className='text-xl text-center lg:text-left text-gray-700'>Download Our App</h1>
                     <div className='flex items-center space-x-4'>
                         {app.map(item => (
-                            <Link key={item.id} to={item.link}>
+                            <a key={item.id} target="_blank" href={item.link} rel="noreferrer">
                                 <img src={item.image} alt={item.name} className='h-12 w-36 object-contain' />
-                            </Link>
+                            </a>
                         ))}
                     </div>
                 </div>

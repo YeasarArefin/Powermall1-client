@@ -40,18 +40,20 @@ const Home = () => {
                 <title>{metaTag?.title}</title>
 
             </Helmet>
-            <main className="max-w-screen-xl mx-auto px-6" style={{ background: '#F4F4FA', height: '100%' }}>
-                <div className='mt-6'>
-                    <Slider />
+            <main style={{ background: '#F4F4FA', height: '100%' }}>
+                <div className="max-w-screen-xl mx-auto px-6" >
+                    <div className='pt-6'>
+                        <Slider />
+                    </div>
+                    <Features />
+                    <BigBanner />
+                    <ProductsCategory />
+                    <BigBanner2 />
+                    <Brands />
+                    <Recommended />
+                    <PopularCategories />
+                    <ToastContainer />
                 </div>
-                <Features />
-                <BigBanner />
-                <ProductsCategory />
-                <BigBanner2 />
-                <Brands />
-                <Recommended />
-                <PopularCategories />
-                <ToastContainer />
             </main>
             <Footer />
         </div>
