@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Slide from 'react-reveal/Slide';
-import SectionTitle from '../Section Title/SectionTitle';
 
 const Recommended = () => {
     const [images, setImages] = useState([]);
@@ -15,7 +14,7 @@ const Recommended = () => {
         <>
             <section className="py-6">
                 {/* title  */}
-                <SectionTitle title="Recommended" />
+                <h1 className="text-primary text-left py-3 capitalize text-2xl font-bold ">Recommended</h1>
 
                 {/* cards  */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-8">

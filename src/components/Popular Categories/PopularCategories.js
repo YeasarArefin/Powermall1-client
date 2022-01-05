@@ -8,7 +8,6 @@ import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { Autoplay, EffectCoverflow, Navigation, Pagination } from 'swiper/core';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
-import SectionTitle from '../Section Title/SectionTitle';
 SwiperCore.use([EffectCoverflow, Pagination, Autoplay, Navigation]);
 
 const PopularCategories = () => {
@@ -25,7 +24,7 @@ const PopularCategories = () => {
     return (
         <>
             <section className="py-6">
-                <SectionTitle title="POPULAR CATEGORIES" />
+                <h1 className="text-primary text-left py-3 capitalize text-2xl font-bold ">Popular Categories</h1>
                 <Swiper
                     loop={true}
                     navigation={true}
