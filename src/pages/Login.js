@@ -11,7 +11,7 @@ const Login = () => {
                 <link rel="canonical" href="https://electro-shop-client.vercel.app/" />
             </Helmet>
             <main className="bg-secondary h-screen w-full ">
-                <div className="max-w-screen-xl mx-auto px-6 flex flex-col my-24 lg:justify-center justify-start">
+                <div className="max-w-screen-xl mx-auto px-6 flex flex-col py-24 lg:justify-center justify-start">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 place-content-center">
                         {/* vector image  */}
                         <div className="hidden lg:block">

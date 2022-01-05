@@ -5,7 +5,7 @@ import SubFooter from './SubFooter'
 
 const Footer = () => {
     return (
-        <footer className='bg-white w-full relative'>
+        <footer className='bg-white w-full relative border-t border-gray-200'>
             <MainFooter />
             <SubFooter />
             <UpArrow />

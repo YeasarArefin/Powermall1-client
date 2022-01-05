@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import Footer from '../components/Footer/Footer';
 
 const ShopWithUsScreen = () => {
     const [item, setItem] = React.useState([])
@@ -11,7 +12,9 @@ const ShopWithUsScreen = () => {
 
     return (
         <div>
-            <div className="preview mt-5 max-w-screen-xl mx-auto px-6" dangerouslySetInnerHTML={{ __html: item?.html }}></div>
+            <div className="preview my-8 max-w-screen-xl mx-auto px-6" dangerouslySetInnerHTML={{ __html: item?.html }}></div>
+            <Footer />
+
         </div>
     )
 }
