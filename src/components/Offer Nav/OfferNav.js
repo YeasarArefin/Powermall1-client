@@ -8,7 +8,7 @@ const OfferNav = ({ setShowOffer }) => {
     useEffect(() => {
         axios.get("https://elec-shop-server.herokuapp.com/notification/61c4ec647808158ad961db48")
             .then(res => setNotification(res?.data));
-    }, [notification]);
+    }, []);
 
     return (
         notification?.status?.toLowerCase() === "on" && (

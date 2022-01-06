@@ -13,7 +13,7 @@ const Slider = () => {
     useEffect(() => {
         axios.get('https://elec-shop-server.herokuapp.com/headerbanner')
             .then(res => setImages(res.data));
-    }, [images]);
+    }, []);
 
 
     return (

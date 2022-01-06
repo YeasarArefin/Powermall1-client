@@ -8,7 +8,7 @@ const BigBanner2 = () => {
     useEffect(() => {
         axios.get('https://elec-shop-server.herokuapp.com/salebanner')
             .then(res => setImage(res.data));
-    }, [images]);
+    }, []);
 
     return (
         <Slide bottom>

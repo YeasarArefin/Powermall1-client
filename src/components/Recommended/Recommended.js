@@ -8,7 +8,7 @@ const Recommended = () => {
     useEffect(() => {
         axios.get('https://elec-shop-server.herokuapp.com/recomendedbanner')
             .then(res => setImages(res.data));
-    }, [images]);
+    }, []);
 
     return (
         <>

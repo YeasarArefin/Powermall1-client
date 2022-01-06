@@ -20,7 +20,7 @@ const useFirebase = () => {
             .then(response => {
                 setNewUser(response.data)
             })
-    }, [user?.email, newUser?.email, newUser , user])
+    }, [user?.email])
 
     //on State Change 
     useEffect(() => {
