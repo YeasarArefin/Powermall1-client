@@ -6,7 +6,7 @@ const BigBanner = () => {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/salebanner')
+        axios.get('https://elec-shop-server.herokuapp.com/salebanner')
             .then(res => setImages(res.data));
     }, [images]);
 

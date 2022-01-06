@@ -6,7 +6,7 @@ const Features = () => {
     const [featuresData, setFeatureData] = useState([]);
 
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/feature')
+        axios.get('https://elec-shop-server.herokuapp.com/feature')
             .then(res => setFeatureData(res?.data))
     }, [])
 

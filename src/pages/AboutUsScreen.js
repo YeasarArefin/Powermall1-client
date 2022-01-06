@@ -6,7 +6,7 @@ const AboutUsScreen = () => {
     const [item,setItem] = useState([])
     
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/aboutus')
+        axios.get('https://elec-shop-server.herokuapp.com/aboutus')
         .then(res => setItem(res.data[0]))
     }, [])
 

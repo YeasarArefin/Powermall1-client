@@ -1,8 +1,8 @@
-import React from 'react'
-import { useForm } from "react-hook-form";
-import useAuth from '../../hooks/useAuth';
-import swal from 'sweetalert';
 import axios from 'axios';
+import React from 'react';
+import { useForm } from "react-hook-form";
+import swal from 'sweetalert';
+import useAuth from '../../hooks/useAuth';
 
 const ContactForm = () => {
     const { register, handleSubmit,reset } = useForm();
@@ -10,7 +10,7 @@ const ContactForm = () => {
 
     const onSubmit = data => {
         data['email'] = newUser?.email
-        axios.post('https://electro-shop-server.herokuapp.com/messages', data)
+        axios.post('https://elec-shop-server.herokuapp.com/messages', data)
         .then((res) => {
             swal("Good job!", "Message Send!!", "success");
             reset()

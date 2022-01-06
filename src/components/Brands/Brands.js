@@ -13,7 +13,7 @@ const Brands = () => {
     const [brands, setBrands] = useState([]);
 
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/brands')
+        axios.get('https://elec-shop-server.herokuapp.com/brands')
             .then(res => setBrands(res?.data))
     }, [])
 

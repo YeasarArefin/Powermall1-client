@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Brand = () => {
     const [logo,setLogo] = useState();
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/logo')
+        axios.get('https://elec-shop-server.herokuapp.com/logo')
             .then(res => setLogo(res.data[0]))
     },[]);
 

@@ -5,7 +5,7 @@ const CookiePolicyScreen = () => {
     const [item, setItem] = React.useState([])
 
     React.useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/cookie')
+        axios.get('https://elec-shop-server.herokuapp.com/cookie')
             .then(res => setItem(res.data[0]))
     }, [])
 

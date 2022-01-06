@@ -18,10 +18,10 @@ const DeliveryDescription = (props) => {
         setOpen(true);
     };
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/information')
+        axios.get('https://elec-shop-server.herokuapp.com/information')
             .then(res => setInfo(res.data[0]));
 
-        axios.get(`https://electro-comers-server.herokuapp.com/products/${id}`)
+        axios.get(`https://elec-shop-server.herokuapp.com/products/${id}`)
             .then(res => setPdInfo(res.data));
     }, [id]);
 

@@ -14,7 +14,7 @@ const ProductDetails = () => {
     const [loading, setLoading] = useState(true)
 
     React.useEffect(() => {
-        fetch(`https://electro-comers-server.herokuapp.com/products/${id}`)
+        fetch(`https://elec-shop-server.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [id])

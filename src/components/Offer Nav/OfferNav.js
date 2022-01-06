@@ -6,7 +6,7 @@ const OfferNav = ({ setShowOffer }) => {
     const [notification, setNotification] = useState({});
 
     useEffect(() => {
-        axios.get("https://electro-comers-server.herokuapp.com/notification/61c4ec647808158ad961db48")
+        axios.get("https://elec-shop-server.herokuapp.com/notification/61c4ec647808158ad961db48")
             .then(res => setNotification(res?.data));
     }, [notification]);
 

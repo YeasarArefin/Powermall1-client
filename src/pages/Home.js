@@ -17,7 +17,7 @@ const Home = () => {
     const [metaTag, setMetaTag] = useState([]);
 
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/seo')
+        axios.get('https://elec-shop-server.herokuapp.com/seo')
             .then(res => setMetaTag(res?.data?.[0]));
     }, []);
 

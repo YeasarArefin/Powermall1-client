@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { useNavigate, useSearchParams } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const SearchBar = () => {
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ const SearchBar = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/products')
+        axios.get('https://elec-shop-server.herokuapp.com/products')
             .then(res => setProducts(res?.data));
     }, []);
 

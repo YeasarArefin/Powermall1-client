@@ -6,7 +6,7 @@ const Recommended = () => {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/recomendedbanner')
+        axios.get('https://elec-shop-server.herokuapp.com/recomendedbanner')
             .then(res => setImages(res.data));
     }, [images]);
 

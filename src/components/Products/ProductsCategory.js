@@ -17,7 +17,7 @@ const ProductsCategory = () => {
     const [products] = useFetch();
 
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/category')
+        axios.get('https://elec-shop-server.herokuapp.com/category')
             .then(res => setCategories(res.data));
     }, []);
 

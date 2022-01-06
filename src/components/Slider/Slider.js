@@ -11,7 +11,7 @@ const Slider = () => {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/headerbanner')
+        axios.get('https://elec-shop-server.herokuapp.com/headerbanner')
             .then(res => setImages(res.data));
     }, [images]);
 

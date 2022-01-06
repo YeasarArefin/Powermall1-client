@@ -16,7 +16,7 @@ const useFirebase = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`https://electro-shop-server.herokuapp.com/users?email=${user?.email}`)
+        axios.get(`https://elec-shop-server.herokuapp.com/users?email=${user?.email}`)
             .then(response => {
                 setNewUser(response.data)
             })
@@ -50,7 +50,7 @@ const useFirebase = () => {
                 }).then(() => {
                     setUser(res?.user);
                     navigate('/')
-                    axios.post('https://electro-shop-server.herokuapp.com/users', {
+                    axios.post('https://elec-shop-server.herokuapp.com/users', {
                         name: res?.user?.displayName,
                         email: res?.user?.email,
                         image: "https://i.ibb.co/tpy9mwM/user.png",
@@ -75,12 +75,12 @@ const useFirebase = () => {
             .then(res => {
                 setUser(res?.user);
                 navigate('/')                
-                axios.get(`https://electro-shop-server.herokuapp.com/users?email=${res?.user?.email}`)
+                axios.get(`https://elec-shop-server.herokuapp.com/users?email=${res?.user?.email}`)
                     .then(response => {
                         if (response?.data?.email === res?.user?.email) {
                             swal("Good job!", "Logged In!", "success");
                         } else {
-                            axios.post('https://electro-shop-server.herokuapp.com/users', {
+                            axios.post('https://elec-shop-server.herokuapp.com/users', {
                                 name: res?.user?.displayName,
                                 email: res.user.email,
                                 image: "https://i.ibb.co/tpy9mwM/user.png",
@@ -108,12 +108,12 @@ const useFirebase = () => {
             .then(res => {
                 setUser(res?.user);
                 navigate('/')
-                axios.get(`https://electro-shop-server.herokuapp.com/users?email=${res?.user?.email}`)
+                axios.get(`https://elec-shop-server.herokuapp.com/users?email=${res?.user?.email}`)
                     .then(response => {
                         if (response?.data?.email === res?.user?.email){
                             swal("Good job!", "Logged In!", "success");
                         }else{
-                            axios.post('https://electro-shop-server.herokuapp.com/users', {
+                            axios.post('https://elec-shop-server.herokuapp.com/users', {
                                 name: res?.user?.displayName,
                                 email: res.user.email,
                                 image: res.user.photoURL,

@@ -13,7 +13,7 @@ const AddressModal = ({ open, setOpen }) => {
 
     const onSubmit = data => {
         console.log(data)
-        axios.put(`https://electro-shop-server.herokuapp.com/users/${newUser._id}`, data)
+        axios.put(`https://elec-shop-server.herokuapp.com/users/${newUser._id}`, data)
             .then(res => {
                 swal("Yo!!!", "Address successfully updated!!!", "success");
                  setOpen(false)

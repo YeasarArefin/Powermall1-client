@@ -9,12 +9,12 @@ const MainFooter = () => {
     const [applink,setAppLink] = useState([]);
 
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/information')
+        axios.get('https://elec-shop-server.herokuapp.com/information')
             .then(res => setInfo(res.data[0]))
     }, []);
 
     useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/applink')
+        axios.get('https://elec-shop-server.herokuapp.com/applink')
             .then(res => setAppLink(res.data[0]))
     }, []);
 

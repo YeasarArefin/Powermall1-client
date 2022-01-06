@@ -6,7 +6,7 @@ const ReturnRefundScreen = () => {
     const [item, setItem] = React.useState([])
 
     React.useEffect(() => {
-        axios.get('https://electro-comers-server.herokuapp.com/refunds')
+        axios.get('https://elec-shop-server.herokuapp.com/refunds')
             .then(res => setItem(res.data[0]))
     }, [])
 
