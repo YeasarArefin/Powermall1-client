@@ -22,9 +22,9 @@ const Navbar = () => {
 
     //menus 
     const menus = [
-        { id: 1, name: 'Free Shipping', link: '/shops' },
-        { id: 2, name: 'Drone Service', link: '/' },
-        { id: 3, name: 'Global Purchase', link: '/' },
+        { id: 1, name: 'Free Shipping', link: '/free' },
+        { id: 2, name: 'Drone Service', link: '/droneservice' },
+        { id: 3, name: 'Global Purchase', link: '/globalpurchase' },
         { id: 4, name: 'Automative', link: '/automative' },
     ];
 

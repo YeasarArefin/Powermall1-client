@@ -12,11 +12,15 @@ import AuthProvider from './contexts/AuthProvider';
 import CartProvider from './contexts/CartProvider';
 import QuantityProvider from './contexts/QuantityProvider';
 import AboutUsScreen from './pages/AboutUsScreen';
+import Automative from './pages/Automative';
 import Checkout from './pages/Checkout';
 import Contact from './pages/Contact';
 import CookiePolicyScreen from './pages/CookiePolicyScreen';
+import DroneService from './pages/DroneService';
 import ErrorPage from './pages/ErrorPage';
 import FaqScreen from './pages/FaqScreen';
+import FreeShipping from './pages/FreeShipping';
+import GlobalPurchase from './pages/GlobalPurchase';
 import HelpScreen from './pages/HelpScreen';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -83,6 +87,10 @@ const App = () => {
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<SignUp />} />
                   <Route path="/shops" element={<Shops />} />
+                  <Route path="/free" element={<FreeShipping />} />
+                  <Route path="/droneservice" element={<DroneService />} />
+                  <Route path="/globalpurchase" element={<GlobalPurchase />} />
+                  <Route path="/automative" element={<Automative />} />
                   <Route path="/about" element={<AboutUsScreen />} />
                   <Route path="/privacy" element={<PrivacyScreen />} />
                   <Route path="/cookiePolicy" element={<CookiePolicyScreen />} />
