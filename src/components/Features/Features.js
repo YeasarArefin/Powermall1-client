@@ -15,7 +15,8 @@ const Features = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-12">
             {featuresData?.map(feature => (
                 <Slide bottom key={feature?._id}>
-                    <div className="rounded-lg hover:shadow-xl transform hover:translate-y-4 overflow-hidden h-52 transition duration-500" style={{ background: `url(${feature?.img})` }}>
+                    <a href={`${feature?.link}`} target="_blank" rel="noopener noreferrer">
+                    <div className="rounded-lg cursor-pointer hover:shadow-xl transform hover:translate-y-4 overflow-hidden h-52 transition duration-500" style={{ background: `url(${feature?.img})` }}>
                         <div className="flex flex-col justify-center space-y-1 h-full p-6">
                             {/* text  */}
                             <div>
@@ -31,6 +32,7 @@ const Features = () => {
                             </div>
                         </div>
                     </div>
+                    </a>
                 </Slide>
             ))}
         </div>
