@@ -11,7 +11,7 @@ const CookiePolicyScreen = () => {
 
     return (
         <div>
-            <div className="preview my-8 max-w-screen-xl mx-auto px-6" dangerouslySetInnerHTML={{ __html: item?.html }}></div>
+            <div className="preview my-16 pb-8  max-w-screen-xl mx-auto px-6" dangerouslySetInnerHTML={{ __html: item?.html }}></div>
         </div>
     )
 }

@@ -14,29 +14,44 @@ const SubFooter = () => {
     ]
 
     return (
-        <div className='max-w-screen-xl mx-auto px-6 py-4 border-t border-gray-300 flex flex-col lg:flex-row space-y-2 lg:space-y-0 items-center justify-between'>
-            {/* social media  */}
-            <div className='flex items-center space-x-4'>
-                {socialLink.map(item => (
-                    <a href={item.link} key={item.id} >
-                        <img className='w-8 object-contain' src={item.icon} alt={item.name} />
-                    </a>
-                ))}
-            </div>
+        <>
+            <div className='max-w-screen-xl mx-auto px-6 py-4 pb-6 border-t border-gray-300 flex flex-col lg:flex-row space-y-2 lg:space-y-0 items-center justify-between'>
+                {/* social media  */}
+                <div className='flex items-center space-x-4'>
+                    {socialLink.map(item => (
+                        <a href={item.link} key={item.id} >
+                            <img className='w-8 object-contain' src={item.icon} alt={item.name} />
+                        </a>
+                    ))}
+                </div>
 
-            {/* copyright  */}
-            <div>
-                <p className='text-gray-500 text-sm'>&copy; {new Date().getFullYear()} elctroshop.com | All Rights Reserved.
-                </p>
-            </div>
+                {/* copyright  */}
+                <div>
+                    <p className='text-gray-500 text-sm'>&copy; {new Date().getFullYear()} elctroshop.com | All Rights Reserved.
+                    </p>
+                    <p className='text-gray-500 text-sm text-center pt-2'>
+                        Developed by <a className="text-blue-600" href="http://dropdev.tech/" target="_blank" rel="noopener noreferrer">Drop Dev Ltd.</a>
+                    </p>
+                </div>
 
-            {/* payment method  */}
-            <div className='flex items-center space-x-4'>
-                {payment.map(item => (
-                    <img key={item.id} className='w-8 object-contain' src={item.icon} alt={item.name} />
-                ))}
-            </div>
-        </div>
+                {/* payment method  */}
+                <div className='flex items-center space-x-4'>
+                    {payment.map(item => (
+                        <img key={item.id} className='w-8 object-contain' src={item.icon} alt={item.name} />
+                    ))}
+                </div>
+            </div>        
+            
+            {/* <div className='max-w-screen-xl mx-auto px-6 py-4 border-t border-gray-300 flex flex-col lg:flex-row space-y-2 lg:space-y-0 items-center justify-center'>
+
+                {/* copyright  */}
+                {/* <div>
+                    <p className='text-gray-500 text-sm text-center'>
+                        Developed by <a className="text-blue-600" href="http://dropdev.tech/" target="_blank" rel="noopener noreferrer">Drop Dev Ltd.</a>
+                    </p>
+                </div> */}
+            {/* </div>  */}
+        </>
     )
 }
 
