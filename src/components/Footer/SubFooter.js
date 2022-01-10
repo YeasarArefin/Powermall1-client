@@ -31,7 +31,7 @@ const SubFooter = () => {
                 {/* social media  */}
                 <div className='flex items-center space-x-4'>
                     {socialLink.map(item => (
-                        <a href={item.link} key={item.id} >
+                        <a href={item.link} key={item.id} target="_blank" rel="noopener noreferrer">
                             <img className='w-8 object-contain' src={item.icon} alt={item.name} />
                         </a>
                     ))}
