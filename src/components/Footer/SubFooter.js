@@ -1,10 +1,22 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect } from 'react';
 
 const SubFooter = () => {
+    const [socialData, setSocialData] = React.useState({})
+    const [copyRightData, setCopyRightData] = React.useState({})
 
+    useEffect(() => {
+        axios.get('https://elec-shop-server.herokuapp.com/sociallinks/61dc17dd6b1decad8b9fc3d8')
+            .then(res => setSocialData(res.data))
+    }, []);
+    useEffect(() => {
+        axios.get('https://elec-shop-server.herokuapp.com/copyright/61dc1d87e7096f4da08ec024')
+            .then(res => setCopyRightData(res.data))
+    }, []);
+    
     const socialLink = [
-        { id: 1, name: 'Facebook', link: 'https://www.facebook.com/', icon: "../../../assets/facebook.png" },
-        { id: 2, name: 'Instragram', link: 'https://www.instagram.com/', icon: "../../../assets/instagram.png" },
+        { id: 1, name: 'Facebook', link: `${socialData?.facebook}`, icon: "../../../assets/facebook.png" },
+        { id: 2, name: 'Instragram', link: `${socialData?.instagram}`, icon: "../../../assets/instagram.png" },
     ]
 
     const payment = [
@@ -27,8 +39,10 @@ const SubFooter = () => {
 
                 {/* copyright  */}
                 <div>
-                    <p className='text-gray-500 text-sm'>&copy; {new Date().getFullYear()} elctroshop.com | All Rights Reserved.
+                    <p className='text-gray-500 text-sm'>{copyRightData?.copyrighttext}
                     </p>
+                    {/* <p className='text-gray-500 text-sm'>&copy; {new Date().getFullYear()} elctroshop.com | All Rights Reserved.
+                    </p> */}
                     <p className='text-gray-500 text-sm text-center pt-2'>
                         Developed by <a className="text-blue-600" href="http://dropdev.tech/" target="_blank" rel="noopener noreferrer">Drop Dev Ltd.</a>
                     </p>
