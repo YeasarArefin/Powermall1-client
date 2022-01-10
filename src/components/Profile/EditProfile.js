@@ -41,7 +41,7 @@ const EditProfile = () => {
 
 
         if (files?.length > 0) {
-            axios.post('https://api.imgbb.com/1/upload?&key=8a4c4a09bb137c748d82629992ac8c88', formdata)
+            axios.post('https://api.imgbb.com/1/upload?&key=a1a59ec813f7ab9889dd822f6f1ceaba', formdata)
                 .then((response) => {
                     if (response) {
                         if (data?.mobile?.length > 11 || data?.mobile?.length < 11 || !data?.mobile?.startsWith("01")) {

@@ -71,7 +71,7 @@ const CartPdCard = (props) => {
 
                 {/* price  */}
                 <div className='flex flex-col justify-center'>
-                    <h2 className='text-gray-700'>&#2547; {(newPrice - newPrice * discountPrice / 100) * getThisPD?.pdQuantity}</h2>
+                    <h2 className='text-gray-700'>&#2547; {(newPrice - newPrice * discountPrice / 100).toFixed(2) * getThisPD?.pdQuantity}</h2>
                 </div>
 
                 {/* action  */}
