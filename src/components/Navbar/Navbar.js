@@ -30,7 +30,7 @@ const Navbar = () => {
 
     //tablet mode 
     const changeNav = () => {
-        if (window.innerWidth === 768) {
+        if (window.innerWidth < 1200) {
             setMobileNav(true);
             setHideNav(true);
         } else {
@@ -71,7 +71,7 @@ const Navbar = () => {
                         {menus?.map(item => {
                             return (
                                 <Link to={item?.link} key={item?.id}>
-                                    <li className='text-gray-600 md:text-sm lg:text-xs xl:text-sm font-semibold'>{item?.name}</li>
+                                    <li className='text-gray-600 md:text-xs lg:text-xs xl:text-sm font-semibold' style={{fontSize:'12px'}}>{item?.name}</li>
                                 </Link>
                             );
                         })}
@@ -91,7 +91,7 @@ const Navbar = () => {
                 )}
 
 
-                {hideNav ? (
+                {!hideNav ? (
                     <>
                         {/* menu icon  */}
                         <div className="block  lg:hidden">

@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
 
-const Slider = ({ mobileVersion}) => {
+const Slider = () => {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const Slider = ({ mobileVersion}) => {
                 {images?.map((image) => (
                     <SwiperSlide key={image?._id}>
                         <a href={image?.link} target="_blank" rel='noreferrer'  >
-                            <img className={`object-cover w-full h-96 ${!mobileVersion && ' rounded-xl'} `} src={image?.img} alt="slider" />
+                            <img className={`object-cover w-full h-56 lg:h-96 rounded-lg`} src={image?.img} alt="slider" />
                         </a>
                     </SwiperSlide>
                 ))}

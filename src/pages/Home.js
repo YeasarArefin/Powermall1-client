@@ -13,7 +13,7 @@ import Slider from '../components/Slider/Slider';
 
 const Home = () => {
     const [metaTag, setMetaTag] = useState([]);
-    const [mobileVersion, setMobileVersion] = useState(false)
+    // const [mobileVersion, setMobileVersion] = useState(false)
 
     useEffect(() => {
         axios.get('https://elec-shop-server.herokuapp.com/seo')
@@ -21,16 +21,16 @@ const Home = () => {
     }, []);
 
 
-    const changeNav = () => {
-        if (window.innerWidth < 900) {
-            setMobileVersion(true);
-        } else {
-            setMobileVersion(false);
+    // const changeNav = () => {
+    //     if (window.innerWidth < 900) {
+    //         setMobileVersion(true);
+    //     } else {
+    //         setMobileVersion(false);
 
-        }
-    };
+    //     }
+    // };
 
-    window.addEventListener('resize', changeNav);
+    // window.addEventListener('resize', changeNav);
 
     return (
         <div>
@@ -51,21 +51,21 @@ const Home = () => {
 
             </Helmet>
             <main style={{ background: '#F4F4FA', height: '100%' }}>
-                {mobileVersion && (
+                {/* {mobileVersion && (
                     <>
                         <div className=''>
                             <Slider mobileVersion={mobileVersion}/>
                         </div>
                     </>
-                )}
+                )} */}
                 <div className="max-w-screen-xl mx-auto px-6" >
-                    {!mobileVersion && (
-                        <>
+                    {/* {!mobileVersion && ( */}
+                        {/* <> */}
                             <div className='pt-6'>
                                 <Slider />
                             </div>
-                        </>
-                    )}
+                        {/* </> */}
+                    {/* // )} */}
                     <Features />
                     {/* <BigBanner /> */}
                     <ProductsCategory />
