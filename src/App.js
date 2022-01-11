@@ -7,6 +7,7 @@ import OfferNav from './components/Offer Nav/OfferNav';
 import ProductCart from './components/Product Cart/ProductCart';
 import Account from './components/Profile/Account';
 import EditProfile from './components/Profile/EditProfile';
+import OrderDetails from './components/Profile/OrderDetails';
 import Orders from './components/Profile/Orders';
 import AuthProvider from './contexts/AuthProvider';
 import CartProvider from './contexts/CartProvider';
@@ -109,6 +110,7 @@ const App = () => {
                     <Route path="account" element={<PrivateRoute><Account /></PrivateRoute>} />
                     <Route path="edit" element={<PrivateRoute><EditProfile /></PrivateRoute>} />
                     <Route path="orders" element={<PrivateRoute><Orders /></PrivateRoute>} />
+                    <Route path="orders/:id" element={<PrivateRoute><OrderDetails /></PrivateRoute>} />
                   </Route>
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>

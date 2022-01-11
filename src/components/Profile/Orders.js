@@ -1,22 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FadeLoader from "react-spinners/FadeLoader";
 import swal from 'sweetalert';
 import useAuth from '../../hooks/useAuth';
-import ProductModal from './ProductModal';
 
 const Orders = () => {
     const [pd, setPd] = useState([]);
-    const [open, setOpen] = useState(false);
-    const [product, setProduct] = useState({});
+    // const [open, setOpen] = useState(false);
+    // const [product, setProduct] = useState({});
     const { newUser } = useAuth();
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
-    const handleModal = (id) => {
-        const productFind = pd?.find(item => item._id === id);
-        setOpen(true);
-        setProduct(productFind);
-    };
+    // const handleModal = (id) => {
+    //     const productFind = pd?.find(item => item._id === id);
+    //     setOpen(true);
+    //     setProduct(productFind);
+    // };
 
     const handleDelete = (id) => {
         axios.delete(`https://elec-shop-server.herokuapp.com/orders/${id}`)
@@ -171,7 +172,7 @@ const Orders = () => {
                                                         </span>
                                                     </td>
                                                     <td className="px-3 py-4 whitespace-nowrap">
-                                                        <span className="px-3 bg-primary rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center hover:bg-blue-500 cursor-pointer" onClick={() => handleModal(item?._id)}>
+                                                        <span className="px-3 bg-primary rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center hover:bg-blue-500 cursor-pointer" onClick={() => navigate(`/profile/orders/${item?._id}`)}>
                                                             View
                                                         </span>
                                                     </td>
@@ -208,7 +209,7 @@ const Orders = () => {
 
                                                         </div>
                                                     </td>
-                                                    <ProductModal open={open} setOpen={setOpen} product={product} id={item?._id} />
+                                                    {/* <ProductModal open={open} setOpen={setOpen} product={product} id={item?._id} /> */}
                                                 </tr>
 
 
