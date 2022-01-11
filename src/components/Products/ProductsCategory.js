@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { Autoplay, EffectCoverflow, Pagination } from 'swiper/core';
@@ -15,6 +16,8 @@ SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
 const ProductsCategory = () => {
     const [categories, setCategories] = useState([]);
     const [products] = useFetch();
+    // eslint-disable-next-line no-unused-vars
+    const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
         axios.get('https://elec-shop-server.herokuapp.com/category')
@@ -32,6 +35,11 @@ const ProductsCategory = () => {
                     return (
                         pdFound?.length !== 0 && (
                             <>
+                                <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
+                                    setSearchParams({ categories: item?.slug })
+            }}>
+                                    <img src={item?.img} alt={item?.slug} className='w-48' />
+                                </Link>
                                 <SectionTitle title={item?.category} slug={item?.slug} />
                                 <Swiper
                                     slidesPerView={4}

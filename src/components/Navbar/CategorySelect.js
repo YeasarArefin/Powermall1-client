@@ -1,11 +1,11 @@
 import { Listbox, Transition } from '@headlessui/react';
 import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react';
-import { HiOutlineCheck, HiSelector } from 'react-icons/hi';
+import { HiSelector } from 'react-icons/hi';
 import { Link, useSearchParams } from 'react-router-dom';
 
 const placeholder = [
-    { category: 'Category' },
+    { category: 'Category', img: '../../../assets/category.png' },
 ]
 
 const CategorySelect = () => {
@@ -25,7 +25,10 @@ const CategorySelect = () => {
                 <div className="relative mt-1">
                     <Listbox.Button className=" transition duration-500 relative w-36 py-3 px-4 text-left bg-white rounded-md  cursor-default focus:outline-none border border-primary sm:text-sm">
                         {searchParams ? (
-                            <span className="block truncate text-primary font-semibold">{selected?.category}</span>
+                            <p className="flex items-center space-x-2 truncate text-primary font-semibold">
+                                <img src={selected?.img} alt={selected?.category} className="w-6" />
+                                <span className='text-xs'>{selected?.category}</span>
+                            </p>
                         ) : (
                             <span className="block truncate text-primary font-semibold">All</span>
                         )}
@@ -51,27 +54,20 @@ const CategorySelect = () => {
                                         key={item?._id}
                                         className={({ active }) =>
                                             `${active ? 'text-amber-900 bg-amber-100' : 'text-gray-900'}
-                          cursor-pointer select-none relative py-2 pl-10 pr-4`
+                          cursor-pointer select-none relative py-2 pl-4 pr-4`
                                         }
                                         value={item}
                                     >
                                         {({ selected, active }) => (
                                             <>
-                                                <span
+                                                <p
                                                     className={`${selected ? 'font-medium' : 'font-normal'
-                                                        } block truncate`}
+                                                        }  truncate flex items-center space-x-2`}
                                                 >
-                                                    {item?.category}
-                                                </span>
-                                                {selected ? (
-                                                    <span
-                                                        className={`${active ? 'text-amber-600' : 'text-amber-600'
-                                                            }
-                                absolute inset-y-0 left-0 flex items-center pl-3`}
-                                                    >
-                                                        <HiOutlineCheck className="w-5 h-5" aria-hidden="true" />
-                                                    </span>
-                                                ) : null}
+                                                    <img src={item?.img} alt={item?.category} className="w-6" />
+                                                    <span className='text-xs'>{item?.category}</span>
+                                                </p>
+                                                
                                             </>
                                         )}
                                     </Listbox.Option>
