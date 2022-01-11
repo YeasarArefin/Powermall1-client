@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import FadeLoader from "react-spinners/FadeLoader";
 
 const OrderSuccessful = () => {
+    const [loading, setLoading] = useState(true)
 
+    //loading 
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 3000)
+    }, [])
+
+    const Spinner = () => {
+        return (
+            <div className='flex flex-col h-screen w-full justify-center items-center space-y-6'>
+                <FadeLoader color="#11A0DB" loading={loading} size={50} />
+            </div>
+        )
+    }
+    
     return (
+        loading ? (
+            <Spinner />
+        ) : (
         <>
             <Helmet>
                 <meta charSet="utf-8" />
@@ -21,7 +42,7 @@ const OrderSuccessful = () => {
                 </Link>
             </div>
         </>
-
+        )
     )
 }
 

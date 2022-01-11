@@ -137,7 +137,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             ...order, time: new Date().toLocaleTimeString(), refund: 'Refund'
         })
             .then(res => {
-                swal("Yo!!!", "Successfully order done!!!", "success");
+                // swal("Yo!!!", "Successfully order done!!!", "success");
                 //add used coupon to user object 
                 setCart([]);
                 navigate('/order-successful');
