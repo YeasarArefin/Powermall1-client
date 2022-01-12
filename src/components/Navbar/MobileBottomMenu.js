@@ -9,7 +9,7 @@ import SignUpModal from '../Sign Up/SignUpModal';
 import MenuSidebar from './MenuSidebar';
 import ProfileInfo from './ProfileInfo';
 
-const MobileBottomMenu = () => {
+const MobileBottomMenu = ({ handleSearchShow}) => {
     const navigate = useNavigate()
     const [show, setShow] = React.useState(false);
     const [showDropDown, setDropDown] = React.useState(false);
@@ -46,7 +46,7 @@ const MobileBottomMenu = () => {
 
                     {/* search icon  */}
                     <div>
-                        <AiOutlineSearch className="text-2xl cursor-pointer opacity-80" />
+                        <AiOutlineSearch className="text-2xl cursor-pointer opacity-80" onClick={ handleSearchShow}/>
                     </div>
 
                     {/* home icon  */}

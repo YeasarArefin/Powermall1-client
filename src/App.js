@@ -45,8 +45,11 @@ const App = () => {
   const [loading,setLoading] = useState(true)
   const [showOffer,setShowOffer] = useState(true)
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [searchShow, setSearchShow] = useState(false);
 
-
+  const handleSearchShow = () => {
+    setSearchShow(!searchShow)
+  }
   const changeHeader = () => {
     if (window.scrollY >= 80) {
       setHeader(true)
@@ -94,9 +97,9 @@ const App = () => {
                 <div>
                   {showOffer && <OfferNav setShowOffer={setShowOffer} />}
                   <div className={`${header && "fixed top-0 w-full z-30 transition duration-300"} `}>
-                    <Navbar />
+                    <Navbar searchShow={searchShow} mobileMenu={mobileMenu} />
                   </div>
-                  {mobileMenu && <MobileBottomMenu />}
+                  {mobileMenu && <MobileBottomMenu setSearchShow={setSearchShow} handleSearchShow={handleSearchShow} />}
                   
                 </div>
                 <Routes>

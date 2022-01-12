@@ -8,7 +8,7 @@ import NavButton from './NavButton';
 import ProfileInfo from './ProfileInfo';
 import SearchBar from './SearchBar';
 
-const Navbar = () => {
+const Navbar = ({ searchShow, mobileMenu }) => {
     const [mobileNav, setMobileNav] = useState(false);
     const [hideNav, setHideNav] = useState(false);
     const { newUser } = useAuth();
@@ -42,55 +42,61 @@ const Navbar = () => {
     window.addEventListener('resize', changeNav);
 
     return (
-        <header className="bg-white border-b border-gray-200">
-            {/* desktop nav  */}
-            <nav className="flex items-center max-w-screen-2xl mx-auto px-6 py-3">
-                <div className="flex flex-grow justify-around items-center space-x-6">
-                    {/* brand  */}
-                    <Brand />
-
-                    {/* category  */}
-                    {!hideNav && (
-                        <div className="hidden md:flex lg:flex">
-                            <CategorySelect />
-                        </div>
-                    )}
-
-
-                    {/* search bar  */}
-                    {!hideNav && (
-                        <div className="hidden md:flex lg:flex space-x-3">
+        <>
+            <header className="bg-white border-b border-gray-200">
+                {/* desktop nav  */}
+                <nav className="flex items-center max-w-screen-2xl mx-auto px-6 py-3">
+                    <div className="flex flex-grow justify-around items-center space-x-6">
+                        {/* brand  */}
+                        {searchShow ? (
                             <SearchBar />
+                        ) : (
+                            <Brand />
+                        )}
+
+
+                        {/* category  */}
+                        {!hideNav && (
+                            <div className="hidden md:flex lg:flex">
+                                <CategorySelect />
+                            </div>
+                        )}
+
+
+                        {/* search bar  */}
+                        {!hideNav && (
+                            <div className="hidden md:flex lg:flex space-x-3">
+                                <SearchBar />
+                            </div>
+                        )}
+
+
+                        {/* some links  */}
+                        <ul className='hidden items-center space-x-4 xl:flex pr-5'>
+                            {menus?.map(item => {
+                                return (
+                                    <Link to={item?.link} key={item?.id}>
+                                        <li className='text-gray-600 md:text-xs lg:text-xs xl:text-sm font-semibold' style={{ fontSize: '12px' }}>{item?.name}</li>
+                                    </Link>
+                                );
+                            })}
+                        </ul>
+                    </div>
+
+                    {newUser.email ? (
+                        <div className="hidden md:block lg:block">
+                            <ProfileInfo />
                         </div>
+                    ) : (
+                        <>
+                            <div className="hidden md:flex lg:flex space-x-3">
+                                <NavButton />
+                            </div>
+                        </>
                     )}
 
 
-                    {/* some links  */}
-                    <ul className='hidden items-center space-x-4 xl:flex pr-5'>
-                        {menus?.map(item => {
-                            return (
-                                <Link to={item?.link} key={item?.id}>
-                                    <li className='text-gray-600 md:text-xs lg:text-xs xl:text-sm font-semibold' style={{fontSize:'12px'}}>{item?.name}</li>
-                                </Link>
-                            );
-                        })}
-                    </ul>
-                </div>
-
-                {newUser.email ? (
-                    <div className="hidden md:block lg:block">
-                        <ProfileInfo />
-                    </div>
-                ) : (
-                    <>
-                        <div className="hidden md:flex lg:flex space-x-3">
-                            <NavButton />
-                        </div>
-                    </>
-                )}
-
-
-                {/* {!hideNav ? (
+                    {/* {!hideNav ? (
                     <>
                         <div className="block  lg:hidden">
                             <HiMenuAlt3 className="w-10 h-10 ring-blue-300 text-gray-700 border border-gray-400 focus:ring-4 cursor-pointer rounded-lg p-2 transform transition duration-200 hover:scale-110 hover:bg-primary hover:text-white" onClick={handleClick} />
@@ -104,33 +110,33 @@ const Navbar = () => {
                     </>
                 )} */}
 
-            </nav>
+                </nav>
 
-            {/* mobile nav  */}
-            {mobileNav && (
-                <Fade>
-                    <nav className="bg-white shadow-lg mx-6 mt-2 rounded-br-lg rounded-bl-lg  py-6 block md:hidden lg:hidden">
+                {/* mobile nav  */}
+                {mobileNav && (
+                    <Fade>
+                        <nav className="bg-white shadow-lg mx-6 mt-2 rounded-br-lg rounded-bl-lg  py-6 block md:hidden lg:hidden">
 
-                        {/* category  */}
-                        <div className='flex justify-center pb-2'>
-                            <CategorySelect />
-                        </div>
+                            {/* category  */}
+                            <div className='flex justify-center pb-2'>
+                                <CategorySelect />
+                            </div>
 
-                        {/* search bar  */}
-                        <div className=" flex justify-center">
-                            <SearchBar />
-                        </div>
-                        {/* {!newUser.email && (
+                            {/* search bar  */}
+                            <div className=" flex justify-center">
+                                <SearchBar />
+                            </div>
+                            {/* {!newUser.email && (
                             <>
                                 {/* button  */}
-                                {/* <div className="px-3 py-2 flex justify-center">
+                            {/* <div className="px-3 py-2 flex justify-center">
                                     <NavButton />
                                 </div>
                             </> */}
-                        {/* )} */}
+                            {/* )} */}
 
-                        {/* menus  */}
-                        {/* <ul className='flex flex-col space-y-2 px-6 py-2 box-border'>
+                            {/* menus  */}
+                            {/* <ul className='flex flex-col space-y-2 px-6 py-2 box-border'>
                             {menus?.map(item => {
                                 return (
                                     <Link to={item?.link} key={item?.id}>
@@ -139,12 +145,25 @@ const Navbar = () => {
                                 );
                             })}
                         </ul>  */}
-                    </nav>
-                </Fade>
+                        </nav>
+                    </Fade>
+                )}
+
+
+            </header>
+
+            {/* category  */}
+            {mobileMenu && (
+                <>
+                    <div className="bg-white border-b border-gray-200">
+                        <div className='flex items-center justify-end px-6 py-3'>
+                            <CategorySelect />
+                        </div>
+                    </div>
+                </>
             )}
-
-
-        </header>
+            
+        </>
     );
 };
 
