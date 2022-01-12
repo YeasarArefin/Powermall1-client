@@ -2,13 +2,13 @@ import { Menu, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
 import { BsCreditCardFill } from 'react-icons/bs';
 import { FaUserCircle } from 'react-icons/fa';
-import { MdKeyboardArrowDown, MdLogout, MdShoppingBag } from 'react-icons/md';
+import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdLogout, MdShoppingBag } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
-const Dropdown = ({ handleLogout}) => {
+const Dropdown = ({ handleLogout, showDropDown}) => {
 
     const menus = [
         { id: 1, name: 'Profile', link: '/profile/account',icon: <FaUserCircle className='text-xl text-gray-500'/>},
@@ -20,7 +20,12 @@ const Dropdown = ({ handleLogout}) => {
         <Menu as="div" className="relative inline-block text-left">
             <div>
                 <Menu.Button className="w-6 hover:bg-secondary transition duration-300">
-                    <MdKeyboardArrowDown className='text-gray-600 text-xl cursor-pointer  w-6 h-6 rounded-full ' />
+                    {showDropDown ? (
+                        <MdKeyboardArrowUp className='text-gray-600 text-xl cursor-pointer  w-6 h-6 rounded-full ' />
+
+                    ) : (
+                            <MdKeyboardArrowDown className = 'text-gray-600 text-xl cursor-pointer  w-6 h-6 rounded-full ' />
+                    )}
                 </Menu.Button>
             </div>
 
@@ -33,7 +38,7 @@ const Dropdown = ({ handleLogout}) => {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className="origin-top-right absolute right-0 mt-6 w-52 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-40">
+                <Menu.Items className={`origin-top-right absolute ${showDropDown ? "right-0 bottom-12 " : "right-0 mt-6" }  w-52 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-40`}>
                     <div className="py-1">
                         {menus.map(menu => (
                             <>

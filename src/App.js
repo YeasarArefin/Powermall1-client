@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 import BarLoader from "react-spinners/BarLoader";
 import Brand from './components/Navbar/Brand';
+import MobileBottomMenu from './components/Navbar/MobileBottomMenu';
 import Navbar from './components/Navbar/Navbar';
 import OfferNav from './components/Offer Nav/OfferNav';
 import ProductCart from './components/Product Cart/ProductCart';
@@ -43,6 +44,9 @@ const App = () => {
   const [header, setHeader] = useState(false)
   const [loading,setLoading] = useState(true)
   const [showOffer,setShowOffer] = useState(true)
+  const [mobileMenu, setMobileMenu] = useState(false);
+
+
   const changeHeader = () => {
     if (window.scrollY >= 80) {
       setHeader(true)
@@ -53,6 +57,18 @@ const App = () => {
 
   window.addEventListener('scroll', changeHeader)
 
+
+  //tablet mode 
+  const changeNav = () => {
+    if (window.innerWidth < 900) {
+      setMobileMenu(true);
+    } else {
+      setMobileMenu(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('resize', changeNav);
+  }, [])
 
   //loading 
   useEffect(() => {
@@ -80,6 +96,8 @@ const App = () => {
                   <div className={`${header && "fixed top-0 w-full z-30 transition duration-300"} `}>
                     <Navbar />
                   </div>
+                  {mobileMenu && <MobileBottomMenu />}
+                  
                 </div>
                 <Routes>
                   <Route path="/" element={<Home />} />

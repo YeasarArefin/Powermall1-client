@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { HiMenuAlt3 } from 'react-icons/hi';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
@@ -15,10 +14,10 @@ const Navbar = () => {
     const { newUser } = useAuth();
 
     //handle click 
-    const handleClick = () => {
-        setMobileNav(!mobileNav);
-        // setTabletNav(!tabletNav)
-    };
+    // const handleClick = () => {
+    //     setMobileNav(!mobileNav);
+    //     // setTabletNav(!tabletNav)
+    // };
 
     //menus 
     const menus = [
@@ -31,8 +30,8 @@ const Navbar = () => {
     //tablet mode 
     const changeNav = () => {
         if (window.innerWidth < 1200) {
-            setMobileNav(true);
-            setHideNav(true);
+            setMobileNav(false);
+            setHideNav(false);
         } else {
             setMobileNav(false);
             setHideNav(false);
@@ -79,9 +78,9 @@ const Navbar = () => {
                 </div>
 
                 {newUser.email ? (
-                    <>
+                    <div className="hidden md:block lg:block">
                         <ProfileInfo />
-                    </>
+                    </div>
                 ) : (
                     <>
                         <div className="hidden md:flex lg:flex space-x-3">
@@ -91,21 +90,19 @@ const Navbar = () => {
                 )}
 
 
-                {!hideNav ? (
+                {/* {!hideNav ? (
                     <>
-                        {/* menu icon  */}
                         <div className="block  lg:hidden">
                             <HiMenuAlt3 className="w-10 h-10 ring-blue-300 text-gray-700 border border-gray-400 focus:ring-4 cursor-pointer rounded-lg p-2 transform transition duration-200 hover:scale-110 hover:bg-primary hover:text-white" onClick={handleClick} />
                         </div>
                     </>
                 ) : (
                     <>
-                        {/* menu icon  */}
                         <div className="block md:hidden lg:hidden">
                             <HiMenuAlt3 className="w-10 h-10 ring-blue-300 text-gray-700 border border-gray-400 focus:ring-4 cursor-pointer rounded-lg p-2 transform transition duration-200 hover:scale-110 hover:bg-primary hover:text-white" onClick={handleClick} />
                         </div>
                     </>
-                )}
+                )} */}
 
             </nav>
 
@@ -123,17 +120,17 @@ const Navbar = () => {
                         <div className=" flex justify-center">
                             <SearchBar />
                         </div>
-                        {!newUser.email && (
+                        {/* {!newUser.email && (
                             <>
                                 {/* button  */}
-                                <div className="px-3 py-2 flex justify-center">
+                                {/* <div className="px-3 py-2 flex justify-center">
                                     <NavButton />
                                 </div>
-                            </>
-                        )}
+                            </> */}
+                        {/* )} */}
 
                         {/* menus  */}
-                        <ul className='flex flex-col space-y-2 px-6 py-2 box-border'>
+                        {/* <ul className='flex flex-col space-y-2 px-6 py-2 box-border'>
                             {menus?.map(item => {
                                 return (
                                     <Link to={item?.link} key={item?.id}>
@@ -141,7 +138,7 @@ const Navbar = () => {
                                     </Link>
                                 );
                             })}
-                        </ul>
+                        </ul>  */}
                     </nav>
                 </Fade>
             )}

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Dropdown from './Dropdown';
 
-const ProfileInfo = () => {
+const ProfileInfo = ({ showDropDown}) => {
     const { newUser, signOutUser} = useAuth();
     const navigate = useNavigate()
 
@@ -19,7 +19,7 @@ const ProfileInfo = () => {
                 <span className='text-gray-700'>{newUser.name}</span>
             </div> */}
             {/* menus  */}
-            <Dropdown handleLogout={handleLogout} />
+            <Dropdown handleLogout={handleLogout} showDropDown={showDropDown}/>
         </div>
     )
 }

@@ -14,35 +14,35 @@ const OrderProgress = () => {
 
     return (
         <div className='py-6'>
-            <div className='flex flex-col md:flex-row lg:flex-row items-center justify-around space-y-3 md:space-y-0 lg:space-y-0'>
+            <div className='flex  items-center justify-around'>
 
                 {/* pending  */}
                 {products?.status === 'Pending' && (
                     <>
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircleFill className='text-3xl text-green-500' />
-                            <p className=' text-green-500'>Pending</p>
+                            <BsCheckCircleFill className='text-xl md:text-2xl lg:text-3xl text-green-500' />
+                            <p className=' text-green-500 text-xs md:text-base lg:text-base'>Pending</p>
 
                         </div>
                         {/* processing  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircle className='text-3xl' />
-                            <p>Processing</p>
+                            <BsCheckCircle className='text-xl md:text-2xl lg:text-3xl' />
+                            <p className="text-xs md:text-base lg:text-base">Processing</p>
                         </div>
                         {/* Payment  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircle className='text-3xl' />
-                            <p>Payment</p>
+                            <BsCheckCircle className='text-xl md:text-2xl lg:text-3xl' />
+                            <p className="text-xs md:text-base lg:text-base">Payment</p>
                         </div>
                         {/* Delivered  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircle className='text-3xl' />
-                            <p>Delivered</p>
+                            <BsCheckCircle className='text-xl md:text-2xl lg:text-3xl' />
+                            <p className="text-xs md:text-base lg:text-base">Delivered</p>
                         </div>
                         {/* Complete  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircle className='text-3xl' />
-                            <p>Complete</p>
+                            <BsCheckCircle className='text-xl md:text-2xl lg:text-3xl' />
+                            <p className="text-xs md:text-base lg:text-base">Complete</p>
                         </div>
                         
                     </>
@@ -53,29 +53,29 @@ const OrderProgress = () => {
                 {products?.status === 'Processing' && (
                     <>
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircleFill className='text-3xl text-green-500' />
-                            <p className=' text-green-500'>Pending</p>
+                            <BsCheckCircleFill className='text-xl md:text-2xl lg:text-3xl text-green-500' />
+                            <p className='text-xs md:text-base lg:text-base text-green-500'>Pending</p>
 
                         </div>
                         {/* processing  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircleFill className='text-3xl text-green-500' />
-                            <p className=' text-green-500'>Processing</p>
+                            <BsCheckCircleFill className='text-xl md:text-2xl lg:text-3xl text-green-500' />
+                            <p className='text-xs md:text-base lg:text-base text-green-500'>Processing</p>
                         </div>
                         {/* Payment  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircle className='text-3xl' />
-                            <p>Payment</p>
+                            <BsCheckCircle className='text-xl md:text-2xl lg:text-3xl' />
+                            <p className="text-xs md:text-base lg:text-base">Payment</p>
                         </div>
                         {/* Delivered  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircle className='text-3xl' />
-                            <p>Delivered</p>
+                            <BsCheckCircle className='text-xl md:text-2xl lg:text-3xl' />
+                            <p className="text-xs md:text-base lg:text-base">Delivered</p>
                         </div>
                         {/* Complete  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircle className='text-3xl' />
-                            <p>Complete</p>
+                            <BsCheckCircle className='text-xl md:text-2xl lg:text-3xl' />
+                            <p className="text-xs md:text-base lg:text-base">Complete</p>
                         </div>
 
                     </>
@@ -86,29 +86,29 @@ const OrderProgress = () => {
                 {products?.status === 'Payment' && (
                     <>
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircleFill className='text-3xl text-green-500' />
-                            <p className=' text-green-500'>Pending</p>
+                            <BsCheckCircleFill className='text-xl md:text-2xl lg:text-3xl text-green-500' />
+                            <p className='text-xs md:text-base lg:text-base text-green-500'>Pending</p>
 
                         </div>
                         {/* processing  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircleFill className='text-3xl text-green-500' />
-                            <p className=' text-green-500'>Processing</p>
+                            <BsCheckCircleFill className='text-xl md:text-2xl lg:text-3xl text-green-500' />
+                            <p className='text-xs md:text-base lg:text-base text-green-500'>Processing</p>
                         </div>
                         {/* Payment  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircleFill className='text-3xl text-green-500' />
-                            <p className=' text-green-500'>Payment</p>
+                            <BsCheckCircleFill className='text-xl md:text-2xl lg:text-3xl text-green-500' />
+                            <p className='text-xs md:text-base lg:text-base text-green-500'>Payment</p>
                         </div>
                         {/* Delivered  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircle className='text-3xl' />
-                            <p>Delivered</p>
+                            <BsCheckCircle className='text-xl md:text-2xl lg:text-3xl' />
+                            <p className="text-xs md:text-base lg:text-base">Delivered</p>
                         </div>
                         {/* Complete  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircle className='text-3xl' />
-                            <p>Complete</p>
+                            <BsCheckCircle className='text-xl md:text-2xl lg:text-3xl' />
+                            <p className="text-xs md:text-base lg:text-base">Complete</p>
                         </div>
 
                     </>
@@ -119,29 +119,29 @@ const OrderProgress = () => {
                 {products?.status === 'Delivered' && (
                     <>
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircleFill className='text-3xl text-green-500' />
-                            <p className=' text-green-500'>Pending</p>
+                            <BsCheckCircleFill className='text-xl md:text-2xl lg:text-3xl text-green-500' />
+                            <p className=' text-xs md:text-base lg:text-base text-green-500'>Pending</p>
 
                         </div>
                         {/* processing  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircleFill className='text-3xl text-green-500' />
-                            <p className=' text-green-500'>Processing</p>
+                            <BsCheckCircleFill className='text-xl md:text-2xl lg:text-3xl text-green-500' />
+                            <p className='text-xs md:text-base lg:text-base  text-green-500'>Processing</p>
                         </div>
                         {/* Payment  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircleFill className='text-3xl text-green-500' />
-                            <p className=' text-green-500'>Payment</p>
+                            <BsCheckCircleFill className='text-xl md:text-2xl lg:text-3xl text-green-500' />
+                            <p className='text-xs md:text-base lg:text-base  text-green-500'>Payment</p>
                         </div>
                         {/* Delivered  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircleFill className='text-3xl text-green-500' />
-                            <p className=' text-green-500'>Delivered</p>
+                            <BsCheckCircleFill className='text-xl md:text-2xl lg:text-3xl text-green-500' />
+                            <p className='text-xs md:text-base lg:text-base  text-green-500'>Delivered</p>
                         </div>
                         {/* Complete  */}
                         <div className='flex flex-col items-center space-y-2 text-gray-400'>
-                            <BsCheckCircleFill className='text-3xl text-green-500' />
-                            <p className=' text-green-500'>Complete</p>
+                            <BsCheckCircleFill className='text-xl md:text-2xl lg:text-3xl text-green-500' />
+                            <p className=' text-xs md:text-base lg:text-base text-green-500'>Complete</p>
                         </div>
 
                     </>
