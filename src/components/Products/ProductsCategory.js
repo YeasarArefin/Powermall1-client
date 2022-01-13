@@ -39,7 +39,7 @@ const ProductsCategory = () => {
                                     setSearchParams({ categories: item?.slug })
                                 }}>
                                     <div className='rounded-md overflow-hidden mb-6 h-24  md:h-36 lg:h-36'>
-                                        <img src="../../../assets/header banner/51uBYwR3DNL._SX1500_.jpg" alt={item?.slug} className='w-full h-24  md:h-36 lg:h-36 object-cover hover:opacity-80' />
+                                        <img src={item?.banner} alt={item?.slug} className='w-full h-24  md:h-36 lg:h-36 object-cover hover:opacity-80' />
                                     </div>
 
                                 </Link>
