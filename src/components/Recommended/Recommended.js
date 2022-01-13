@@ -2,13 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Slide from 'react-reveal/Slide';
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
+import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
-import SwiperCore, { Autoplay, EffectCoverflow, Pagination } from 'swiper/core';
+import SwiperCore, { Autoplay, EffectCoverflow, Navigation, Pagination } from 'swiper/core';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 
 
-SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
+SwiperCore.use([EffectCoverflow, Pagination, Autoplay, Navigation]);
 const Recommended = () => {
     const [images, setImages] = useState([]);
     const [mobile, setMobile] = useState(false);
@@ -38,10 +39,11 @@ const Recommended = () => {
 
 
             </section>
-            {!mobile ? (
+            {mobile ? (
                 <>
                     <Swiper
                         slidesPerView={4}
+                        navigation={true}
                         centeredSlides={false}
                         spaceBetween={30}
                         grabCursor={true}
@@ -57,6 +59,9 @@ const Recommended = () => {
                                 slidesPerView: 1,
                             },
                             375: {
+                                slidesPerView: 1,
+                            },
+                            414: {
                                 slidesPerView: 1,
                             },
                             425: {

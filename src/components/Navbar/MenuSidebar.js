@@ -18,7 +18,7 @@ const MenuSidebar = ({ setShowMenu }) => {
     return (
         <div>
             <Fade left>
-                <aside className='w-96 bg-white fixed top-0 left-0 h-screen z-50 ' style={{ height: '100%' }}>
+                <aside className='w-full bg-white fixed top-0 left-0 h-screen z-50 ' style={{ height: '100%' }}>
                     {/* close button  */}
                     <div className='flex items-center justify-between pt-6 px-8 border-b border-gray-300 pb-4'>
                         <Brand />

@@ -27,7 +27,7 @@ const CartSideBar = ({ setShow }) => {
 
     return (
         <Fade right>
-            <aside className='w-96 bg-secondary fixed top-0 right-0 h-screen z-50 ' style={{ height: '100%' }}>
+            <aside className='w-full md:w-96  lg:w-96 bg-secondary fixed top-0 right-0 h-screen z-50 ' style={{ height: '100%' }}>
                 {/* items  */}
                 <div className='flex items-center justify-between border-b border-gray-300 px-6 py-4'>
                     <div className='text-primary flex items-center space-x-2'>

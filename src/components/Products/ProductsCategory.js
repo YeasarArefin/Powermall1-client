@@ -38,8 +38,8 @@ const ProductsCategory = () => {
                                 <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
                                     setSearchParams({ categories: item?.slug })
                                 }}>
-                                    <div className='rounded-md overflow-hidden mb-6 h-36'>
-                                        <img src="../../../assets/header banner/51uBYwR3DNL._SX1500_.jpg" alt={item?.slug} className='w-full h-36 object-cover hover:opacity-80' />
+                                    <div className='rounded-md overflow-hidden mb-6 h-24  md:h-36 lg:h-36'>
+                                        <img src="../../../assets/header banner/51uBYwR3DNL._SX1500_.jpg" alt={item?.slug} className='w-full h-24  md:h-36 lg:h-36 object-cover hover:opacity-80' />
                                     </div>
 
                                 </Link>

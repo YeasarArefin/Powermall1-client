@@ -63,7 +63,7 @@ const App = () => {
 
   //tablet mode 
   const changeNav = () => {
-    if (window.innerWidth < 900) {
+    if (window.innerWidth < 1140) {
       setMobileMenu(true);
     } else {
       setMobileMenu(false);

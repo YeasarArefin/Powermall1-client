@@ -43,8 +43,8 @@ const SubFooter = () => {
                     </p>
                     {/* <p className='text-gray-500 text-sm'>&copy; {new Date().getFullYear()} elctroshop.com | All Rights Reserved.
                     </p> */}
-                    <p className='text-gray-500 text-sm text-center pt-2'>
-                        Developed by <a className="text-blue-600" href="http://dropdev.tech/" target="_blank" rel="noopener noreferrer">Drop Dev Ltd.</a>
+                    <p className='text-gray-500 text-sm text-center pt-2 pb-4'>
+                        Developed by <a className="text-blue-600" href="http://dropdev.tech/" target="_blank" rel="noopener noreferrer"><span className='text-indigo-600'>Drop</span> <span className='text-pink-600'>Dev</span> </a>
                     </p>
                 </div>
 

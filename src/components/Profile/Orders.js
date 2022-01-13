@@ -63,7 +63,7 @@ const Orders = () => {
             .then(res => {
                 setPd(res.data?.map(item => item));
             });
-    }, [newUser?.email, pd]);
+    }, [newUser?.email]);
 
     //loading 
     useEffect(() => {

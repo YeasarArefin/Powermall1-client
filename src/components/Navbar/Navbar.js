@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Brand from './Brand';
@@ -10,7 +9,6 @@ import SearchBar from './SearchBar';
 
 const Navbar = ({ searchShow, mobileMenu }) => {
     const [mobileNav, setMobileNav] = useState(false);
-    const [hideNav, setHideNav] = useState(false);
     const { newUser } = useAuth();
 
     //handle click 
@@ -29,12 +27,10 @@ const Navbar = ({ searchShow, mobileMenu }) => {
 
     //tablet mode 
     const changeNav = () => {
-        if (window.innerWidth < 1200) {
-            setMobileNav(false);
-            setHideNav(false);
+        if (window.innerWidth < 1225) {
+            setMobileNav(true);
         } else {
             setMobileNav(false);
-            setHideNav(false);
 
         }
     };
@@ -49,14 +45,14 @@ const Navbar = ({ searchShow, mobileMenu }) => {
                     <div className="flex flex-grow justify-around items-center space-x-6">
                         {/* brand  */}
                         {searchShow ? (
-                            <SearchBar />
+                            <SearchBar searchShow={searchShow} />
                         ) : (
                             <Brand />
                         )}
 
 
                         {/* category  */}
-                        {!hideNav && (
+                        {!mobileMenu && (
                             <div className="hidden md:flex lg:flex">
                                 <CategorySelect />
                             </div>
@@ -64,7 +60,7 @@ const Navbar = ({ searchShow, mobileMenu }) => {
 
 
                         {/* search bar  */}
-                        {!hideNav && (
+                        {!mobileMenu && (
                             <div className="hidden md:flex lg:flex space-x-3">
                                 <SearchBar />
                             </div>
@@ -72,25 +68,38 @@ const Navbar = ({ searchShow, mobileMenu }) => {
 
 
                         {/* some links  */}
-                        <ul className='hidden items-center space-x-4 xl:flex pr-5'>
-                            {menus?.map(item => {
-                                return (
-                                    <Link to={item?.link} key={item?.id}>
-                                        <li className='text-gray-600 md:text-xs lg:text-xs xl:text-sm font-semibold' style={{ fontSize: '12px' }}>{item?.name}</li>
-                                    </Link>
-                                );
-                            })}
-                        </ul>
+                        {!mobileMenu && (
+                            <ul className='hidden items-center space-x-4 xl:flex lg:flex pr-5'>
+                                {menus?.map(item => {
+                                    return (
+                                        <Link to={item?.link} key={item?.id}>
+                                            {mobileNav ? (
+                                                <>
+                                                    <li className='text-gray-600 md:text-xs lg:text-xs xl:text-sm font-semibold' style={{ fontSize: '9px' }}>{item?.name}</li>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <li className='text-gray-600 md:text-xs lg:text-xs xl:text-sm font-semibold' style={{ fontSize: '12px' }}>{item?.name}</li>
+                                                </>
+                                            )}
+
+                                        </Link>
+                                    );
+                                })}
+                            </ul>
+                        )}
+
                     </div>
 
                     {newUser.email ? (
                         <div className="hidden md:block lg:block">
-                            <ProfileInfo />
+                            {!mobileMenu && <ProfileInfo />}
+
                         </div>
                     ) : (
                         <>
                             <div className="hidden md:flex lg:flex space-x-3">
-                                <NavButton />
+                                {!mobileMenu && <NavButton />}
                             </div>
                         </>
                     )}
@@ -113,30 +122,30 @@ const Navbar = ({ searchShow, mobileMenu }) => {
                 </nav>
 
                 {/* mobile nav  */}
-                {mobileNav && (
-                    <Fade>
-                        <nav className="bg-white shadow-lg mx-6 mt-2 rounded-br-lg rounded-bl-lg  py-6 block md:hidden lg:hidden">
+                {/* {mobileNav && (
+                    <Fade> */}
+                {/* <nav className="bg-white shadow-lg mx-6 mt-2 rounded-br-lg rounded-bl-lg  py-6 block md:hidden lg:hidden"> */}
 
-                            {/* category  */}
-                            <div className='flex justify-center pb-2'>
+                {/* category  */}
+                {/* <div className='flex justify-center pb-2'>
                                 <CategorySelect />
-                            </div>
+                            </div> */}
 
-                            {/* search bar  */}
-                            <div className=" flex justify-center">
+                {/* search bar  */}
+                {/* <div className=" flex justify-center">
                                 <SearchBar />
-                            </div>
-                            {/* {!newUser.email && (
+                            </div> */}
+                {/* {!newUser.email && (
                             <>
                                 {/* button  */}
-                            {/* <div className="px-3 py-2 flex justify-center">
+                {/* <div className="px-3 py-2 flex justify-center">
                                     <NavButton />
                                 </div>
                             </> */}
-                            {/* )} */}
+                {/* )} */}
 
-                            {/* menus  */}
-                            {/* <ul className='flex flex-col space-y-2 px-6 py-2 box-border'>
+                {/* menus  */}
+                {/* <ul className='flex flex-col space-y-2 px-6 py-2 box-border'>
                             {menus?.map(item => {
                                 return (
                                     <Link to={item?.link} key={item?.id}>
@@ -145,9 +154,9 @@ const Navbar = ({ searchShow, mobileMenu }) => {
                                 );
                             })}
                         </ul>  */}
-                        </nav>
-                    </Fade>
-                )}
+                {/* </nav> */}
+                {/* </Fade>
+                )} */}
 
 
             </header>
@@ -156,13 +165,13 @@ const Navbar = ({ searchShow, mobileMenu }) => {
             {mobileMenu && (
                 <>
                     <div className="bg-white border-b border-gray-200">
-                        <div className='flex items-center justify-end px-6 py-3'>
+                        <div className='flex items-center justify-center px-6 py-3'>
                             <CategorySelect />
                         </div>
                     </div>
                 </>
             )}
-            
+
         </>
     );
 };

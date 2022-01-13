@@ -42,6 +42,9 @@ const Brands = () => {
                         375: {
                             slidesPerView: 1,
                         },
+                        414: {
+                            slidesPerView: 2,
+                        },
                         425: {
                             slidesPerView: 2,
                         },
