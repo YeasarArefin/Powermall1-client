@@ -8,7 +8,7 @@ const placeholder = [
     { category: 'Category', img: '../../../assets/category.png' },
 ]
 
-const CategorySelect = () => {
+const CategorySelect = ({ mobileMenu}) => {
     const [selected, setSelected] = useState(placeholder[0])
     const [categories, setCategories] = useState([])
     // eslint-disable-next-line no-unused-vars
@@ -45,7 +45,7 @@ const CategorySelect = () => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Listbox.Options className="absolute w-48 py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-50">
+                        <Listbox.Options className={`absolute w-48 ${mobileMenu && "-ml-6"} py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-50`}>
                             {categories?.map((item, inx) => (
                                 <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
                                     setSearchParams({ categories: item?.slug })

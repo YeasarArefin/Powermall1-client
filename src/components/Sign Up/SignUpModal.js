@@ -34,7 +34,7 @@ const SignUpModal = ({ setShowSignUp }) => {
                                         )
                                     }
                                 >
-                                    Signup
+                                    Login
                                 </Tab>
                                 <Tab
                                     className={({ selected }) =>
@@ -47,7 +47,7 @@ const SignUpModal = ({ setShowSignUp }) => {
                                         )
                                     }
                                 >
-                                    Login
+                                    Signup
                                 </Tab>
                                 {/* // ))} */}
 
@@ -60,7 +60,8 @@ const SignUpModal = ({ setShowSignUp }) => {
                                     )}
                                 >
                                     {/* signup form  */}
-                                    <SignUpForm />
+                                    
+                                    <LoginForm />
                                 </Tab.Panel>
                                 <Tab.Panel
                                     className={classNames(
@@ -69,7 +70,7 @@ const SignUpModal = ({ setShowSignUp }) => {
                                     )}
                                 >
                                     {/* signup form  */}
-                                    <LoginForm />
+                                    <SignUpForm />
                                 </Tab.Panel>
                             </Tab.Panels>
                         </Tab.Group>
