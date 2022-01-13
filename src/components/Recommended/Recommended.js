@@ -21,7 +21,7 @@ const Recommended = () => {
 
     //tablet mode 
     const changeNav = () => {
-        if (window.innerWidth < 500) {
+        if (window.innerWidth < 768) {
             setMobile(true);
         } else {
             setMobile(false);
@@ -29,7 +29,9 @@ const Recommended = () => {
         }
     };
 
-    window.addEventListener('resize', changeNav);
+    useEffect(() => {
+        window.addEventListener('resize', changeNav);
+    }, [])
 
     return (
         <>
