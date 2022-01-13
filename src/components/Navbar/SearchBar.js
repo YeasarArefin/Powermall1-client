@@ -33,7 +33,9 @@ const SearchBar = ({ searchShow}) => {
         }
     };
 
-    window.addEventListener('resize', changeNav);
+    React.useEffect(() => {
+        window.addEventListener('resize', changeNav);
+    }, [])
 
 
     return (
