@@ -66,7 +66,7 @@ const CartSideBar = ({ setShow }) => {
                     {/* checkout button  */}
                     {cart?.length > 0 ? (
                         <Link to='/checkout'>
-                            <div className='bg-primary rounded-lg px-2 py-2 hover:bg-blue-600 transition duration-300 w-full flex justify-between items-center cursor-pointer mt-8' onClick={ () => setShow(false)}>
+                            <div className='bg-primary rounded-lg px-2 py-2 hover:bg-red-700 transition duration-300 w-full flex justify-between items-center cursor-pointer mt-8' onClick={ () => setShow(false)}>
                                 <span className='text-white text-sm pl-4'>Checkout ({quantity} pcs)</span>
                                 <div className='bg-white px-3 py-2 rounded-lg text-primary text-sm'>&#2547; {price?.toFixed(2)}</div>
                             </div>

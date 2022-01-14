@@ -26,7 +26,7 @@ const CategorySelect = ({ mobileMenu}) => {
                     <Listbox.Button className=" transition duration-500 relative w-36 py-3 px-4 text-left bg-white rounded-md  cursor-default focus:outline-none border border-primary sm:text-sm">
                         {searchParams ? (
                             <p className="flex items-center space-x-2 truncate text-primary font-semibold">
-                                <img src={selected?.img} alt={selected?.category} className="w-6" />
+                                {/* <img src={selected?.img} alt={selected?.category} className="w-6" /> */}
                                 <span className='text-xs'>{selected?.category}</span>
                             </p>
                         ) : (
@@ -45,7 +45,7 @@ const CategorySelect = ({ mobileMenu}) => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Listbox.Options className={`absolute w-48 ${mobileMenu && "-ml-6"} py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-50`}>
+                        <Listbox.Options className={`absolute w-48 ${mobileMenu && "-ml-6"} py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg h-auto ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-50`}>
                             {categories?.map((item, inx) => (
                                 <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
                                     setSearchParams({ categories: item?.slug })
@@ -64,7 +64,7 @@ const CategorySelect = ({ mobileMenu}) => {
                                                     className={`${selected ? 'font-medium' : 'font-normal'
                                                         }  truncate flex items-center space-x-2`}
                                                 >
-                                                    <img src={item?.img} alt={item?.category} className="w-6" />
+                                                    {/* <img src={item?.img} alt={item?.category} className="w-6" /> */}
                                                     <span className='text-xs'>{item?.category}</span>
                                                 </p>
                                                 

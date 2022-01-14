@@ -1,6 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import LoginForm from '../components/Login/LoginForm'
+import Brand from '../components/Navbar/Brand'
 
 const Login = () => {
     return (
@@ -10,7 +11,7 @@ const Login = () => {
                 <title>Login </title>
                 <link rel="canonical" href="https://electro-shop-client.vercel.app/" />
             </Helmet>
-            <main className="bg-secondary h-screen w-full ">
+            <main className="bg-secondary h-full w-full ">
                 <div className="max-w-screen-xl mx-auto px-6 flex flex-col py-24 lg:justify-center justify-start">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 place-content-center">
                         {/* vector image  */}
@@ -22,7 +23,7 @@ const Login = () => {
                         <div className="flex flex-col items-center">
                             {/* brand  */}
                             <div className="flex flex-col items-center space-y-4">
-                                <img src="../../../assets/logo.png" alt="logo" className="object-contain w-36 cursor-pointer" />
+                                <Brand />
                                 <p className="text-center text-gray-600">Login with your email & password</p>
                             </div>
 

@@ -1,12 +1,11 @@
-import { Tab } from '@headlessui/react';
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import Brand from '../components/Navbar/Brand';
 import SignUpForm from '../components/Sign Up/SignUpForm';
-import SignUpPhoneForm from '../components/Sign Up/SignUpPhoneForm';
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
+// function classNames(...classes) {
+//     return classes.filter(Boolean).join(' ')
+// }
 
 const SignUp = () => {
     return (
@@ -16,7 +15,7 @@ const SignUp = () => {
                 <title>SignUp</title>
                 <link rel="canonical" href="https://electro-shop-client.vercel.app/" />
             </Helmet>
-            <main className="bg-secondary h-screen  w-full">
+            <main className="bg-secondary h-full  w-full">
                 <div className="max-w-screen-xl mx-auto px-6 flex flex-col py-24 lg:justify-center justify-start">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 place-content-center">
                         {/* vector image  */}
@@ -28,14 +27,14 @@ const SignUp = () => {
                         <div className="flex flex-col items-center order-1">
                             {/* brand  */}
                             <div className="flex flex-col items-center space-y-4">
-                                <img src="../../../assets/logo.png" alt="logo" className="object-contain w-36 cursor-pointer" />
+                                <Brand />
                             </div>
 
                             {/* form  */}
-                            <div className='mt-6'>
-                                <Tab.Group>
+                            <div className='my-6 mb-12'>
+                                <SignUpForm />
+                                {/* <Tab.Group>
                                     <Tab.List className="flex space-x-1 border-b border-gray-300 w-full">
-                                        {/* {Object.keys(categories).map((category) => ( */}
                                         <Tab
                                             className={({ selected }) =>
                                                 classNames(
@@ -61,10 +60,10 @@ const SignUp = () => {
                                             }
                                         >
                                             Sign Up with Phone
-                                        </Tab>
+                                        </Tab> */}
                                         {/* // ))} */}
 
-                                    </Tab.List>
+                                    {/* </Tab.List>
                                     <Tab.Panels className="mt-2">
                                         <Tab.Panel
                                             className={classNames(
@@ -72,8 +71,8 @@ const SignUp = () => {
                                                 'focus:outline-none'
                                             )}
                                         >
-                                            {/* signup form  */}
-                                            <SignUpForm />
+                                            {/* signup form  
+                                            
                                         </Tab.Panel>
                                         <Tab.Panel
                                             className={classNames(
@@ -81,11 +80,11 @@ const SignUp = () => {
                                                 'focus:outline-none'
                                             )}
                                         >
-                                            {/* signup form  */}
+                                            {/* signup form  
                                             <SignUpPhoneForm />
                                         </Tab.Panel>
                                     </Tab.Panels>
-                                </Tab.Group>
+                                </Tab.Group> */}
                             </div>
 
                         </div>

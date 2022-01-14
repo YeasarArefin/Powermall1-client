@@ -1,8 +1,7 @@
-*{
+* {
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
-
 
 body {
   margin: 0;
@@ -91,7 +90,7 @@ body::-webkit-scrollbar {
   justify-content: center !important;
   height: 27px !important;
   display: flex !important;
-  background: #11a0db !important;
+  background: #fc3c3c !important;
   text-transform: none !important;
   letter-spacing: 0;
   text-transform: none;

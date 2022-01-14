@@ -17,7 +17,7 @@ const OrderSuccessful = () => {
     const Spinner = () => {
         return (
             <div className='flex flex-col h-screen w-full justify-center items-center space-y-6'>
-                <FadeLoader color="#11A0DB" loading={loading} size={50} />
+                <FadeLoader color="#fc3c3c" loading={loading} size={50} />
             </div>
         )
     }
