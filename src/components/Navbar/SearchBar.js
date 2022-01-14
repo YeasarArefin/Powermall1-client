@@ -25,7 +25,7 @@ const SearchBar = ({ searchShow}) => {
     };
 
     const changeNav = () => {
-        if (window.innerWidth < 1460) {
+        if (window.innerWidth < 1472) {
             setMobileNav(true);
         } else {
             setMobileNav(false);

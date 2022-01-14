@@ -77,11 +77,11 @@ const Navbar = ({ searchShow, mobileMenu }) => {
                                         <Link to={item?.link} key={item?.id}>
                                             {mobileNav ? (
                                                 <>
-                                                    <li className='text-gray-600 md:text-xs lg:text-xs xl:text-sm font-semibold' style={{ fontSize: '9px' }}>{item?.name}</li>
+                                                    <li className='text-gray-600 md:text-xs lg:text-xs xl:text-sm font-bold' style={{ fontSize: '9px' }}>{item?.name}</li>
                                                 </>
                                             ) : (
                                                 <>
-                                                    <li className='text-gray-600 md:text-xs lg:text-xs xl:text-sm font-semibold' style={{ fontSize: '12px' }}>{item?.name}</li>
+                                                    <li className='text-gray-600 md:text-xs lg:text-xs xl:text-sm font-bold' style={{ fontSize: '13px' }}>{item?.name}</li>
                                                 </>
                                             )}
 
