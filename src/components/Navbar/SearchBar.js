@@ -25,7 +25,7 @@ const SearchBar = ({ searchShow}) => {
     };
 
     const changeNav = () => {
-        if (window.innerWidth < 1330) {
+        if (window.innerWidth < 1460) {
             setMobileNav(true);
         } else {
             setMobileNav(false);
@@ -87,7 +87,7 @@ const SearchBar = ({ searchShow}) => {
                             </>
                         ): (
                             <>
-                                    <form className="flex items-center space-x-3 p-2" onSubmit={handleSubmit(onSubmit)} style={{ width: '400px' }}>
+                                    <form className="flex items-center space-x-3 p-2" onSubmit={handleSubmit(onSubmit)} style={{ width: '500px' }}>
                                         <div className='relative w-full'>
                                             <BsSearch className='absolute top-3 left-4 text-xl text-gray-600' />
                                             <input
