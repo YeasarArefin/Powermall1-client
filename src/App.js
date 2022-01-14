@@ -86,7 +86,7 @@ const App = () => {
     loading ? (
       <div className='flex flex-col h-screen w-full justify-center items-center space-y-6'>
         <Brand />
-        <BarLoader color="#11A0DB" loading={loading} size={150} width={300} />
+        <BarLoader color="#fc3c3c" loading={loading} size={150} width={300} />
       </div>
     ) : (
       <>
