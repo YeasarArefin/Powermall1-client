@@ -172,7 +172,7 @@ const Orders = () => {
                                                         </span>
                                                     </td>
                                                     <td className="px-3 py-4 whitespace-nowrap">
-                                                        <span className="px-3 bg-primary rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center hover:bg-blue-500 cursor-pointer" onClick={() => navigate(`/profile/orders/${item?._id}`)}>
+                                                        <span className="px-3 bg-primary rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center hover:bg-red-700 cursor-pointer" onClick={() => navigate(`/profile/orders/${item?._id}`)}>
                                                             View
                                                         </span>
                                                     </td>
@@ -187,7 +187,14 @@ const Orders = () => {
                                                                 </>
                                                             ) : (
                                                                 <>
-                                                                    <span disabled className="px-3 bg-red-600 opacity-20 rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center hover:bg-red-500 cursor-pointer">
+                                                                    <span disabled className="hidden px-3 bg-red-600 opacity-20 rounded-full py-1 text-xs leading-5 font-semibold text-white  justify-center hover:bg-red-500 cursor-pointer">
+                                                                        Cancel
+                                                                    </span>
+                                                                </>
+                                                            )}
+                                                            {item?.status === "Processing" && (
+                                                                <>
+                                                                    <span disabled className=" px-3 bg-red-600 opacity-20 rounded-full py-1 text-xs leading-5 font-semibold text-white  justify-center hover:bg-red-500 cursor-pointer">
                                                                         Cancel
                                                                     </span>
                                                                 </>
@@ -200,7 +207,7 @@ const Orders = () => {
 
                                                                 ) : (
 
-                                                                    <button disabled className="px-3 bg-yellow-500 opacity-40 rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center hover:bg-yellow-500 cursor-pointer">{item?.refund}</button>
+                                                                    <button disabled className="hidden px-3 bg-yellow-500 opacity-40 rounded-full py-1 text-xs leading-5 font-semibold text-white  justify-center hover:bg-yellow-500 cursor-pointer">{item?.refund}</button>
 
                                                                 )
 

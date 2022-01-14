@@ -56,7 +56,7 @@ const DroneService = () => {
                                         <h1 className='text-3xl text-center text-gray-600'> Not found!!</h1>
                                     </div>
                                     <Link to="/shops">
-                                        <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none hover:bg-blue-500 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
+                                        <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none hover:bg-red-700 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
                                     </Link>
                                 </div>
                             )
