@@ -59,21 +59,20 @@ const Home = () => {
                     </>
                 )} */}
                 <div className="max-w-screen-xl mx-auto px-6" >
+                    <h1 className="text-5xl text-center">404 Not Found !!!</h1>
                     {/* {!mobileVersion && ( */}
                         {/* <> */}
-                            <div className='pt-6'>
-                                <Slider />
-                            </div>
+                            {/* <div className='pt-6'> */}
+                                {/* <Slider /> */}
+                            {/* </div> */}
                         {/* </> */}
                     {/* // )} */}
-                    <Features />
-                    {/* <BigBanner /> */}
-                    <ProductsCategory />
-                    {/* <BigBanner2 /> */}
-                    <Brands />
-                    <Recommended />
-                    <PopularCategories />
-                    <ToastContainer />
+                    {/* <Features /> */}
+                    {/* <ProductsCategory /> */}
+                    {/* <Brands /> */}
+                    {/* <Recommended /> */}
+                    {/* <PopularCategories /> */}
+                    {/* <ToastContainer /> */}
                 </div>
             </main>
             <Footer />
