@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Slide from 'react-reveal/Slide';
+import "swiper/components/effect-coverflow/effect-coverflow.min.css";
+import "swiper/components/navigation/navigation.min.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.min.css";
 
 const Features = () => {
     const [featuresData, setFeatureData] = useState([]);
@@ -12,11 +15,51 @@ const Features = () => {
 
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-12">
+        // <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-12">
+        <>
+            <Swiper
+                slidesPerView={4}
+                navigation={true}
+                centeredSlides={false}
+                spaceBetween={30}
+                grabCursor={true}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false
+                }}
+                className="mySwiper py-8 pb-10" breakpoints={{
+                    320: {
+                        slidesPerView: 1,
+                    },
+                    375: {
+                        slidesPerView: 1,
+                    },
+                    414: {
+                        slidesPerView: 1,
+                    },
+                    425: {
+                        slidesPerView: 1,
+                    },
+                    500: {
+                        slidesPerView: 1,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3
+                    },
+                    1200: {
+                        slidesPerView: 3
+                    },
+                    1400: {
+                        slidesPerView: 3
+                    }
+                }}>
             {featuresData?.map(feature => (
-                <Slide bottom key={feature?._id}>
+                <SwiperSlide key={feature?._id}>
                     <a href={`${feature?.link}`} target="_blank" rel="noopener noreferrer">
-                    <div className="rounded-lg cursor-pointer hover:shadow-xl transform hover:translate-y-4 overflow-hidden h-40 lg:h-52 transition duration-500" style={{ background: `url(${feature?.img})` }}>
+                    <div className="rounded-lg cursor-pointer hover:shadow-xl overflow-hidden h-44 lg:h-52 transition duration-500" style={{ background: `url(${feature?.img})`, backgroundSize:'cover' }}>
                         <div className="flex flex-col justify-center space-y-1 h-full p-6">
                             {/* text  */}
                             <div>
@@ -33,9 +76,12 @@ const Features = () => {
                         </div>
                     </div>
                     </a>
-                </Slide>
+                </SwiperSlide>
             ))}
-        </div>
+            </Swiper>
+            
+        {/* </div> */}
+        </>
     )
 }
 

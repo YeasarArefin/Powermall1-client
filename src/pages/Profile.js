@@ -5,7 +5,7 @@ import { NavLink, Outlet } from "react-router-dom";
 const Profile = () => {
     const links = [
         { id: 1, name: "My Account", link: '/profile/account' },
-        { id: 2, name: "My Orders", link: '/profile/orders' },
+        { id: 2, name: "Order History", link: '/profile/orders' },
         { id: 3, name: "Manage Account", link: '/profile/edit' },
     ]
     return (

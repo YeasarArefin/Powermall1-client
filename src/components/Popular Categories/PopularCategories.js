@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Slide from 'react-reveal/Slide';
 import { Link, useSearchParams } from 'react-router-dom';
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/navigation/navigation.min.css";
@@ -28,9 +27,9 @@ const PopularCategories = () => {
                 <Swiper
                     loop={true}
                     navigation={true}
-                    slidesPerView={6}
+                    slidesPerView={4}
                     centeredSlides={false}
-                    spaceBetween={10}
+                    spaceBetween={20}
                     grabCursor={true}
                     pagination={{
                         "clickable": true
@@ -46,6 +45,7 @@ const PopularCategories = () => {
                         375: {
                             slidesPerView: 1,
                         },
+                        
                         425: {
                             slidesPerView: 2,
                         },
@@ -56,27 +56,25 @@ const PopularCategories = () => {
                             slidesPerView: 4,
                         },
                         1024: {
-                            slidesPerView: 6
+                            slidesPerView: 4
                         },
                         1200: {
-                            slidesPerView: 6
+                            slidesPerView: 4
                         },
                         1400: {
-                            slidesPerView: 6
+                            slidesPerView: 4
                         }
                     }}>
                     {categories?.map(item => (
                         <SwiperSlide key={item._id} className="h-full">
-                            <Slide bottom key={item._id}>
                                 <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
                                     setSearchParams({ categories: item?.slug })
                                 }}>
-                                    <div className='bg-white rounded-lg p-3 box-border shadow-xl flex flex-col items-center justify-center h-full space-y-2 hover:scale-105 transform transition duration-500 cursor-pointer'>
-                                        <img className="w-16 object-contain" src={item.img} alt={item.category} />
-                                        <p className="text-gray-600">{item.category}</p>
+                                    <div className='bg-white rounded-lg p-3 box-border flex flex-col items-center justify-center h-full space-y-2 hover:scale-105 transform transition duration-500 cursor-pointer'>
+                                        <img className="w-12 md:w-16 lg:w-16 object-contain" src={item.img} alt={item.category} />
+                                        <p className="text-gray-600 text-sm">{item.category}</p>
                                     </div>
                                     </Link>
-                            </Slide>
                         </SwiperSlide>
                     ))}
                 </Swiper>

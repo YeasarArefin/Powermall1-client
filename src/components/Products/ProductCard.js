@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { BsCartCheckFill } from 'react-icons/bs';
-import Slide from 'react-reveal/Slide';
 import { useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 
 
 const ProductCard = (props) => {
     const [tempPd,setTempPd] = useState([])
+    const [changeCartBtn,setCartBtn] = useState(true)
     const { handleClick, cart } = useCart();
     // const { newUser } = useAuth();
     const { _id, name, price, img, discount, quantity, color } = props;
@@ -30,8 +30,8 @@ const ProductCard = (props) => {
     }
 
     return (
-        <Slide bottom>
-            <div className="rounded-lg p-4 box-border hover:translate-y-4 transform transition duration-500 h-full flex flex-col justify-between hover:shadow-xl bg-white">
+        <>
+            <div className="rounded-lg p-4 box-border w-full  transition duration-500 h-full flex flex-col justify-between hover:shadow-xl bg-white border border-1">
 
                 <div >
                     {/* discount badge  */}
@@ -76,8 +76,9 @@ const ProductCard = (props) => {
                                 <>
                                     <div>
                                         <button className=" bg-white hover:bg-gray-100  ring-blue-200 ring-offset-2 px-3 py-2 rounded-full border border-gray-300 text-primary focus:ring-4 transition duration-300   uppercase text-sm flex items-center space-x-1" onClick={handleCart}>
-                                            <BsCartCheckFill className="text-lg" />
-                                            <span className="text-sm">Cart</span>
+                                            {/* <BsCartCheckFill className="text-lg" /> */}
+                                                {changeCartBtn ? <span className="text-sm" onMouseEnter={() => setCartBtn(false)} onMouseLeave={() => setCartBtn(true)}>Buy Now</span> : <span className="text-sm" onMouseEnter={() => setCartBtn(true)} onMouseLeave={() => setCartBtn(true)}>Cart</span> }
+                                            
                                         </button>
                                     </div>
                                 </>
@@ -89,7 +90,7 @@ const ProductCard = (props) => {
 
 
             </div>
-        </Slide>
+        </>
     );
 };
 

@@ -86,7 +86,7 @@ const EditProfile = () => {
     return (
         <>
             <div>
-                <div className="mt-10 sm:mt-0">
+                <div className="mt-10 sm:mt-0 mb-12 lg:mb-4">
                     <div className="grid grid-cols-1 md:gap-6">
 
                         <div className="mt-5 md:mt-0" >

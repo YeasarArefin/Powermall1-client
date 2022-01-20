@@ -27,7 +27,7 @@ const SubFooter = () => {
 
     return (
         <>
-            <div className='max-w-screen-xl mx-auto px-6 py-4 pb-6 border-t border-gray-300 flex flex-col lg:flex-row space-y-2 lg:space-y-0 items-center justify-between'>
+            <div className='max-w-screen-xl mx-auto px-6 py-4 pb-6 border-t border-gray-300 flex flex-col lg:flex-row space-y-2 lg:space-y-0 items-center justify-between mb-24 lg:mb-0'>
                 {/* social media  */}
                 <div className='flex items-center space-x-4'>
                     {socialLink.map(item => (

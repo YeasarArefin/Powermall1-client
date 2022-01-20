@@ -5,10 +5,10 @@ import { HiSelector } from 'react-icons/hi';
 import { Link, useSearchParams } from 'react-router-dom';
 
 const placeholder = [
-    { category: 'Category', img: '../../../assets/category.png' },
+    { category: 'CATEGORIES', img: '../../../assets/category.png' },
 ]
 
-const CategorySelect = ({ mobileMenu}) => {
+const CategorySelect = ({ mobileMenu, setShowMenu}) => {
     const [selected, setSelected] = useState(placeholder[0])
     const [categories, setCategories] = useState([])
     // eslint-disable-next-line no-unused-vars
@@ -49,6 +49,7 @@ const CategorySelect = ({ mobileMenu}) => {
                             {categories?.map((item, inx) => (
                                 <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
                                     setSearchParams({ categories: item?.slug })
+                                    setShowMenu(false)
                                 }}>
                                     <Listbox.Option
                                         key={item?._id}

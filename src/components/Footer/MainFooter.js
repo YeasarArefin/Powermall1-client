@@ -7,6 +7,7 @@ import Brand from '../Navbar/Brand';
 const MainFooter = () => {
     const [info, setInfo] = useState();
     const [applink,setAppLink] = useState([]);
+    const [mobileFooter, setMobileFooter] = useState(false);
 
     useEffect(() => {
         axios.get('https://elec-shop-server.herokuapp.com/information')
@@ -37,74 +38,176 @@ const MainFooter = () => {
         { id: 2, name: 'Download Appstore', link: `${applink.appStore}`, image:"../../../assets/apple.png"},
     ]
 
+    // resize 
+    //tablet mode 
+    const changeNav = () => {
+        if (window.innerWidth <= 500) {
+            setMobileFooter(true);
+        } else {
+            setMobileFooter(false);
+        }
+    };
+    useEffect(() => {
+        window.addEventListener('resize', changeNav);
+    }, [])
+
     return (
         <section className="max-w-screen-xl mx-auto px-6 py-8">
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center lg:place-items-start'>
-                {/* about  */}
-                <div className='flex flex-col space-y-4'>
-                    <h1 className='text-xl text-gray-700'>About</h1>
-                    <ul className='flex flex-col space-y-2'>
-                        {about.map(item => (
-                            <li key={item.id} className='text-gray-500 text-sm hover:underline'>
-                                <Link to={item.link}>{item.name}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
 
-                {/* Contact  */}
-                <div className='flex flex-col space-y-4'>
-                    <h1 className='text-xl text-gray-700'>Contact</h1>
-                    <ul className='flex flex-col space-y-2'>
-                        {contact.map(item => (
-                            <li key={item.id} className='text-gray-500 text-sm hover:underline'>
-                                <Link to={item.link}>{item.name}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                {/* address  */}
-                <div className='flex flex-col lg:items-start items-center space-y-4'>
-                    <Brand />
-
-                    <div className='flex flex-col lg:items-start items-center space-y-3'>
-                        {/* locaiton  */}
-                        <div className='flex justify-center lg:justify-start w-48  items-center space-x-2'>
-                            <MdLocationOn className='text-gray-500 text-sm w-8' />
-                            <span className='text-gray-500 text-sm'>
-                                {info?.address}
-                            </span>
+            {mobileFooter ? (
+                <>
+                    <div className='grid grid-cols-2 gap-10  lg:place-items-start'>
+                        {/* about  */}
+                        <div className='flex flex-col space-y-4'>
+                            <h1 className='text-lg text-gray-700'>About</h1>
+                            <ul className='flex flex-col space-y-2'>
+                                {about.map(item => (
+                                    <li key={item.id} className='text-gray-500 text-sm hover:underline'>
+                                        <Link to={item.link}>{item.name}</Link>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                        {/* mobile  */}
-                        <div className='flex items-center space-x-2'>
-                            <MdCall className='text-gray-500 text-sm w-8' />
-                            <span className='text-gray-500 text-sm'>
-                                {info?.phone}
-                            </span>
+
+                        <div className="flex flex-col space-y-6">
+                            
+
+                            {/* address  */}
+                            <div className='flex flex-col items-start  space-y-4 '>
+                                <Brand />
+
+                                <div className='flex flex-col items-start space-y-3'>
+                                    {/* locaiton  */}
+                                    <div className='flex justify-center lg:justify-start w-48  items-center space-x-2'>
+                                        <MdLocationOn className='text-gray-500 text-sm w-8' />
+                                        <span className='text-gray-500 text-sm'>
+                                            {info?.address}
+                                        </span>
+                                    </div>
+                                    {/* mobile  */}
+                                    <div className='flex items-center space-x-2'>
+                                        <MdCall className='text-gray-500 text-sm w-8' />
+                                        <span className='text-gray-500 text-sm'>
+                                            {info?.phone}
+                                        </span>
+                                    </div>
+                                    {/* Email  */}
+                                    <div className='flex items-center space-x-2'>
+                                        <MdOutlineEmail className='text-gray-500 text-sm w-8' />
+                                        <span className='text-gray-500 text-sm'>
+                                            {info?.email}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Contact  */}
+                            <div className='flex flex-col space-y-4'>
+                                <h1 className='text-lg text-gray-700'>Contact</h1>
+                                <ul className='flex flex-col space-y-2'>
+                                    {contact.map(item => (
+                                        <li key={item.id} className='text-gray-500 text-sm hover:underline'>
+                                            <Link to={item.link}>{item.name}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
-                        {/* Email  */}
-                        <div className='flex items-center space-x-2'>
-                            <MdOutlineEmail className='text-gray-500 text-sm w-8'  />
-                            <span className='text-gray-500 text-sm'>
-                                {info?.email}
-                            </span>
+
+                    </div>
+
+                    {/* app download  */}
+                    <div className='flex flex-col items-center space-y-4 pt-6'>
+                        <h1 className='text-lg lg:text-xl text-center lg:text-left text-gray-700'>Download Our App</h1>
+                        <div className='flex items-center space-x-3'>
+                            {app.map(item => (
+                                <a key={item.id} target="_blank" href={item.link} rel="noreferrer">
+                                    <img src={item.image} alt={item.name} className='h-12 w-24 md:w-36 lg:w-36  md:h-12 lg:h-12  object-contain' />
+                                </a>
+                            ))}
                         </div>
                     </div>
-                </div>
+                </>
+            ): (
+                <>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center lg:place-items-start'>
+                            {/* about  */}
+                            <div className='flex flex-col space-y-4'>
+                                <h1 className='text-xl text-gray-700'>About</h1>
+                                <ul className='flex flex-col space-y-2'>
+                                    {about.map(item => (
+                                        <li key={item.id} className='text-gray-500 text-sm hover:underline'>
+                                            <Link to={item.link}>{item.name}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
 
-                {/* app download  */}
-                <div className='flex flex-col space-y-4'>
-                    <h1 className='text-xl text-center lg:text-left text-gray-700'>Download Our App</h1>
-                    <div className='flex items-center space-x-4'>
-                        {app.map(item => (
-                            <a key={item.id} target="_blank" href={item.link} rel="noreferrer">
-                                <img src={item.image} alt={item.name} className='h-12 w-36 object-contain' />
-                            </a>
-                        ))}
-                    </div>
-                </div>
-            </div>
+                            {/* Contact  */}
+                            <div className='flex flex-col space-y-4'>
+                                <h1 className='text-xl text-gray-700'>Contact</h1>
+                                <ul className='flex flex-col space-y-2'>
+                                    {contact.map(item => (
+                                        <li key={item.id} className='text-gray-500 text-sm hover:underline'>
+                                            <Link to={item.link}>{item.name}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            {/* address  */}
+                            <div className='flex flex-col lg:items-start items-center space-y-4'>
+                                <Brand />
+
+                                <div className='flex flex-col lg:items-start items-center space-y-3'>
+                                    {/* locaiton  */}
+                                    <div className='flex justify-center lg:justify-start w-48  items-center space-x-2'>
+                                        <MdLocationOn className='text-gray-500 text-sm w-8' />
+                                        <span className='text-gray-500 text-sm'>
+                                            {info?.address}
+                                        </span>
+                                    </div>
+                                    {/* mobile  */}
+                                    <div className='flex items-center space-x-2'>
+                                        <MdCall className='text-gray-500 text-sm w-8' />
+                                        <span className='text-gray-500 text-sm'>
+                                            {info?.phone}
+                                        </span>
+                                    </div>
+                                    {/* Email  */}
+                                    <div className='flex items-center space-x-2'>
+                                        <MdOutlineEmail className='text-gray-500 text-sm w-8' />
+                                        <span className='text-gray-500 text-sm'>
+                                            {info?.email}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* app download  */}
+                            <div className='flex flex-col space-y-4'>
+                                <h1 className='text-xl text-center lg:text-left text-gray-700'>Download Our App</h1>
+                                <div className='flex items-center space-x-4'>
+                                    {app.map(item => (
+                                        <a key={item.id} target="_blank" href={item.link} rel="noreferrer">
+                                            <img src={item.image} alt={item.name} className='h-12 w-36 object-contain' />
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                </>
+            )}
+            
+
+           
+
+
+
+
+
+            {/* mobile view footer start  */}
+
         </section>
     )
 }

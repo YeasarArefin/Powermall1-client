@@ -7,7 +7,7 @@ import NavButton from './NavButton';
 import ProfileInfo from './ProfileInfo';
 import SearchBar from './SearchBar';
 
-const Navbar = ({ searchShow, mobileMenu }) => {
+const Navbar = ({ searchShow, mobileMenu, setSearchShow }) => {
     const [mobileNav, setMobileNav] = useState(false);
     const { newUser } = useAuth();
 
@@ -31,13 +31,13 @@ const Navbar = ({ searchShow, mobileMenu }) => {
             setMobileNav(true);
         } else {
             setMobileNav(false);
-
+            setSearchShow(false);
         }
     };
 
-    React.useEffect(() => {
-        window.addEventListener('resize', changeNav);
-    }, [])
+    window.addEventListener('resize', changeNav);
+    // React.useEffect(() => {
+    // }, [])
 
     return (
         <>
@@ -47,7 +47,10 @@ const Navbar = ({ searchShow, mobileMenu }) => {
                     <div className="flex flex-grow justify-around items-center space-x-6">
                         {/* brand  */}
                         {searchShow ? (
-                            <SearchBar searchShow={searchShow} />
+                            <div className='flex flex-col items-center space-y-4'>
+                                <Brand />
+                                <SearchBar searchShow={searchShow} />
+                            </div>
                         ) : (
                             <Brand />
                         )}

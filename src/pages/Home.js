@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Brands from '../components/Brands/Brands';
 import Features from '../components/Features/Features';
 import Footer from '../components/Footer/Footer';
+import MenuBox from '../components/Menu Box/MenuBox';
 import PopularCategories from '../components/Popular Categories/PopularCategories';
 import ProductsCategory from '../components/Products/ProductsCategory';
 import Recommended from '../components/Recommended/Recommended';
@@ -66,6 +67,7 @@ const Home = () => {
                             </div>
                         {/* </> */}
                     {/* // )} */}
+                    <MenuBox />
                     <Features />
                     {/* <BigBanner /> */}
                     <ProductsCategory />

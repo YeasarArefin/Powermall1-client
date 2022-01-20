@@ -25,7 +25,9 @@ const Slider = () => {
                 {images?.map((image) => (
                     <SwiperSlide key={image?._id}>
                         <a href={image?.link} target="_blank" rel='noreferrer'  >
-                            <img className={`object-cover w-full h-56 lg:h-96 rounded-lg`} src={image?.img} alt="slider" />
+                            <div className={` w-full h-56 lg:h-96 rounded-lg overflow-hidden`}>
+                                <img className="w-full h-full object-contain md:object-cover lg:object-cover" src={image?.img} alt="slider" />
+                            </div>
                         </a>
                     </SwiperSlide>
                 ))}

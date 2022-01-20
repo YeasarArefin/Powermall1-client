@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Slide from 'react-reveal/Slide';
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
@@ -24,7 +23,7 @@ const Brands = () => {
                 <Swiper
                     loop={true}
                     navigation={true}
-                    slidesPerView={6}
+                    slidesPerView={4}
                     centeredSlides={false}
                     spaceBetween={10}
                     grabCursor={true}
@@ -55,22 +54,20 @@ const Brands = () => {
                             slidesPerView: 4,
                         },
                         1024: {
-                            slidesPerView: 6
+                            slidesPerView: 4
                         },
                         1200: {
-                            slidesPerView: 6
+                            slidesPerView: 4
                         },
                         1400: {
-                            slidesPerView: 6
+                            slidesPerView: 4
                         }
                     }}>
                     {brands?.map(item => (
                         <SwiperSlide key={item._id} className="h-full">
-                            <Slide bottom>
                                 <div className='w-36 h-24 bg-white rounded-lg p-2 box-border'>
                                     <img className='w-24 h-full object-contain mx-auto' src={item?.img} alt={item.brand} />
                                 </div>
-                            </Slide>
                         </SwiperSlide>
                     ))}
                 </Swiper>

@@ -4,6 +4,7 @@ import { CgMenuLeft } from 'react-icons/cg';
 import { FiShoppingBag, FiUser } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import useCart from '../../hooks/useCart';
 import CartSideBar from '../Product Cart/CartSideBar';
 import SignUpModal from '../Sign Up/SignUpModal';
 import MenuSidebar from './MenuSidebar';
@@ -16,6 +17,7 @@ const MobileBottomMenu = ({ handleSearchShow}) => {
     const [showSignUp, setShowSignUp] = React.useState(false);
     const [showMenu, setShowMenu] = React.useState(false);
     const { newUser } = useAuth();
+    const { cart } = useCart();
 
     const handleShow = () => {
         setShow(!show);
@@ -56,7 +58,16 @@ const MobileBottomMenu = ({ handleSearchShow}) => {
 
                     {/* cart icon  */}
                     <div>
-                        <FiShoppingBag className="text-2xl cursor-pointer opacity-80" onClick={handleShow} />
+                        <div className="relative" onClick={handleShow}>
+                            <FiShoppingBag className="text-2xl cursor-pointer opacity-80" onClick={handleShow} />
+                            {cart.length > 0 && (
+                                <>
+                                    <p className="rounded-full w-5 h-5 absolute -top-1 -right-2 bg-primary text-white flex flex-col justify-center items-center text-center cursor-pointer ">{cart.length}</p>
+                                </>
+                            )}
+                            
+                        </div>
+                        
                     </div>
 
                     {/* profile icon  */}

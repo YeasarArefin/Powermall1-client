@@ -7,6 +7,7 @@ import DeliveryDescription from '../components/Product Details/DeliveryDescripti
 import ProductDescription from '../components/Product Details/ProductDescription';
 import ProductImage from '../components/Product Details/ProductImage';
 import ProductInformations from '../components/Product Details/ProductInformations';
+import SuggestedProducts from '../components/Product Details/SuggestedProducts';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -61,6 +62,12 @@ const ProductDetails = () => {
                     <section className='mx-6  bg-white rounded-lg my-12'>
                         <ProductInformations {...products} />
                     </section>
+
+                    {/* suggest pd  */}
+                        <section className='mx-6  bg-white rounded-lg my-12'>
+                            <SuggestedProducts  {...products} />
+                        </section>
+
                 </main>
                 <Footer />
             </>

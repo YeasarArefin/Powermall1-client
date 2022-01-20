@@ -3,6 +3,7 @@ import { RiCloseLine } from 'react-icons/ri';
 import Fade from 'react-reveal/Fade';
 import { useNavigate } from 'react-router-dom';
 import Brand from './Brand';
+import CategorySelect from './CategorySelect';
 
 const MenuSidebar = ({ setShowMenu }) => {
     const navigate = useNavigate()
@@ -26,7 +27,7 @@ const MenuSidebar = ({ setShowMenu }) => {
                             <RiCloseLine className="text-xl text-gray-700 hover:text-white" />
                         </button>
                     </div>
-                    <div className='flex items-center justify-between px-6 py-4'>
+                    <div className='flex flex-col px-6 py-4'>
                         {/* some links  */}
                         <ul className='flex-col items-start space-y-5 flex pl-5'>
                             {menus?.map(item => {
@@ -42,6 +43,9 @@ const MenuSidebar = ({ setShowMenu }) => {
                                 );
                             })}
                         </ul>
+                        <div className='pl-5 pt-5'>
+                            <CategorySelect setShowMenu={setShowMenu}/>
+                        </div>
                     </div>
                 </aside>
             </Fade>

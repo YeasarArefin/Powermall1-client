@@ -63,6 +63,9 @@ const ProductsCategory = () => {
                                         375: {
                                             slidesPerView: 1,
                                         },
+                                        414: {
+                                            slidesPerView: 1,
+                                        },
                                         425: {
                                             slidesPerView: 1,
                                         },

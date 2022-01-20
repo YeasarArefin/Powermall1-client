@@ -12,7 +12,7 @@ const Brand = () => {
     return (
         <div className="">
             <Link to="/">
-                <img src={logo?.logo} alt={logo?._id} className="object-contain  w-36 cursor-pointer" />
+                <img src={logo?.logo} alt={logo?._id} className="object-contain  w-32 cursor-pointer" />
             </Link>
         </div>
     )
