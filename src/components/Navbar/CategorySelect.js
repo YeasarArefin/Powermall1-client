@@ -1,6 +1,7 @@
 import { Listbox, Transition } from '@headlessui/react';
 import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react';
+import { AiOutlineMinus } from 'react-icons/ai';
 import { HiSelector } from 'react-icons/hi';
 import { Link, useSearchParams } from 'react-router-dom';
 
@@ -13,11 +14,17 @@ const CategorySelect = ({ mobileMenu, setShowMenu}) => {
     const [categories, setCategories] = useState([])
     // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams();
+    const [showSubMenu,setShowSubMenu] = useState(false)
+    // const {cateId,setCateId} = useState({})
 
     useEffect(() => {
         axios.get('https://elec-shop-server.herokuapp.com/category')
             .then(res => setCategories(res.data))
     }, [])
+    // useEffect(() => {
+    //     axios.get('https://elec-shop-server.herokuapp.com/category')
+    //         .then(res => setCateId(res.data))
+    // }, [])
 
     return (
         <div>
@@ -47,10 +54,14 @@ const CategorySelect = ({ mobileMenu, setShowMenu}) => {
                     >
                         <Listbox.Options className={`absolute w-48 ${mobileMenu && "-ml-6"} py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg h-auto ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-50`}>
                             {categories?.map((item, inx) => (
+                                <>
                                 <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
                                     setSearchParams({ categories: item?.slug })
                                     setShowMenu(false)
-                                }}>
+                                    
+                                    }} onMouseOver={() => setShowSubMenu(true)}
+                                        onMouseLeave={() => setShowSubMenu(false)}
+                                    >
                                     <Listbox.Option
                                         key={item?._id}
                                         className={({ active }) =>
@@ -62,20 +73,50 @@ const CategorySelect = ({ mobileMenu, setShowMenu}) => {
                                         {({ selected, active }) => (
                                             <>
                                                 <p
+                                                    
                                                     className={`${selected ? 'font-medium' : 'font-normal'
                                                         }  truncate flex items-center space-x-2`}
                                                 >
                                                     {/* <img src={item?.img} alt={item?.category} className="w-6" /> */}
-                                                    <span className='text-xs'>{item?.category}</span>
+                                                    <span className='text-xs'  >{item?.category}</span>
                                                 </p>
                                                 
                                             </>
                                         )}
+
                                     </Listbox.Option>
+                                        {showSubMenu && (
+                                            <>
+                                                <div className="flex flex-col pl-6 ">
+                                                    {item?.subCategory?.map((item, inx) => (
+                                                        <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
+                                                            setSearchParams({ categories: item?.slug })
+                                                            setShowMenu(false)
+                                                        }}>
+                                                            <p
+
+                                                                className={` truncate flex items-start space-x-2  py-2`}
+                                                            >
+                                                                <AiOutlineMinus />
+                                                                <span className='text-xs'>{item}</span>
+                                                            </p>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </>
+                                        )}
                                 </Link>
+
+                                
+
+                                </>
                             ))}
+
+                            {/* </> */}
                         </Listbox.Options>
                     </Transition>
+
+                    
                 </div>
             </Listbox>
         </div>
