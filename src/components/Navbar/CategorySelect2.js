@@ -42,57 +42,56 @@ const CategorySelect2 = ({ mobileMenu }) => {
             <ControlledMenu state={state} anchorRef={ref}
                 onMouseLeave={() => setState('closed')}
                 onClose={() => setState('closed')}>
-                {categories?.map((item, inx) => (
-                    <>
-                        <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
-                            setSearchParams({ categories: item?.slug })
-                            // setShowMenu(false)
+                    {categories?.map((item, inx) => (
+                        <>
+                            <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
+                                setSearchParams({ categories: item?.slug })
+                                // setShowMenu(false)
 
-                        }}
-                        >
-                            {!item?.subCategory && (
+                            }}
+                            >
+                                {!item?.subCategory && (
+                                    <>
+                                        <MenuItem className={`text-sm w-48 `}>{item?.category}</MenuItem>
+                                    </>
+                                )}
+
+                            </Link>
+
+                            {item?.subCategory && (
                                 <>
-                                    <MenuItem className="text-sm">{item?.category}</MenuItem>
+                                    <SubMenu label={item?.category} >
+                                        <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
+                                            setSearchParams({ categories: item?.slug })
+                                            // setShowMenu(false)
+
+                                        }}>
+                                            <MenuItem>ALL</MenuItem>
+                                        </Link>
+                                        {item?.subCategory?.map((cate) => (
+                                            <>
+
+
+                                                <Link to={`/shops?categories=${cate?.toLowerCase()}`} onClick={() => {
+                                                    setSearchParams({ categories: cate?.toLowerCase() })
+                                                    // setShowMenu(false)
+
+                                                }}>
+                                                    <MenuItem>{cate}</MenuItem>
+                                                </Link>
+                                            </>
+                                        ))}
+                                    </SubMenu>
                                 </>
                             )}
 
-                        </Link>
-
-                        {item?.subCategory && (
-                            <>
-                                <SubMenu label={item?.category} >
-                                    <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
-                                        setSearchParams({ categories: item?.slug })
-                                        // setShowMenu(false)
-
-                                    }}>
-                                        <MenuItem>ALL</MenuItem>
-                                    </Link>
-                                    {item?.subCategory?.map((cate) => (
-                                        <>
-                                            
-                                            
-                                            <Link to={`/shops?categories=${cate?.toLowerCase()}`} onClick={() => {
-                                                setSearchParams({ categories: cate?.toLowerCase() })
-                                                // setShowMenu(false)
-
-                                            }}>
-                                                <MenuItem>{cate}</MenuItem>
-                                            </Link>
-                                        </>
-                                    ))}
-                                </SubMenu>
-                            </>
-                        )}
 
 
 
 
 
-
-                    </>
-                ))}
-
+                        </>
+                    ))}
             </ControlledMenu>
 
         </div>
