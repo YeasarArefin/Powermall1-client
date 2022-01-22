@@ -103,7 +103,7 @@ const App = () => {
                   <div className={`${header && "fixed top-0 w-full z-30 transition duration-300"} `}>
                     <Navbar searchShow={searchShow} mobileMenu={mobileMenu} setSearchShow={setSearchShow} />
                   </div>
-                  {mobileMenu && <MobileBottomMenu setSearchShow={setSearchShow} handleSearchShow={handleSearchShow} />}
+                  {mobileMenu && <MobileBottomMenu setSearchShow={setSearchShow} handleSearchShow={handleSearchShow} mobileMenu={mobileMenu}/>}
                   
                 </div>
                 <Routes>

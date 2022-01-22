@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Brand from './Brand';
-import CategorySelect from './CategorySelect';
+import CategorySelect2 from './CategorySelect2';
 import NavButton from './NavButton';
 import ProfileInfo from './ProfileInfo';
 import SearchBar from './SearchBar';
@@ -59,7 +59,7 @@ const Navbar = ({ searchShow, mobileMenu, setSearchShow }) => {
                         {/* category  */}
                         {!mobileMenu && (
                             <div className="hidden md:flex lg:flex">
-                                <CategorySelect />
+                                <CategorySelect2 />
                             </div>
                         )}
 
@@ -171,7 +171,7 @@ const Navbar = ({ searchShow, mobileMenu, setSearchShow }) => {
                 <>
                     <div className="bg-white border-b border-gray-200">
                         <div className='flex items-center justify-center px-6 py-3'>
-                            <CategorySelect mobileMenu={mobileMenu}/>
+                            <CategorySelect2 mobileMenu={mobileMenu}/>
                         </div>
                     </div>
                 </>

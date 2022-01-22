@@ -19,7 +19,7 @@ const Shops = () => {
     }, [searchParams])
 
     //find products
-    const pds = products?.filter(item => item?.category?.toLowerCase() === categoryFilter)
+    const pds = products?.filter(item => item?.category?.toLowerCase() === categoryFilter || item?.subCategory?.toLowerCase() === categoryFilter)
     // eslint-disable-next-line array-callback-return
     const searchPd = products?.filter(item => {
         if (item?.name?.toLowerCase()?.includes(searchFilter?.toLowerCase()) || item?.brand?.toLowerCase()?.includes(searchFilter?.toLowerCase()) || item?.category?.toLowerCase()?.includes(searchFilter?.toLowerCase())) {

@@ -1,20 +1,19 @@
 import React from 'react';
 import { RiCloseLine } from 'react-icons/ri';
 import Fade from 'react-reveal/Fade';
-import { useNavigate } from 'react-router-dom';
 import Brand from './Brand';
-import CategorySelect from './CategorySelect';
+import MenuSelect from './MenuSelect';
 
-const MenuSidebar = ({ setShowMenu }) => {
-    const navigate = useNavigate()
-    //menus 
-    const menus = [
-        { id: 1, name: 'Free Shipping', link: '/free' },
-        { id: 2, name: 'Drone Service', link: '/droneservice' },
-        { id: 3, name: 'Global Purchase', link: '/globalpurchase' },
-        { id: 4, name: 'Automative', link: '/automative' },
+const MenuSidebar = ({ setShowMenu, mobileMenu }) => {
+    // const navigate = useNavigate()
+    // //menus 
+    // const menus = [
+    //     { id: 1, name: 'Free Shipping', link: '/free' },
+    //     { id: 2, name: 'Drone Service', link: '/droneservice' },
+    //     { id: 3, name: 'Global Purchase', link: '/globalpurchase' },
+    //     { id: 4, name: 'Automative', link: '/automative' },
         
-    ];
+    // ];
 
     return (
         <div>
@@ -29,7 +28,7 @@ const MenuSidebar = ({ setShowMenu }) => {
                     </div>
                     <div className='flex flex-col px-6 py-4'>
                         {/* some links  */}
-                        <ul className='flex-col items-start space-y-5 flex pl-5'>
+                        {/* <ul className='flex-col items-start space-y-5 flex pl-5'>
                             {menus?.map(item => {
                                 return (
                                     <li className='text-gray-600 text-sm cursor-pointer hover:text-primary' key={item?.id} 
@@ -42,9 +41,9 @@ const MenuSidebar = ({ setShowMenu }) => {
                                     >{item?.name}</li>
                                 );
                             })}
-                        </ul>
-                        <div className='pl-5 pt-5'>
-                            <CategorySelect setShowMenu={setShowMenu}/>
+                        </ul> */}
+                        <div className='pl-4 pt-3'>
+                            <MenuSelect setShowMenu={setShowMenu} mobileMenu={mobileMenu} />
                         </div>
                     </div>
                 </aside>

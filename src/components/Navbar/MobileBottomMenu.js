@@ -10,7 +10,7 @@ import SignUpModal from '../Sign Up/SignUpModal';
 import MenuSidebar from './MenuSidebar';
 import ProfileInfo from './ProfileInfo';
 
-const MobileBottomMenu = ({ handleSearchShow}) => {
+const MobileBottomMenu = ({ handleSearchShow, mobileMenu}) => {
     const navigate = useNavigate()
     const [show, setShow] = React.useState(false);
     const [showDropDown, setDropDown] = React.useState(false);
@@ -103,7 +103,7 @@ const MobileBottomMenu = ({ handleSearchShow}) => {
             {
                 showMenu && (
                     <>
-                        <MenuSidebar setShowMenu={setShowMenu} />
+                        <MenuSidebar setShowMenu={setShowMenu} mobileMenu={mobileMenu} />
                         <div className='cursor-pointer w-full fixed top-0 left-0 h-screen z-40 bg-gray-800 opacity-70' onClick={() => setShowMenu(false)}>
                         </div>
                     </>
