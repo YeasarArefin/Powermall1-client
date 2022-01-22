@@ -13,9 +13,13 @@ const CategorySelect2 = ({ mobileMenu }) => {
     const [categories, setCategories] = useState([])
     // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams();
-    // const {cateId,setCateId} = useState({})
     const ref = useRef(null);
     const [state, setState] = useState();
+    const [categoryFilter, setCategoryFilter] = React.useState();
+
+    React.useEffect(() => {
+        setCategoryFilter(searchParams.get("categories"))
+    }, [searchParams])
 
     useEffect(() => {
         axios.get('https://elec-shop-server.herokuapp.com/category')
@@ -29,8 +33,8 @@ const CategorySelect2 = ({ mobileMenu }) => {
     return (
         <div>
 
-            <div ref={ref} onMouseEnter={() => setState('open')} className='border-2 text-primary text-sm w-36 py-3 px-4 rounded-lg border-primary font-semibold flex items-center cursor-pointer'>
-                <span className="text-sm">CATEGORIES</span>
+            <div ref={ref} onMouseEnter={() => setState('open')} className='border-2 text-primary text-sm w-36 py-3 px-4 rounded-lg border-primary font-semibold flex items-center justify-between cursor-pointer'>
+                <span className="text-sm">{categoryFilter ? categoryFilter.toUpperCase() : "CATEGORIES"}</span>
                 <HiSelector
                     className="w-5 h-5 text-primary font-bold"
                 />
