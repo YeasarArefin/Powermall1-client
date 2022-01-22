@@ -14,7 +14,7 @@ const MenuBox = () => {
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-content-center gap-x-3 gap-y-3 md:gap-y-3 lg:gap-x-4 mt-10'>
           {menus?.map(item => (
               <Link key={item?.id} to={item?.link}>
-                  <div className='flex items-center space-x-2 bg-white rounded-lg px-4 py-3'>
+                  <div className='flex items-center space-x-2 bg-white rounded-lg px-4 py-4'>
                       {item?.icon}
                       <span className='text-gray-700 text-sm'>{item?.name}</span>
                   </div>
