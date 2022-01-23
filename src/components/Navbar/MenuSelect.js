@@ -4,7 +4,7 @@ import { HiSelector } from 'react-icons/hi';
 import { Link, useSearchParams } from 'react-router-dom';
 
 const placeholder = [
-    { category: 'MENU' },
+    { name: 'MENU' },
 ]
 const menus = [
     { id: 1, name: 'Free Shipping', link: '/free' },
