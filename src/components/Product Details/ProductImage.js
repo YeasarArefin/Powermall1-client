@@ -24,16 +24,16 @@ const ProductImage = (props) => {
                 thumbs={{ swiper: thumbsSwiper }}
                 className="mySwiper2">
                 <SwiperSlide>
-                    <img src={image?.[0]} className='w-full mx-auto   object-contain' alt="nature" />
+                    <img src={image?.[0]} className='w-full mx-auto   object-fill' alt="nature" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={image?.[1]} className='w-full mx-auto   object-contain' alt="nature" />
+                    <img src={image?.[1]} className='w-full mx-auto   object-fill' alt="nature" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={image?.[2]} className='w-full mx-auto   object-contain' alt="nature" />
+                    <img src={image?.[2]} className='w-full mx-auto   object-fill' alt="nature" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={image?.[3]} className='w-full mx-auto   object-contain' alt="nature" />
+                    <img src={image?.[3]} className='w-full mx-auto   object-fill' alt="nature" />
                 </SwiperSlide>
                 <SwiperSlide>
                     <iframe width="450" height="450" src={ytLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -6,7 +6,7 @@ function classNames(...classes) {
 }
 
 const ProductInformations = (props) => {
-    const { description, moreInformation } = props;
+    const { description, moreInformation,sku } = props;
 
     const desc = `${description}`
     const info = `${moreInformation}`
@@ -78,6 +78,12 @@ const ProductInformations = (props) => {
                             className="relative p-3 rounded-md hover:bg-coolGray-100"
                         >
                             <div className="flex flex-col space-y-2 mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
+                                
+                                {sku && (
+                                    <>
+                                    <p className="text-semibold">SKU : {sku}</p>
+                                    </>
+                                )}
                                 <p>{moreInformation}</p>
                             </div>
                         </div>
