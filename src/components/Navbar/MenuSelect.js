@@ -23,14 +23,10 @@ const MenuSelect = ({ mobileMenu, setShowMenu}) => {
           <Listbox value={selected} onChange={setSelected}>
               <div className="relative mt-1">
                   <Listbox.Button className=" transition duration-500 relative w-36 py-3 px-4 text-left bg-white rounded-md  cursor-default focus:outline-none border border-primary sm:text-sm">
-                      {searchParams ? (
-                          <p className="flex items-center space-x-2 truncate text-primary font-semibold">
-                              {/* <img src={selected?.img} alt={selected?.category} className="w-6" /> */}
-                              <span className='text-xs'>{selected?.category}</span>
-                          </p>
-                      ) : (
-                          <span className="block truncate text-primary font-semibold">All</span>
-                      )}
+                      <p className="flex items-center space-x-2 truncate text-primary font-semibold">
+                          {/* <img src={selected?.img} alt={selected?.category} className="w-6" /> */}
+                          <span className='text-xs'>{selected?.name}</span>
+                      </p>
 
                       <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                           <HiSelector
@@ -47,10 +43,7 @@ const MenuSelect = ({ mobileMenu, setShowMenu}) => {
                       <Listbox.Options className={`absolute w-48  py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg h-auto ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-50`}>
                           {menus?.map((item, inx) => (
                               <>
-                                  <Link to={item?.link} onClick={() => {
-                                      setShowMenu(false)
-
-                                  }}
+                                  <Link to={item?.link}
                                   >
                                       <Listbox.Option
                                           key={item?.id}

@@ -46,8 +46,6 @@ const CategorySelect2 = ({ mobileMenu }) => {
                         <>
                             <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
                                 setSearchParams({ categories: item?.slug })
-                                // setShowMenu(false)
-
                             }}
                             >
                                 {!item?.subCategory && (
