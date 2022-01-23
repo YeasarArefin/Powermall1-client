@@ -38,7 +38,7 @@ const ProductsCategory = () => {
                                 <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
                                     setSearchParams({ categories: item?.slug })
                                 }}>
-                                    <div className='rounded-md overflow-hidden mb-6 h-24  md:h-36 lg:h-36'>
+                                    <div className='rounded-md overflow-hidden mb-6 h-20  md:h-36 lg:h-36'>
                                         <img src={item?.banner} alt={item?.slug} className='w-full h-24  md:h-36 lg:h-36 object-fill lg:object-cover hover:opacity-80' />
                                     </div>
 

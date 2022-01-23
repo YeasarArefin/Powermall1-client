@@ -31,7 +31,7 @@ const SubFooter = () => {
                 {/* social media  */}
                 <div className='flex items-center space-x-4'>
                     {socialLink.map(item => (
-                        <a href={item.link} key={item.id} target="_blank" rel="noopener noreferrer">
+                        <a href={item.link} key={item.id} >
                             <img className='w-8 object-contain' src={item.icon} alt={item.name} />
                         </a>
                     ))}
@@ -44,7 +44,7 @@ const SubFooter = () => {
                     {/* <p className='text-gray-500 text-sm'>&copy; {new Date().getFullYear()} elctroshop.com | All Rights Reserved.
                     </p> */}
                     <p className='text-gray-500 text-sm text-center pt-2 pb-4'>
-                        Developed by <a className="text-blue-600" href="http://dropdev.tech/" target="_blank" rel="noopener noreferrer"><span className='text-indigo-600'>Drop</span> <span className='text-pink-600'>Dev</span> </a>
+                        Developed by <a className="text-blue-600" href="http://dropdev.tech/" ><span className='text-indigo-600'>Drop</span> <span className='text-pink-600'>Dev</span> </a>
                     </p>
                 </div>
 
@@ -61,7 +61,7 @@ const SubFooter = () => {
                 {/* copyright  */}
                 {/* <div>
                     <p className='text-gray-500 text-sm text-center'>
-                        Developed by <a className="text-blue-600" href="http://dropdev.tech/" target="_blank" rel="noopener noreferrer">Drop Dev Ltd.</a>
+                        Developed by <a className="text-blue-600" href="http://dropdev.tech/"  " rel="noopener noreferrer">Drop Dev Ltd.</a>
                     </p>
                 </div> */}
             {/* </div>  */}

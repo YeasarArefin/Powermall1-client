@@ -45,6 +45,7 @@ const Dropdown = ({ handleLogout, showDropDown}) => {
                                 <Menu.Item key={menu.id}>
                                     {({ active }) => (
                                         <Link
+                                            key={menu.id}
                                             to={menu.link}
                                             className={classNames(
                                                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',

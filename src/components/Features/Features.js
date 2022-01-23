@@ -58,7 +58,7 @@ const Features = () => {
                 }}>
             {featuresData?.map(feature => (
                 <SwiperSlide key={feature?._id}>
-                    <a href={`${feature?.link}`} target="_blank" rel="noopener noreferrer">
+                    <a href={`${feature?.link}`} >
                     <div className="rounded-lg cursor-pointer hover:shadow-xl overflow-hidden h-44 lg:h-52 transition duration-500" style={{ background: `url(${feature?.img})`, backgroundSize:'cover' }}>
                         <div className="flex flex-col justify-center space-y-1 h-full p-6">
                             {/* text  */}
@@ -69,7 +69,7 @@ const Features = () => {
 
                             {/* button  */}
                             <div>
-                                <a href={`${feature?.link}`} target="_blank" rel="noopener noreferrer">
+                                <a href={`${feature?.link}`} >
                                 <button className={`bg-white w-24 lg:w-28 px-2 lg:px-3 py-2 mt-2 rounded-full text-gray-600 hover:scale-110 transform transition duration-300 text-xs`}  >{feature?.name}</button>
                                 </a>
                             </div>

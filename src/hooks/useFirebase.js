@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, RecaptchaVerifier, signInWithEmailAndPassword, signInWithPhoneNumber, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -127,35 +127,33 @@ const useFirebase = () => {
                         }
                     })
                 
-            }).catch(err => console.log(err.message)).finally(() => setIsLoading(false));
+            }).catch(err => alert(err.message)).finally(() => setIsLoading(false));
     }
 
     //phone number sign in 
-    const signInWithPhone = (phone) => {
-        // window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
+    // const signInWithPhone = (phone) => {
+    //     // window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
 
-        // const appVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
-        const appVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
-        console.log(appVerifier)
+    //     // const appVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
+    //     const appVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
 
-        signInWithPhoneNumber(auth, phone, appVerifier)
-            .then((confirmationResult) => {
-                alert('f')
-                // SMS sent. Prompt user to type the code from the message, then sign the
-                // user in with confirmationResult.confirm(code).
-                let code = prompt('Enter the otp','');
-                confirmationResult.confirm(code).then(e => {
-                    console.log(e?.user)
-                })
-                window.confirmationResult = confirmationResult;
-                // console.log
-                // ...
-            }).catch((error) => {
-                // Error; SMS not sent
-                // ...
-            });
+    //     signInWithPhoneNumber(auth, phone, appVerifier)
+    //         .then((confirmationResult) => {
+    //             alert('f')
+    //             // SMS sent. Prompt user to type the code from the message, then sign the
+    //             // user in with confirmationResult.confirm(code).
+    //             let code = prompt('Enter the otp','');
+    //             confirmationResult.confirm(code).then(e => {
+    //             })
+    //             window.confirmationResult = confirmationResult;
+    //             // console.log
+    //             // ...
+    //         }).catch((error) => {
+    //             // Error; SMS not sent
+    //             // ...
+    //         });
 
-    }
+    // }
 
     // sign out 
     const signOutUser = () => {
@@ -177,7 +175,7 @@ const useFirebase = () => {
         signInUser,
         signOutUser,
         signInWithGoogle,
-        signInWithPhone,
+        // signInWithPhone,
         isLoading
     }
 }

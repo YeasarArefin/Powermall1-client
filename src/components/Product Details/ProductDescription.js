@@ -18,7 +18,6 @@ const ProductDescription = (props) => {
 
     newProduct['pdQuantity'] = quantity;
 
-    console.log(newProduct, "descriptioin")
     const handleIncrease = () => {
         newProduct['pdQuantity'] = quantity + 1;
         setQuantity(newProduct.pdQuantity);
@@ -39,7 +38,6 @@ const ProductDescription = (props) => {
         setColorVal(e.target.value);
     };
 
-    console.log(colorVal);
     newProduct['pdQuantity'] = quantity;
 
     if (colorVal) {
@@ -47,8 +45,6 @@ const ProductDescription = (props) => {
     } else {
         newProduct['pdColor'] = pdColor?.[0];
     }
-
-    console.log(newProduct);
 
     // find pd 
     const findPd = cart?.find(item => item._id === _id);

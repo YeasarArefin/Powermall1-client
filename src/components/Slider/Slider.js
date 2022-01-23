@@ -24,7 +24,7 @@ const Slider = () => {
             }} speed={150} className="mySwiper">
                 {images?.map((image) => (
                     <SwiperSlide key={image?._id}>
-                        <a href={image?.link} target="_blank" rel='noreferrer'  >
+                        <a href={image?.link}   >
                             <div className={` w-full headerBanner rounded-lg lg:overflow-hidden`}>
                                 <img className="w-full h-full object-fill md:object-fill lg:object-cover rounded-lg" src={image?.img} alt="slider" />
                             </div>

@@ -53,7 +53,7 @@ const SearchBar = ({ searchShow}) => {
                         </div>
                         <datalist id="title">
                             {products?.map(item => (
-                                <option value={item?.name?.toLowerCase()} />
+                                <option value={item?.name?.toLowerCase()} key={item?._id} />
                             ))}
                         </datalist>
                         {/* <Link to={`/shops?search=${data}`} onClick={() => { */}
@@ -80,7 +80,7 @@ const SearchBar = ({ searchShow}) => {
                                     </div>
                                     <datalist id="title">
                                         {products?.map(item => (
-                                            <option value={item?.name?.toLowerCase()} />
+                                            <option value={item?.name?.toLowerCase()} key={item?._id}/>
                                         ))}
                                     </datalist>
                                 </form>
@@ -98,7 +98,7 @@ const SearchBar = ({ searchShow}) => {
                                         </div>
                                         <datalist id="title">
                                             {products?.map(item => (
-                                                <option value={item?.name?.toLowerCase()} />
+                                                <option value={item?.name?.toLowerCase()} key={item?._id}/>
                                             ))}
                                         </datalist>
                                     </form>

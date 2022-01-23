@@ -6,7 +6,6 @@ import { HiOutlineCheck, HiSelector } from 'react-icons/hi';
 const DistrictSelect = ({ selected, setSelected}) => {
     const [districts, setDistricts] = useState([]);
 
-    console.log(selected.division_id)
     useEffect(() => {
         fetch('/district.json')
             .then(res => res.json())

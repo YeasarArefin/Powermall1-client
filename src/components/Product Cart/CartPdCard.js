@@ -15,7 +15,6 @@ const CartPdCard = (props) => {
     const getALlPD = localStorage.getItem('cart');
     const parsedPd = JSON.parse(getALlPD)
     const getThisPD = parsedPd?.find(item => item?._id === _id)
-    console.log(getThisPD)
     newProduct.pdQuantity = quantity
     // getThisPD?.pdQuantity = quantity
 

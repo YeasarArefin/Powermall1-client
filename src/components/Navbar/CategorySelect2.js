@@ -44,9 +44,10 @@ const CategorySelect2 = ({ mobileMenu }) => {
                 onClose={() => setState('closed')}>
                     {categories?.map((item, inx) => (
                         <>
-                            <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
+                            <Link to={`/shops?categories=${item?.slug}`} key={item?.slug} onClick={() => {
                                 setSearchParams({ categories: item?.slug })
                             }}
+                                
                             >
                                 {!item?.subCategory && (
                                     <>
@@ -59,7 +60,7 @@ const CategorySelect2 = ({ mobileMenu }) => {
                             {item?.subCategory && (
                                 <>
                                     <SubMenu label={item?.category} >
-                                        <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
+                                        <Link to={`/shops?categories=${item?.slug}`} key={item?.slug} onClick={() => {
                                             setSearchParams({ categories: item?.slug })
                                             // setShowMenu(false)
 
@@ -74,7 +75,7 @@ const CategorySelect2 = ({ mobileMenu }) => {
                                                     setSearchParams({ categories: cate?.toLowerCase() })
                                                     // setShowMenu(false)
 
-                                                }}>
+                                                }} key={cate}>
                                                     <MenuItem>{cate}</MenuItem>
                                                 </Link>
                                             </>

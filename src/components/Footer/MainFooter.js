@@ -71,36 +71,6 @@ const MainFooter = () => {
 
                         <div className="flex flex-col space-y-6">
                             
-
-                            {/* address  */}
-                            <div className='flex flex-col items-start  space-y-4 '>
-                                <Brand />
-
-                                <div className='flex flex-col items-start space-y-3'>
-                                    {/* locaiton  */}
-                                    <div className='flex justify-center lg:justify-start w-48  items-center space-x-2'>
-                                        <MdLocationOn className='text-gray-500 text-sm w-8' />
-                                        <span className='text-gray-500 text-sm'>
-                                            {info?.address}
-                                        </span>
-                                    </div>
-                                    {/* mobile  */}
-                                    <div className='flex items-center space-x-2'>
-                                        <MdCall className='text-gray-500 text-sm w-8' />
-                                        <span className='text-gray-500 text-sm'>
-                                            {info?.phone}
-                                        </span>
-                                    </div>
-                                    {/* Email  */}
-                                    <div className='flex items-center space-x-2'>
-                                        <MdOutlineEmail className='text-gray-500 text-sm w-8' />
-                                        <span className='text-gray-500 text-sm'>
-                                            {info?.email}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
                             {/* Contact  */}
                             <div className='flex flex-col space-y-4'>
                                 <h1 className='text-lg text-gray-700'>Contact</h1>
@@ -112,21 +82,55 @@ const MainFooter = () => {
                                     ))}
                                 </ul>
                             </div>
+                            {/* address  */}
+                            
+
+                            
                         </div>
 
                     </div>
 
+                    <div className='grid grid-cols-2 gap-10 mt-8 lg:place-items-start'>
+                        <div className='flex flex-col items-start  space-y-4 '>
+                            <Brand />
+
+                            <div className='flex flex-col items-start space-y-3'>
+                                {/* locaiton  */}
+                                <div className='flex justify-center lg:justify-start w-48  items-center space-x-2'>
+                                    <MdLocationOn className='text-gray-500 text-sm w-8' />
+                                    <span className='text-gray-500 text-sm'>
+                                        {info?.address}
+                                    </span>
+                                </div>
+                                {/* mobile  */}
+                                <div className='flex items-center space-x-2'>
+                                    <MdCall className='text-gray-500 text-sm w-8' />
+                                    <span className='text-gray-500 text-sm'>
+                                        {info?.phone}
+                                    </span>
+                                </div>
+                                {/* Email  */}
+                                <div className='flex items-center space-x-2'>
+                                    <MdOutlineEmail className='text-gray-500 text-sm w-8' />
+                                    <span className='text-gray-500 text-sm'>
+                                        {info?.email}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='flex flex-col  space-y-4 '>
+                            <h1 className='text-base md:text-lg lg:text-xl  lg:text-left text-gray-700'>Download Our App</h1>
+                            <div className='flex flex-col items-start space-y-1'>
+                                {app.map(item => (
+                                    <a key={item.id}  href={item.link} >
+                                        <img src={item.image} alt={item.name} className='h-12 w-36 md:w-36 lg:w-36  md:h-12 lg:h-12  object-contain' />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                     {/* app download  */}
-                    <div className='flex flex-col items-center space-y-4 pt-6'>
-                        <h1 className='text-lg lg:text-xl text-center lg:text-left text-gray-700'>Download Our App</h1>
-                        <div className='flex items-center space-x-3'>
-                            {app.map(item => (
-                                <a key={item.id} target="_blank" href={item.link} rel="noreferrer">
-                                    <img src={item.image} alt={item.name} className='h-12 w-24 md:w-36 lg:w-36  md:h-12 lg:h-12  object-contain' />
-                                </a>
-                            ))}
-                        </div>
-                    </div>
+                    
                 </>
             ): (
                 <>
@@ -189,7 +193,7 @@ const MainFooter = () => {
                                 <h1 className='text-xl text-center lg:text-left text-gray-700'>Download Our App</h1>
                                 <div className='flex items-center space-x-4'>
                                     {app.map(item => (
-                                        <a key={item.id} target="_blank" href={item.link} rel="noreferrer">
+                                        <a key={item.id}   href={item.link} >
                                             <img src={item.image} alt={item.name} className='h-12 w-36 object-contain' />
                                         </a>
                                     ))}

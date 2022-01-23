@@ -61,7 +61,6 @@ const EditProfile = () => {
 
                 })
                 .catch((error) => {
-                    console.log('error', error)
                     alert('try agian')
                 })
         } else {

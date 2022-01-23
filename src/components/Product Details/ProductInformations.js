@@ -11,7 +11,6 @@ const ProductInformations = (props) => {
     const desc = `${description}`
     const info = `${moreInformation}`
 
-    console.log(description)
     let [categories] = useState({
         "Details": [
             {

@@ -12,7 +12,6 @@ const SubNav = () => {
             .then(res => setCategories(res.data))
     }, [])
 
-    // console.log()
     return (
         <div className="bg-primary text-white">
             <div className="max-w-screen-xl mx-auto px-6 flex items-center flex-grow">
