@@ -58,19 +58,22 @@ const ProductsCategory = () => {
                                     }}
                                     className="mySwiper py-8 pb-10" breakpoints={{
                                         320: {
-                                            slidesPerView: 1,
+                                            slidesPerView: 2,
                                         },
                                         375: {
-                                            slidesPerView: 1,
+                                            slidesPerView: 2,
+                                        },
+                                        390: {
+                                            slidesPerView: 2,
                                         },
                                         414: {
-                                            slidesPerView: 1,
+                                            slidesPerView: 2,
                                         },
                                         425: {
-                                            slidesPerView: 1,
+                                            slidesPerView: 2,
                                         },
                                         500: {
-                                            slidesPerView: 1,
+                                            slidesPerView: 2,
                                         },
                                         768: {
                                             slidesPerView: 2,

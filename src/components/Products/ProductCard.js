@@ -48,10 +48,10 @@ const ProductCard = (props) => {
                     </div>
 
                     <div className="flex flex-col mt-3  space-y-1">
-                        <h1 className="text-base text-gray-700 font-semibold cursor-pointer" onClick={() => navigate(`/shops/${_id}`)}>{name}</h1>
+                        <h1 className="text-sm md:text-base lg:text-base text-gray-700 font-semibold cursor-pointer" onClick={() => navigate(`/shops/${_id}`)}>{name}</h1>
                         <p className="text-sm text-gray-500">{quantity}pc(s) </p>
 
-                        <div className='flex justify-between items-center pt-2'>
+                        <div className='flex flex-col md:flex-row lg:flex-row md:justify-between lg:md:justify-between md:items-center lg:items-center space-y-2 md:space-y-0 lg:space-y-0 pt-2'>
                             {/* price  */}
                             <div className="flex flex-col">
                                 {discount > 0 && (

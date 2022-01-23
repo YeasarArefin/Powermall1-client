@@ -17,7 +17,7 @@ const Slider = () => {
 
 
     return (
-        <section id="hero" className='h-56 lg:h-4/5 overflow-hidden'>
+        <section id="hero" className='headerBanner overflow-hidden'>
             <Swiper pagination={true} autoplay={{
                 delay: 2000,
                 disableOnInteraction: false
@@ -25,8 +25,8 @@ const Slider = () => {
                 {images?.map((image) => (
                     <SwiperSlide key={image?._id}>
                         <a href={image?.link} target="_blank" rel='noreferrer'  >
-                            <div className={` w-full h-56 lg:h-4/5 rounded-lg lg:overflow-hidden`}>
-                                <img className="w-full h-full object-fill md:object-cover lg:object-cover rounded-lg" src={image?.img} alt="slider" />
+                            <div className={` w-full headerBanner rounded-lg lg:overflow-hidden`}>
+                                <img className="w-full h-full object-fill md:object-fill lg:object-cover rounded-lg" src={image?.img} alt="slider" />
                             </div>
                         </a>
                     </SwiperSlide>

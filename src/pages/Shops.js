@@ -68,7 +68,7 @@ const Shops = () => {
                                             <>
                                                 <h1 className='mb-4 text-xl italic font-semibold text-gray-700'>Searched keyword : {searchFilter?.toUpperCase()}</h1>
 
-                                                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
+                                                <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
                                                     {searchPd?.map(item => <ProductCard key={item._id} {...item} />)}
                                                 </div>
                                             </>
@@ -100,7 +100,7 @@ const Shops = () => {
                                         pds?.length > 0 ? (
                                             <>
                                                 <h1 className='mb-4 text-2xl font-semibold text-gray-700'>{categoryFilter?.toUpperCase()}</h1>
-                                                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
+                                                <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
                                                     {pds?.map(item => <ProductCard key={item._id} {...item} />)}
                                                 </div>
                                             </>
@@ -117,7 +117,7 @@ const Shops = () => {
                                         )
                                     ) : (
                                         <>
-                                            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
+                                            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
                                                 {products?.map(product => (
                                                     <ProductCard key={product._id} {...product} />
                                                 ))}

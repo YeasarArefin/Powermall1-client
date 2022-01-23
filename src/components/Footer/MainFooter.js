@@ -41,7 +41,7 @@ const MainFooter = () => {
     // resize 
     //tablet mode 
     const changeNav = () => {
-        if (window.innerWidth <= 500) {
+        if (window.innerWidth <= 728) {
             setMobileFooter(true);
         } else {
             setMobileFooter(false);
