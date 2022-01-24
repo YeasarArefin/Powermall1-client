@@ -23,9 +23,9 @@ const Brands = () => {
                 <Swiper
                     loop={true}
                     navigation={true}
-                    slidesPerView={4}
+                    slidesPerView={5}
                     centeredSlides={false}
-                    spaceBetween={10}
+                    spaceBetween={20}
                     grabCursor={true}
                     pagination={{
                         "clickable": true
@@ -51,16 +51,16 @@ const Brands = () => {
                             slidesPerView: 3,
                         },
                         768: {
-                            slidesPerView: 4,
+                            slidesPerView: 5,
                         },
                         1024: {
-                            slidesPerView: 4
+                            slidesPerView: 5
                         },
                         1200: {
-                            slidesPerView: 4
+                            slidesPerView: 5
                         },
                         1400: {
-                            slidesPerView: 4
+                            slidesPerView:5
                         }
                     }}>
                     {brands?.map(item => (

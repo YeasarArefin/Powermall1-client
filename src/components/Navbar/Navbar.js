@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import Brand from './Brand';
 import CategorySelect2 from './CategorySelect2';
@@ -8,7 +7,7 @@ import ProfileInfo from './ProfileInfo';
 import SearchBar from './SearchBar';
 
 const Navbar = ({ searchShow, mobileMenu, setSearchShow }) => {
-    const [mobileNav, setMobileNav] = useState(false);
+    // const [mobileNav, setMobileNav] = useState(false);
     const { newUser } = useAuth();
 
     //handle click 
@@ -18,24 +17,24 @@ const Navbar = ({ searchShow, mobileMenu, setSearchShow }) => {
     // };
 
     //menus 
-    const menus = [
-        { id: 1, name: 'Free Shipping', link: '/free' },
-        { id: 2, name: 'Drone Service', link: '/droneservice' },
-        { id: 3, name: 'Global Purchase', link: '/globalpurchase' },
-        { id: 4, name: 'Automative', link: '/automative' },
-    ];
+    // const menus = [
+    //     { id: 1, name: 'Free Shipping', link: '/free' },
+    //     { id: 2, name: 'Drone Service', link: '/droneservice' },
+    //     { id: 3, name: 'Global Purchase', link: '/globalpurchase' },
+    //     { id: 4, name: 'Automative', link: '/automative' },
+    // ];
 
     //tablet mode 
-    const changeNav = () => {
-        if (window.innerWidth < 1225) {
-            setMobileNav(true);
-        } else {
-            setMobileNav(false);
-            setSearchShow(false);
-        }
-    };
+    // const changeNav = () => {
+    //     if (window.innerWidth < 1225) {
+    //         setMobileNav(true);
+    //     } else {
+    //         setMobileNav(false);
+    //         setSearchShow(false);
+    //     }
+    // };
 
-    window.addEventListener('resize', changeNav);
+    // window.addEventListener('resize', changeNav);
     // React.useEffect(() => {
     // }, [])
 
@@ -44,15 +43,17 @@ const Navbar = ({ searchShow, mobileMenu, setSearchShow }) => {
             <header className="bg-white border-b border-gray-200">
                 {/* desktop nav  */}
                 <nav className="flex items-center max-w-screen-2xl mx-auto px-6 py-3">
-                    <div className="flex flex-grow justify-around items-center space-x-6">
+                    <div className="flex flex-grow space-x-14 items-center justify-center lg:justify-start">
                         {/* brand  */}
                         {searchShow ? (
-                            <div className='flex flex-col items-center space-y-4'>
+                            <div className='flex flex-col items-center justify-center space-y-4'>
                                 <Brand />
                                 <SearchBar searchShow={searchShow} />
                             </div>
                         ) : (
-                            <Brand />
+                                <div className='flex items-center  '>
+                                    <Brand />
+                                </div>
                         )}
 
 
@@ -73,7 +74,7 @@ const Navbar = ({ searchShow, mobileMenu, setSearchShow }) => {
 
 
                         {/* some links  */}
-                        {!mobileMenu && (
+                        {/* {!mobileMenu && (
                             <ul className='hidden items-center space-x-4 xl:flex lg:flex pr-5'>
                                 {menus?.map(item => {
                                     return (
@@ -92,7 +93,7 @@ const Navbar = ({ searchShow, mobileMenu, setSearchShow }) => {
                                     );
                                 })}
                             </ul>
-                        )}
+                        )} */}
 
                     </div>
 
