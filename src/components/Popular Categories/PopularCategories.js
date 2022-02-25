@@ -29,7 +29,7 @@ const PopularCategories = () => {
                     navigation={true}
                     slidesPerView={4}
                     centeredSlides={false}
-                    spaceBetween={20}
+                    spaceBetween={10}
                     grabCursor={true}
                     pagination={{
                         "clickable": true

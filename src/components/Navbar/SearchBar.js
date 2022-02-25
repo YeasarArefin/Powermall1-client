@@ -42,7 +42,7 @@ const SearchBar = ({ searchShow}) => {
         <>
         {mobileNav ? (
             <>
-                    <form className="flex items-center space-x-3 p-2" onSubmit={handleSubmit(onSubmit)} style={{ width: '500px' }}>
+                    <form className="flex items-center space-x-3 p-2" onSubmit={handleSubmit(onSubmit)} style={{ width: '400px' }}>
                         <div className='relative w-full'>
                             <BsSearch className='absolute top-3 left-4 text-xl text-gray-600' />
                             <input
@@ -87,7 +87,7 @@ const SearchBar = ({ searchShow}) => {
                             </>
                         ): (
                             <>
-                                    <form className="flex items-center space-x-3 p-2" onSubmit={handleSubmit(onSubmit)} style={{ width: '650px' }}>
+                                    <form className="flex items-center space-x-2 p-2" onSubmit={handleSubmit(onSubmit)} style={{ width: '450px' }}>
                                         <div className='relative w-full'>
                                             <BsSearch className='absolute top-3 left-4 text-xl text-gray-600' />
                                             <input
