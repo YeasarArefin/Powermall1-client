@@ -33,8 +33,8 @@ const CategorySelect2 = ({ mobileMenu }) => {
     return (
         <div>
 
-            <div ref={ref} onMouseEnter={() => setState('open')} className='border-2 text-primary text-sm w-36 py-3 px-4 rounded-lg border-primary font-semibold flex items-center justify-between cursor-pointer'>
-                <span className="text-sm">{categoryFilter ? categoryFilter.toUpperCase() : "CATEGORIES"}</span>
+            <div ref={ref} onMouseEnter={() => setState('open')} className='border-2 text-primary text-xs w-36 py-3 px-4 rounded-lg border-primary font-semibold flex items-center justify-between cursor-pointer'>
+                <span className="text-xs">{categoryFilter ? categoryFilter.toUpperCase() : "CATEGORIES"}</span>
                 <HiSelector
                     className="w-5 h-5 text-primary font-bold"
                 />
@@ -51,7 +51,7 @@ const CategorySelect2 = ({ mobileMenu }) => {
                             >
                                 {!item?.subCategory && (
                                     <>
-                                        <MenuItem className={`text-sm w-48 `}>{item?.category}</MenuItem>
+                                        <MenuItem className={`text-xs w-48 `}>{item?.category}</MenuItem>
                                     </>
                                 )}
 
@@ -59,7 +59,7 @@ const CategorySelect2 = ({ mobileMenu }) => {
 
                             {item?.subCategory && (
                                 <>
-                                    <SubMenu label={item?.category} >
+                                    <SubMenu label={item?.category} className={`text-xs w-48 `} >
                                         <Link to={`/shops?categories=${item?.slug}`} key={item?.slug} onClick={() => {
                                             setSearchParams({ categories: item?.slug })
                                             // setShowMenu(false)

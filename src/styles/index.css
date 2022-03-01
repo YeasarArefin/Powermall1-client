@@ -23,7 +23,12 @@ code {
 }
 
 body::-webkit-scrollbar {
-  display: none;
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #fc3c3c;
+  border-radius: 50px;
 }
 
 .cart-container::-webkit-scrollbar {

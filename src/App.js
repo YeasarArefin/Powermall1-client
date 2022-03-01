@@ -116,7 +116,7 @@ const App = () => {
                   <Route path="/free" element={<FreeShipping />} />
                   <Route path="/droneservice" element={<DroneService />} />
                   <Route path="/globalpurchase" element={<GlobalPurchase />} />
-                  <Route path="/automative" element={<Automative />} />
+                  <Route path="/mobile" element={<Automative />} />
                   <Route path="/about" element={<AboutUsScreen />} />
                   <Route path="/privacy" element={<PrivacyScreen />} />
                   <Route path="/cookiePolicy" element={<CookiePolicyScreen />} />

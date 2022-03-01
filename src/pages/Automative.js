@@ -36,7 +36,7 @@ const Automative = () => {
             <>
                 <Helmet>
                     <meta charSet="utf-8" />
-                        <title>Automotive</title>
+                        <title>Mobile</title>
                     <link rel="canonical" href="https://electro-shop-client.vercel.app/" />
                 </Helmet>
                 <main style={{ background: '#F4F4FA', height: '100%' }}>
@@ -44,7 +44,7 @@ const Automative = () => {
                         {
                             pds?.length > 0 ? (
                                 <>
-                                        <h1 className='mb-4 text-xl italic font-semibold text-gray-700'>Automotive</h1>
+                                        <h1 className='mb-4 text-xl italic font-semibold text-gray-700'>Mobile</h1>
                                     <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
                                         {pds?.map(item => <ProductCard key={item._id} {...item} />)}
                                     </div>

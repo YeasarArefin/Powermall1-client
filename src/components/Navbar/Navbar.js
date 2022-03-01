@@ -43,12 +43,12 @@ const Navbar = ({ searchShow, mobileMenu, setSearchShow }) => {
             <header className="bg-white border-b border-gray-200">
                 {/* desktop nav  */}
                 <nav className="flex items-center max-w-screen-2xl mx-auto px-6 py-3">
-                    <div className="flex flex-grow space-x-14 items-center justify-center lg:justify-start">
+                    <div className="flex flex-grow space-x-7 items-center justify-center lg:justify-start">
                         {/* brand  */}
                         {searchShow ? (
                             <div className='flex flex-col items-center justify-center space-y-4'>
                                 <Brand />
-                                <SearchBar searchShow={searchShow} />
+                              <SearchBar searchShow={searchShow} />
                             </div>
                         ) : (
                                 <div className='flex items-center  '>

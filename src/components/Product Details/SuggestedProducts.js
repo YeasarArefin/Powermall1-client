@@ -24,10 +24,10 @@ const SuggestedProducts = (props) => {
               {pds?.length > 1 && (
                   <>
                       <Swiper
-                          slidesPerView={4}
+                          slidesPerView={5}
                           centeredSlides={false}
                           navigation={true}
-                          spaceBetween={30}
+                          spaceBetween={10}
                           grabCursor={true}
                           pagination={{
                               "clickable": true
@@ -56,13 +56,13 @@ const SuggestedProducts = (props) => {
                                   slidesPerView: 2,
                               },
                               1024: {
-                                  slidesPerView: 3
+                                  slidesPerView: 4
                               },
                               1200: {
-                                  slidesPerView: 4
+                                  slidesPerView: 5
                               },
                               1400: {
-                                  slidesPerView: 4
+                                  slidesPerView: 5
                               }
                           }}>
                           {pds?.filter(item => item?._id !== _id)?.slice(0,8)?.map(item => (

@@ -41,7 +41,7 @@ const ProductsCategory = () => {
                                             setSearchParams({ categories: item?.slug })
                                         }}>
                                             <div className='rounded-md overflow-hidden mb-6 h-20  md:h-36 lg:h-36'>
-                                                <img src={item?.banner} alt={item?.slug} className='w-full h-24  md:h-36 lg:h-36 object-fill lg:object-cover hover:opacity-80' />
+                                                <img src={item?.banner} alt={item?.slug} className='w-full h-20  md:h-36 lg:h-36 object-contain lg:object-cover hover:opacity-80' />
                                             </div>
 
                                         </Link>
@@ -50,9 +50,9 @@ const ProductsCategory = () => {
                                 
                                 <SectionTitle title={item?.category} slug={item?.slug} />
                                 <Swiper
-                                    slidesPerView={4}
+                                    slidesPerView={5}
                                     centeredSlides={false}
-                                    spaceBetween={30}
+                                    spaceBetween={10}
                                     grabCursor={true}
                                     pagination={{
                                         "clickable": true
@@ -87,10 +87,10 @@ const ProductsCategory = () => {
                                             slidesPerView: 3
                                         },
                                         1200: {
-                                            slidesPerView: 4
+                                            slidesPerView: 5
                                         },
                                         1400: {
-                                            slidesPerView: 4
+                                            slidesPerView: 5
                                         }
                                     }}>
                                     {pdFound?.map(product => (

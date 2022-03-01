@@ -22,14 +22,12 @@ const MainFooter = () => {
     const about = [
         { id: 1, name: 'About Us', link: '/about' },
         { id: 2, name: 'Privacy Policy ', link: '/privacy' },
-        { id: 3, name: 'Why Shop with Us', link: '/shopwithus' },
         { id: 5, name: 'Terms & Conditions', link: '/terms' },
     ]
 
     const contact = [
         { id: 1, name: 'Contact Us', link: '/contact' },
         { id: 3, name: 'Shipping & Delivery', link: '/shippingdelivery' },
-        { id: 4, name: 'Return & Refund', link: '/returnrefund' },
         { id: 5, name: 'Payment Methods', link: '/paymentmethod' },
     ]
 

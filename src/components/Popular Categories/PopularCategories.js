@@ -16,7 +16,10 @@ const PopularCategories = () => {
 
     useEffect(() => {
         axios.get('https://elec-shop-server.herokuapp.com/category')
-            .then(res => setCategories(res.data))
+            .then(res => {
+                const newData = res?.data?.sort((a, b) => a?.position - b?.position);
+                setCategories(newData)
+            })
     }, [])
 
 
@@ -25,9 +28,9 @@ const PopularCategories = () => {
             <section className="py-6">
                 <h1 className="text-primary text-left py-3 capitalize text-2xl font-bold ">Popular Categories</h1>
                 <Swiper
-                    loop={true}
+                    loop={false}
                     navigation={true}
-                    slidesPerView={4}
+                    slidesPerView={8}
                     centeredSlides={false}
                     spaceBetween={10}
                     grabCursor={true}
@@ -54,19 +57,19 @@ const PopularCategories = () => {
                             slidesPerView: 2,
                         },
                         500: {
-                            slidesPerView: 3,
-                        },
-                        768: {
                             slidesPerView: 4,
                         },
+                        768: {
+                            slidesPerView: 6,
+                        },
                         1024: {
-                            slidesPerView: 4
+                            slidesPerView: 6
                         },
                         1200: {
-                            slidesPerView: 4
+                            slidesPerView: 8
                         },
                         1400: {
-                            slidesPerView: 4
+                            slidesPerView: 8
                         }
                     }}>
                     {categories?.map(item => (
@@ -74,9 +77,9 @@ const PopularCategories = () => {
                                 <Link to={`/shops?categories=${item?.slug}`} onClick={() => {
                                     setSearchParams({ categories: item?.slug })
                                 }}>
-                                    <div className='bg-white rounded-lg p-3 box-border flex flex-col items-center justify-center h-full space-y-2 hover:scale-105 transform transition duration-500 cursor-pointer'>
-                                        <img className="w-12 md:w-16 lg:w-16 object-contain" src={item.img} alt={item.category} />
-                                        <p className="text-gray-600 text-sm">{item.category}</p>
+                                    <div className='bg-white rounded-md p-4 box-border flex flex-col items-center justify-center h-full space-y-2 hover:scale-105 transform transition duration-500 cursor-pointer' style={{height:'120px'}}>
+                                        <img className="w-12 md:w-14 lg:w-w-14 object-contain" src={item.img} alt={item.category} />
+                                        <p className="text-gray-600 text-xs pt-2">{item.category}</p>
                                     </div>
                                     </Link>
                         </SwiperSlide>

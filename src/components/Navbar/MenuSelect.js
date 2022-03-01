@@ -10,7 +10,7 @@ const menus = [
     { id: 1, name: 'Free Shipping', link: '/free' },
     { id: 2, name: 'Drone Service', link: '/droneservice' },
     { id: 3, name: 'Global Purchase', link: '/globalpurchase' },
-    { id: 4, name: 'Automative', link: '/automative' },
+    { id: 4, name: 'Mobile', link: '/mobile' },
 ];
 const MenuSelect = ({ mobileMenu, setShowMenu}) => {
     const [selected, setSelected] = useState(placeholder[0])

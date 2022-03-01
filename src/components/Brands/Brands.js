@@ -21,11 +21,11 @@ const Brands = () => {
             <section className="py-6">
                 <h1 className="text-primary text-left py-3 capitalize text-2xl font-bold ">Brands</h1>
                 <Swiper
-                    loop={true}
+                    loop={false}
                     navigation={true}
-                    slidesPerView={5}
+                    slidesPerView={8}
                     centeredSlides={false}
-                    spaceBetween={20}
+                    spaceBetween={10}
                     grabCursor={true}
                     pagination={{
                         "clickable": true
@@ -48,25 +48,25 @@ const Brands = () => {
                             slidesPerView: 2,
                         },
                         500: {
-                            slidesPerView: 3,
+                            slidesPerView: 4,
                         },
                         768: {
-                            slidesPerView: 5,
+                            slidesPerView: 6,
                         },
                         1024: {
-                            slidesPerView: 5
+                            slidesPerView: 6
                         },
                         1200: {
-                            slidesPerView: 5
+                            slidesPerView: 8
                         },
                         1400: {
-                            slidesPerView:5
+                            slidesPerView:8
                         }
                     }}>
                     {brands?.map(item => (
                         <SwiperSlide key={item._id} className="h-full">
-                                <div className='w-36 h-24 bg-white rounded-lg p-2 box-border'>
-                                    <img className='w-24 h-full object-contain mx-auto' src={item?.img} alt={item.brand} />
+                                <div className=' h-24 bg-white rounded-md p-4 box-border'>
+                                    <img className='w-18 h-full object-contain mx-auto' src={item?.img} alt={item.brand} />
                                 </div>
                         </SwiperSlide>
                     ))}

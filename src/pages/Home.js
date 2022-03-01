@@ -7,6 +7,7 @@ import Brands from '../components/Brands/Brands';
 import Features from '../components/Features/Features';
 import Footer from '../components/Footer/Footer';
 import MenuBox from '../components/Menu Box/MenuBox';
+import NoticeText from '../components/Notice Text/NoticeText';
 import PopularCategories from '../components/Popular Categories/PopularCategories';
 import ProductsCategory from '../components/Products/ProductsCategory';
 import Recommended from '../components/Recommended/Recommended';
@@ -14,6 +15,8 @@ import Slider from '../components/Slider/Slider';
 
 const Home = () => {
     const [metaTag, setMetaTag] = useState([]);
+    const [notice, setNotice] = React.useState([]);
+
     // const [mobileVersion, setMobileVersion] = useState(false)
 
     useEffect(() => {
@@ -21,6 +24,11 @@ const Home = () => {
             .then(res => setMetaTag(res?.data?.[0]));
     }, []);
 
+
+    React.useEffect(() => {
+        axios.get('https://elec-shop-server.herokuapp.com/notice')
+            .then(res => setNotice(res?.data?.[0]))
+    }, [])
 
     // const changeNav = () => {
     //     if (window.innerWidth < 900) {
@@ -67,6 +75,11 @@ const Home = () => {
                             </div>
                         {/* </> */}
                     {/* // )} */}
+                    {
+                        notice?.status === "On" && (
+                            <NoticeText notice={notice} />
+                        )
+                    }
                     <MenuBox />
                     <Features />
                     {/* <BigBanner /> */}
