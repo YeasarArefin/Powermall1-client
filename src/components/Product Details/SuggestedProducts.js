@@ -44,13 +44,13 @@ const SuggestedProducts = (props) => {
                                   slidesPerView: 1,
                               },
                               414: {
-                                  slidesPerView: 1,
+                                  slidesPerView: 2,
                               },
                               425: {
-                                  slidesPerView: 1,
+                                  slidesPerView: 2,
                               },
                               500: {
-                                  slidesPerView: 1,
+                                  slidesPerView: 2,
                               },
                               768: {
                                   slidesPerView: 2,

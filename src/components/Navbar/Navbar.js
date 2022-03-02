@@ -40,7 +40,7 @@ const Navbar = ({ searchShow, mobileMenu, setSearchShow }) => {
 
     return (
         <>
-            <header className="bg-white border-b border-gray-200">
+            <header className="bg-white border-b border-gray-200 z-50">
                 {/* desktop nav  */}
                 <nav className="flex items-center max-w-screen-2xl mx-auto px-6 py-3">
                     <div className="flex flex-grow space-x-7 items-center justify-center lg:justify-start">

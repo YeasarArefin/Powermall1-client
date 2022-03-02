@@ -4,7 +4,7 @@ import React from 'react';
 function NoticeText({ notice}) {
     return (
         <div className="">
-            <marquee behavior="scroll" direction="left" className="bg-white rounded-full py-3 px-3 mt-6 text-sm">{notice.notice}</marquee>
+            <marquee behavior="scroll" direction="left" className="bg-white rounded-full p-3 mt-6 text-sm">{notice.notice}</marquee>
         </div>
     );
 }

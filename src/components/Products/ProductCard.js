@@ -31,13 +31,13 @@ const ProductCard = (props) => {
 
     return (
         <>
-            <div className="rounded-md p-4 box-border w-full  transition duration-500 h-full flex flex-col justify-between hover:shadow-xl bg-white border border-1 relative" style={{ height: '340px' }}>
+            <div className="rounded-md p-4 box-border w-full  transition duration-500 h-80 flex flex-col justify-between hover:shadow-xl bg-white border border-1 relative" >
 
                 <div >
                     {/* discount badge  */}
                     {discount > 0 && (
                         <>
-                            <div className="flex left-0 top-4 z-30 absolute">
+                            <div className="flex left-0 top-4 z-20 absolute">
                                 <span className="px-2 py-1 text-xs bg-yellow-500 text-center text-white rounded-tr-full rounded-br-full"> Save: {savedPrice?.toFixed(0)}&#2547;</span>
                             </div>
                         </>
