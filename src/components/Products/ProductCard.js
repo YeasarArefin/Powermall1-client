@@ -31,7 +31,7 @@ const ProductCard = (props) => {
 
     return (
         <>
-            <div className="rounded-md p-4 box-border w-full  transition duration-500 h-80 flex flex-col justify-between hover:shadow-xl bg-white border border-1 relative" >
+            <div className="rounded-md p-4 box-border w-full  transition duration-500 h-84 flex flex-col justify-between hover:shadow-xl bg-white border border-1 relative" >
 
                 <div >
                     {/* discount badge  */}

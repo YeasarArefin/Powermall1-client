@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from "react-router-dom";
-import BarLoader from "react-spinners/BarLoader";
-import Brand from './components/Navbar/Brand';
 import MobileBottomMenu from './components/Navbar/MobileBottomMenu';
 import Navbar from './components/Navbar/Navbar';
 import OfferNav from './components/Offer Nav/OfferNav';
@@ -42,7 +40,7 @@ import PrivateRoute from './routes/PrivateRoute';
 
 const App = () => {
   const [header, setHeader] = useState(false)
-  const [loading,setLoading] = useState(true)
+  // const [loading,setLoading] = useState(true)
   const [showOffer,setShowOffer] = useState(true)
   const [mobileMenu, setMobileMenu] = useState(false);
   const [searchShow, setSearchShow] = useState(false);
@@ -73,26 +71,15 @@ const App = () => {
     window.addEventListener('resize', changeNav);
   }, [])
 
-  //loading 
-  useEffect(() => {
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    },3000)
-  },[])
+  // //loading 
+  // useEffect(() => {
+  //   setLoading(true)
+  //   setTimeout(() => {
+  //     setLoading(false)
+  //   },3000)
+  // },[])
 
   return (
-  //   <>
-  //     <h1 className="text-5xl text-center">404 Not Found !!!</h1>
-
-  //   </>
-  // )
-    loading ? (
-      <div className='flex flex-col h-screen w-full justify-center items-center space-y-6'>
-        <Brand />
-        <BarLoader color="#fc3c3c" loading={loading} size={150} width={300} />
-      </div>
-    ) : (
       <>
           <AuthProvider>
             <CartProvider>
@@ -143,8 +130,6 @@ const App = () => {
             </CartProvider>
           </AuthProvider>
       </>
-    )
-    
   )
 }
 

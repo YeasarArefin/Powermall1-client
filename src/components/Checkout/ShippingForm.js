@@ -80,7 +80,7 @@ const ShippingForm = ({ setOrder, btnCick, setBtnClick}) => {
 
                 {/* button  */}
                 <div className='flex justify-end pt-4'>
-                    <button className='px-6 w-36 py-3 rounded-lg bg-primary text-white hover:bg-red-700 transition duration-300'>Save</button>
+                    <button className='px-6 w-36 py-3 rounded-lg bg-primary text-white  hover:bg-yellow-600 transition duration-300'>Save</button>
                 </div>
 
             </form>

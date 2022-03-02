@@ -49,7 +49,7 @@ const OfferNav = ({ setShowOffer }) => {
 
                 {/* close  */}
                 <div className='absolute top-0 right-0 z-30'>
-                    <MdClose className='cursor-pointer bg-white text-black w-6 h-6  rounded-bl-full m-2 p-1' onClick={() => setShowOffer(false)} />
+                    <MdClose className='cursor-pointer bg-white text-black w-6 h-6  p-1' onClick={() => setShowOffer(false)} />
                 </div>
             </div>
         </>

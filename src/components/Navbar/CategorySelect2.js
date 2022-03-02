@@ -4,7 +4,7 @@ import {
 import '@szhsin/react-menu/dist/index.css';
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import { HiSelector } from 'react-icons/hi';
+import { AiOutlineMenu } from 'react-icons/ai';
 import { Link, useSearchParams } from 'react-router-dom';
 
 
@@ -33,11 +33,11 @@ const CategorySelect2 = ({ mobileMenu }) => {
     return (
         <div>
 
-            <div ref={ref} onMouseEnter={() => setState('open')} className='border-2 text-primary text-xs w-36 py-3 px-4 rounded-lg border-primary font-semibold flex items-center justify-between cursor-pointer'>
-                <span className="text-xs">{categoryFilter ? categoryFilter.toUpperCase() : "CATEGORIES"}</span>
-                <HiSelector
+            <div ref={ref} onMouseEnter={() => setState('open')} className='border text-primary text-xs w-36 py-3 px-4 rounded-lg border-primary font-semibold flex items-center space-x-2 cursor-pointer'>
+                <AiOutlineMenu
                     className="w-5 h-5 text-primary font-bold"
                 />
+                <span className="text-xs">{categoryFilter ? categoryFilter.toUpperCase() : "CATEGORIES"}</span>
             </div>
             <ControlledMenu state={state} anchorRef={ref}
                 onMouseLeave={() => setState('closed')}

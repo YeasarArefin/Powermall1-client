@@ -44,9 +44,9 @@ const SearchBar = ({ searchShow}) => {
             <>
                     <form className="flex items-center space-x-3 p-2" onSubmit={handleSubmit(onSubmit)} style={{ width: '400px' }}>
                         <div className='relative w-full'>
-                            <BsSearch className='absolute top-3 left-4 text-xl text-gray-600' />
+                            <BsSearch className='absolute top-3.5 left-4 text-sm text-gray-600 hover:text-primary cursor-pointer' />
                             <input
-                                type="text" placeholder="Search Products" className="w-full border border-gray-300 bg-gray-100 transition duration-500 focus:outline-none rounded-md py-2.5 pl-12 pr-4"
+                                type="text" placeholder="Search Products" className="text-sm ring-primary focus:ring-1 w-full bg-gray-100 transition duration-500 focus:outline-none focus:bg-white rounded-md py-2.5 pl-12 pr-4"
                                 {...register("search", { required: true })}
                                 list="title" id="brand"
                             />
@@ -71,9 +71,9 @@ const SearchBar = ({ searchShow}) => {
                             <>
                                 <form className="flex items-center space-x-3 p-2" onSubmit={handleSubmit(onSubmit)} style={{ width: '350px',margin:'auto' }}>
                                     <div className='relative w-full'>
-                                        <BsSearch className='absolute top-3 left-4 text-xl text-gray-600' />
+                                        <BsSearch className='absolute top-3.5 left-4 text-sm text-gray-600 hover:text-primary cursor-pointer' />
                                         <input
-                                            type="text" placeholder="Search Products" className="w-full border border-gray-300 bg-gray-100 transition duration-500 focus:outline-none rounded-md py-2.5 pl-12 pr-4"
+                                            type="text" placeholder="Search Products" className="text-sm ring-primary focus:ring-1 w-full bg-gray-100 transition duration-500 focus:outline-none focus:bg-white rounded-md py-2.5 pl-12 pr-4"
                                             {...register("search", { required: true })}
                                             list="title" id="brand"
                                         />
@@ -88,10 +88,10 @@ const SearchBar = ({ searchShow}) => {
                         ): (
                             <>
                                     <form className="flex items-center space-x-2 p-2" onSubmit={handleSubmit(onSubmit)} style={{ width: '450px' }}>
-                                        <div className='relative w-full'>
-                                            <BsSearch className='absolute top-3 left-4 text-xl text-gray-600' />
+                                        <div className='relative w-full '>
+                                            <BsSearch className='absolute top-3.5 left-4 text-sm text-gray-600 hover:text-primary cursor-pointer' />
                                             <input
-                                                type="text" placeholder="Search Products" className="w-full border border-gray-300 bg-gray-100 transition duration-500 focus:outline-none rounded-md py-2.5 pl-12 pr-4"
+                                                type="text" placeholder="Search Products" className="text-sm ring-primary focus:ring-1 w-full bg-gray-100 transition duration-500 focus:outline-none focus:bg-white rounded-md py-2.5 pl-12 pr-4"
                                                 {...register("search", { required: true })}
                                                 list="title" id="brand"
                                             />

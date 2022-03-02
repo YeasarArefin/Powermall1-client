@@ -13,7 +13,7 @@ const Spinner = () => {
 
     return (
         <div className="flex flex-col h-3/4 justify-center items-center">
-            <ClipLoader color="#11A0DB" loading={loading} size={150} />
+            <ClipLoader color="#F59E0B" loading={loading} size={150} />
         </div>
     )
 }

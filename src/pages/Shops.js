@@ -19,7 +19,7 @@ const Shops = () => {
     }, [searchParams])
 
     //find products
-    const pds = products?.filter(item => item?.category?.toLowerCase() === categoryFilter || item?.subCategory?.toLowerCase() === categoryFilter)
+    const pds = products?.filter(item => item?.category?.toLowerCase() === categoryFilter || item?.brand?.toLowerCase()?.includes(categoryFilter?.toLowerCase()))
     // eslint-disable-next-line array-callback-return
     const searchPd = products?.filter(item => {
         if (item?.name?.toLowerCase()?.includes(searchFilter?.toLowerCase()) || item?.brand?.toLowerCase()?.includes(searchFilter?.toLowerCase()) || item?.category?.toLowerCase()?.includes(searchFilter?.toLowerCase())) {
@@ -38,7 +38,7 @@ const Shops = () => {
     const Spinner = () => {
         return (
             <div className='flex flex-col h-screen w-full justify-center items-center space-y-6'>
-                <FadeLoader color="#fc3c3c" loading={loading} size={50} />
+                <FadeLoader color="#F59E0B" loading={loading} size={50} />
             </div>
         )
     }
@@ -87,7 +87,7 @@ const Shops = () => {
                                                         <h1 className='text-3xl text-center text-gray-600'> <span className='text-primary italic'>{searchFilter}</span> Not found!!</h1>
                                                     </div>
                                                     <Link to="/shops">
-                                                        <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none hover:bg-red-700 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
+                                                        <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none  hover:bg-yellow-600 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
                                                     </Link>
                                                 </div>
                                             </>
@@ -111,7 +111,7 @@ const Shops = () => {
                                                     <h1 className='text-3xl text-center text-gray-600'> <span className='text-primary italic'>{categoryFilter}</span> Not found!!</h1>
                                                 </div>
                                                 <Link to="/shops">
-                                                    <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none hover:bg-red-700 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
+                                                    <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none  hover:bg-yellow-600 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
                                                 </Link>
                                             </div>
                                         )
