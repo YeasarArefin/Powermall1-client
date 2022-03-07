@@ -6,7 +6,7 @@ const ShopWithUsScreen = () => {
     const [item, setItem] = React.useState([])
 
     React.useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/shopwithus')
+        axios.get('https://powermallapi.herokuapp.com/shopwithus')
             .then(res => setItem(res.data[0]))
     }, [])
 

@@ -15,7 +15,7 @@ const Recommended = () => {
     const [mobile, setMobile] = useState(false);
 
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/recomendedbanner')
+        axios.get('https://powermallapi.herokuapp.com/recomendedbanner')
             .then(res => setImages(res.data));
     }, []);
 
@@ -37,7 +37,7 @@ const Recommended = () => {
         <>
             <section className="py-6">
                 {/* title  */}
-                <h1 className="text-primary text-left py-3 capitalize text-2xl font-bold ">Recommended</h1>
+                <h1 className="text-gray-700 text-left py-3 capitalize text-xl font-semibold ">Recommended</h1>
 
 
             </section>

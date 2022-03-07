@@ -15,7 +15,7 @@ const ProductDetails = () => {
     const [loading, setLoading] = useState(true)
 
     React.useEffect(() => {
-        fetch(`https://elec-shop-server.herokuapp.com/products/${id}`)
+        fetch(`https://powermallapi.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [id])
@@ -25,7 +25,7 @@ const ProductDetails = () => {
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
-        }, 3000)
+        }, 200)
     }, [])
 
     return (

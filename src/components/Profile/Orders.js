@@ -20,7 +20,7 @@ const Orders = () => {
     // };
 
     const handleDelete = (id) => {
-        axios.delete(`https://elec-shop-server.herokuapp.com/orders/${id}`)
+        axios.delete(`https://powermallapi.herokuapp.com/orders/${id}`)
             .then(res => {
                 swal("Cancel", "Order cancel done!!!", "success");
             }).catch((err) => {
@@ -30,18 +30,18 @@ const Orders = () => {
 
     const handleRefund = (id) => {
 
-        axios.put(`https://elec-shop-server.herokuapp.com/orders/${id}`, { refund: 'pending' })
+        axios.put(`https://powermallapi.herokuapp.com/orders/${id}`, { refund: 'pending' })
             .then(res => {
                 if (res.data.modifiedCount > 0) {
 
-                    axios.get(`https://elec-shop-server.herokuapp.com/orders/${id}`)
+                    axios.get(`https://powermallapi.herokuapp.com/orders/${id}`)
                         .then(res => {
 
                             if (res.status === 200) {
 
                                 const product = res.data;
 
-                                axios.post('https://elec-shop-server.herokuapp.com/refunds', product)
+                                axios.post('https://powermallapi.herokuapp.com/refunds', product)
                                     .then(res => {
                                         if (res.status === 200) {
 
@@ -58,7 +58,7 @@ const Orders = () => {
     };
 
     useEffect(() => {
-        axios.get(`https://elec-shop-server.herokuapp.com/orders?email=${newUser?.email}`)
+        axios.get(`https://powermallapi.herokuapp.com/orders?email=${newUser?.email}`)
             .then(res => {
                 setPd(res.data?.map(item => item));
             });

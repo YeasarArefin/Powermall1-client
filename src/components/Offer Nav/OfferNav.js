@@ -7,7 +7,7 @@ const OfferNav = ({ setShowOffer }) => {
     const [mobileVersion, setMobileVersion] = useState(false)
 
     useEffect(() => {
-        axios.get("https://elec-shop-server.herokuapp.com/notification")
+        axios.get("https://powermallapi.herokuapp.com/notification")
             .then(res => setNotification(res?.data));
     }, []);
 

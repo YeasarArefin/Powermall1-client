@@ -14,7 +14,7 @@ const SuggestedProducts = (props) => {
     const { _id,category} = props;
     const [products] = useFetch();
 
-    const pds = products?.filter(item => item?.category?.toLowerCase() === category.toLowerCase())
+    const pds = products?.filter(item => item?.category?.toLowerCase() === category?.toLowerCase())
 
   return (
       <>

@@ -15,7 +15,7 @@ const PopularCategories = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/category')
+        axios.get('https://powermallapi.herokuapp.com/category')
             .then(res => {
                 const newData = res?.data?.sort((a, b) => a?.position - b?.position);
                 setCategories(newData)
@@ -26,7 +26,7 @@ const PopularCategories = () => {
     return (
         <>
             <section className="py-6">
-                <h1 className="text-primary text-left py-3 capitalize text-2xl font-bold ">Popular Categories</h1>
+                <h1 className="text-gray-700 text-left py-3 capitalize text-xl font-semibold">Popular Categories</h1>
                 <Swiper
                     loop={false}
                     navigation={true}

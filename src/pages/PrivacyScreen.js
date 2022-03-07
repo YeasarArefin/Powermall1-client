@@ -6,7 +6,7 @@ const PrivacyScreen = () => {
     const [item, setItem] = React.useState([])
 
     React.useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/policy')
+        axios.get('https://powermallapi.herokuapp.com/policy')
             .then(res => setItem(res.data[0]))
     }, [])
 

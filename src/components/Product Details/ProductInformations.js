@@ -6,7 +6,7 @@ function classNames(...classes) {
 }
 
 const ProductInformations = (props) => {
-    const { description, moreInformation,sku } = props;
+    const { description, moreInformation, sku} = props;
 
     const desc = `${description}`
     const info = `${moreInformation}`

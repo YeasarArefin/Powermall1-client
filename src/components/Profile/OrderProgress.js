@@ -7,7 +7,7 @@ const OrderProgress = () => {
     const [products, setProducts] = React.useState({})
 
     React.useEffect(() => {
-        fetch(`https://elec-shop-server.herokuapp.com/orders/${id}`)
+        fetch(`https://powermallapi.herokuapp.com/orders/${id}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [id])

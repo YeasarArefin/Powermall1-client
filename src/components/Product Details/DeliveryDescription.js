@@ -3,28 +3,29 @@ import React, { useEffect, useState } from 'react';
 import { BsBoxArrowInDownLeft, BsBoxArrowInUpRight, BsCash } from 'react-icons/bs';
 import { MdDeliveryDining, MdOutlineCheck, MdOutlineClose, MdOutlineLocalShipping, MdOutlineLocationOn, MdOutlineModelTraining } from 'react-icons/md';
 import { Link, useParams } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+// import useAuth from '../../hooks/useAuth';
 import AddressModal from './AddressModal';
 
 const DeliveryDescription = (props) => {
     const { warenty } = props;
     const [open, setOpen] = useState(false);
-    const { newUser } = useAuth();
+    // const { newUser } = useAuth();
     const [info, setInfo] = useState();
     const [pdInfo, setPdInfo] = useState({});
     const { id } = useParams();
 
-    const handleModal = () => {
-        setOpen(true);
-    };
+    // const handleModal = () => {
+    //     setOpen(true);
+    // };
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/information')
+        axios.get('https://powermallapi.herokuapp.com/information')
             .then(res => setInfo(res.data[0]));
 
-        axios.get(`https://elec-shop-server.herokuapp.com/products/${id}`)
+        axios.get(`https://powermallapi.herokuapp.com/products/${id}`)
             .then(res => setPdInfo(res.data));
     }, [id]);
 
+    // , deliveryOption, storePickup 
     return (
         <div className='bg-gray-50 h-full py-6 px-3'>
             {/* delivery options  */}
@@ -34,12 +35,13 @@ const DeliveryDescription = (props) => {
                 <div className='flex flex-col space-y-2  py-2 border-t border-gray-300 my-3'>
                     <div className='flex items-center'>
                         <MdOutlineLocationOn className='text-3xl text-gray-600 w-8' />
-                        <span className='text-sm text-gray-600 break-all'>{newUser?.address && (newUser?.address)}</span>
+                        {/* <span className='text-sm text-gray-600 break-all'>{newUser?.address && (newUser?.address)}</span> */}
+                        <span className='text-sm text-gray-600 break-all'>{pdInfo?.storePickup}</span>
                     </div>
 
-                    <div className='flex justify-end'>
+                    {/* <div className='flex justify-end'>
                         <span className='text-sm text-primary cursor-pointer' onClick={handleModal}>CHANGE</span>
-                    </div>
+                    </div> */}
                 </div>
                 <AddressModal open={open} setOpen={setOpen} />
 
@@ -109,7 +111,7 @@ const DeliveryDescription = (props) => {
                 {/* payment method  */}
                 <div className='flex items-center space-x-2 py-2 border-t border-gray-300 my-3'>
                     <BsCash className='text-2xl text-gray-600 w-8' />
-                    <span className='text-sm text-gray-600'>Cash on Delivery Available</span>
+                    <span className='text-sm text-gray-600'>{pdInfo?.deliveryOption}</span>
                 </div>
             </div>
 

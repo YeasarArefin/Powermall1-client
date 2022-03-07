@@ -10,12 +10,12 @@ const MainFooter = () => {
     const [mobileFooter, setMobileFooter] = useState(false);
 
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/information')
+        axios.get('https://powermallapi.herokuapp.com/information')
             .then(res => setInfo(res.data[0]))
     }, []);
 
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/applink')
+        axios.get('https://powermallapi.herokuapp.com/applink')
             .then(res => setAppLink(res.data[0]))
     }, []);
 

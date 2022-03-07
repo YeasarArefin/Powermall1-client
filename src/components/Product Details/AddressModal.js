@@ -12,7 +12,7 @@ const AddressModal = ({ open, setOpen }) => {
     const { register, handleSubmit } = useForm();
 
     const onSubmit = data => {
-        axios.put(`https://elec-shop-server.herokuapp.com/users/${newUser._id}`, data)
+        axios.put(`https://powermallapi.herokuapp.com/users/${newUser._id}`, data)
             .then(res => {
                 swal("Yo!!!", "Address successfully updated!!!", "success");
                  setOpen(false)

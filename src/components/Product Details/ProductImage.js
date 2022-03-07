@@ -35,9 +35,14 @@ const ProductImage = (props) => {
                 <SwiperSlide>
                     <img src={image?.[3]} className='w-full mx-auto   object-fill' alt="nature" />
                 </SwiperSlide>
-                <SwiperSlide>
-                    <iframe width="450" height="450" src={ytLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </SwiperSlide>
+                {
+                    ytLink && (
+                        <SwiperSlide>
+                            <iframe width="450" height="450" src={ytLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </SwiperSlide>
+                    )
+                }
+                
 
             </Swiper>
             <Swiper
@@ -58,10 +63,15 @@ const ProductImage = (props) => {
                 <SwiperSlide>
                     <img src={image?.[3]} className='w-full mx-auto   object-contain' alt="nature" />
                 </SwiperSlide>
-                <SwiperSlide>
-                    <iframe width="100" height="100" src={ytLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </SwiperSlide>
+                {
+                    ytLink && (
+                        <SwiperSlide>
+                            <iframe width="100" height="100" src={ytLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </SwiperSlide>
 
+                    )
+                }
+                
             </Swiper>
         </div>
     )

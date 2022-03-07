@@ -18,11 +18,11 @@ const CategorySelect = ({ mobileMenu, setShowMenu}) => {
     // const {cateId,setCateId} = useState({})
 
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/category')
+        axios.get('https://powermallapi.herokuapp.com/category')
             .then(res => setCategories(res.data))
     }, [])
     // useEffect(() => {
-    //     axios.get('https://elec-shop-server.herokuapp.com/category')
+    //     axios.get('https://powermallapi.herokuapp.com/category')
     //         .then(res => setCateId(res.data))
     // }, [])
 

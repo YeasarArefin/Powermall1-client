@@ -6,7 +6,7 @@ const AboutUsScreen = () => {
     const [item,setItem] = useState([])
     
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/aboutus')
+        axios.get('https://powermallapi.herokuapp.com/aboutus')
         .then(res => setItem(res.data[0]))
     }, [])
 

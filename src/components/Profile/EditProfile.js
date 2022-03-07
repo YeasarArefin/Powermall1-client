@@ -49,7 +49,7 @@ const EditProfile = () => {
                                 swal("Opps!!", "Mobile Number Must be 11 number or please start with 01 !!!", "info");
                             } else {
                                 data.['image'] = `${response.data.data.image.url}`;
-                                axios.put(`https://elec-shop-server.herokuapp.com/users/${newUser._id}`, data)
+                                axios.put(`https://powermallapi.herokuapp.com/users/${newUser._id}`, data)
                                     .then(res => {
                                         swal("Yo!!!", "Profile successfully updated!!!", "success");
                                         navigate('/profile/account')
@@ -60,7 +60,7 @@ const EditProfile = () => {
                             }
                         }else{
                             data.['image'] = `${response.data.data.image.url}`;
-                            axios.put(`https://elec-shop-server.herokuapp.com/users/${newUser._id}`, data)
+                            axios.put(`https://powermallapi.herokuapp.com/users/${newUser._id}`, data)
                                 .then(res => {
                                     swal("Yo!!!", "Profile successfully updated!!!", "success");
                                     navigate('/profile/account')
@@ -83,7 +83,7 @@ const EditProfile = () => {
                 if (data?.mobile?.length > 11 || data?.mobile?.length < 11 || !data?.mobile?.startsWith("01")) {
                     swal("Opps!!", "Mobile Number Must be 11 number or please start with 01 !!!", "info");
                 } else {
-                    axios.put(`https://elec-shop-server.herokuapp.com/users/${newUser._id}`, data)
+                    axios.put(`https://powermallapi.herokuapp.com/users/${newUser._id}`, data)
                         .then(res => {
                             swal("Yo!!!", "Profile successfully updated!!!", "success");
                             navigate('/profile/account')
@@ -93,7 +93,7 @@ const EditProfile = () => {
                         })
                 }
             }else{
-                axios.put(`https://elec-shop-server.herokuapp.com/users/${newUser._id}`, data)
+                axios.put(`https://powermallapi.herokuapp.com/users/${newUser._id}`, data)
                     .then(res => {
                         swal("Yo!!!", "Profile successfully updated!!!", "success");
                         navigate('/profile/account')

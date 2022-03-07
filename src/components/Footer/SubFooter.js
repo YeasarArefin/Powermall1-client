@@ -6,11 +6,11 @@ const SubFooter = () => {
     const [copyRightData, setCopyRightData] = React.useState({})
 
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/sociallinks/61dc17dd6b1decad8b9fc3d8')
+        axios.get('https://powermallapi.herokuapp.com/sociallinks/61dc17dd6b1decad8b9fc3d8')
             .then(res => setSocialData(res.data))
     }, []);
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/copyright/61dc1d87e7096f4da08ec024')
+        axios.get('https://powermallapi.herokuapp.com/copyright/61dc1d87e7096f4da08ec024')
             .then(res => setCopyRightData(res.data))
     }, []);
     

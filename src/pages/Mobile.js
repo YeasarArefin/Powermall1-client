@@ -6,19 +6,19 @@ import Footer from '../components/Footer/Footer';
 import ProductCard from '../components/Products/ProductCard';
 import useFetch from '../hooks/useFetch';
 
-const Automative = () => {
+const Mobile = () => {
     const [products] = useFetch();
     const [loading, setLoading] = useState(true)
 
     //find products
-    const pds = products?.filter(item => item?.delivery === "Automotive")
+    const pds = products?.filter(item => item?.delivery === "Mobile")
 
     //loading 
     useEffect(() => {
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
-        }, 1500)
+        }, 200)
     }, [])
 
     const Spinner = () => {
@@ -69,4 +69,4 @@ const Automative = () => {
     )
 }
 
-export default Automative
+export default Mobile

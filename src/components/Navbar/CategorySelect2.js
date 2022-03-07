@@ -22,7 +22,7 @@ const CategorySelect2 = ({ mobileMenu }) => {
     }, [searchParams])
 
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/category')
+        axios.get('https://powermallapi.herokuapp.com/category')
             .then(res => {
                 const newData = res?.data?.sort((a, b) => a?.position - b?.position);
                 setCategories(newData)

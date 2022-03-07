@@ -14,7 +14,7 @@ const SearchBar = ({ searchShow}) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/products')
+        axios.get('https://powermallapi.herokuapp.com/products')
             .then(res => setProducts(res?.data));
     }, []);
 

@@ -54,7 +54,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
 
     //information api
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/information')
+        axios.get('https://powermallapi.herokuapp.com/information')
             .then(res => setInfo(res.data[0]));
     }, []);
 
@@ -62,7 +62,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
 
     //coupons api
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/coupons')
+        axios.get('https://powermallapi.herokuapp.com/coupons')
             .then(res => setCoupon(res.data));
     }, []);
 
@@ -116,13 +116,13 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
 
     //post order function
     const handleSubmitForm = () => {
-        axios.put(`https://elec-shop-server.herokuapp.com/users/${newUser._id}`, {
+        axios.put(`https://powermallapi.herokuapp.com/users/${newUser._id}`, {
             usedCoupon: usedCoupon?.usedCoupon
         })
             .then(res => {
                 setDisabled(true);
             });
-        // axios.post('https://elec-shop-server.herokuapp.com/init', {
+        // axios.post('https://powermallapi.herokuapp.com/init', {
         //     ...order, time: new Date().toLocaleTimeString()
         // })
         //     .then(res => {
@@ -133,7 +133,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
         //     }).catch((err) => {
         //         swal("Something went wrong!", `${err.message}`, "error")
         //     })
-        axios.post('https://elec-shop-server.herokuapp.com/orders', {
+        axios.post('https://powermallapi.herokuapp.com/orders', {
             ...order, time: new Date().toLocaleTimeString(), refund: 'Refund'
         })
             .then(res => {

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,7 +10,7 @@ const Features = () => {
     const [featuresData, setFeatureData] = useState([]);
 
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/feature')
+        axios.get('https://powermallapi.herokuapp.com/feature')
             .then(res => setFeatureData(res?.data))
     }, [])
 
@@ -32,16 +33,16 @@ const Features = () => {
                         slidesPerView: 1,
                     },
                     375: {
-                        slidesPerView: 1,
+                        slidesPerView: 2,
                     },
                     414: {
-                        slidesPerView: 1,
+                        slidesPerView: 2,
                     },
                     425: {
-                        slidesPerView: 1,
+                        slidesPerView: 2,
                     },
                     500: {
-                        slidesPerView: 1,
+                        slidesPerView: 2,
                     },
                     768: {
                         slidesPerView: 2,
@@ -58,24 +59,24 @@ const Features = () => {
                 }}>
             {featuresData?.map(feature => (
                 <SwiperSlide key={feature?._id}>
-                    <a href={`${feature?.link}`} >
+                    <Link to={`/${feature?.tag}`} >
                     <div className="rounded-lg cursor-pointer hover:shadow-xl overflow-hidden h-44 lg:h-52 transition duration-500" style={{ background: `url(${feature?.img})`, backgroundSize:'cover' }}>
                         <div className="flex flex-col justify-center space-y-1 h-full p-6">
                             {/* text  */}
                             <div>
-                                <h3 className="text-xl lg:text-2xl font-bold text-white">{feature?.title}</h3>
-                                <p className="text-sm text-white mb-2">{feature?.details}</p>
+                                <h3 className="text-base lg:text-2xl font-bold text-white">{feature?.title}</h3>
+                                <p className="text-xs md:text-sm lg:text-sm text-white mb-2">{feature?.details}</p>
                             </div>
 
                             {/* button  */}
                             <div>
-                                <a href={`${feature?.link}`} >
+                                <Link to={`/${feature?.tag}`} >
                                 <button className={`bg-white w-24 lg:w-28 px-2 lg:px-3 py-2 mt-2 rounded-full text-gray-600 hover:scale-110 transform transition duration-300 text-xs`}  >{feature?.name}</button>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
-                    </a>
+                    </Link>
                 </SwiperSlide>
             ))}
             </Swiper>

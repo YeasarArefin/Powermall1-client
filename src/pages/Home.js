@@ -20,13 +20,13 @@ const Home = () => {
     // const [mobileVersion, setMobileVersion] = useState(false)
 
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/seo')
+        axios.get('https://powermallapi.herokuapp.com/seo')
             .then(res => setMetaTag(res?.data?.[0]));
     }, []);
 
 
     React.useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/notice')
+        axios.get('https://powermallapi.herokuapp.com/notice')
             .then(res => setNotice(res?.data?.[0]))
     }, [])
 

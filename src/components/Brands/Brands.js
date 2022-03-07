@@ -12,14 +12,14 @@ const Brands = () => {
     const [brands, setBrands] = useState([]);
 
     useEffect(() => {
-        axios.get('https://elec-shop-server.herokuapp.com/brands')
+        axios.get('https://powermallapi.herokuapp.com/brands')
             .then(res => setBrands(res?.data))
     }, [])
 
     return (
         <>
             <section className="py-6">
-                <h1 className="text-primary text-left py-3 capitalize text-2xl font-bold ">Brands</h1>
+                <h1 className="text-gray-700 text-left py-3 capitalize text-xl font-semibold ">Brands</h1>
                 <Swiper
                     loop={false}
                     navigation={true}

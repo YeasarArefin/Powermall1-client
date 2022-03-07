@@ -7,11 +7,11 @@ const SectionTitle = ({ title, slug }) => {
 
     return (
         <div className='flex items-center justify-between'>
-            <h1 className="text-primary text-left py-3 capitalize text-2xl font-bold ">{title}</h1>
+            <h1 className="text-gray-700 text-left py-3 capitalize text-xl font-semibold ">{title}</h1>
             <Link to={`/shops?categories=${slug}`} onClick={() => {
                 setSearchParams({ categories: slug })
             }}>
-                <button className='bg-primary  hover:bg-yellow-600 text-white focus:outline-none rounded-md transition duration-300 px-4 py-2'>See All</button>
+                <button className='bg-primary  hover:bg-yellow-600 text-white focus:outline-none rounded-md transition duration-300 px-4 py-2 text-sm'>See All</button>
             </Link>
         </div>
     )
