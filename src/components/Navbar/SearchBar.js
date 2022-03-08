@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { BsSearch } from 'react-icons/bs';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const SearchBar = ({ searchShow}) => {
     const [mobileNav, setMobileNav] = useState(false);
@@ -12,6 +13,7 @@ const SearchBar = ({ searchShow}) => {
     // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams();
     const [products, setProducts] = useState([]);
+    const { newUser } = useAuth();
 
     useEffect(() => {
         axios.get('https://powermallapi.herokuapp.com/products')
@@ -42,7 +44,7 @@ const SearchBar = ({ searchShow}) => {
         <>
         {mobileNav ? (
             <>
-                    <form className="flex items-center space-x-3 p-2" onSubmit={handleSubmit(onSubmit)} style={{ width: '400px' }}>
+                    <form className="flex items-center space-x-3 p-2" onSubmit={handleSubmit(onSubmit)} style={{width:"400px"}}>
                         <div className='relative w-full'>
                             <BsSearch className='absolute top-3.5 left-4 text-sm text-gray-600 hover:text-primary cursor-pointer' />
                             <input
@@ -56,13 +58,6 @@ const SearchBar = ({ searchShow}) => {
                                 <option value={item?.name?.toLowerCase()} key={item?._id} />
                             ))}
                         </datalist>
-                        {/* <Link to={`/shops?search=${data}`} onClick={() => { */}
-                        {/* // setSearchParams({ search: data }) */}
-                        {/* // }}> */}
-                        {/* <button type="submit">
-                <AiOutlineSearch className="cursor-pointer text-xl text-gray-400 w-9 h-9 p-2 rounded-full border border-gray-300 hover:bg-primary hover:text-white transition duration-500 focus:shadow-xl" />
-            </button> */}
-                        {/* </Link> */}
                     </form>
             </>
         ) : (
@@ -87,7 +82,7 @@ const SearchBar = ({ searchShow}) => {
                             </>
                         ): (
                             <>
-                                    <form className="flex items-center space-x-2 p-2" onSubmit={handleSubmit(onSubmit)} style={{ width: '450px' }}>
+                                    <form className="flex items-center space-x-2 p-2 " style={{ width: `${newUser ? "700px" : '600px'}`}} onSubmit={handleSubmit(onSubmit)} >
                                         <div className='relative w-full '>
                                             <BsSearch className='absolute top-3.5 left-4 text-sm text-gray-600 hover:text-primary cursor-pointer' />
                                             <input

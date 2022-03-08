@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
+import { BsCash, BsFillCreditCardFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import useAuth from '../../hooks/useAuth';
@@ -29,6 +30,13 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
     const [couponCheck, setCouponCheck] = useState(
         getSessionStorageOrDefault('coupons', [])
     );
+    const [paymentMethod, setPaymentMethod] = React.useState('')
+
+    const selectDeliveryOption = (method) => {
+        setPaymentMethod(method)
+    }
+
+
 
     useEffect(() => {
         sessionStorage.setItem('coupons', JSON.stringify(couponCheck));
@@ -173,7 +181,52 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
                 </span>
             </div>
 
-            <button disabled={!btnCick} className={`${!btnCick ? " bg-gray-500 text-gray-100 opacity-20" : " bg-primary text-white  hover:bg-yellow-600 "}mt-6  w-full py-3 rounded-md  `} onClick={handleSubmitForm}>Proceed to pay</button>
+            {/* payment option  */}
+            <div className='my-4'>
+                <h1 className="block text-sm font-medium text-gray-700">Select Payment method</h1>
+
+                <div className="flex items-center space-x-3 my-3">
+
+                    {
+                        totalPrice >= 5000 ? (
+                            <>
+                                {/* Cash On Delivery / */}
+                                <div className="bg-gray-100 flex items-center space-x-2 px-4 py-3 rounded-md select-none opacity-40" >
+                                    <BsCash />
+                                    <h2 className='text-sm'>Cash 0n Delivery</h2>
+                                    {/* <span className='text-xs'>1-2 days</span> */}
+                                </div>
+                                {/* Pre Payment / */}
+                                <div className={`bg-gray-100 flex items-center space-x-2 px-4 py-3 rounded-md cursor-pointer ${paymentMethod === 'Pre Payment' && 'bg-primary text-white'}`} onClick={() => selectDeliveryOption('Pre Payment')}>
+                                    <BsFillCreditCardFill />
+                                    <h2 className='text-sm'>Pre Payment</h2>
+                                    {/* <span className='text-xs'>come to our shop</span> */}
+                                </div>
+                            </>
+                        ): (
+                            <>
+                                    {/* Cash On Delivery / */}
+                                    <div className={`bg-gray-100 flex items-center space-x-2 px-4 py-3 rounded-md cursor-pointer ${paymentMethod === 'Cash 0n Delivery' && 'bg-primary text-white'}`} onClick={() => selectDeliveryOption('Cash 0n Delivery')}>
+                                        <BsCash />
+                                        <h2 className='text-sm'>Cash 0n Delivery</h2>
+                                        {/* <span className='text-xs'>1-2 days</span> */}
+                                    </div>
+                                    {/* Pre Payment / */}
+                                    <div className={`bg-gray-100 flex items-center space-x-2 px-4 py-3 rounded-md cursor-pointer ${paymentMethod === 'Pre Payment' && 'bg-primary text-white'}`} onClick={() => selectDeliveryOption('Pre Payment')}>
+                                        <BsFillCreditCardFill />
+                                        <h2 className='text-sm'>Pre Payment</h2>
+                                        {/* <span className='text-xs'>come to our shop</span> */}
+                                    </div>
+                            </>
+                        )
+                    }
+
+                </div>
+            </div>
+
+
+
+            <button disabled={!btnCick} className={`${!btnCick ? " bg-gray-200 text-gray-300 opacity-40" : " bg-primary text-white  hover:bg-yellow-600 "} mt-6  w-full py-3 rounded-md  `} onClick={handleSubmitForm}>Proceed to pay</button>
         </div>
     );
 };

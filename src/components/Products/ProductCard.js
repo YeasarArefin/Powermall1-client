@@ -29,6 +29,7 @@ const ProductCard = (props) => {
     //checking
     const findWishList = newUser?.wishlist?.find(item => item?._id === _id)
     const FindwishListPd = wishListPd?.find(item => item?._id === _id)
+    const findUser = newUser?.wishlist?.find(item => item?.email !== newUser?.email)
 
     //handle add to cart 
     const handleCart = () => {
@@ -58,8 +59,10 @@ const ProductCard = (props) => {
                 wishlist: newUser?.wishlist
             })
                 .then(res => {
-                    if (FindwishListPd){
-                        axios.put(`https://powermallapi.herokuapp.com/wishlist`, wishListUser).then(res => {
+                    setWishListDone(true)
+                    swal("Done!!", "This product has added to wishlist!", "success");
+                    if (FindwishListPd && findUser ){
+                        axios.put(`https://powermallapi.herokuapp.com/wishlist/${_id}`, wishListUser).then(res => {
                             setWishListDone(true)
                             swal("Done!!", "This product has added to wishlist!", "success");
                         })

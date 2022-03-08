@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { BsBoxArrowInDownLeft, BsBoxArrowInUpRight, BsCash } from 'react-icons/bs';
-import { MdDeliveryDining, MdOutlineCheck, MdOutlineClose, MdOutlineLocalShipping, MdOutlineLocationOn, MdOutlineModelTraining } from 'react-icons/md';
+import { BsCash } from 'react-icons/bs';
+import { MdDeliveryDining, MdOutlineCheck, MdOutlineClose, MdOutlineLocationOn, MdOutlineModelTraining } from 'react-icons/md';
 import { Link, useParams } from 'react-router-dom';
 // import useAuth from '../../hooks/useAuth';
 import AddressModal from './AddressModal';
@@ -46,16 +46,24 @@ const DeliveryDescription = (props) => {
                 <AddressModal open={open} setOpen={setOpen} />
 
                 {/* home delivery time  */}
-                <div className='flex flex-col items-start space-x-2 gap-y-3 py-2 border-t border-gray-300 my-3'>
-                    <div className='text-sm text-gray-600 flex flex-grow gap-x-5'>
-                        <MdDeliveryDining className='text-3xl text-gray-600 w-8' />
-                        <div>
-                            <p>Home Delivery</p>
-                            <span>{info?.duration}</span>
+                {pdInfo?.shippingCharge && (
+                    <>
+                        <div className='flex flex-col items-start space-x-2 gap-y-3 py-2 border-t border-gray-300 my-3'>
+                            <div className='text-sm text-gray-600 flex flex-grow gap-x-2'>
+                                <MdDeliveryDining className='text-3xl text-gray-600 w-8' />
+                                <div>
+                                    <p>Shipping Cost</p>
+                                    <span>{pdInfo?.shippingCharge} Tk</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    {
+                    </>
+                )
+                }
+
+
+                {/* {
                         pdInfo?.delivery === "Paid Shipping" ? (
 
                             <div className='flex flex-col gap-y-3'>
@@ -103,10 +111,9 @@ const DeliveryDescription = (props) => {
                                 <span className='text-sm text-gray-600 font-medium'>&#2547; 0</span>
                             </div>
                         )
-                    }
+                    } */}
 
 
-                </div>
 
                 {/* payment method  */}
                 <div className='flex items-center space-x-2 py-2 border-t border-gray-300 my-3'>

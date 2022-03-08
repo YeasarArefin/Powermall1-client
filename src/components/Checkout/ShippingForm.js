@@ -10,9 +10,15 @@ const ShippingForm = ({ setOrder, btnCick, setBtnClick}) => {
     const { newUser } = useAuth();
     const { cart } = useCart();
     const { register, handleSubmit } = useForm();
+    const [deliveryMethod,setDeliveryMethod] = React.useState('')
+
+    const selectDeliveryOption = (method) => {
+        setDeliveryMethod(method)
+    }
 
     const onSubmit = data => {
         data['email'] = newUser?.email;
+        data['deliveryMethod'] = deliveryMethod
         if (data?.mobile?.length > 11 || data?.mobile?.length < 11 || !data?.mobile?.startsWith("01")) {
             swal("Opps!!", "Mobile Number Must be 11 number or please start with 01 !!!", "info");
         } else {
@@ -56,6 +62,23 @@ const ShippingForm = ({ setOrder, btnCick, setBtnClick}) => {
                     ></textarea>
                 </div>
 
+                {/* select your delivery merhod  */}
+                <div>
+                    <h1 className="block text-sm font-medium text-gray-700">Select delivery method</h1>
+                    
+                    <div className="flex items-center space-x-3 my-3">
+                        {/* home delivery / */}
+                        <div className={`bg-gray-100 px-8 py-3 rounded-md cursor-pointer ${deliveryMethod === 'Home Delivery' && 'bg-primary text-white' }`} onClick={() => selectDeliveryOption('Home Delivery')}>
+                            <h2>Home Delivery</h2>
+                            <span className='text-xs'>1-2 days</span>
+                        </div>
+                        {/* store pickup / */}
+                        <div className={`bg-gray-100 px-6 py-3 rounded-md cursor-pointer ${deliveryMethod === 'Store Pickup' && 'bg-primary text-white'}`} onClick={() => selectDeliveryOption('Store Pickup')}>
+                            <h2>Store Pickup</h2>
+                            <span className='text-xs'>come to our shop</span>
+                        </div>
+                    </div>
+                </div>
                 <div>
                     {btnCick ? (
                         <>
