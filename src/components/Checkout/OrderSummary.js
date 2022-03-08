@@ -17,6 +17,7 @@ function getSessionStorageOrDefault(key, defaultValue) {
 
 const OrderSummary = ({ setPrice, btnCick, order }) => {
     const { cart, setCart } = useCart();
+    // const [pd, setPd] = useState([]);
     const { newUser } = useAuth();
     const [info, setInfo] = useState();
     const [disabled, setDisabled] = useState(false);
@@ -74,6 +75,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             .then(res => setCoupon(res.data));
     }, []);
 
+    
 
     //coupon function
     const onSubmit = data => {
@@ -130,22 +132,11 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             .then(res => {
                 setDisabled(true);
             });
-        // axios.post('https://powermallapi.herokuapp.com/init', {
-        //     ...order, time: new Date().toLocaleTimeString()
-        // })
-        //     .then(res => {
-        //         window.location.replace(res.data)
-        //         //add used coupon to user object 
-        //         setCart([])
-        //         // navigate('/order-successful')
-        //     }).catch((err) => {
-        //         swal("Something went wrong!", `${err.message}`, "error")
-        //     })
+        
         axios.post('https://powermallapi.herokuapp.com/orders', {
             ...order, time: new Date().toLocaleTimeString(), refund: 'Refund'
         })
             .then(res => {
-                // swal("Yo!!!", "Successfully order done!!!", "success");
                 //add used coupon to user object 
                 setCart([]);
                 navigate('/order-successful');

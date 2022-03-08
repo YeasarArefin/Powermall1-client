@@ -10,6 +10,9 @@ import useCart from '../../hooks/useCart';
 
 const ProductCard = (props) => {
     const [tempPd, setTempPd] = useState([])
+    const [singlePuchased,setSinglePurchase] = useState(false)
+    const [allPurchasePd, setALlPursPd] = useState([])
+    const [pd, setPd] = useState([])
     const [changeCartBtn, setCartBtn] = useState(true)
     const [wishlistDone, setWishListDone] = useState(false)
     const [wishListPd,setWishListPd]= useState([])
@@ -29,8 +32,8 @@ const ProductCard = (props) => {
     //checking
     const findWishList = newUser?.wishlist?.find(item => item?._id === _id)
     const FindwishListPd = wishListPd?.find(item => item?._id === _id)
-    const findUser = newUser?.wishlist?.find(item => item?.email !== newUser?.email)
-
+    const findUser = wishListPd?.map(item => item?.wishListUser?.find(item => item?.email !== newUser?.email))
+    console.log(FindwishListPd)
     //handle add to cart 
     const handleCart = () => {
         handleClick(newProduct)
@@ -44,6 +47,28 @@ const ProductCard = (props) => {
             .then(res => res.json())
             .then(data => setWishListPd(data))
     },[])
+
+    //loading order
+    React.useEffect(() => {
+        axios.get(`https://powermallapi.herokuapp.com/orders?email=${newUser?.email}`)
+            .then(res => {
+                setPd(res.data?.map(item => item));
+            });
+    }, [newUser?.email]);
+
+    React.useEffect(() => {
+        pd?.map(item => item?.cart?.filter(item => item?.delivery === "Single Purchase"))?.map(item => setALlPursPd(item)  )
+    },[pd])
+    
+    
+    // find prchase pd 
+    const purchasedPd = allPurchasePd?.find(item => item?._id === _id)
+    
+    React.useEffect(() => {
+        if (purchasedPd) {
+            setSinglePurchase(true)
+        }
+    }, [purchasedPd])
 
     //handle wishlist product
     const handleWishlistPd = (pd) => {
@@ -61,22 +86,32 @@ const ProductCard = (props) => {
                 .then(res => {
                     setWishListDone(true)
                     swal("Done!!", "This product has added to wishlist!", "success");
-                    if (FindwishListPd && findUser ){
-                        axios.put(`https://powermallapi.herokuapp.com/wishlist/${_id}`, wishListUser).then(res => {
-                            setWishListDone(true)
-                            swal("Done!!", "This product has added to wishlist!", "success");
-                        })
-                    }else{
+
+                    if (!FindwishListPd ){
                         axios.post(`https://powermallapi.herokuapp.com/wishlist`, wishListData).then(res => {
                             setWishListDone(true)
                             swal("Done!!", "This product has added to wishlist!", "success");
                         })
+
+                        
+                    }else{
+                        if (findUser){
+                            const wishListUser2 = []
+                            wishListUser2?.push(newUser)
+                            axios.put(`https://powermallapi.herokuapp.com/wishlist/${_id}`, {
+                                wishListUser: wishListUser2
+                            }).then(res => {
+                                setWishListDone(true)
+                                swal("Done!!", "This product has added to wishlist!", "success");
+                            })
+                        }
+                        
                     }
                     
                 });
         } else {
             swal("Something Went Wrong!!", "You have to login first to add your wishlist", "info");
-
+            navigate('/login')
         }
 
     }
@@ -130,50 +165,61 @@ const ProductCard = (props) => {
 
                                 </div>
                             ) : (
-                                <div className='flex flex-col justify-end'>
-                                    <div className='flex flex-row md:flex-row lg:flex-row justify-between md:items-center lg:items-center pt-2'>
-                                        {/* price  */}
-                                        <div className="flex flex-row space-x-1 items-center">
-                                            <h2 className="text-sm md:text-base lg:text-base font-semibold text-primary">&#2547; {disCountedPrice?.toFixed(0)}</h2>
-                                            {discount > 0 && (
-                                                <>
-                                                    <del className="text-sm italic text-gray-500" style={{ fontSize: '10px' }}>&#2547; {price}</del>
-                                                </>
-                                            )}
-
+                            
+                                    singlePuchased ? (
+                                        <div className="pt-2">
+                                            <button className='w-full px-3 py-2 bg-yellow-200 opacity-80 border-none rounded-md focus:outline-none text-xs text-gray-600 '>Already Purchased</button>
                                         </div>
+                                    ) : (
+                                        <>
+                                                <div className='flex flex-col justify-end'>
+                                                    <div className='flex flex-row md:flex-row lg:flex-row justify-between md:items-center lg:items-center pt-2'>
+                                                        {/* price  */}
+                                                        <div className="flex flex-row space-x-1 items-center">
+                                                            <h2 className="text-sm md:text-base lg:text-base font-semibold text-primary">&#2547; {disCountedPrice?.toFixed(0)}</h2>
+                                                            {discount > 0 && (
+                                                                <>
+                                                                    <del className="text-sm italic text-gray-500" style={{ fontSize: '10px' }}>&#2547; {price}</del>
+                                                                </>
+                                                            )}
+
+                                                        </div>
 
 
-                                        {/* cart  */}
-                                        {findPd ? (
-                                            <>
-                                                <div className='flex items-center justify-end'>
-                                                    <button className="hidden bg-yellow-200 opacity-40 px-2 py-2 rounded-lg border border-gray-300 text-primary transition duration-300  text-sm md:flex lg:flex items-center space-x-1">
-                                                        <BsCartCheckFill className="text-lg" />
-                                                        <span className="text-xs">Added</span>
-                                                    </button>
-                                                    <button className="flex md:hidden lg:hidden border border-gray-200 rounded-full p-2 bg-gray-200 opacity-40 ring-blue-200">
-                                                        <BsCartCheckFill className="text-lg text-gray-600" />
-                                                    </button>
+                                                        {/* cart  */}
+                                                        {findPd ? (
+                                                            <>
+                                                                <div className='flex items-center justify-end'>
+                                                                    <button className="hidden bg-yellow-200 opacity-40 px-2 py-2 rounded-lg border border-gray-300 text-primary transition duration-300  text-sm md:flex lg:flex items-center space-x-1">
+                                                                        <BsCartCheckFill className="text-lg" />
+                                                                        <span className="text-xs">Added</span>
+                                                                    </button>
+                                                                    <button className="flex md:hidden lg:hidden border border-gray-200 rounded-full p-2 bg-gray-200 opacity-40 ring-blue-200">
+                                                                        <BsCartCheckFill className="text-lg text-gray-600" />
+                                                                    </button>
+                                                                </div>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <div className='flex items-center justify-end'>
+                                                                    <button className="hidden bg-primary hover:bg-yellow-600  ring-blue-200 ring-offset-2 px-2 py-2 rounded-md text-white focus:ring-4 transition duration-300   text-xs md:text-sm lg:text-sm md:flex lg:flex items-center space-x-1" onClick={handleCart}>
+                                                                        {/* <BsCartCheckFill className="text-lg" /> */}
+                                                                        {changeCartBtn ? <span className="text-xs" onMouseEnter={() => setCartBtn(false)} onMouseLeave={() => setCartBtn(true)}>Buy Now</span> : <span className="text-xs" onMouseEnter={() => setCartBtn(true)} onMouseLeave={() => setCartBtn(true)}>Cart</span>}
+
+                                                                    </button>
+
+                                                                    <button className="flex md:hidden lg:hidden border border-gray-200 rounded-full p-2" onClick={handleCart}>
+                                                                        <AiOutlineShoppingCart className="text-lg text-gray-600" />
+                                                                    </button>
+                                                                </div>
+                                                            </>
+                                                        )}
+                                                    </div>
                                                 </div>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <div className='flex items-center justify-end'>
-                                                    <button className="hidden bg-primary hover:bg-yellow-600  ring-blue-200 ring-offset-2 px-2 py-2 rounded-md text-white focus:ring-4 transition duration-300   text-xs md:text-sm lg:text-sm md:flex lg:flex items-center space-x-1" onClick={handleCart}>
-                                                        {/* <BsCartCheckFill className="text-lg" /> */}
-                                                        {changeCartBtn ? <span className="text-xs" onMouseEnter={() => setCartBtn(false)} onMouseLeave={() => setCartBtn(true)}>Buy Now</span> : <span className="text-xs" onMouseEnter={() => setCartBtn(true)} onMouseLeave={() => setCartBtn(true)}>Cart</span>}
-
-                                                    </button>
-
-                                                    <button className="flex md:hidden lg:hidden border border-gray-200 rounded-full p-2" onClick={handleCart}>
-                                                        <AiOutlineShoppingCart className="text-lg text-gray-600" />
-                                                    </button>
-                                                </div>
-                                            </>
-                                        )}
-                                    </div>
-                                </div>
+                                        </>
+                                    )
+                                
+                                
                             )
                         }
 

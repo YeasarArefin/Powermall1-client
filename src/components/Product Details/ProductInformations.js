@@ -62,7 +62,7 @@ const ProductInformations = (props) => {
                             className="relative p-3 rounded-md hover:bg-coolGray-100"
                         >
                             <div className="flex flex-col space-y-2 mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
-                                <p>{description}</p>
+                                <div className="preview my-3" dangerouslySetInnerHTML={{ __html: description }}></div>
                             </div>
                         </div>
                     </Tab.Panel>
@@ -77,14 +77,15 @@ const ProductInformations = (props) => {
 
                             className="relative p-3 rounded-md hover:bg-coolGray-100"
                         >
-                            <div className="flex flex-col space-y-2 mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
+                            <div className="flex flex-col space-y-4 mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
                                 
                                 {sku && (
                                     <>
                                     <p className="text-semibold">SKU : {sku}</p>
                                     </>
                                 )}
-                                <p>{moreInformation}</p>
+                                <div className="preview my-3" dangerouslySetInnerHTML={{ __html: moreInformation }}></div>
+                                
                             </div>
                         </div>
                     </Tab.Panel>

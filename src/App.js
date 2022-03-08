@@ -34,6 +34,7 @@ import ShippingDeliveryScreen from './pages/ShippingDeliveryScreen';
 import Shops from './pages/Shops';
 import ShopWithUsScreen from './pages/ShopWithUsScreen';
 import SignUp from './pages/SignUp';
+import SinglePurchase from './pages/SinglePurchase';
 import SitemapScreen from './pages/SitemapScreen';
 import TermsScreen from './pages/TermsScreen';
 import TopTenItemsPage from './pages/TopTenItemsPage';
@@ -110,6 +111,7 @@ const App = () => {
               <Route path="/upcoming" element={<UpcomingPage />} />
               <Route path="/topten" element={<TopTenItemsPage />} />
               <Route path="/wholesale" element={<WholeSalePage />} />
+              <Route path="/singlepurchase" element={<SinglePurchase />} />
               <Route path="/about" element={<AboutUsScreen />} />
               <Route path="/privacy" element={<PrivacyScreen />} />
               <Route path="/cookiePolicy" element={<CookiePolicyScreen />} />
