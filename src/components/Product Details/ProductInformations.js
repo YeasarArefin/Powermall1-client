@@ -12,16 +12,16 @@ const ProductInformations = (props) => {
     const info = `${moreInformation}`
 
     let [categories] = useState({
+        "Specification": [
+            {
+                id: 1,
+                data: info
+            }
+        ],
         "Details": [
             {
                 id: 1,
                 data: desc
-            }
-        ],
-        "More Information": [
-            {
-                id: 1,
-                data: info
             }
         ],
     })
@@ -50,22 +50,7 @@ const ProductInformations = (props) => {
                 </Tab.List>
                 <Tab.Panels className="mt-2">
                     {/* {Object.values(categories).map((posts, idx) => ( */}
-                    <Tab.Panel
-                        // key={idx}
-                        className={classNames(
-                            'bg-white rounded-xl p-6',
-                            'focus:outline-none'
-                        )}
-                    >
-                        <div
-
-                            className="relative p-3 rounded-md hover:bg-coolGray-100"
-                        >
-                            <div className="flex flex-col space-y-2 mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
-                                <div className="preview my-3" dangerouslySetInnerHTML={{ __html: description }}></div>
-                            </div>
-                        </div>
-                    </Tab.Panel>
+                    
                     <Tab.Panel
                         // key={idx}
                         className={classNames(
@@ -86,6 +71,23 @@ const ProductInformations = (props) => {
                                 )}
                                 <div className="preview my-3" dangerouslySetInnerHTML={{ __html: moreInformation }}></div>
                                 
+                            </div>
+                        </div>
+                    </Tab.Panel>
+
+                    <Tab.Panel
+                        // key={idx}
+                        className={classNames(
+                            'bg-white rounded-xl p-6',
+                            'focus:outline-none'
+                        )}
+                    >
+                        <div
+
+                            className="relative p-3 rounded-md hover:bg-coolGray-100"
+                        >
+                            <div className="flex flex-col space-y-2 mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
+                                <div className="preview my-3" dangerouslySetInnerHTML={{ __html: description }}></div>
                             </div>
                         </div>
                     </Tab.Panel>

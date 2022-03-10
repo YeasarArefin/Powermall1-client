@@ -30,7 +30,7 @@
       )
         .then((res) => res.json())
         .then((data) => {
-          const image = data.img;
+          const image = data?.img;
           favicon.setAttribute('href', image);
         });
 

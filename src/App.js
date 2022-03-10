@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from "react-router-dom";
+import ChatTawk from './components/Chat Plugin/ChatTawk';
 import MobileBottomMenu from './components/Navbar/MobileBottomMenu';
 import Navbar from './components/Navbar/Navbar';
 import OfferNav from './components/Offer Nav/OfferNav';
@@ -96,6 +97,7 @@ const App = () => {
               </div>
               {mobileMenu && <MobileBottomMenu setSearchShow={setSearchShow} handleSearchShow={handleSearchShow} mobileMenu={mobileMenu} />}
 
+              <ChatTawk />
             </div>
             <Routes>
               <Route path="/" element={<Home />} />
