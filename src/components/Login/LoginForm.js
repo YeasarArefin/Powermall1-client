@@ -53,7 +53,7 @@ const LoginForm = () => {
                     </div>
                     {/* Login button  */}
                     <div className='py-4'>
-                        <button type="submit" className='py-3 px-4 w-full bg-primary text-white rounded-md  hover:bg-yellow-600 transition duration-300'>Login</button>
+                        <button type="submit" className='py-3 px-4 w-full bg-primary text-white rounded-md  hover:bg-yellow-400 transition duration-300'>Login</button>
                         <p className='text-gray-600 text-center py-4'>Or</p>
                     </div> 
                 </div>

@@ -87,7 +87,7 @@ const Shops = () => {
                                                         <h1 className='text-3xl text-center text-gray-600'> <span className='text-primary italic'>{searchFilter}</span> Not found!!</h1>
                                                     </div>
                                                     <Link to="/shops">
-                                                        <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none  hover:bg-yellow-600 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
+                                                        <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none  hover:bg-yellow-400 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
                                                     </Link>
                                                 </div>
                                             </>
@@ -111,7 +111,7 @@ const Shops = () => {
                                                     <h1 className='text-3xl text-center text-gray-600'> <span className='text-primary italic'>{categoryFilter}</span> Not found!!</h1>
                                                 </div>
                                                 <Link to="/shops">
-                                                    <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none  hover:bg-yellow-600 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
+                                                    <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none  hover:bg-yellow-400 transform hover:scale-110 transition duration-500'>Continue Shopping</button>
                                                 </Link>
                                             </div>
                                         )

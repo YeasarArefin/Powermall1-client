@@ -8,14 +8,14 @@ const NavButton = () => {
         <div className="flex items-center space-x-3">
             {/* log in  */}
             <Link to="/login">
-                <button className="bg-primary ring-red-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-600 text-xs md:text-xs  lg:text-sm flex items-center justify-center space-x-1">
+                <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400 text-xs md:text-xs  lg:text-sm flex items-center justify-center space-x-1">
                     {/* <BiLogIn   /> */}
                     <span>Log In</span>
                 </button>
             </Link>
             {/* sign up */}
             <Link to="/signup">
-                <button className="bg-primary ring-red-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-600  text-xs md:text-xs  lg:text-sm flex items-center justify-center space-x-1">
+                <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  text-xs md:text-xs  lg:text-sm flex items-center justify-center space-x-1">
                 {/* <GoKey  /> */}
                 <span>Sign Up</span>
             </button>

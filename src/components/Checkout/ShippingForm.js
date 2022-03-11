@@ -57,7 +57,7 @@ const ShippingForm = ({ setOrder, btnCick, setBtnClick}) => {
                     <label htmlFor="address" className="block text-sm font-medium text-gray-700">
                         Address
                     </label>
-                    <textarea name="address" id="address" className="mt-1 ring-blue-200 focus:outline-none focus:ring-2 transition duration-500 block w-full shadow-sm sm:text-sm border-gray-300 border rounded-md py-3 h-32 resize-x-none px-4" {...register("address",{ required: true })}
+                    <textarea name="address" id="address" className="mt-1 ring-yellow-200 focus:outline-none focus:ring-2 transition duration-500 block w-full shadow-sm sm:text-sm border-gray-300 border rounded-md py-3 h-32 resize-x-none px-4" {...register("address",{ required: true })}
                         defaultValue={newUser?.address}
                     ></textarea>
                 </div>
@@ -103,7 +103,7 @@ const ShippingForm = ({ setOrder, btnCick, setBtnClick}) => {
 
                 {/* button  */}
                 <div className='flex justify-end pt-4'>
-                    <button className='px-6 w-36 py-3 rounded-lg bg-primary text-white  hover:bg-yellow-600 transition duration-300'>Save</button>
+                    <button className='px-6 w-36 py-3 rounded-lg bg-primary text-white  hover:bg-yellow-400 transition duration-300'>Save</button>
                 </div>
 
             </form>

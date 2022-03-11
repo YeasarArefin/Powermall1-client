@@ -132,7 +132,7 @@ const ProductDescription = (props) => {
                 {
                     findPd ? (
                         <>
-                            <button className="bg-primary ring-blue-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-600  uppercase text-sm flex items-center space-x-1 opacity-40" >
+                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1 opacity-40" >
                                 <BsCartCheckFill className="text-lg" />
                                 <span className="text-sm select-none">Added</span>
                             </button>
@@ -140,7 +140,7 @@ const ProductDescription = (props) => {
 
                     ) : (
                         <>
-                            <button className="bg-primary ring-blue-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-600  uppercase text-sm flex items-center space-x-1" onClick={
+                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1" onClick={
                                 () => {
                                     handleClick(newProduct);
                                 }

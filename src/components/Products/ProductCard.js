@@ -154,7 +154,7 @@ const ProductCard = (props) => {
                                     {
                                         !wishlistDone & !findWishList ? (
                                             <>
-                                                <button className='w-full px-3 py-2 bg-primary border-none rounded-md focus:outline-none text-xs text-white hover:bg-yellow-600' onClick={() => handleWishlistPd(props)}>Add To Wishlist</button>
+                                                <button className='w-full px-3 py-2 bg-primary border-none rounded-md focus:outline-none text-xs text-white hover:bg-yellow-400' onClick={() => handleWishlistPd(props)}>Add To Wishlist</button>
                                             </>
                                         ) : (
                                             <>
@@ -194,7 +194,7 @@ const ProductCard = (props) => {
                                                                         <BsCartCheckFill className="text-lg" />
                                                                         <span className="text-xs">Added</span>
                                                                     </button>
-                                                                    <button className="flex md:hidden lg:hidden border border-gray-200 rounded-full p-2 bg-gray-200 opacity-40 ring-blue-200">
+                                                                    <button className="flex md:hidden lg:hidden border border-gray-200 rounded-full p-2 bg-gray-200 opacity-40 ring-yellow-200">
                                                                         <BsCartCheckFill className="text-lg text-gray-600" />
                                                                     </button>
                                                                 </div>
@@ -202,7 +202,7 @@ const ProductCard = (props) => {
                                                         ) : (
                                                             <>
                                                                 <div className='flex items-center justify-end'>
-                                                                    <button className="hidden bg-primary hover:bg-yellow-600  ring-blue-200 ring-offset-2 px-2 py-2 rounded-md text-white focus:ring-4 transition duration-300   text-xs md:text-sm lg:text-sm md:flex lg:flex items-center space-x-1" onClick={handleCart}>
+                                                                    <button className="hidden bg-primary hover:bg-yellow-400  ring-yellow-200 ring-offset-2 px-2 py-2 rounded-md text-white focus:ring-4 transition duration-300   text-xs md:text-sm lg:text-sm md:flex lg:flex items-center space-x-1" onClick={handleCart}>
                                                                         {/* <BsCartCheckFill className="text-lg" /> */}
                                                                         {changeCartBtn ? <span className="text-xs" onMouseEnter={() => setCartBtn(false)} onMouseLeave={() => setCartBtn(true)}>Buy Now</span> : <span className="text-xs" onMouseEnter={() => setCartBtn(true)} onMouseLeave={() => setCartBtn(true)}>Cart</span>}
 

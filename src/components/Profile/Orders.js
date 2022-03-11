@@ -171,7 +171,7 @@ const Orders = () => {
                                                         </span>
                                                     </td>
                                                     <td className="px-3 py-4 whitespace-nowrap">
-                                                        <span className="px-3 bg-primary rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center  hover:bg-yellow-600 cursor-pointer" onClick={() => navigate(`/profile/orders/${item?._id}`)}>
+                                                        <span className="px-3 bg-primary rounded-full py-1 text-xs leading-5 font-semibold text-white flex justify-center  hover:bg-yellow-400 cursor-pointer" onClick={() => navigate(`/profile/orders/${item?._id}`)}>
                                                             View
                                                         </span>
                                                     </td>

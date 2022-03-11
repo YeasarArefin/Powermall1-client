@@ -15,7 +15,7 @@ const ErrorPage = () => {
                     <img className='animate-pulse w-96 object-contain' src="../../assets/404.png" alt="error page" />
                 </div>
                 <Link to="/">
-                    <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none  hover:bg-yellow-600 transform hover:scale-110 transition duration-500'>Go to home</button>
+                    <button className='bg-primary text-white rounded-full px-6 py-3 focus:outline-none  hover:bg-yellow-400 transform hover:scale-110 transition duration-500'>Go to home</button>
                 </Link>
             </div>
         </>

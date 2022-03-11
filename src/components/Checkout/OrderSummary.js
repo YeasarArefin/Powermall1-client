@@ -217,7 +217,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
 
 
 
-            <button disabled={!btnCick} className={`${!btnCick ? " bg-gray-200 text-gray-300 opacity-40" : " bg-primary text-white  hover:bg-yellow-600 "} mt-6  w-full py-3 rounded-md  `} onClick={handleSubmitForm}>Proceed to pay</button>
+            <button disabled={!btnCick} className={`${!btnCick ? " bg-gray-200 text-gray-300 opacity-40" : " bg-primary text-white  hover:bg-yellow-400 "} mt-6  w-full py-3 rounded-md  `} onClick={handleSubmitForm}>Proceed to pay</button>
         </div>
     );
 };

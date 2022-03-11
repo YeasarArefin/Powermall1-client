@@ -63,12 +63,12 @@ const AddressModal = ({ open, setOpen }) => {
                                         <div>
                                             <form onSubmit={handleSubmit(onSubmit)}>
                                                 <div className="mt-4 w-full">
-                                                    <input type="text" className="border border-gray-400 rounded-lg focus:outline-none ring-blue-200 focus:ring-2 px-4 py-3 w-96 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="Address" defaultValue={newUser?.address} {...register("address")} />
+                                                    <input type="text" className="border border-gray-400 rounded-lg focus:outline-none ring-yellow-200 focus:ring-2 px-4 py-3 w-96 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="Address" defaultValue={newUser?.address} {...register("address")} />
                                                 </div>
                                                 <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                                                     <button
                                                         type="submit"
-                                                        className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white  hover:bg-yellow-6000 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                                                        className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white  hover:bg-yellow-4000 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
                                                         
                                                     >
                                                         Save

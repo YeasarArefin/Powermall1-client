@@ -71,7 +71,7 @@ const ContactForm = () => {
                                             <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
                                                 Write your message
                                             </label>
-                                            <textarea name="message" id="message" className="mt-1 ring-blue-200 focus:outline-none focus:ring-2 transition duration-500 block w-full shadow-sm sm:text-sm border-gray-300 border rounded-md py-3 h-32 resize-x-none px-4" {...register("message", { required: true })}></textarea>
+                                            <textarea name="message" id="message" className="mt-1 ring-yellow-200 focus:outline-none focus:ring-2 transition duration-500 block w-full shadow-sm sm:text-sm border-gray-300 border rounded-md py-3 h-32 resize-x-none px-4" {...register("message", { required: true })}></textarea>
                                         </div>
 
                                     </div>
@@ -79,7 +79,7 @@ const ContactForm = () => {
                                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                                     <button
                                         type="submit"
-                                        className="inline-flex justify-center py-2 px-4 w-20 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary  hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 ring-blue-200"
+                                        className="inline-flex justify-center py-2 px-4 w-20 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary  hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 ring-yellow-200"
                                     >
                                         Send
                                     </button>
