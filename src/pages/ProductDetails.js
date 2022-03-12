@@ -15,7 +15,7 @@ const ProductDetails = () => {
     const [loading, setLoading] = useState(true)
 
     React.useEffect(() => {
-        fetch(`https://powermallapi.herokuapp.com/products/${id}`)
+        fetch(`https://api.powermall.com.bd/products/${id}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [id])

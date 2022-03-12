@@ -6,7 +6,7 @@ const PaymentMethodScreen = () => {
     const [item, setItem] = React.useState([])
 
     React.useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/paymentmethod')
+        axios.get('https://api.powermall.com.bd/paymentmethod')
             .then(res => setItem(res.data[0]))
     }, [])
 

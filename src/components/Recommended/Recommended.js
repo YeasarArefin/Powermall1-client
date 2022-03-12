@@ -15,7 +15,7 @@ const Recommended = () => {
     const [mobile, setMobile] = useState(false);
 
     useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/recomendedbanner')
+        axios.get('https://api.powermall.com.bd/recomendedbanner')
             .then(res => setImages(res.data));
     }, []);
 

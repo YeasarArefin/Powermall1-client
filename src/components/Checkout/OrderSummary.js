@@ -63,7 +63,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
 
     //information api
     useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/information')
+        axios.get('https://api.powermall.com.bd/information')
             .then(res => setInfo(res.data[0]));
     }, []);
 
@@ -71,7 +71,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
 
     //coupons api
     useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/coupons')
+        axios.get('https://api.powermall.com.bd/coupons')
             .then(res => setCoupon(res.data));
     }, []);
 
@@ -126,14 +126,14 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
 
     //post order function
     const handleSubmitForm = () => {
-        axios.put(`https://powermallapi.herokuapp.com/users/${newUser._id}`, {
+        axios.put(`https://api.powermall.com.bd/users/${newUser._id}`, {
             usedCoupon: usedCoupon?.usedCoupon
         })
             .then(res => {
                 setDisabled(true);
             });
         
-        axios.post('https://powermallapi.herokuapp.com/orders', {
+        axios.post('https://api.powermall.com.bd/orders', {
             ...order, time: new Date().toLocaleTimeString(), refund: 'Refund'
         })
             .then(res => {

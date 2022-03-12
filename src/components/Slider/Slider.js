@@ -11,7 +11,7 @@ const Slider = () => {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/headerbanner')
+        axios.get('https://api.powermall.com.bd/headerbanner')
             .then(res => setImages(res.data));
     }, []);
 

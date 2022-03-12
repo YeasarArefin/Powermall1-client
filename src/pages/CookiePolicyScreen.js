@@ -5,7 +5,7 @@ const CookiePolicyScreen = () => {
     const [item, setItem] = React.useState([])
 
     React.useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/cookie')
+        axios.get('https://api.powermall.com.bd/cookie')
             .then(res => setItem(res.data[0]))
     }, [])
 

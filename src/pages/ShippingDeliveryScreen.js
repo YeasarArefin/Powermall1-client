@@ -6,7 +6,7 @@ const ShippingDeliveryScreen = () => {
     const [item, setItem] = React.useState([])
 
     React.useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/shippinganddelivery')
+        axios.get('https://api.powermall.com.bd/shippinganddelivery')
             .then(res => setItem(res.data[0]))
     }, [])
 

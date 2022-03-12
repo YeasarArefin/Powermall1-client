@@ -10,7 +10,7 @@ const ContactForm = () => {
 
     const onSubmit = data => {
         data['email'] = newUser?.email
-        axios.post('https://powermallapi.herokuapp.com/messages', data)
+        axios.post('https://api.powermall.com.bd/messages', data)
         .then((res) => {
             swal("Good job!", "Message Send!!", "success");
             reset()

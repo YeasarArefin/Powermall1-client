@@ -12,7 +12,7 @@ const Brands = () => {
     const [brands, setBrands] = useState([]);
 
     useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/brands')
+        axios.get('https://api.powermall.com.bd/brands')
             .then(res => setBrands(res?.data))
     }, [])
 

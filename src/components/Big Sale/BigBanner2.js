@@ -6,7 +6,7 @@ const BigBanner2 = () => {
     const [images, setImage] = useState([]);
 
     useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/salebanner')
+        axios.get('https://api.powermall.com.bd/salebanner')
             .then(res => setImage(res.data));
     }, []);
 

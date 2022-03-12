@@ -17,7 +17,7 @@ const SearchBar = ({ searchShow}) => {
     const { newUser } = useAuth();
 
     useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/products')
+        axios.get('https://api.powermall.com.bd/products')
             .then(res => setProducts(res?.data));
     }, []);
 

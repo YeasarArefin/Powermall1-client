@@ -43,14 +43,14 @@ const ProductCard = (props) => {
     }
 
     React.useEffect(() => {
-        fetch('https://powermallapi.herokuapp.com/wishlist')
+        fetch('https://api.powermall.com.bd/wishlist')
             .then(res => res.json())
             .then(data => setWishListPd(data))
     },[])
 
     //loading order
     React.useEffect(() => {
-        axios.get(`https://powermallapi.herokuapp.com/orders?email=${newUser?.email}`)
+        axios.get(`https://api.powermall.com.bd/orders?email=${newUser?.email}`)
             .then(res => {
                 setPd(res.data?.map(item => item));
             });
@@ -80,7 +80,7 @@ const ProductCard = (props) => {
             wishListUser?.push(newUser)
             const wishListData = { ...pd, wishListUser}
             console.log(wishListData)
-            axios.put(`https://powermallapi.herokuapp.com/users/${newUser._id}`, {
+            axios.put(`https://api.powermall.com.bd/users/${newUser._id}`, {
                 wishlist: newUser?.wishlist
             })
                 .then(res => {
@@ -88,7 +88,7 @@ const ProductCard = (props) => {
                     swal("Done!!", "This product has added to wishlist!", "success");
 
                     if (!FindwishListPd ){
-                        axios.post(`https://powermallapi.herokuapp.com/wishlist`, wishListData).then(res => {
+                        axios.post(`https://api.powermall.com.bd/wishlist`, wishListData).then(res => {
                             setWishListDone(true)
                             swal("Done!!", "This product has added to wishlist!", "success");
                         })
@@ -98,7 +98,7 @@ const ProductCard = (props) => {
                         if (findUser){
                             const wishListUser2 = []
                             wishListUser2?.push(newUser)
-                            axios.put(`https://powermallapi.herokuapp.com/wishlist/${_id}`, {
+                            axios.put(`https://api.powermall.com.bd/wishlist/${_id}`, {
                                 wishListUser: wishListUser2
                             }).then(res => {
                                 setWishListDone(true)

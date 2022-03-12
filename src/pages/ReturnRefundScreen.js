@@ -6,7 +6,7 @@ const ReturnRefundScreen = () => {
     const [item, setItem] = React.useState([])
 
     React.useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/refunds')
+        axios.get('https://api.powermall.com.bd/refunds')
             .then(res => setItem(res.data[0]))
     }, [])
 

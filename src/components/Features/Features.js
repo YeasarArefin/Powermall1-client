@@ -10,7 +10,7 @@ const Features = () => {
     const [featuresData, setFeatureData] = useState([]);
 
     useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/feature')
+        axios.get('https://api.powermall.com.bd/feature')
             .then(res => setFeatureData(res?.data))
     }, [])
 

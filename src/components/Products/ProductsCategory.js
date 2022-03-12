@@ -20,7 +20,7 @@ const ProductsCategory = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/category')
+        axios.get('https://api.powermall.com.bd/category')
             .then(res => setCategories(res.data));
     }, []);
 

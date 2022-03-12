@@ -6,7 +6,7 @@ const TermsScreen = () => {
     const [item, setItem] = React.useState([])
 
     React.useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/termsandconditions')
+        axios.get('https://api.powermall.com.bd/termsandconditions')
             .then(res => setItem(res.data[0]))
     }, [])
 

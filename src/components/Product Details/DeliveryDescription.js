@@ -18,10 +18,10 @@ const DeliveryDescription = (props) => {
     //     setOpen(true);
     // };
     useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/information')
+        axios.get('https://api.powermall.com.bd/information')
             .then(res => setInfo(res.data[0]));
 
-        axios.get(`https://powermallapi.herokuapp.com/products/${id}`)
+        axios.get(`https://api.powermall.com.bd/products/${id}`)
             .then(res => setPdInfo(res.data));
     }, [id]);
 

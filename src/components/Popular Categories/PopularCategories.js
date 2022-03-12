@@ -15,7 +15,7 @@ const PopularCategories = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        axios.get('https://powermallapi.herokuapp.com/category')
+        axios.get('https://api.powermall.com.bd/category')
             .then(res => {
                 const newData = res?.data?.sort((a, b) => a?.position - b?.position);
                 setCategories(newData)
