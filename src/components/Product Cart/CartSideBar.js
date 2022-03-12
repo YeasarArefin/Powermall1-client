@@ -36,8 +36,8 @@ const CartSideBar = ({ setShow }) => {
                     </div>
 
                     {/* close button  */}
-                    <button className='p-3 rounded-full bg-white hover:bg-primary hover:text-white transition duration-500 hover:shadow-xl' onClick={() => setShow(false)}>
-                        <RiCloseLine className="text-xl text-gray-700 hover:text-white" />
+                    <button className='p-3 rounded-full bg-white hover:bg-primary hover:text-gray-700 transition duration-500 hover:shadow-xl' onClick={() => setShow(false)}>
+                        <RiCloseLine className="text-xl text-gray-700 hover:text-gray-700" />
                     </button>
                 </div>
 
@@ -67,14 +67,14 @@ const CartSideBar = ({ setShow }) => {
                     {cart?.length > 0 ? (
                         <Link to='/checkout'>
                             <div className='bg-primary rounded-lg px-2 py-2  hover:bg-yellow-400 transition duration-300 w-full flex justify-between items-center cursor-pointer mt-8' onClick={ () => setShow(false)}>
-                                <span className='text-white text-sm pl-4'>Checkout ({quantity} pcs)</span>
+                                <span className='text-gray-700 text-sm pl-4'>Checkout ({quantity} pcs)</span>
                                 <div className='bg-white px-3 py-2 rounded-lg text-primary text-sm'>&#2547; {price?.toFixed(2)}</div>
                             </div>
                         </Link>
                     ) : (
                         <Link to='/shops'>
                             <div className='bg-primary rounded-lg px-2 py-3  transition duration-300 w-full flex justify-between items-center cursor-pointer mt-8' onClick={ () => setShow(false)}>
-                                    <p className='text-white text-base pl-4 flex items-center space-x-3'><BsCartCheckFill className="text-lg" /> <span>Continue Shopping </span></p>
+                                    <p className='text-gray-700 text-base pl-4 flex items-center space-x-3'><BsCartCheckFill className="text-lg" /> <span>Continue Shopping </span></p>
                             </div>
                         </Link>
                     )}

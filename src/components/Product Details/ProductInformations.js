@@ -35,10 +35,10 @@ const ProductInformations = (props) => {
                             key={category}
                             className={({ selected }) =>
                                 classNames(
-                                    'w-full py-2.5 text-sm leading-5 font-medium text-white rounded-tl-md rounded-tr-md',
+                                    'w-full py-2.5 text-sm leading-5 font-medium text-gray-700 rounded-tl-md rounded-tr-md',
                                     'focus:outline-none',
                                     selected
-                                        ? 'bg-primary hover:text-white'
+                                        ? 'bg-primary hover:text-gray-700'
                                         : 'text-gray-500 hover:bg-white/[0.12]'
                                 )
                             }

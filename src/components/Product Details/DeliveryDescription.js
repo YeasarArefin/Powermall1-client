@@ -161,7 +161,7 @@ const DeliveryDescription = (props) => {
 
             {/* go to store  */}
             <Link to="/shops">
-                <div className='flex justify-center rounded-lg py-3 mt-8 hover:bg-primary transition duration-500 text-primary hover:text-white bg-white cursor-pointer border border-gray-300'>
+                <div className='flex justify-center rounded-lg py-3 mt-8 hover:bg-primary transition duration-500 text-primary hover:text-gray-700 bg-white cursor-pointer border border-gray-300'>
                     <p>GO TO STORE</p>
                 </div>
             </Link>

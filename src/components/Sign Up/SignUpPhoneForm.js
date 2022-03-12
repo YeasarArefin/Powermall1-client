@@ -30,7 +30,7 @@ const SignUpPhoneForm = () => {
 
                     {/* Sign button  */}
                     <div className='py-4'>
-                        <button type="submit" className='py-3 px-4 w-full bg-primary text-white rounded-md hover:bg-blue-600 transition duration-300'>Sign Up</button>
+                        <button type="submit" className='py-3 px-4 w-full bg-primary text-gray-700 rounded-md hover:bg-blue-600 transition duration-300'>Sign Up</button>
                         <p className='text-gray-600 text-center py-4'>Or</p>
                     </div>
                 </div>

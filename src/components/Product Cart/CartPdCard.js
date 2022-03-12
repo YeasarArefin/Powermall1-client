@@ -48,11 +48,11 @@ const CartPdCard = (props) => {
                 {/* quanityty  */}
                 <div className='flex flex-col items-center space-y-1'>
                     <button onClick={handleDecrease}>
-                        <AiOutlineMinus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                        <AiOutlineMinus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-gray-700 cursor-pointer h-6 rounded-full p-1' />
                     </button>
                     <span className='text-gray-700 font-semibold select-none'>{getThisPD?.pdQuantity}</span>
                     <button onClick={handleIncrease}>
-                        <AiOutlinePlus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                        <AiOutlinePlus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-gray-700 cursor-pointer h-6 rounded-full p-1' />
                     </button>
                 </div>
 

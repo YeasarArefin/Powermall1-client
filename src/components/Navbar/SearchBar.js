@@ -7,6 +7,7 @@ import useAuth from '../../hooks/useAuth';
 
 const SearchBar = ({ searchShow}) => {
     const [mobileNav, setMobileNav] = useState(false);
+    const [serachBarMode, setSearchBarMode] = useState(false);
 
     const navigate = useNavigate();
     const { register, handleSubmit, reset } = useForm();
@@ -34,9 +35,18 @@ const SearchBar = ({ searchShow}) => {
 
         }
     };
+    const changeSearchBar = () => {
+        if (window.innerWidth > 1250) {
+            setSearchBarMode(true);
+        } else {
+            setSearchBarMode(false);
+
+        }
+    };
 
     React.useEffect(() => {
         window.addEventListener('resize', changeNav);
+        window.addEventListener('resize', changeSearchBar);
     }, [])
 
 
@@ -81,23 +91,44 @@ const SearchBar = ({ searchShow}) => {
                                 </form>
                             </>
                         ): (
-                            <>
-                                    <form className="flex items-center space-x-2 p-2 " style={{ width: `${newUser ? "700px" : '600px'}`}} onSubmit={handleSubmit(onSubmit)} >
-                                        <div className='relative w-full '>
-                                            <BsSearch className='absolute top-3.5 left-4 text-sm text-gray-600 hover:text-primary cursor-pointer' />
-                                            <input
-                                                type="text" placeholder="Search Products" className="text-sm ring-primary focus:ring-1 w-full bg-gray-100 transition duration-500 focus:outline-none focus:bg-white rounded-md py-2.5 pl-12 pr-4"
-                                                {...register("search", { required: true })}
-                                                list="title" id="brand"
-                                            />
-                                        </div>
-                                        <datalist id="title">
-                                            {products?.map(item => (
-                                                <option value={item?.name?.toLowerCase()} key={item?._id}/>
-                                            ))}
-                                        </datalist>
-                                    </form>
-                            </>
+                                serachBarMode ? (
+                                    <>
+                                        <form className="flex items-center space-x-2 p-2 " style={{ width: `${newUser ? "895px" : '795px'}` }} onSubmit={handleSubmit(onSubmit)} >
+                                            <div className='relative w-full '>
+                                                <BsSearch className='absolute top-3.5 left-4 text-sm text-gray-600 hover:text-primary cursor-pointer' />
+                                                <input
+                                                    type="text" placeholder="Search Products" className="text-sm ring-primary focus:ring-1 w-full bg-gray-100 transition duration-500 focus:outline-none focus:bg-white rounded-md py-2.5 pl-12 pr-4"
+                                                    {...register("search", { required: true })}
+                                                    list="title" id="brand"
+                                                />
+                                            </div>
+                                            <datalist id="title">
+                                                {products?.map(item => (
+                                                    <option value={item?.name?.toLowerCase()} key={item?._id} />
+                                                ))}
+                                            </datalist>
+                                        </form>
+                                    </>
+                                ) : (
+                                        <>
+                                            <form className="flex items-center space-x-2 p-2 " style={{ width: `${newUser ? "700px" : '600px'}` }} onSubmit={handleSubmit(onSubmit)} >
+                                                <div className='relative w-full '>
+                                                    <BsSearch className='absolute top-3.5 left-4 text-sm text-gray-600 hover:text-primary cursor-pointer' />
+                                                    <input
+                                                        type="text" placeholder="Search Products" className="text-sm ring-primary focus:ring-1 w-full bg-gray-100 transition duration-500 focus:outline-none focus:bg-white rounded-md py-2.5 pl-12 pr-4"
+                                                        {...register("search", { required: true })}
+                                                        list="title" id="brand"
+                                                    />
+                                                </div>
+                                                <datalist id="title">
+                                                    {products?.map(item => (
+                                                        <option value={item?.name?.toLowerCase()} key={item?._id} />
+                                                    ))}
+                                                </datalist>
+                                            </form>
+                                        </>
+                                )
+                           
                         )}
                         
             </>

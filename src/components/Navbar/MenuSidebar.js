@@ -32,8 +32,8 @@ const MenuSidebar = ({ setShowMenu, mobileMenu }) => {
                     {/* close button  */}
                     <div className='flex items-center justify-between pt-6 px-8 border-b border-gray-300 pb-4'>
                         <Brand />
-                        <button className='p-3 rounded-full bg-white hover:bg-primary hover:text-white transition duration-500 hover:shadow-xl' onClick={() => setShowMenu(false)}>
-                            <RiCloseLine className="text-xl text-gray-700 hover:text-white" />
+                        <button className='p-3 rounded-full bg-white hover:bg-primary hover:text-gray-700 transition duration-500 hover:shadow-xl' onClick={() => setShowMenu(false)}>
+                            <RiCloseLine className="text-xl text-gray-700 hover:text-gray-700" />
                         </button>
                     </div>
                     <div className='flex flex-col px-6 py-2'>

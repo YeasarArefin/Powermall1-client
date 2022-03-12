@@ -11,7 +11,7 @@ const Account = () => {
                 <div className="px-4 py-5 sm:px-6 bg-gray-100 flex justify-between">
                     <h3 className="text-lg leading-6 font-medium text-gray-900">Account Information</h3>
                     <Link to="/profile/edit">
-                        <button className='bg-primary w-36 px-2 py-2 rounded-lg focus:outline:none text-white  hover:bg-yellow-400 transition duration-300'>Edit Profile</button>
+                        <button className='bg-primary w-36 px-2 py-2 rounded-lg focus:outline:none text-gray-700  hover:bg-yellow-400 transition duration-300'>Edit Profile</button>
                     </Link>
                 </div>
 

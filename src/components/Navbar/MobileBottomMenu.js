@@ -62,7 +62,7 @@ const MobileBottomMenu = ({ handleSearchShow, mobileMenu}) => {
                             <FiShoppingBag className="text-2xl cursor-pointer opacity-80" onClick={handleShow} />
                             {cart.length > 0 && (
                                 <>
-                                    <p className="rounded-full w-5 h-5 absolute -top-1 -right-2 bg-primary text-white flex flex-col justify-center items-center text-center cursor-pointer ">{cart.length}</p>
+                                    <p className="rounded-full w-5 h-5 absolute -top-1 -right-2 bg-primary text-gray-700 flex flex-col justify-center items-center text-center cursor-pointer ">{cart.length}</p>
                                 </>
                             )}
                             

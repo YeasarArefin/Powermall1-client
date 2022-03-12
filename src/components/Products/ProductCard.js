@@ -127,14 +127,14 @@ const ProductCard = (props) => {
                             discount > 0 && (
                                 <>
                                     <div className="flex left-0 top-4 z-20 absolute">
-                                        <span className="px-2 py-1 text-xs bg-yellow-500 text-center text-white rounded-tr-full rounded-br-full"> Save: {savedPrice?.toFixed(0)}&#2547;</span>
+                                        <span className="px-2 py-1 text-xs bg-primary text-center text-gray-700 rounded-tr-full rounded-br-full"> Save: {savedPrice?.toFixed(0)}&#2547;</span>
                                     </div>
                                 </>
                             )
                         ) : (
                             <>
                                 <div className="flex left-0 top-4 z-20 absolute">
-                                    <span className="px-2 py-1 text-xs bg-yellow-500 text-center text-white rounded-tr-full rounded-br-full">Upcoming Product</span>
+                                        <span className="px-2 py-1 text-xs bg-primary text-center text-gray-700 rounded-tr-full rounded-br-full">Upcoming Product</span>
                                 </div>
                             </>
                         )
@@ -154,7 +154,7 @@ const ProductCard = (props) => {
                                     {
                                         !wishlistDone & !findWishList ? (
                                             <>
-                                                <button className='w-full px-3 py-2 bg-primary border-none rounded-md focus:outline-none text-xs text-white hover:bg-yellow-400' onClick={() => handleWishlistPd(props)}>Add To Wishlist</button>
+                                                <button className='w-full px-3 py-2 bg-primary border-none rounded-md focus:outline-none text-xs text-gray-700 hover:bg-yellow-400' onClick={() => handleWishlistPd(props)}>Add To Wishlist</button>
                                             </>
                                         ) : (
                                             <>
@@ -190,7 +190,7 @@ const ProductCard = (props) => {
                                                         {findPd ? (
                                                             <>
                                                                 <div className='flex items-center justify-end'>
-                                                                    <button className="hidden bg-yellow-200 opacity-40 px-2 py-2 rounded-lg border border-gray-300 text-primary transition duration-300  text-sm md:flex lg:flex items-center space-x-1">
+                                                                    <button className="hidden bg-yellow-200 opacity-40 px-2 py-2 rounded-lg text-gray-500 transition duration-300  text-sm md:flex lg:flex items-center space-x-1">
                                                                         <BsCartCheckFill className="text-lg" />
                                                                         <span className="text-xs">Added</span>
                                                                     </button>
@@ -202,7 +202,7 @@ const ProductCard = (props) => {
                                                         ) : (
                                                             <>
                                                                 <div className='flex items-center justify-end'>
-                                                                    <button className="hidden bg-primary hover:bg-yellow-400  ring-yellow-200 ring-offset-2 px-2 py-2 rounded-md text-white focus:ring-4 transition duration-300   text-xs md:text-sm lg:text-sm md:flex lg:flex items-center space-x-1" onClick={handleCart}>
+                                                                    <button className="hidden bg-primary hover:bg-yellow-400  ring-yellow-200 ring-offset-2 px-2 py-2 rounded-md text-gray-700 focus:ring-4 transition duration-300   text-xs md:text-sm lg:text-sm md:flex lg:flex items-center space-x-1" onClick={handleCart}>
                                                                         {/* <BsCartCheckFill className="text-lg" /> */}
                                                                         {changeCartBtn ? <span className="text-xs" onMouseEnter={() => setCartBtn(false)} onMouseLeave={() => setCartBtn(true)}>Buy Now</span> : <span className="text-xs" onMouseEnter={() => setCartBtn(true)} onMouseLeave={() => setCartBtn(true)}>Cart</span>}
 

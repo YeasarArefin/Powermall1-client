@@ -15,8 +15,8 @@ const SignUpModal = ({ setShowSignUp }) => {
                 <aside className='w-full bg-secondary fixed top-0 right-0 h-full overflow-y-scroll z-50 ' style={{ height: '100%' }}>
                     {/* close button  */}
                     <div className='flex items-center justify-end pt-6 px-8'>
-                        <button className='p-3 rounded-full bg-white hover:bg-primary hover:text-white transition duration-500 hover:shadow-xl' onClick={() => setShowSignUp(false)}>
-                        <RiCloseLine className="text-xl text-gray-700 hover:text-white" />
+                        <button className='p-3 rounded-full bg-white hover:bg-primary hover:text-gray-700 transition duration-500 hover:shadow-xl' onClick={() => setShowSignUp(false)}>
+                        <RiCloseLine className="text-xl text-gray-700 hover:text-gray-700" />
                     </button>
                     </div>
                     <div className='flex flex-col items-center justify-center  py-4'>
@@ -26,10 +26,10 @@ const SignUpModal = ({ setShowSignUp }) => {
                                 <Tab
                                     className={({ selected }) =>
                                         classNames(
-                                            'w-full py-2.5 text-sm leading-5 font-medium text-white rounded-tl-md rounded-tr-md',
+                                            'w-full py-2.5 text-sm leading-5 font-medium text-gray-700 rounded-tl-md rounded-tr-md',
                                             'focus:outline-none',
                                             selected
-                                                ? 'bg-primary hover:text-white'
+                                                ? 'bg-primary hover:text-gray-700'
                                                 : 'text-gray-500 hover:bg-white/[0.12]'
                                         )
                                     }
@@ -39,10 +39,10 @@ const SignUpModal = ({ setShowSignUp }) => {
                                 <Tab
                                     className={({ selected }) =>
                                         classNames(
-                                            'w-full py-2.5 text-sm leading-5 font-medium text-white rounded-tl-md rounded-tr-md',
+                                            'w-full py-2.5 text-sm leading-5 font-medium text-gray-700 rounded-tl-md rounded-tr-md',
                                             'focus:outline-none',
                                             selected
-                                                ? 'bg-primary hover:text-white'
+                                                ? 'bg-primary hover:text-gray-700'
                                                 : 'text-gray-500 hover:bg-white/[0.12]'
                                         )
                                     }

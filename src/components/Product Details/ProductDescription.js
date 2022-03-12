@@ -105,21 +105,21 @@ const ProductDescription = (props) => {
                     {findPd ? (
                         <>
                             <button onClick={() => alert('First Remove this product from cart to decrease quantity.')}>
-                                <AiOutlineMinus className='opacity-40 text-xl text-gray-600 bg-secondary w-6  transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                                <AiOutlineMinus className='opacity-40 text-xl text-gray-600 bg-secondary w-6  transition duration-500 transform hover:scale-105 hover:text-gray-700 cursor-pointer h-6 rounded-full p-1' />
                             </button>
                             <span className='opacity-40 text-gray-700 font-semibold select-none'>{newProduct.pdQuantity}</span>
                             <button onClick={() => alert('First Remove this product from cart to increase quantity')}>
-                                <AiOutlinePlus className='opacity-40 text-xl text-gray-600 bg-secondary w-6  transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                                <AiOutlinePlus className='opacity-40 text-xl text-gray-600 bg-secondary w-6  transition duration-500 transform hover:scale-105 hover:text-gray-700 cursor-pointer h-6 rounded-full p-1' />
                             </button>
                         </>
                     ) : (
                         <>
                             <button onClick={handleDecrease}>
-                                <AiOutlineMinus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                                <AiOutlineMinus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-gray-700 cursor-pointer h-6 rounded-full p-1' />
                             </button>
                             <span className='text-gray-700 font-semibold select-none'>{newProduct.pdQuantity}</span>
                             <button onClick={handleIncrease}>
-                                <AiOutlinePlus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-white cursor-pointer h-6 rounded-full p-1' />
+                                <AiOutlinePlus className='text-xl text-gray-600 bg-secondary w-6 hover:bg-primary transition duration-500 transform hover:scale-105 hover:text-gray-700 cursor-pointer h-6 rounded-full p-1' />
                             </button>
                         </>
                     )}
@@ -132,7 +132,7 @@ const ProductDescription = (props) => {
                 {
                     findPd ? (
                         <>
-                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1 opacity-40" >
+                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1 opacity-40" >
                                 <BsCartCheckFill className="text-lg" />
                                 <span className="text-sm select-none">Added</span>
                             </button>
@@ -140,7 +140,7 @@ const ProductDescription = (props) => {
 
                     ) : (
                         <>
-                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1" onClick={
+                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1" onClick={
                                 () => {
                                     handleClick(newProduct);
                                 }
@@ -162,7 +162,7 @@ const ProductDescription = (props) => {
                         </Link>
                     ) : (
                         <Link to="/checkout">
-                            <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1" onClick={() => {
+                            <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1" onClick={() => {
 
                                 handleClick(newProduct);
 

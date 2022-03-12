@@ -13,7 +13,7 @@ const SubNav = () => {
     }, [])
 
     return (
-        <div className="bg-primary text-white">
+        <div className="bg-primary text-gray-700">
             <div className="max-w-screen-xl mx-auto px-6 flex items-center flex-grow">
                 {/* menus  */}
                 <ul className="flex items-center space-x-6 uppercase relative font-semibold w-full">

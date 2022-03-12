@@ -11,7 +11,7 @@ const SectionTitle = ({ title, slug }) => {
             <Link to={`/shops?categories=${slug}`} onClick={() => {
                 setSearchParams({ categories: slug })
             }}>
-                <button className='bg-primary  hover:bg-yellow-400 text-white focus:outline-none rounded-md transition duration-300 px-4 py-2 text-sm'>See All</button>
+                <button className='bg-primary  hover:bg-yellow-400 text-gray-700 focus:outline-none rounded-md transition duration-300 px-4 py-2 text-sm'>See All</button>
             </Link>
         </div>
     )

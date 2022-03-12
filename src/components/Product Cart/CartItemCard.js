@@ -14,13 +14,13 @@ const CartItemCard = ({ handleShow}) => {
     return (
         <div className='bg-primary  hidden lg:flex py-4 px-2  fixed z-40 top-2/4 right-0 rounded-tl-md rounded-bl-md shadow-xl  flex-col space-y-2 cursor-pointer' onClick={handleShow}>
             {/* items  */}
-            <div className='text-white flex items-center space-x-2 justify-center'>
+            <div className='text-gray-700 flex items-center space-x-1 justify-center'>
                 <BsFillBagCheckFill />
-                <span>{cart.length} items</span>
+                <span className="text-sm">{cart.length} items</span>
             </div>
 
             {/* price  */}
-            <div className='bg-white rounded-md px-2 py-2 text-primary flex justify-center text-sm'>
+            <div className='bg-white rounded-md px-2 py-2 text-gray-600 flex justify-center text-sm'>
                 <span>&#2547; {price?.toFixed(2)}</span>
             </div>
         </div>

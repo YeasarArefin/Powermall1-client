@@ -68,12 +68,12 @@ const ShippingForm = ({ setOrder, btnCick, setBtnClick}) => {
                     
                     <div className="flex items-center space-x-3 my-3">
                         {/* home delivery / */}
-                        <div className={`bg-gray-100 px-8 py-3 rounded-md cursor-pointer ${deliveryMethod === 'Home Delivery' && 'bg-primary text-white' }`} onClick={() => selectDeliveryOption('Home Delivery')}>
+                        <div className={`bg-gray-100 px-8 py-3 rounded-md cursor-pointer ${deliveryMethod === 'Home Delivery' && 'bg-primary text-gray-700' }`} onClick={() => selectDeliveryOption('Home Delivery')}>
                             <h2>Home Delivery</h2>
                             <span className='text-xs'>1-2 days</span>
                         </div>
                         {/* store pickup / */}
-                        <div className={`bg-gray-100 px-6 py-3 rounded-md cursor-pointer ${deliveryMethod === 'Store Pickup' && 'bg-primary text-white'}`} onClick={() => selectDeliveryOption('Store Pickup')}>
+                        <div className={`bg-gray-100 px-6 py-3 rounded-md cursor-pointer ${deliveryMethod === 'Store Pickup' && 'bg-primary text-gray-700'}`} onClick={() => selectDeliveryOption('Store Pickup')}>
                             <h2>Store Pickup</h2>
                             <span className='text-xs'>come to our shop</span>
                         </div>
@@ -103,7 +103,7 @@ const ShippingForm = ({ setOrder, btnCick, setBtnClick}) => {
 
                 {/* button  */}
                 <div className='flex justify-end pt-4'>
-                    <button className='px-6 w-36 py-3 rounded-lg bg-primary text-white  hover:bg-yellow-400 transition duration-300'>Save</button>
+                    <button className='px-6 w-36 py-3 rounded-lg bg-primary text-gray-700  hover:bg-yellow-400 transition duration-300'>Save</button>
                 </div>
 
             </form>

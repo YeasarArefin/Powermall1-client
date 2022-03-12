@@ -161,7 +161,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
             {/* coupon  */}
             <form className='flex items-center space-x-2 py-3 border-b border-gray-200' onSubmit={handleSubmit(onSubmit)}>
                 <input type="text" className="input2" placeholder="Enter your coupon" {...register("coupon", { required: true })} />
-                <button disabled={disabled} className={`${disabled ? "opacity-40 px-4 py-3  text-white rounded-md focus:outline-none bg-primary" : "bg-primary px-4 py-3  text-white rounded-md focus:outline-none"}`}>Apply</button>
+                <button disabled={disabled} className={`${disabled ? "opacity-40 px-4 py-3  text-gray-700 rounded-md focus:outline-none bg-primary" : "bg-primary px-4 py-3  text-gray-700 rounded-md focus:outline-none"}`}>Apply</button>
             </form>
 
             {/* total  */}
@@ -188,7 +188,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
                                     {/* <span className='text-xs'>1-2 days</span> */}
                                 </div>
                                 {/* Pre Payment / */}
-                                <div className={`bg-gray-100 flex items-center space-x-2 px-4 py-3 rounded-md cursor-pointer ${paymentMethod === 'Pre Payment' && 'bg-primary text-white'}`} onClick={() => selectDeliveryOption('Pre Payment')}>
+                                <div className={`bg-gray-100 flex items-center space-x-2 px-4 py-3 rounded-md cursor-pointer ${paymentMethod === 'Pre Payment' && 'bg-primary text-gray-700'}`} onClick={() => selectDeliveryOption('Pre Payment')}>
                                     <BsFillCreditCardFill />
                                     <h2 className='text-sm'>Pre Payment</h2>
                                     {/* <span className='text-xs'>come to our shop</span> */}
@@ -197,13 +197,13 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
                         ): (
                             <>
                                     {/* Cash On Delivery / */}
-                                    <div className={`bg-gray-100 flex items-center space-x-2 px-4 py-3 rounded-md cursor-pointer ${paymentMethod === 'Cash 0n Delivery' && 'bg-primary text-white'}`} onClick={() => selectDeliveryOption('Cash 0n Delivery')}>
+                                    <div className={`bg-gray-100 flex items-center space-x-2 px-4 py-3 rounded-md cursor-pointer ${paymentMethod === 'Cash 0n Delivery' && 'bg-primary text-gray-700'}`} onClick={() => selectDeliveryOption('Cash 0n Delivery')}>
                                         <BsCash />
                                         <h2 className='text-sm'>Cash 0n Delivery</h2>
                                         {/* <span className='text-xs'>1-2 days</span> */}
                                     </div>
                                     {/* Pre Payment / */}
-                                    <div className={`bg-gray-100 flex items-center space-x-2 px-4 py-3 rounded-md cursor-pointer ${paymentMethod === 'Pre Payment' && 'bg-primary text-white'}`} onClick={() => selectDeliveryOption('Pre Payment')}>
+                                    <div className={`bg-gray-100 flex items-center space-x-2 px-4 py-3 rounded-md cursor-pointer ${paymentMethod === 'Pre Payment' && 'bg-primary text-gray-700'}`} onClick={() => selectDeliveryOption('Pre Payment')}>
                                         <BsFillCreditCardFill />
                                         <h2 className='text-sm'>Pre Payment</h2>
                                         {/* <span className='text-xs'>come to our shop</span> */}
@@ -217,7 +217,7 @@ const OrderSummary = ({ setPrice, btnCick, order }) => {
 
 
 
-            <button disabled={!btnCick} className={`${!btnCick ? " bg-gray-200 text-gray-300 opacity-40" : " bg-primary text-white  hover:bg-yellow-400 "} mt-6  w-full py-3 rounded-md  `} onClick={handleSubmitForm}>Proceed to pay</button>
+            <button disabled={!btnCick} className={`${!btnCick ? " bg-gray-200 text-gray-300 opacity-40" : " bg-primary text-gray-700  hover:bg-yellow-400 "} mt-6  w-full py-3 rounded-md  `} onClick={handleSubmitForm}>Proceed to pay</button>
         </div>
     );
 };

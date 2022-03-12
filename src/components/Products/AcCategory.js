@@ -65,7 +65,7 @@ const AcCategory = () => {
 
                 <div className='my-6 flex justify-center items-center'>
                     <Link to={`/shops?categories=ac`}>
-                        <button className=' bg-primary hover:bg-blue-600 ring-yellow-200 ring-offset-2 px-4 py-3 text-white focus:ring-4 transition duration-300 rounded-md   uppercase text-sm flex items-center space-x-1'>Explore More</button>
+                        <button className=' bg-primary hover:bg-blue-600 ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md   uppercase text-sm flex items-center space-x-1'>Explore More</button>
                     </Link>
                 </div>
             </section>

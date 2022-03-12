@@ -67,7 +67,7 @@ const Home = () => {
                         </div>
                     </>
                 )} */}
-                <div className="max-w-screen-2xl mx-auto px-6" >
+                <div className="max-w-screen-xl mx-auto px-6" >
                     {/* {!mobileVersion && ( */}
                         {/* <> */}
                             <div className='pt-6'>
