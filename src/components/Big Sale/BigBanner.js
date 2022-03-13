@@ -7,7 +7,7 @@ const BigBanner = () => {
 
     useEffect(() => {
         axios.get('https://api.powermall.com.bd/salebanner')
-            .then(res => setImages(res.data));
+            .then(res => setImages(res?.data));
     }, []);
 
     return (
