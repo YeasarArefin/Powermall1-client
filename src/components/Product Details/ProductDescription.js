@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 
 const ProductDescription = (props) => {
-    const [quantity, setQuantity] = React.useState(1);
+    const [pdQuantity, setQuantity] = React.useState(1);
     const [colorVal, setColorVal] = React.useState();
     const { cart, handleClick } = useCart();
-    const { _id, name, color, price, img, discount } = props;
+    const { _id, name, color, price, img, discount, quantity } = props;
     const priceInNum = parseFloat(price);
     const disCountedPrice = priceInNum - (discount / 100) * priceInNum;
     const image = img?.split(',');
@@ -16,16 +16,16 @@ const ProductDescription = (props) => {
     const newProduct = { ...props };
     // const localQuantity = localStorage.getItem('quantity')
 
-    newProduct['pdQuantity'] = quantity;
+    newProduct['pdQuantity'] = pdQuantity;
 
     const handleIncrease = () => {
-        newProduct['pdQuantity'] = quantity + 1;
+        newProduct['pdQuantity'] = pdQuantity + 1;
         setQuantity(newProduct.pdQuantity);
     };
 
     const handleDecrease = () => {
-        if (quantity > 1) {
-            newProduct['pdQuantity'] = quantity - 1;
+        if (pdQuantity > 1) {
+            newProduct['pdQuantity'] = pdQuantity - 1;
             setQuantity(newProduct.pdQuantity);
         } else {
             newProduct['pdQuantity'] = 1;
@@ -38,7 +38,7 @@ const ProductDescription = (props) => {
         setColorVal(e.target.value);
     };
 
-    newProduct['pdQuantity'] = quantity;
+    newProduct['pdQuantity'] = pdQuantity;
 
     if (colorVal) {
         newProduct['pdColor'] = colorVal;
@@ -99,7 +99,6 @@ const ProductDescription = (props) => {
             {/* quantity  */}
             <div className='flex space-x-5 py-6'>
                 <p className='text-gray-600'>Quantity : </p>
-
                 <div className='flex items-center space-x-3'>
 
                     {findPd ? (
@@ -125,55 +124,73 @@ const ProductDescription = (props) => {
                     )}
 
                 </div>
+                
+
+
             </div>
 
-            {/* button  */}
-            <div className="flex items-center space-x-3 border-t border-gray-300 py-4" >
-                {
-                    findPd ? (
-                        <>
-                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1 opacity-40" >
-                                <BsCartCheckFill className="text-lg" />
-                                <span className="text-sm select-none">Added</span>
-                            </button>
-                        </>
+            {
+                quantity === "0" ? (
+                    <>
+                        <div className='bg-primary py-2 px-3 text-gray-700 w-28 rounded-full'>
+                            <span>Stock Out</span>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                            {/* button  */}
+                            <div className="flex items-center space-x-3 border-t border-gray-300 py-4" >
+                                {
+                                    findPd ? (
+                                        <>
+                                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1 opacity-40" >
+                                                <BsCartCheckFill className="text-lg" />
+                                                <span className="text-sm select-none">Added</span>
+                                            </button>
+                                        </>
 
-                    ) : (
-                        <>
-                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1" onClick={
-                                () => {
-                                    handleClick(newProduct);
+                                    ) : (
+                                        <>
+                                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1" onClick={
+                                                () => {
+                                                    handleClick(newProduct);
+                                                }
+                                            }>
+                                                <BsCartCheckFill className="text-lg" />
+                                                <span className="text-sm select-none">Add To Cart</span>
+                                            </button>
+                                        </>
+                                    )
                                 }
-                            }>
-                                <BsCartCheckFill className="text-lg" />
-                                <span className="text-sm select-none">Add To Cart</span>
-                            </button>
-                        </>
-                    )
-                }
 
-                {
-                    findPd ? (
-                        <Link to="/checkout">
-                            <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1">
-                                <BsBagCheckFill className="text-sm" />
-                                <span className="text-sm select-none">Buy Now</span>
-                            </button>
-                        </Link>
-                    ) : (
-                        <Link to="/checkout">
-                            <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1" onClick={() => {
+                                {
+                                    findPd ? (
+                                        <Link to="/checkout">
+                                            <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1">
+                                                <BsBagCheckFill className="text-sm" />
+                                                <span className="text-sm select-none">Buy Now</span>
+                                            </button>
+                                        </Link>
+                                    ) : (
+                                        <Link to="/checkout">
+                                            <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1" onClick={() => {
 
-                                handleClick(newProduct);
+                                                handleClick(newProduct);
 
-                            }}>
-                                <BsBagCheckFill className="text-sm" />
-                                <span className="text-sm select-none">Buy Now</span>
-                            </button>
-                        </Link>
-                    )
-                }
-            </div>
+                                            }}>
+                                                <BsBagCheckFill className="text-sm" />
+                                                <span className="text-sm select-none ">Buy Now</span>
+                                            </button>
+                                        </Link>
+                                    )
+                                }
+                            </div>
+                    </>
+                )
+            }
+
+
+            
         </div>
     );
 };

@@ -41,10 +41,8 @@ const SubFooter = () => {
                 <div>
                     <p className='text-gray-500 text-sm'>{copyRightData?.copyrighttext}
                     </p>
-                    {/* <p className='text-gray-500 text-sm'>&copy; {new Date().getFullYear()} elctroshop.com | All Rights Reserved.
-                    </p> */}
                     <p className='text-gray-500 text-sm text-center pt-2 pb-4'>
-                        Developed by <a className="text-blue-600" href="http://dropdev.tech/" ><span className='text-indigo-600'>Drop</span> <span className='text-pink-600'>Dev</span> </a>
+                        Developed by <a target="_blank" rel="noopener noreferrer" className="text-blue-600" href="https://www.digitalvert.com/" ><span className='text-green-500'>Digital Vert</span> </a>
                     </p>
                 </div>
 
@@ -55,16 +53,7 @@ const SubFooter = () => {
                     ))}
                 </div>
             </div>        
-            
-            {/* <div className='max-w-screen-xl mx-auto px-6 py-4 border-t border-gray-300 flex flex-col lg:flex-row space-y-2 lg:space-y-0 items-center justify-center'>
-
-                {/* copyright  */}
-                {/* <div>
-                    <p className='text-gray-500 text-sm text-center'>
-                        Developed by <a className="text-blue-600" href="http://dropdev.tech/"  " rel="noopener noreferrer">Drop Dev Ltd.</a>
-                    </p>
-                </div> */}
-            {/* </div>  */}
+           
         </>
     )
 }

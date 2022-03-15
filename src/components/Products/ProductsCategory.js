@@ -57,10 +57,10 @@ const ProductsCategory = () => {
                                     pagination={{
                                         "clickable": true
                                     }}
-                                    autoplay={{
-                                        delay: 3000,
-                                        disableOnInteraction: false
-                                    }}
+                                    // autoplay={{
+                                    //     delay: 3000,
+                                    //     disableOnInteraction: false
+                                    // }}
                                     className="mySwiper py-8 pb-10" breakpoints={{
                                         320: {
                                             slidesPerView: 2,
@@ -93,11 +93,21 @@ const ProductsCategory = () => {
                                             slidesPerView: 5
                                         }
                                     }}>
-                                    {pdFound?.map(product => (
-                                        <SwiperSlide key={product._id} className="h-full">
-                                            <ProductCard {...product} />
-                                        </SwiperSlide>
-                                    ))}
+                                    {/* {filterUpcoming & ( */}
+                                        {/* <> */}
+                                    {pdFound?.filter(item => item?.delivery !== "Upcoming")?.map(product => {
+                                                return (
+                                                    <>
+                                                        <SwiperSlide key={product._id} className="h-full">
+                                                            <ProductCard {...product} />
+                                                        </SwiperSlide>
+                                                    </>
+                                                )
+
+                                            })}
+                                        {/* </> */}
+                                    {/* )} */}
+                                   
                                 </Swiper>
 
                             </>

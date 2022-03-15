@@ -24,24 +24,23 @@
     <div id="root"></div>
     <script>
       const favicon = document.querySelector("link[rel='icon']");
-      const title = document.getElementById("title");
-      fetch(
-        'https://api.powermall.com.bd/favicon/61d33848a23e2424d1442ae5'
-      )
-        .then((res) => res?.json())
+      // const title = document.getElementById("title");
+
+      fetch('https://api.powermall.com.bd/favicon/61d33848a23e2424d1442ae5')
+        .then((res) => res.json())
         .then((data) => {
-          const image = data?.img;
+          const image = data.img;
           favicon.setAttribute('href', image);
         });
 
-      fetch(
-        'https://api.powermall.com.bd/seo'
-      )
-        .then((res) => res?.json())
-        .then((data) => {
-          const metaTitle = data?.title;
-          title?.innerText = metaTitle
-        });
+      // fetch(
+      //   'https://api.powermall.com.bd/seo'
+      // )
+      //   .then((res) => res?.json())
+      //   .then((data) => {
+      //     const metaTitle = data?.title;
+      //     title?.innerText = metaTitle
+      //   });
     </script>
   </body>
 </html>

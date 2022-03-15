@@ -119,3 +119,28 @@ body::-webkit-scrollbar-thumb {
     height: 12rem;
   }
 }
+
+.categoryTitle {
+  font-size: 15px;
+}
+.featureDesc {
+  font-size: 8px;
+}
+.featureTitle {
+  font-size: 18px;
+}
+@media only screen and (max-width: 500px) {
+  .categoryTitle {
+    font-size: 10px;
+  }
+  .featureDesc {
+    font-size: 10px;
+  }
+  .featureTitle {
+    font-size: 13px;
+  }
+}
+
+.tawk-min-container {
+  margin-top: -10px;
+}

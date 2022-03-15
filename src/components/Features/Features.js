@@ -42,10 +42,10 @@ const Features = () => {
                         slidesPerView: 2,
                     },
                     500: {
-                        slidesPerView: 2,
+                        slidesPerView: 3,
                     },
                     768: {
-                        slidesPerView: 2,
+                        slidesPerView: 3,
                     },
                     1024: {
                         slidesPerView: 3
@@ -60,18 +60,21 @@ const Features = () => {
             {featuresData?.map(feature => (
                 <SwiperSlide key={feature?._id}>
                     <Link to={`/${feature?.tag}`} >
-                    <div className="rounded-lg cursor-pointer hover:shadow-xl overflow-hidden h-44 lg:h-52 transition duration-500" style={{ background: `url(${feature?.img})`, backgroundSize:'cover' }}>
-                        <div className="flex flex-col justify-center space-y-1 h-full p-6">
+                    <div className="rounded-lg cursor-pointer hover:shadow-xl overflow-hidden h-24
+                     lg:h-52 transition duration-500" style={{ background: `url(${feature?.img})`, backgroundSize:'cover' }}>
+                        <div className="flex flex-col justify-center space-y-1 h-full p-6 box-border ">
                             {/* text  */}
                             <div>
-                                <h3 className="text-base lg:text-2xl font-bold text-white">{feature?.title}</h3>
-                                <p className="text-xs md:text-sm lg:text-sm text-white mb-2">{feature?.details}</p>
+                                    <h3 className="featureTitle font-bold text-white">{feature?.title}</h3>
+                                    <p className=" text-white lg:mb-2 featureDesc">{feature?.details}</p>
                             </div>
 
                             {/* button  */}
                             <div>
                                 <Link to={`/${feature?.tag}`} >
-                                <button className={`bg-white w-24 lg:w-28 px-2 lg:px-3 py-2 mt-2 rounded-full text-gray-600 hover:scale-110 transform transition duration-300 text-xs`}  >{feature?.name}</button>
+                                        <button className={`bg-white w-24 lg:w-28 px-1 py-1 lg:px-3 lg:py-2 lg:mt-2 rounded-full text-gray-600 hover:scale-110 transform transition duration-300 featureDesc`}  >
+                                            <span className="">{feature?.name}</span>
+                                </button>
                                 </Link>
                             </div>
                         </div>

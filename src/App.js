@@ -49,6 +49,12 @@ const App = () => {
   const [showOffer, setShowOffer] = useState(true)
   const [mobileMenu, setMobileMenu] = useState(false);
   const [searchShow, setSearchShow] = useState(false);
+  // const [featureRoute, setFeatureRoute] = useState([]);
+
+  //  useEffect(() => {
+  //       axios.get('https://api.powermall.com.bd/feature')
+  //         .then(res => setFeatureRoute(res?.data))
+  //   }, [])
 
   const handleSearchShow = () => {
     setSearchShow(!searchShow)

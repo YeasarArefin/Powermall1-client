@@ -36,16 +36,16 @@ const Brands = () => {
                     }}
                     className="mySwiper py-8 pb-10 px-10" breakpoints={{
                         320: {
-                            slidesPerView: 1,
+                            slidesPerView: 2,
                         },
                         375: {
-                            slidesPerView: 1,
+                            slidesPerView: 3,
                         },
                         414: {
-                            slidesPerView: 2,
+                            slidesPerView: 3,
                         },
                         425: {
-                            slidesPerView: 2,
+                            slidesPerView: 3,
                         },
                         500: {
                             slidesPerView: 4,
@@ -66,7 +66,7 @@ const Brands = () => {
                     {brands?.map(item => (
                         <SwiperSlide key={item._id} className="h-full">
                                 <div className=' h-24 bg-white rounded-md p-4 box-border'>
-                                    <img className='w-18 h-full object-contain mx-auto' src={item?.img} alt={item.brand} />
+                                    <img className='w-12 md:w-18 lg:w-18 h-full object-contain mx-auto' src={item?.img} alt={item.brand} />
                                 </div>
                         </SwiperSlide>
                     ))}

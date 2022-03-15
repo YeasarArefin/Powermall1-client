@@ -19,7 +19,7 @@ const Slider = () => {
     return (
         <section id="hero" className='headerBanner overflow-hidden'>
             <Swiper pagination={true} autoplay={{
-                delay: 2000,
+                delay: 3000,
                 disableOnInteraction: false
             }} speed={150} className="mySwiper">
                 {images?.map((image) => (

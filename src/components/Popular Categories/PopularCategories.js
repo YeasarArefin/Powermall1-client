@@ -43,18 +43,18 @@ const PopularCategories = () => {
                     }}
                     className="mySwiper py-8 pb-10 px-10" breakpoints={{
                         320: {
-                            slidesPerView: 2,
+                            slidesPerView: 3,
                         },
                         375: {
-                            slidesPerView: 2,
+                            slidesPerView:3,
                         },
                         
                         414: {
-                            slidesPerView: 2,
+                            slidesPerView: 3,
                         },
                         
                         425: {
-                            slidesPerView: 2,
+                            slidesPerView: 3,
                         },
                         500: {
                             slidesPerView: 4,

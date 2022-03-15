@@ -25,7 +25,7 @@ const ProductDetails = () => {
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
-        }, 200)
+        }, 100)
     }, [])
 
     return (

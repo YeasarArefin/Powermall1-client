@@ -140,8 +140,8 @@ const ProductCard = (props) => {
                         )
                     }
                     {/* image  */}
-                    <div className="cursor-pointer mt-5" onClick={() => navigate(`/shops/${_id}`)}>
-                        <img className="w-48  mx-auto object-contain hover:opacity-80" src={image?.[0]} alt={_id} />
+                    <div className="cursor-pointer h-40 mt-5" onClick={() => navigate(`/shops/${_id}`)}>
+                        <img className="w-48 h-full  mx-auto object-contain hover:opacity-80" src={image?.[0]} alt={_id} />
                     </div>
 
                     <div className="flex flex-col flex-grow mt-3 border-t border-gray-200  space-y-1">

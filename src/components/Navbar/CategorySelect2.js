@@ -33,11 +33,11 @@ const CategorySelect2 = ({ mobileMenu }) => {
     return (
         <div>
 
-            <div ref={ref} onMouseEnter={() => setState('open')} className='border text-primary text-xs w-36 py-3 px-4 rounded-lg border-primary font-semibold flex items-center space-x-2 cursor-pointer'>
+            <div ref={ref} onMouseEnter={() => setState('open')} className='border text-gray-700 text-xs w-40 py-3 pl-3 box-border rounded-lg border-primary font-semibold flex items-center space-x-2 cursor-pointer'>
                 <AiOutlineMenu
-                    className="w-5 h-5 text-primary font-bold"
+                    className="w-5 h-5 text-gray-700 font-bold"
                 />
-                <span className="text-xs">{categoryFilter ? categoryFilter.toUpperCase() : "CATEGORIES"}</span>
+                <span className="text-xs" style={{fontSize:'10px'}}>{categoryFilter ? categoryFilter.toUpperCase() : "CATEGORIES"}</span>
             </div>
             <ControlledMenu state={state} anchorRef={ref}
                 onMouseLeave={() => setState('closed')}

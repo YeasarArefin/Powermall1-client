@@ -3,8 +3,8 @@ import React from 'react';
 
 function NoticeText({ notice}) {
     return (
-        <div className="">
-            <marquee behavior="scroll" direction="left" className="bg-white rounded-full p-3 mt-6 text-sm">{notice.notice}</marquee>
+        <div className=" bg-white rounded-full px-5 mt-6 py-2">
+            <marquee behavior="scroll" direction="left" className="text-sm mt-2">{notice.notice}</marquee>
         </div>
     );
 }
