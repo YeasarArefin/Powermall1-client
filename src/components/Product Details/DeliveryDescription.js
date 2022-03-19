@@ -130,7 +130,6 @@ const DeliveryDescription = (props) => {
                     <MdOutlineModelTraining className='text-3xl text-gray-600 w-8' />
                     <div className='text-sm text-gray-600 flex flex-col'>
                         <p>{info?.policy} Return</p>
-                        <span>Change of mind available</span>
                     </div>
                 </div>
 
