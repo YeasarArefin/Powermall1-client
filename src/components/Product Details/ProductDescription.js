@@ -3,7 +3,7 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { BsBagCheckFill, BsCartCheckFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
-
+import second from 'sweetalert';
 const ProductDescription = (props) => {
     const [pdQuantity, setQuantity] = React.useState(1);
     const [colorVal, setColorVal] = React.useState();
@@ -19,8 +19,12 @@ const ProductDescription = (props) => {
     newProduct['pdQuantity'] = pdQuantity;
 
     const handleIncrease = () => {
-        newProduct['pdQuantity'] = pdQuantity + 1;
-        setQuantity(newProduct.pdQuantity);
+        if (quantity > pdQuantity) {
+            newProduct['pdQuantity'] = pdQuantity + 1;
+            setQuantity(newProduct.pdQuantity);
+        } else {
+            alert('no stock');
+        }
     };
 
     const handleDecrease = () => {
@@ -124,7 +128,7 @@ const ProductDescription = (props) => {
                     )}
 
                 </div>
-                
+
 
 
             </div>
@@ -138,59 +142,59 @@ const ProductDescription = (props) => {
                     </>
                 ) : (
                     <>
-                            {/* button  */}
-                            <div className="flex items-center space-x-3 border-t border-gray-300 py-4" >
-                                {
-                                    findPd ? (
-                                        <>
-                                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1 opacity-40" >
-                                                <BsCartCheckFill className="text-lg" />
-                                                <span className="text-sm select-none">Added</span>
-                                            </button>
-                                        </>
+                        {/* button  */}
+                        <div className="flex items-center space-x-3 border-t border-gray-300 py-4" >
+                            {
+                                findPd ? (
+                                    <>
+                                        <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1 opacity-40" >
+                                            <BsCartCheckFill className="text-lg" />
+                                            <span className="text-sm select-none">Added</span>
+                                        </button>
+                                    </>
 
-                                    ) : (
-                                        <>
-                                            <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1" onClick={
-                                                () => {
-                                                    handleClick(newProduct);
-                                                }
-                                            }>
-                                                <BsCartCheckFill className="text-lg" />
-                                                <span className="text-sm select-none">Add To Cart</span>
-                                            </button>
-                                        </>
-                                    )
-                                }
-
-                                {
-                                    findPd ? (
-                                        <Link to="/checkout">
-                                            <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1">
-                                                <BsBagCheckFill className="text-sm" />
-                                                <span className="text-sm select-none">Buy Now</span>
-                                            </button>
-                                        </Link>
-                                    ) : (
-                                        <Link to="/checkout">
-                                            <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1" onClick={() => {
-
+                                ) : (
+                                    <>
+                                        <button className="bg-primary ring-yellow-200 ring-offset-2 px-4 py-3 text-gray-700 focus:ring-4 transition duration-300 rounded-md  hover:bg-yellow-400  uppercase text-sm flex items-center space-x-1" onClick={
+                                            () => {
                                                 handleClick(newProduct);
+                                            }
+                                        }>
+                                            <BsCartCheckFill className="text-lg" />
+                                            <span className="text-sm select-none">Add To Cart</span>
+                                        </button>
+                                    </>
+                                )
+                            }
 
-                                            }}>
-                                                <BsBagCheckFill className="text-sm" />
-                                                <span className="text-sm select-none ">Buy Now</span>
-                                            </button>
-                                        </Link>
-                                    )
-                                }
-                            </div>
+                            {
+                                findPd ? (
+                                    <Link to="/checkout">
+                                        <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1">
+                                            <BsBagCheckFill className="text-sm" />
+                                            <span className="text-sm select-none">Buy Now</span>
+                                        </button>
+                                    </Link>
+                                ) : (
+                                    <Link to="/checkout">
+                                        <button className="bg-gray-600 ring-gray-200 ring-offset-2 px-3 py-3 text-white focus:ring-4 transition duration-300 rounded-md hover:bg-gray-700 uppercase text-sm flex items-center space-x-1" onClick={() => {
+
+                                            handleClick(newProduct);
+
+                                        }}>
+                                            <BsBagCheckFill className="text-sm" />
+                                            <span className="text-sm select-none ">Buy Now</span>
+                                        </button>
+                                    </Link>
+                                )
+                            }
+                        </div>
                     </>
                 )
             }
 
 
-            
+
         </div>
     );
 };

@@ -4,36 +4,43 @@ import { RiCloseLine } from 'react-icons/ri';
 import useCart from '../../hooks/useCart';
 
 const CartPdCard = (props) => {
-    const [quantity, setQuantity] = React.useState(props.pdQuantity);
-    const { cart, setCart } = useCart()
-    const { _id, name, price, img, discount } = props;
+    const [prevQuantity, setQuantity] = React.useState(props.pdQuantity);
+    const { cart, setCart } = useCart();
+    const { _id, name, price, img, discount, quantity } = props;
     const image = img.split(',');
     const newPrice = parseFloat(price);
     const discountPrice = parseFloat(discount);
     const newProduct = { ...props };
     // newProduct['pdQuantity'] = quantity;
     const getALlPD = localStorage.getItem('cart');
-    const parsedPd = JSON.parse(getALlPD)
-    const getThisPD = parsedPd?.find(item => item?._id === _id)
-    newProduct.pdQuantity = quantity
+    const parsedPd = JSON.parse(getALlPD);
+    const getThisPD = parsedPd?.find(item => item?._id === _id);
+    newProduct.pdQuantity = prevQuantity;
     // getThisPD?.pdQuantity = quantity
-
+    console.log(props);
     const handleDelete = (id) => {
-        setCart(cart.filter(item => item._id !== id))
+        setCart(cart.filter(item => item._id !== id));
         localStorage.removeItem(getThisPD);
-    }
+    };
+
 
     const handleIncrease = () => {
-        newProduct.pdQuantity = quantity + 1;
-        localStorage.setItem('cart', JSON.stringify([newProduct]));
-        setQuantity(quantity + 1);
+
+        if (quantity > prevQuantity) {
+            newProduct.pdQuantity = prevQuantity + 1;
+            localStorage.setItem('cart', JSON.stringify([newProduct]));
+            setQuantity(prevQuantity + 1);
+        } else {
+            alert('no stock');
+        }
+
     };
 
     const handleDecrease = () => {
-        if (quantity > 1) {
-            newProduct.pdQuantity = quantity - 1;
+        if (prevQuantity > 1) {
+            newProduct.pdQuantity = prevQuantity - 1;
             localStorage.setItem('cart', JSON.stringify([newProduct]));
-            setQuantity(quantity - 1);
+            setQuantity(prevQuantity - 1);
         } else {
             newProduct.pdQuantity = 1;
             localStorage.setItem('cart', JSON.stringify([newProduct]));
@@ -79,7 +86,7 @@ const CartPdCard = (props) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default CartPdCard
+export default CartPdCard;

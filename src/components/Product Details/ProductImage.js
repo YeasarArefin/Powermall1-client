@@ -11,7 +11,6 @@ const ProductImage = (props) => {
     const { img, ytLink } = props;
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const image = img?.split(',');
-
     return (
         <div>
             <Swiper
@@ -23,7 +22,10 @@ const ProductImage = (props) => {
                 navigation={true}
                 thumbs={{ swiper: thumbsSwiper }}
                 className="mySwiper2">
-                <SwiperSlide>
+
+                {/* changed code */}
+
+                {/* <SwiperSlide>
                     <img src={image?.[0]} className='w-full mx-auto   object-fill' alt="nature" />
                 </SwiperSlide>
                 <SwiperSlide>
@@ -34,7 +36,32 @@ const ProductImage = (props) => {
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={image?.[3]} className='w-full mx-auto   object-fill' alt="nature" />
-                </SwiperSlide>
+                </SwiperSlide> */}
+
+                {
+                    image?.[0] && <SwiperSlide>
+                        <img src={image?.[0]} className='w-full mx-auto   object-fill' alt="nature" />
+                    </SwiperSlide>
+                }
+
+                {
+                    image?.[1] && <SwiperSlide>
+                        <img src={image?.[1]} className='w-full mx-auto   object-fill' alt="nature" />
+                    </SwiperSlide>
+                }
+
+                {
+                    image?.[2] && <SwiperSlide>
+                        <img src={image?.[2]} className='w-full mx-auto   object-fill' alt="nature" />
+                    </SwiperSlide>
+                }
+
+                {
+                    image?.[3] && <SwiperSlide>
+                        <img src={image?.[3]} className='w-full mx-auto   object-fill' alt="nature" />
+                    </SwiperSlide>
+                }
+
                 {
                     ytLink && (
                         <SwiperSlide>
@@ -42,7 +69,6 @@ const ProductImage = (props) => {
                         </SwiperSlide>
                     )
                 }
-                
 
             </Swiper>
             <Swiper
@@ -51,18 +77,32 @@ const ProductImage = (props) => {
                 slidesPerView={4}
                 watchSlidesProgress={true}
                 className="mySwiper">
-                <SwiperSlide>
-                    <img src={image?.[0]} className='w-full mx-auto   object-contain' alt="nature" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={image?.[1]} className='w-full mx-auto   object-contain' alt="nature" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={image?.[2]} className='w-full mx-auto   object-contain' alt="nature" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={image?.[3]} className='w-full mx-auto   object-contain' alt="nature" />
-                </SwiperSlide>
+
+                {
+                    image?.[0] && <SwiperSlide>
+                        <img src={image?.[0]} className='w-full mx-auto   object-contain' alt="nature" />
+                    </SwiperSlide>
+                }
+
+                {
+                    image?.[1] && <SwiperSlide>
+                        <img src={image?.[1]} className='w-full mx-auto   object-contain' alt="nature" />
+                    </SwiperSlide>
+                }
+
+                {
+                    image?.[2] && <SwiperSlide>
+                        <img src={image?.[2]} className='w-full mx-auto   object-contain' alt="nature" />
+                    </SwiperSlide>
+                }
+
+                {
+                    image?.[3] && <SwiperSlide>
+                        <img src={image?.[3]} className='w-full mx-auto   object-contain' alt="nature" />
+                    </SwiperSlide>
+                }
+
+
                 {
                     ytLink && (
                         <SwiperSlide>
@@ -71,10 +111,10 @@ const ProductImage = (props) => {
 
                     )
                 }
-                
+
             </Swiper>
         </div>
-    )
-}
+    );
+};
 
-export default ProductImage
+export default ProductImage;
