@@ -23,7 +23,7 @@ const ProductDescription = (props) => {
             newProduct['pdQuantity'] = pdQuantity + 1;
             setQuantity(newProduct.pdQuantity);
         } else {
-            alert('no stock');
+            alert('no stock ');
         }
     };
 
